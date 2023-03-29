@@ -9,8 +9,6 @@ public class Controlable
 
     private Vector2 _position;
 
-    public Controlable() { }
-
     public void Move(float angle, float deltaTime)
     {
         angle *= Mathf.Deg2Rad;
