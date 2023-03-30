@@ -6,6 +6,7 @@ public class CharacterPresenter : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ProgressBar _lifeBar;
     [SerializeField] private ProgressBar _experienceBar;
+    [SerializeField] private CharacterInfo _characterInfo;
 
     private ICharacterView _characterView;
     private ICharacter _character;
@@ -15,7 +16,7 @@ public class CharacterPresenter : MonoBehaviour
     private void Awake()
     {
         _characterView = GetComponent<CharacterView>();
-        _character = new Character();
+        _character = new Character(_characterInfo);
 
         Enable();
     }
@@ -37,20 +38,11 @@ public class CharacterPresenter : MonoBehaviour
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
-    private float _timer;
-
     private void Update()
     {
         if (isEnable)
         {
             _character.Update(Time.deltaTime);
-
-            _timer += Time.deltaTime;
-            while (_timer >= 1)
-            {
-                _timer--;
-                _character.Attributes.Level.AddExperience(1);
-            }
         }
     }
 }

@@ -2076,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3409057116343231747, guid: 82234c4acae23f64b922d3533b8e2a57, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4577766868310080864, guid: 82234c4acae23f64b922d3533b8e2a57, type: 3}
       propertyPath: m_Name
@@ -2718,6 +2718,7 @@ MonoBehaviour:
   _joystick: {fileID: 1647114553}
   _lifeBar: {fileID: 6766490}
   _experienceBar: {fileID: 621491772}
+  _characterInfo: {fileID: 11400000, guid: 7766bb9aa6eb812489bbe78a56ec8f2c, type: 2}
 --- !u!114 &2101839332
 MonoBehaviour:
   m_ObjectHideFlags: 0

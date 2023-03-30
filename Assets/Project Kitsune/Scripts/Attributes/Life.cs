@@ -7,22 +7,24 @@ public class Life : Attribute
     public float Regeneration;
 
     private float _timer = 0;
+    private float _regenerationFrequercy = 0.1f;
 
-    public Life(float value, float maximum)
+    public Life(float maximum, float regeneration)
     {
-        Set(value);
+        Value = maximum;
         Maximum = maximum;
         Minimum = 0;
+        Regeneration = regeneration;
     }
 
     public void Regenerate(float deltaTime)
     {
         _timer += deltaTime;
-        while (_timer >= 1)
+        while (_timer >= _regenerationFrequercy)
         {
-            _timer--;
-            Add(Regeneration);
-            OnLifeChange?.Invoke(Value);
+            _timer -= _regenerationFrequercy;
+            Add(Regeneration * _regenerationFrequercy);
+            OnLifeChange?.Invoke(Final);
         }
     }
 

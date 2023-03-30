@@ -6,6 +6,8 @@ public abstract class Attribute
     public event Action OnMaximum;
 
     public float Value { get; protected set; }
+    public float BaseValue { get; protected set; }
+    public float Final { get { return BaseValue + Value; } }
     public float Minimum { get; protected set; }
     public float Maximum { get; protected set; }
 
