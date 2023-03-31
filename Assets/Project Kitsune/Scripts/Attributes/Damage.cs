@@ -21,17 +21,17 @@ public class Damage : Attribute
     /// CDamage - Character Damage
     /// Final Damage = (ADamage + CDamage) * ADamageMultiplier * Crit
     /// </summary>
-    public static float CalculateAbilityDamage(Damage damage, IAbility ability)
+    public static float CalculateAbilityDamage(Damage damage, IAbility ability, int abilityLevel)
     {
-        float finalDamage = ability.Damage;
+        float finalDamage = ability.Damage[abilityLevel];
 
         if (ability.UseCharacterDamage)
             finalDamage += damage.Final;
 
-        finalDamage *= ability.DamageMultiplier;
+        finalDamage *= ability.DamageMultiplier[abilityLevel];
 
-        float critChance = ability.CritChance;
-        float critMultiplier = ability.CritMultiplier;
+        float critChance = ability.CritChance[abilityLevel];
+        float critMultiplier = ability.CritMultiplier[abilityLevel];
 
         if (ability.UseCharacterCrit)
         {
