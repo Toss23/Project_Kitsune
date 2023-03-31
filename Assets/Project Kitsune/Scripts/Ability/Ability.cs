@@ -5,16 +5,14 @@ public abstract class Ability : MonoBehaviour, IAbility
 {
     public event Action<Ability, IEnemy> OnHit;
 
-    [Header("Base")]
     [SerializeField] protected bool _useCharacterDamage = true;
     [SerializeField] protected bool _useCharacterCrit = false;
+
     [SerializeField] protected IAbility.Type _abilityType = IAbility.Type.Hit;
 
-    [Header("Damage")]
     [SerializeField] protected float[] _damage;
     [SerializeField] protected float[] _damageMultiplier;
 
-    [Header("Crit")]
     [SerializeField] protected float[] _critChance;
     [SerializeField] protected float[] _critMultiplier;
 

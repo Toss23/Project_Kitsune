@@ -1927,6 +1927,60 @@ MonoBehaviour:
   _stick: {fileID: 1631026113}
   _canvas: {fileID: 2098496789}
   _maxRadiusStick: 200
+--- !u!1 &1807363890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807363891}
+  - component: {fileID: 1807363892}
+  m_Layer: 0
+  m_Name: Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807363891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807363890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5605619, y: -3.873313, z: -0.014488544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1807363892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807363890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cb626835845254a8e13740cf1f0740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useCharacterDamage: 1
+  _useCharacterCrit: 0
+  _abilityType: 0
+  _damage:
+  - 0
+  - 0
+  - 0
+  _damageMultiplier: []
+  _critChance: []
+  _critMultiplier: []
 --- !u!1 &1882741518
 GameObject:
   m_ObjectHideFlags: 0
