@@ -48,7 +48,7 @@ public class CharacterInfoEditor : Editor
         EditorGUILayout.LabelField("Main", boldStyle);
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Prefab", GUILayout.Width(60));
-        _prefab.objectReferenceValue = EditorGUILayout.ObjectField(_prefab.objectReferenceValue, typeof(GameObject), false, GUILayout.Width(150));
+        _prefab.objectReferenceValue = EditorGUILayout.ObjectField(_prefab.objectReferenceValue, typeof(GameObject), false, GUILayout.Width(170));
         EditorGUILayout.EndHorizontal();
 
         int size = 200;
