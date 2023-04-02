@@ -16,6 +16,8 @@ public abstract class Ability : MonoBehaviour, IAbility
     [SerializeField] protected float[] _critChance;
     [SerializeField] protected float[] _critMultiplier;
 
+    [SerializeField] protected string _description;
+
     public bool UseCharacterDamage { get { return _useCharacterDamage; } }
     public bool UseCharacterCrit { get { return _useCharacterCrit; } }
     public IAbility.Type AbilityType { get { return _abilityType; } }
@@ -23,6 +25,8 @@ public abstract class Ability : MonoBehaviour, IAbility
     public float[] DamageMultiplier { get { return _damageMultiplier; } }
     public float[] CritChance { get { return _critChance; } }
     public float[] CritMultiplier { get { return _critMultiplier; } }
+
+    public string Description { get { return _description; } }
 
     private float _dotTimer = 0;
 

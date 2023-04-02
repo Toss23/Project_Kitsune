@@ -11,4 +11,6 @@ public interface IAbility
     public float[] DamageMultiplier { get; }
     public float[] CritChance { get; }
     public float[] CritMultiplier { get; }
+
+    public string Description { get; }
 }

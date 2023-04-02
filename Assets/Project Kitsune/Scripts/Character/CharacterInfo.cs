@@ -3,18 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Character Info", menuName = "Create Character Info")]
 public class CharacterInfo : ScriptableObject
 {
-    [Header("Object")]
     [SerializeField] private GameObject _prefab;
 
-    [Header("Attributes")]
     [SerializeField] private float _life = 100;
     [SerializeField] private float _regeneration = 0;
     [SerializeField] private float _damage = 1;
     [SerializeField] private float _critChance = 0;
-    [SerializeField] private float _critMultiplier = 50;
+    [SerializeField] private float _critMultiplier = 150;
     [SerializeField] private float _armour = 0;
 
-    [Header("Abilities")]
     [SerializeField] private Ability[] _abilities = new Ability[4];
 
     public GameObject Prefab { get { return _prefab; } }
