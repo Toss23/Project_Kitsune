@@ -1978,9 +1978,26 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  _damageMultiplier: []
-  _critChance: []
-  _critMultiplier: []
+  - 0
+  - 0
+  _damageMultiplier:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _critChance:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _critMultiplier:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &1882741518
 GameObject:
   m_ObjectHideFlags: 0
