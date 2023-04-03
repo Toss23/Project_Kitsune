@@ -4,6 +4,7 @@ using UnityEngine;
 public class Joystick : MonoBehaviour
 {
     public event Action<float, float> OnActive;
+    public event Action<bool> IsActive;
 
     [SerializeField] private Transform _stick;
     [SerializeField] private Canvas _canvas;
@@ -38,6 +39,10 @@ public class Joystick : MonoBehaviour
                     case TouchPhase.Stationary:
                         GetStickPositionAndAngle(touch.position, out stickPosition, out _angle);
                         OnActive?.Invoke(_angle, Time.deltaTime);
+                        IsActive?.Invoke(true);
+                        break;
+                    case TouchPhase.Ended:
+                        IsActive?.Invoke(false);
                         break;
                 }
             }
@@ -49,6 +54,7 @@ public class Joystick : MonoBehaviour
             {
                 GetStickPositionAndAngle(Input.mousePosition, out stickPosition, out _angle);
                 OnActive?.Invoke(_angle, Time.deltaTime);
+                IsActive?.Invoke(true);
             }
 
             // Keyboard control
@@ -57,13 +63,15 @@ public class Joystick : MonoBehaviour
                 stickPosition = new Vector3(0, _maxRadiusStick);
                 _angle = 90;
                 OnActive?.Invoke(_angle, Time.deltaTime);
+                IsActive?.Invoke(true);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 stickPosition = new Vector3(0, -_maxRadiusStick);
-                _angle = 270;
+                _angle = -90;
                 OnActive?.Invoke(_angle, Time.deltaTime);
+                IsActive?.Invoke(true);
             }
 
             if (Input.GetKey(KeyCode.A))
@@ -71,6 +79,7 @@ public class Joystick : MonoBehaviour
                 stickPosition = new Vector3(-_maxRadiusStick, 0);
                 _angle = 180;
                 OnActive?.Invoke(_angle, Time.deltaTime);
+                IsActive?.Invoke(true);
             }
 
             if (Input.GetKey(KeyCode.D))
@@ -78,6 +87,12 @@ public class Joystick : MonoBehaviour
                 stickPosition = new Vector3(_maxRadiusStick, 0);
                 _angle = 0;
                 OnActive?.Invoke(_angle, Time.deltaTime);
+                IsActive?.Invoke(true);
+            }
+
+            if (!Input.anyKey)
+            {
+                IsActive?.Invoke(false);
             }
         }
 
@@ -87,7 +102,7 @@ public class Joystick : MonoBehaviour
     private void GetStickPositionAndAngle(Vector3 touchPosition, out Vector3 stickPosition, out float angle)
     {
         touchPosition -= 0.5f * _screenSize;
-        stickPosition = touchPosition - _joystickPosition;
+        stickPosition = touchPosition - _joystickPosition + new Vector3(_maxRadiusStick / 2, _maxRadiusStick / 2);
         angle = Mathf.Atan2(stickPosition.y, stickPosition.x) * Mathf.Rad2Deg;
     }
 }

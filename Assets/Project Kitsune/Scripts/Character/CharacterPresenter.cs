@@ -16,6 +16,7 @@ public class CharacterPresenter : MonoBehaviour
     private void Awake()
     {
         _characterView = GetComponent<CharacterView>();
+        _characterView.SpawnCharacter(_characterInfo.Prefab);
         _character = new Character(_characterInfo);
 
         Enable();
@@ -27,6 +28,8 @@ public class CharacterPresenter : MonoBehaviour
 
         Controlable controlable = _character.Controlable;
         _joystick.OnActive += (angle, deltaTime) => controlable.Move(angle, deltaTime);
+        _joystick.OnActive += (angle, deltaTime) => _characterView.Reverse(angle);
+        _joystick.IsActive += (active) => _characterView.Move(active);
         controlable.OnMove += (position) => _characterView.SetPosition(position);
 
         Life life = _character.Attributes.Life;
