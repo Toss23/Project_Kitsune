@@ -22,7 +22,7 @@ public class Character : ICharacter
         Abilities.UpdateCastTime(deltaTime);
     }
 
-    private void CastAbility(Ability ability, int level)
+    private void CastAbility(IAbility ability, int level)
     {
         
     }

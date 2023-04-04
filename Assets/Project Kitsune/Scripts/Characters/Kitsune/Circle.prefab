@@ -99,7 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useCharacterDamage: 1
   _useCharacterCrit: 0
-  _abilityType: 0
+  _abilityDamageType: 0
+  _abilityType: 1
+  _projectileSpeed: 0
   _damage:
   - 0
   - 1

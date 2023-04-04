@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class KitsuneAttack : Ability
 {
-    private void Update()
+    protected override void OnCreate()
     {
-        float speed = 10 * Time.deltaTime;
-        transform.position += new Vector3(speed, 0, 0);
+        
+    }
+
+    protected override void OnUpdate()
+    {
+        
     }
 }

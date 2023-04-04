@@ -46,11 +46,11 @@ public class CharacterPresenter : MonoBehaviour
         _character.Abilities.OnCastReloaded += CreateAbility;
     }
 
-    private void CreateAbility(Ability ability, int level)
+    private void CreateAbility(IAbility ability, int level)
     {
         if (ability != null)
         {
-            Ability abilityObject = Instantiate(ability);
+            Ability abilityObject = Instantiate(ability as Ability);
             abilityObject.SetLevel(level);
         }
     }

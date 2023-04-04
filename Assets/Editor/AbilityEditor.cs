@@ -7,6 +7,8 @@ public class AbilityEditor : Editor
     private SerializedProperty _useCharacterDamage;
     private SerializedProperty _useCharacterCrit;
     private SerializedProperty _abilityType;
+    private SerializedProperty _abilityDamageType;
+    private SerializedProperty _projectileSpeed;
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
@@ -19,6 +21,8 @@ public class AbilityEditor : Editor
         _useCharacterDamage = serializedObject.FindProperty("_useCharacterDamage");
         _useCharacterCrit = serializedObject.FindProperty("_useCharacterCrit");
         _abilityType = serializedObject.FindProperty("_abilityType");
+        _abilityDamageType = serializedObject.FindProperty("_abilityDamageType");
+        _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
         _castPerSecond = serializedObject.FindProperty("_castPerSecond");
@@ -53,13 +57,35 @@ public class AbilityEditor : Editor
         Color baseColor = GUI.backgroundColor;
         if (_abilityType.enumValueIndex == 0)
             GUI.backgroundColor = Color.cyan;
-        if (GUILayout.Button("Hit damage", GUILayout.Width(150)))
+        if (GUILayout.Button("Melee", GUILayout.Width(150)))
             _abilityType.enumValueIndex = 0;
         GUI.backgroundColor = baseColor;
         if (_abilityType.enumValueIndex == 1)
             GUI.backgroundColor = Color.cyan;
-        if (GUILayout.Button("Damage over time", GUILayout.Width(150)))
+        if (GUILayout.Button("Projectile", GUILayout.Width(150)))
             _abilityType.enumValueIndex = 1;
+        GUI.backgroundColor = baseColor;
+        EditorGUILayout.EndHorizontal();
+
+        if (_abilityType.enumValueIndex == 1)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Projectile Speed", GUILayout.Width(100));
+            _projectileSpeed.floatValue = EditorGUILayout.FloatField(_projectileSpeed.floatValue, GUILayout.Width(70));
+            EditorGUILayout.EndHorizontal();
+            GUILayout.Space(5);
+        }
+
+        EditorGUILayout.BeginHorizontal();
+        if (_abilityDamageType.enumValueIndex == 0)
+            GUI.backgroundColor = Color.cyan;
+        if (GUILayout.Button("Hit damage", GUILayout.Width(150)))
+            _abilityDamageType.enumValueIndex = 0;
+        GUI.backgroundColor = baseColor;
+        if (_abilityDamageType.enumValueIndex == 1)
+            GUI.backgroundColor = Color.cyan;
+        if (GUILayout.Button("Damage over time", GUILayout.Width(150)))
+            _abilityDamageType.enumValueIndex = 1;
         GUI.backgroundColor = baseColor;
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space(10);

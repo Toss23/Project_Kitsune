@@ -7,14 +7,14 @@ public enum Abilities
 
 public class AbilitiesState
 {
-    public event Action<Ability, int> OnCastReloaded;
+    public event Action<IAbility, int> OnCastReloaded;
 
-    private Ability[] _abilities;
+    private IAbility[] _abilities;
     private int[] _levels;
     private int[] _maxLevels;
     private float[] _reloadTimes;
 
-    public AbilitiesState(Ability[] abilities)
+    public AbilitiesState(IAbility[] abilities)
     {
         _abilities = abilities;
         _levels = new int[_abilities.Length];

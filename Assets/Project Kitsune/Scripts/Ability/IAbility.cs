@@ -1,8 +1,13 @@
 public interface IAbility
 {
-    public enum Type
+    public enum DamageType
     {
         Hit, DamageOverTime
+    }
+
+    public enum Type
+    {
+        Melee, Projectile
     }
 
     public int Level { get; }

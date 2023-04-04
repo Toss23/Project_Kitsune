@@ -8,7 +8,9 @@ public abstract class Ability : MonoBehaviour, IAbility
     [SerializeField] protected bool _useCharacterDamage = true;
     [SerializeField] protected bool _useCharacterCrit = false;
 
-    [SerializeField] protected IAbility.Type _abilityType = IAbility.Type.Hit;
+    [SerializeField] protected IAbility.DamageType _abilityDamageType = IAbility.DamageType.Hit;
+    [SerializeField] protected IAbility.Type _abilityType = IAbility.Type.Melee;
+    [SerializeField] protected float _projectileSpeed;
 
     [SerializeField] protected float[] _damage;
     [SerializeField] protected float[] _damageMultiplier;
@@ -23,6 +25,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     public int Level { get; private set; }
     public bool UseCharacterDamage { get { return _useCharacterDamage; } }
     public bool UseCharacterCrit { get { return _useCharacterCrit; } }
+    public IAbility.DamageType AbilityDamageType { get { return _abilityDamageType; } }
     public IAbility.Type AbilityType { get { return _abilityType; } }
     public float[] Damage { get { return _damage; } }
     public float[] DamageMultiplier { get { return _damageMultiplier; } }
@@ -34,6 +37,19 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     private float _dotTimer = 0;
 
+    private void Awake()
+    {
+        OnCreate();
+    }
+
+    private void Update()
+    {
+        OnUpdate();
+    }
+
+    protected abstract void OnCreate();
+    protected abstract void OnUpdate();
+
     public void SetLevel(int level)
     {
         Level = level;
@@ -43,13 +59,13 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_abilityType == IAbility.Type.Hit)
+        if (_abilityDamageType == IAbility.DamageType.Hit)
             CallbackOnHit(collision);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (_abilityType == IAbility.Type.DamageOverTime)
+        if (_abilityDamageType == IAbility.DamageType.DamageOverTime)
         {
             _dotTimer += Time.deltaTime;
             while (_dotTimer >= 1)
