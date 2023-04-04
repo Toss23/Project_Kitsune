@@ -20,7 +20,7 @@ MonoBehaviour:
   _critMultiplier: 50
   _armour: 0
   _abilities:
-  - {fileID: 0}
+  - {fileID: 274742418572752201, guid: 44e71e477bfb84e49bd6372e437b9856, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

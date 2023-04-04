@@ -17,19 +17,22 @@ public class AbilitiesState
     public AbilitiesState(Ability[] abilities)
     {
         _abilities = abilities;
-        _levels = new int[abilities.Length];
+        _levels = new int[_abilities.Length];
         _levels[0] = 1;
-        _reloadTimes = new float[abilities.Length];
-        _maxLevels = new int[abilities.Length];
-        for (int i = 0; i < abilities.Length; i++)
-            _maxLevels[i] = abilities[i].Damage.Length;
+        _reloadTimes = new float[_abilities.Length];
+        _maxLevels = new int[_abilities.Length];
+        for (int i = 0; i < _abilities.Length; i++)
+        {
+            if (_abilities[i] != null)
+                _maxLevels[i] = _abilities[i].Damage.Length - 1;
+        }
     }
 
     public void UpdateCastTime(float deltaTime)
     {
-        for (int i = 0; i < _reloadTimes.Length; i++)
+        for (int i = 0; i < _abilities.Length; i++)
         {
-            if (_levels[i] > 0)
+            if (_abilities[i] != null & _levels[i] > 0)
             {
                 _reloadTimes[i] += deltaTime;
                 float castPerSecond = _abilities[i].CastPerSecond[_levels[i]];

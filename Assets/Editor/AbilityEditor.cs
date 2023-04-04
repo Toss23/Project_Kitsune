@@ -94,10 +94,10 @@ public class AbilityEditor : Editor
         {
             int prevSize = _critChance.arraySize;
             _critChance.arraySize = _damage.arraySize;
-            for (int i = prevSize; i < _castPerSecond.arraySize; i++)
+            for (int i = prevSize; i < _critChance.arraySize; i++)
             {
                 SerializedProperty _critChanceValue = _critChance.GetArrayElementAtIndex(i);
-                _critChanceValue.floatValue = 1;
+                _critChanceValue.floatValue = 0;
             }
         }
 

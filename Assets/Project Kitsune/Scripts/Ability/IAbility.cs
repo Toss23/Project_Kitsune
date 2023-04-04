@@ -16,5 +16,5 @@ public interface IAbility
 
     public string Description { get; }
 
-    public int SetLevel(int level);
+    public void SetLevel(int level);
 }
