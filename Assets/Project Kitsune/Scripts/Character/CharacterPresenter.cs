@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterView))]
@@ -46,12 +47,12 @@ public class CharacterPresenter : MonoBehaviour
         _character.Abilities.OnCastReloaded += CreateAbility;
     }
 
-    private void CreateAbility(IAbility ability, int level)
+    private void CreateAbility(IAbility ability)
     {
         if (ability != null)
         {
             Ability abilityObject = Instantiate(ability as Ability);
-            abilityObject.SetLevel(level);
+            _character.RegisterAbility(abilityObject);
         }
     }
 

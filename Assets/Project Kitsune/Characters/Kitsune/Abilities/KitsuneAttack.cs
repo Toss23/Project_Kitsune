@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class KitsuneAttack : Ability
 {
     protected override void OnCreate()

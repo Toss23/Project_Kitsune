@@ -21,5 +21,5 @@ public class CharacterInfo : ScriptableObject
     public float CritChance { get { return _critChance; } }
     public float CritMultiplier { get { return _critMultiplier; } }
     public float Armour { get { return _armour; } }
-    public Ability[] Abilities { get { return _abilities; } }
+    public IAbility[] Abilities { get { return _abilities; } }
 }

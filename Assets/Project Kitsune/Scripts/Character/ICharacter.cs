@@ -5,4 +5,5 @@ public interface ICharacter
     public AbilitiesState Abilities { get; }
 
     public void Update(float deltaTime);
+    public void RegisterAbility(IAbility ability);
 }

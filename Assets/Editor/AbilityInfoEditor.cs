@@ -1,14 +1,15 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Ability), true)]
-public class AbilityEditor : Editor
+[CustomEditor(typeof(AbilityInfo), true)]
+public class AbilityInfoEditor : Editor
 {
     private SerializedProperty _useCharacterDamage;
     private SerializedProperty _useCharacterCrit;
     private SerializedProperty _abilityType;
     private SerializedProperty _abilityDamageType;
     private SerializedProperty _projectileSpeed;
+    private SerializedProperty _projectileRange;
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
@@ -23,6 +24,7 @@ public class AbilityEditor : Editor
         _abilityType = serializedObject.FindProperty("_abilityType");
         _abilityDamageType = serializedObject.FindProperty("_abilityDamageType");
         _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
+        _projectileRange = serializedObject.FindProperty("_projectileRange");
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
         _castPerSecond = serializedObject.FindProperty("_castPerSecond");
@@ -72,6 +74,10 @@ public class AbilityEditor : Editor
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Projectile Speed", GUILayout.Width(100));
             _projectileSpeed.floatValue = EditorGUILayout.FloatField(_projectileSpeed.floatValue, GUILayout.Width(70));
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Projectile Range", GUILayout.Width(100));
+            _projectileRange.floatValue = EditorGUILayout.FloatField(_projectileRange.floatValue, GUILayout.Width(70));
             EditorGUILayout.EndHorizontal();
             GUILayout.Space(5);
         }
@@ -143,7 +149,7 @@ public class AbilityEditor : Editor
         int width = 80;
         int space = 5;
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Level", GUILayout.Width(width));
+        EditorGUILayout.LabelField("Level", GUILayout.Width(width / 2));
         GUILayout.Space(space);
         EditorGUILayout.LabelField("Damage", GUILayout.Width(width));
         GUILayout.Space(space);
@@ -159,7 +165,8 @@ public class AbilityEditor : Editor
         for (int i = 1; i < _damage.arraySize; i++)
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(i.ToString(), GUILayout.Width(width));
+            GUILayout.Space(15);
+            EditorGUILayout.LabelField(i.ToString(), GUILayout.Width(25));
             GUILayout.Space(space);
 
             SerializedProperty _damageValue = _damage.GetArrayElementAtIndex(i);

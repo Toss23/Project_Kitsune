@@ -13,7 +13,6 @@ public class Character : ICharacter
         Attributes.Life.OnMinimum += Death;
 
         Abilities = new AbilitiesState(characterInfo.Abilities);
-        Abilities.OnCastReloaded += CastAbility;
     }
 
     public void Update(float deltaTime)
@@ -22,9 +21,14 @@ public class Character : ICharacter
         Abilities.UpdateCastTime(deltaTime);
     }
 
-    private void CastAbility(IAbility ability, int level)
+    public void RegisterAbility(IAbility ability)
     {
-        
+        ability.OnHit += OnHitAbility;
+    }
+
+    private void OnHitAbility(IAbility ability, IEnemy enemy)
+    {
+        ability.Destroy();
     }
 
     private void Death()

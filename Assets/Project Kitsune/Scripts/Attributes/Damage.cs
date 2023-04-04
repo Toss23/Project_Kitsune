@@ -24,17 +24,17 @@ public class Damage : Attribute
     /// </summary>
     public static float CalculateAbilityDamage(Damage damage, IAbility ability, int abilityLevel)
     {
-        float finalDamage = ability.Damage[abilityLevel];
+        float finalDamage = ability.Info.Damage[abilityLevel];
 
-        if (ability.UseCharacterDamage)
+        if (ability.Info.UseCharacterDamage)
             finalDamage += damage.Final;
 
-        finalDamage *= ability.DamageMultiplier[abilityLevel] / 100;
+        finalDamage *= ability.Info.DamageMultiplier[abilityLevel] / 100;
 
-        float critChance = ability.CritChance[abilityLevel];
-        float critMultiplier = ability.CritMultiplier[abilityLevel];
+        float critChance = ability.Info.CritChance[abilityLevel];
+        float critMultiplier = ability.Info.CritMultiplier[abilityLevel];
 
-        if (ability.UseCharacterCrit)
+        if (ability.Info.UseCharacterCrit)
         {
             critChance += damage.CritChance.Final;
             critMultiplier += damage.CritMultiplier.Final - 100;
