@@ -20,6 +20,9 @@ public class CharacterPresenter : MonoBehaviour
         _character = new Character(_characterInfo);
 
         Enable();
+
+        _character.Abilities.LevelUp(Abilities.Attack);
+        _character.Abilities.GetAbilityLevel(Abilities.Attack);
     }
 
     private void Enable()
@@ -39,6 +42,17 @@ public class CharacterPresenter : MonoBehaviour
         Level level = _character.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+
+        _character.Abilities.OnCastReloaded += CreateAbility;
+    }
+
+    private void CreateAbility(Ability ability, int level)
+    {
+        if (ability != null)
+        {
+            Ability abilityObject = Instantiate(ability);
+            abilityObject.SetLevel(level);
+        }
     }
 
     private void Update()

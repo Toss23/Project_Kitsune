@@ -59,6 +59,12 @@ MonoBehaviour:
   - 120
   - 140
   - 160
+  _castPerSecond:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   _critChance:
   - 0
   - 0

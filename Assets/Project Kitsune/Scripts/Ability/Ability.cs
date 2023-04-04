@@ -13,22 +13,33 @@ public abstract class Ability : MonoBehaviour, IAbility
     [SerializeField] protected float[] _damage;
     [SerializeField] protected float[] _damageMultiplier;
 
+    [SerializeField] protected float[] _castPerSecond;
+
     [SerializeField] protected float[] _critChance;
     [SerializeField] protected float[] _critMultiplier;
 
     [SerializeField] protected string _description;
 
+    public int Level { get; private set; }
     public bool UseCharacterDamage { get { return _useCharacterDamage; } }
     public bool UseCharacterCrit { get { return _useCharacterCrit; } }
     public IAbility.Type AbilityType { get { return _abilityType; } }
     public float[] Damage { get { return _damage; } }
     public float[] DamageMultiplier { get { return _damageMultiplier; } }
+    public float[] CastPerSecond { get { return _castPerSecond; } }
     public float[] CritChance { get { return _critChance; } }
     public float[] CritMultiplier { get { return _critMultiplier; } }
 
     public string Description { get { return _description; } }
 
     private float _dotTimer = 0;
+
+    public void SetLevel(int level)
+    {
+        Level = level;
+        if (Level > Damage.Length)
+            Level = Damage.Length;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

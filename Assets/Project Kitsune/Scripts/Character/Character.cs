@@ -2,6 +2,7 @@ public class Character : ICharacter
 {
     public Controlable Controlable { get; }
     public CharacterAttributes Attributes { get; }
+    public AbilitiesState Abilities { get; }
 
     public Character(CharacterInfo characterInfo)
     {
@@ -10,11 +11,20 @@ public class Character : ICharacter
 
         Attributes = new CharacterAttributes(characterInfo);
         Attributes.Life.OnMinimum += Death;
+
+        Abilities = new AbilitiesState(characterInfo.Abilities);
+        Abilities.OnCastReloaded += CastAbility;
     }
 
     public void Update(float deltaTime)
     {
         Attributes.Life.Regenerate(deltaTime);
+        Abilities.UpdateCastTime(deltaTime);
+    }
+
+    private void CastAbility(Ability ability, int level)
+    {
+        
     }
 
     private void Death()

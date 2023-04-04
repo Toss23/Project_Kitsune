@@ -9,6 +9,7 @@ public class AbilityEditor : Editor
     private SerializedProperty _abilityType;
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
+    private SerializedProperty _castPerSecond;
     private SerializedProperty _critChance;
     private SerializedProperty _critMultiplier;
     private SerializedProperty _description;
@@ -20,6 +21,7 @@ public class AbilityEditor : Editor
         _abilityType = serializedObject.FindProperty("_abilityType");
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
+        _castPerSecond = serializedObject.FindProperty("_castPerSecond");
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
         _description = serializedObject.FindProperty("_description");
@@ -76,8 +78,29 @@ public class AbilityEditor : Editor
                 _damageMultiplierValue.floatValue = 100;
             }
         }
+
+        if (_castPerSecond.arraySize != _damage.arraySize)
+        {
+            int prevSize = _castPerSecond.arraySize;
+            _castPerSecond.arraySize = _damage.arraySize;
+            for (int i = prevSize; i < _castPerSecond.arraySize; i++)
+            {
+                SerializedProperty _castPerSecondValue = _castPerSecond.GetArrayElementAtIndex(i);
+                _castPerSecondValue.floatValue = 1;
+            }
+        }
+
         if (_critChance.arraySize != _damage.arraySize)
+        {
+            int prevSize = _critChance.arraySize;
             _critChance.arraySize = _damage.arraySize;
+            for (int i = prevSize; i < _castPerSecond.arraySize; i++)
+            {
+                SerializedProperty _critChanceValue = _critChance.GetArrayElementAtIndex(i);
+                _critChanceValue.floatValue = 1;
+            }
+        }
+
         if (_critMultiplier.arraySize != _damage.arraySize)
         {
             int prevSize = _critMultiplier.arraySize;
@@ -100,6 +123,8 @@ public class AbilityEditor : Editor
         GUILayout.Space(space);
         EditorGUILayout.LabelField("Muliplier", GUILayout.Width(width));
         GUILayout.Space(space);
+        EditorGUILayout.LabelField("Cast per Sec", GUILayout.Width(width));
+        GUILayout.Space(space);
         EditorGUILayout.LabelField("Crit Chance", GUILayout.Width(width));
         GUILayout.Space(space);
         EditorGUILayout.LabelField("Crit Multiplier", GUILayout.Width(width));
@@ -117,6 +142,10 @@ public class AbilityEditor : Editor
 
             SerializedProperty _damageMultiplierValue = _damageMultiplier.GetArrayElementAtIndex(i);
             _damageMultiplierValue.floatValue = EditorGUILayout.FloatField(_damageMultiplierValue.floatValue, GUILayout.Width(width));
+            GUILayout.Space(space);
+
+            SerializedProperty _castPerSecondValue = _castPerSecond.GetArrayElementAtIndex(i);
+            _castPerSecondValue.floatValue = EditorGUILayout.FloatField(_castPerSecondValue.floatValue, GUILayout.Width(width));
             GUILayout.Space(space);
 
             SerializedProperty _critChanceValue = _critChance.GetArrayElementAtIndex(i);

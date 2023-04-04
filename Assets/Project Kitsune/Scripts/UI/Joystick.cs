@@ -65,24 +65,21 @@ public class Joystick : MonoBehaviour
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
-
-            if (Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S))
             {
                 stickPosition = new Vector3(0, -_maxRadiusStick);
                 _angle = -90;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
-
-            if (Input.GetKey(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A))
             {
                 stickPosition = new Vector3(-_maxRadiusStick, 0);
                 _angle = 180;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
-
-            if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 stickPosition = new Vector3(_maxRadiusStick, 0);
                 _angle = 0;
