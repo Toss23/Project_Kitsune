@@ -6,10 +6,19 @@ public class AbilityInfoEditor : Editor
 {
     private SerializedProperty _useCharacterDamage;
     private SerializedProperty _useCharacterCrit;
-    private SerializedProperty _abilityType;
+
     private SerializedProperty _abilityDamageType;
+    private SerializedProperty _dotRate;
+    private SerializedProperty _dotDuration;
+
+    private SerializedProperty _abilityType;
     private SerializedProperty _projectileSpeed;
     private SerializedProperty _projectileRange;
+    private SerializedProperty _projectileAuto;
+
+    private SerializedProperty _haveContinueAbility;
+    private SerializedProperty _continueAbility;
+
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
@@ -21,13 +30,23 @@ public class AbilityInfoEditor : Editor
     {
         _useCharacterDamage = serializedObject.FindProperty("_useCharacterDamage");
         _useCharacterCrit = serializedObject.FindProperty("_useCharacterCrit");
+
         _abilityType = serializedObject.FindProperty("_abilityType");
+        _dotRate = serializedObject.FindProperty("_dotRate");
+        _dotDuration = serializedObject.FindProperty("_dotDuration");
+
         _abilityDamageType = serializedObject.FindProperty("_abilityDamageType");
         _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
         _projectileRange = serializedObject.FindProperty("_projectileRange");
+        _projectileAuto = serializedObject.FindProperty("_projectileAuto");
+
+        _haveContinueAbility = serializedObject.FindProperty("_haveContinueAbility");
+        _continueAbility = serializedObject.FindProperty("_continueAbility");
+
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
         _castPerSecond = serializedObject.FindProperty("_castPerSecond");
+
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
         _description = serializedObject.FindProperty("_description");
@@ -59,7 +78,7 @@ public class AbilityInfoEditor : Editor
         Color baseColor = GUI.backgroundColor;
         if (_abilityType.enumValueIndex == 0)
             GUI.backgroundColor = Color.cyan;
-        if (GUILayout.Button("Melee", GUILayout.Width(150)))
+        if (GUILayout.Button("Melee or Target", GUILayout.Width(150)))
             _abilityType.enumValueIndex = 0;
         GUI.backgroundColor = baseColor;
         if (_abilityType.enumValueIndex == 1)
@@ -78,6 +97,11 @@ public class AbilityInfoEditor : Editor
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Projectile Range", GUILayout.Width(100));
             _projectileRange.floatValue = EditorGUILayout.FloatField(_projectileRange.floatValue, GUILayout.Width(70));
+            EditorGUILayout.LabelField("sec", GUILayout.Width(100));
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Auto-Target", GUILayout.Width(100));
+            _projectileAuto.boolValue = EditorGUILayout.Toggle(_projectileAuto.boolValue);
             EditorGUILayout.EndHorizontal();
             GUILayout.Space(5);
         }
@@ -93,6 +117,31 @@ public class AbilityInfoEditor : Editor
         if (GUILayout.Button("Damage over time", GUILayout.Width(150)))
             _abilityDamageType.enumValueIndex = 1;
         GUI.backgroundColor = baseColor;
+        EditorGUILayout.EndHorizontal();
+
+        if (_abilityDamageType.enumValueIndex == 1)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Damage Rate", GUILayout.Width(100));
+            _dotRate.floatValue = EditorGUILayout.FloatField(_dotRate.floatValue, GUILayout.Width(70));
+            EditorGUILayout.LabelField("sec per damage", GUILayout.Width(100));
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Duration", GUILayout.Width(100));
+            _dotDuration.floatValue = EditorGUILayout.FloatField(_dotDuration.floatValue, GUILayout.Width(70));
+            EditorGUILayout.LabelField("sec", GUILayout.Width(100));
+            EditorGUILayout.EndHorizontal();
+        }
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.LabelField("Continue Ability", boldStyle);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Have continue", GUILayout.Width(100));
+        _haveContinueAbility.boolValue = EditorGUILayout.Toggle(_haveContinueAbility.boolValue);
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Ability", GUILayout.Width(100));
+        _continueAbility.objectReferenceValue = EditorGUILayout.ObjectField(_continueAbility.objectReferenceValue, typeof(Ability), false, GUILayout.Width(200));
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space(10);
 

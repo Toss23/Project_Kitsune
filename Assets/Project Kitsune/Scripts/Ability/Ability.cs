@@ -9,7 +9,8 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public AbilityInfo Info { get { return _abilityInfo; } }
 
-    private float _dotTimer = 0;
+    private float _dotDamageTimer = 0;
+    private float _dotLifeTimer = 0;
     private float _projectileTimer = 0;
 
     private void Awake()
@@ -19,6 +20,13 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     private void Update()
     {
+        if (_abilityInfo.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
+        {
+            _dotLifeTimer += Time.deltaTime;
+            if (_dotLifeTimer >= _abilityInfo.DotDuration)
+                Destroy();
+        }
+
         if (_abilityInfo.AbilityType == AbilityInfo.Type.Projectile)
         {
             float deltaX = _abilityInfo.ProjectileSpeed * Time.deltaTime * Mathf.Cos(0);
@@ -47,10 +55,10 @@ public abstract class Ability : MonoBehaviour, IAbility
     {
         if (_abilityInfo.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
         {
-            _dotTimer += Time.deltaTime;
-            while (_dotTimer >= 1)
+            _dotDamageTimer += Time.deltaTime;
+            while (_dotDamageTimer >= _abilityInfo.DotRate)
             {
-                _dotTimer--;
+                _dotDamageTimer -= _abilityInfo.DotRate;
                 CallbackOnHit(collision);
             }
         }
@@ -63,6 +71,12 @@ public abstract class Ability : MonoBehaviour, IAbility
             EnemyPresenter enemyPresenter = collision.gameObject.GetComponent<EnemyPresenter>();
             IEnemy enemy = enemyPresenter.Enemy;
             OnHit?.Invoke(this, enemy);
+
+            if (_abilityInfo.HaveContinueAbility)
+            {
+                GameObject continueAbility = Instantiate(_abilityInfo.ContinueAbility.gameObject);
+                continueAbility.transform.position = enemyPresenter.transform.position;
+            }
         }
     }
 
