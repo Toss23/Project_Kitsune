@@ -16,9 +16,11 @@ MonoBehaviour:
   _useCharacterCrit: 0
   _abilityDamageType: 1
   _dotRate: 1
+  _dotDuration: 5
   _abilityType: 1
   _projectileSpeed: 10
   _projectileRange: 1
+  _projectileAuto: 0
   _haveContinueAbility: 0
   _continueAbility: {fileID: 0}
   _damage:

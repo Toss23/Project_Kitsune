@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(CharacterInfo), true)]
+[CustomEditor(typeof(CharacterInfo))]
 public class CharacterInfoEditor : Editor
 {
     private SerializedProperty _prefab;
