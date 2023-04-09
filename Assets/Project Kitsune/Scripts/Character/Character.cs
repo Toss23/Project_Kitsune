@@ -28,7 +28,7 @@ public class Character : ICharacter
 
     private void OnHitAbility(IAbility ability, IEnemy enemy)
     {
-        ability.Destroy();
+        
     }
 
     private void Death()

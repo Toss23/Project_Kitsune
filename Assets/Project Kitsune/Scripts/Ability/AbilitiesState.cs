@@ -7,7 +7,7 @@ public enum Abilities
 
 public class AbilitiesState
 {
-    public event Action<IAbility> OnCastReloaded;
+    public event Action<IAbility, Abilities> OnCastReloaded;
 
     private IAbility[] _abilities;
     private int[] _levels;
@@ -39,7 +39,7 @@ public class AbilitiesState
                 while (_reloadTimes[i] >= 1 / castPerSecond)
                 {
                     _reloadTimes[i] -= 1 / castPerSecond;
-                    OnCastReloaded?.Invoke(_abilities[i]);
+                    OnCastReloaded?.Invoke(_abilities[i], (Abilities)i);
                 }
             }
         }

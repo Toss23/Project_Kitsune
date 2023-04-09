@@ -14,38 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _useCharacterDamage: 1
   _useCharacterCrit: 0
-  _abilityDamageType: 1
+  _abilityDamageType: 0
   _dotRate: 1
   _dotDuration: 5
   _abilityType: 1
   _projectileSpeed: 10
   _projectileRange: 1
   _projectileAuto: 0
+  _destroyOnHit: 0
   _haveContinueAbility: 0
   _continueAbility: {fileID: 0}
   _damage:
   - 0
   - 0
-  - 0
-  - 0
   _damageMultiplier:
-  - 100
-  - 100
   - 100
   - 100
   _castPerSecond:
   - 1
   - 2
-  - 1
-  - 1
   _critChance:
   - 0
   - 0
-  - 0
-  - 0
   _critMultiplier:
-  - 100
-  - 100
   - 100
   - 100
   _description: 

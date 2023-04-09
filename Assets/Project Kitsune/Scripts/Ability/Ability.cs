@@ -29,9 +29,9 @@ public abstract class Ability : MonoBehaviour, IAbility
 
         if (_abilityInfo.AbilityType == AbilityInfo.Type.Projectile)
         {
-            float deltaX = _abilityInfo.ProjectileSpeed * Time.deltaTime * Mathf.Cos(0);
-            float deltaY = _abilityInfo.ProjectileSpeed * Time.deltaTime * Mathf.Sin(0);
-            Vector3 deltaPosition = new Vector3(deltaX, deltaY);
+            float deltaX = Mathf.Cos(transform.eulerAngles.z * Mathf.Deg2Rad);
+            float deltaY = Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad);
+            Vector3 deltaPosition = new Vector3(deltaX, deltaY) * _abilityInfo.ProjectileSpeed * Time.deltaTime;
             transform.position += deltaPosition;
 
             _projectileTimer += Time.deltaTime;
@@ -77,6 +77,8 @@ public abstract class Ability : MonoBehaviour, IAbility
                 GameObject continueAbility = Instantiate(_abilityInfo.ContinueAbility.gameObject);
                 continueAbility.transform.position = enemyPresenter.transform.position;
             }
+
+            Destroy();
         }
     }
 

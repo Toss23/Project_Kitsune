@@ -32,7 +32,7 @@ public class CharacterPresenter : MonoBehaviour
 
         Controlable controlable = _character.Controlable;
         _joystick.OnActive += (angle, deltaTime) => controlable.Move(angle, deltaTime);
-        _joystick.OnActive += (angle, deltaTime) => _characterView.Reverse(angle);
+        _joystick.OnActive += (angle, deltaTime) => _characterView.SetAngle(angle);
         _joystick.IsActive += (active) => _characterView.Move(active);
         controlable.OnMove += (position) => _characterView.SetPosition(position);
 
@@ -47,11 +47,14 @@ public class CharacterPresenter : MonoBehaviour
         _character.Abilities.OnCastReloaded += CreateAbility;
     }
 
-    private void CreateAbility(IAbility ability)
+    private void CreateAbility(IAbility ability, Abilities type)
     {
         if (ability != null)
         {
-            Ability abilityObject = Instantiate(ability as Ability);
+            Ability abilityObject = Instantiate((Ability)ability);
+            Transform abilityTransform = abilityObject.gameObject.transform;
+            abilityTransform.position = _characterView.AbilityPoints.Points[(int)type].transform.position;
+            abilityTransform.Rotate(new Vector3(0, 0, _characterView.Angle));
             _character.RegisterAbility(abilityObject);
         }
     }

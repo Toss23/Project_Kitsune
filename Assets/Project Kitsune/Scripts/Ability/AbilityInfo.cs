@@ -24,6 +24,7 @@ public class AbilityInfo : ScriptableObject
     [SerializeField] private float _projectileSpeed;
     [SerializeField] private float _projectileRange;
     [SerializeField] private bool _projectileAuto;
+    [SerializeField] private bool _destroyOnHit;
 
     [SerializeField] private bool _haveContinueAbility;
     [SerializeField] private Ability _continueAbility;
@@ -49,6 +50,7 @@ public class AbilityInfo : ScriptableObject
     public float ProjectileSpeed => _projectileSpeed;
     public float ProjectileRange => _projectileRange;
     public bool ProjectileAuto => _projectileAuto;
+    public bool DestroyOnHit => _destroyOnHit;
 
     public bool HaveContinueAbility => _haveContinueAbility;
     public Ability ContinueAbility => _continueAbility;

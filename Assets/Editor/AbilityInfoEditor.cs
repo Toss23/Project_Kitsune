@@ -15,6 +15,7 @@ public class AbilityInfoEditor : Editor
     private SerializedProperty _projectileSpeed;
     private SerializedProperty _projectileRange;
     private SerializedProperty _projectileAuto;
+    private SerializedProperty _destroyOnHit;
 
     private SerializedProperty _haveContinueAbility;
     private SerializedProperty _continueAbility;
@@ -39,6 +40,7 @@ public class AbilityInfoEditor : Editor
         _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
         _projectileRange = serializedObject.FindProperty("_projectileRange");
         _projectileAuto = serializedObject.FindProperty("_projectileAuto");
+        _destroyOnHit = serializedObject.FindProperty("_destroyOnHit");
 
         _haveContinueAbility = serializedObject.FindProperty("_haveContinueAbility");
         _continueAbility = serializedObject.FindProperty("_continueAbility");
@@ -102,6 +104,10 @@ public class AbilityInfoEditor : Editor
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Auto-Target", GUILayout.Width(100));
             _projectileAuto.boolValue = EditorGUILayout.Toggle(_projectileAuto.boolValue);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Destroy on Hit", GUILayout.Width(100));
+            _destroyOnHit.boolValue = EditorGUILayout.Toggle(_destroyOnHit.boolValue);
             EditorGUILayout.EndHorizontal();
             GUILayout.Space(5);
         }
