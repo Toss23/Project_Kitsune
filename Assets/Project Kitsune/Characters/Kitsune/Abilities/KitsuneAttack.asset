@@ -15,11 +15,26 @@ MonoBehaviour:
   _useCharacterDamage: 1
   _useCharacterCrit: 0
   _abilityDamageType: 0
-  _dotRate: 1
-  _dotDuration: 5
+  _dotRate:
+  - 0
+  - 1
+  - 1
+  - 1
+  _dotDuration:
+  - 0
+  - 5
+  - 5
+  - 5
   _abilityType: 1
+  _meleeAnimationTime: 0
   _projectileSpeed: 10
   _projectileRange: 1
+  _projectileCount: 00000000030000000000000000000000
+  _projectileSplitAngle:
+  - 0
+  - 20
+  - 0
+  - 0
   _projectileAuto: 0
   _destroyOnHit: 0
   _haveContinueAbility: 0
@@ -27,16 +42,31 @@ MonoBehaviour:
   _damage:
   - 0
   - 0
+  - 0
+  - 0
   _damageMultiplier:
+  - 100
+  - 100
   - 100
   - 100
   _castPerSecond:
   - 1
-  - 2
+  - 1
+  - 1
+  - 1
   _critChance:
+  - 0
+  - 0
   - 0
   - 0
   _critMultiplier:
   - 100
   - 100
+  - 100
+  - 100
   _description: 
+  _radius:
+  - 5
+  - 1
+  - 1
+  - 1

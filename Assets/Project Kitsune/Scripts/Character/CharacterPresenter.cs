@@ -21,9 +21,6 @@ public class CharacterPresenter : MonoBehaviour
         _character = new Character(_characterInfo);
 
         Enable();
-
-        _character.Abilities.LevelUp(Abilities.Attack);
-        _character.Abilities.GetAbilityLevel(Abilities.Attack);
     }
 
     private void Enable()
@@ -47,15 +44,35 @@ public class CharacterPresenter : MonoBehaviour
         _character.Abilities.OnCastReloaded += CreateAbility;
     }
 
-    private void CreateAbility(IAbility ability, Abilities type)
+    private void CreateAbility(IAbility ability, AbilityType type, int level)
     {
         if (ability != null)
         {
-            Ability abilityObject = Instantiate((Ability)ability);
-            Transform abilityTransform = abilityObject.gameObject.transform;
-            abilityTransform.position = _characterView.AbilityPoints.Points[(int)type].transform.position;
-            abilityTransform.Rotate(new Vector3(0, 0, _characterView.Angle));
-            _character.RegisterAbility(abilityObject);
+            int count = 1;
+            float deltaAngle = 0;
+            float startAngle = 0;
+
+            if (ability.Info.AbilityType == AbilityInfo.Type.Projectile)
+            {
+                count = ability.Info.ProjectileCount[level];
+                deltaAngle = ability.Info.ProjectileSpliteAngle[level];
+                startAngle = -count * deltaAngle / 2f;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                Ability abilityObject = Instantiate((Ability)ability);
+                abilityObject.Init(level);
+                Transform abilityTransform = abilityObject.gameObject.transform;
+                abilityTransform.position = _characterView.AbilityPoints.Points[(int)type].transform.position;
+                abilityTransform.Rotate(new Vector3(0, 0, _characterView.Angle + startAngle+ deltaAngle * i));
+
+                if (ability.Info.AbilityType == AbilityInfo.Type.Melee
+                    || ability.Info.AbilityType == AbilityInfo.Type.Field)
+                    abilityObject.FuseWith(_characterView.AbilityPoints.Points[(int)type].transform);
+
+                _character.RegisterAbility(abilityObject);
+            }
         }
     }
 

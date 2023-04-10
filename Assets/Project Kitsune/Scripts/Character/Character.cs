@@ -13,6 +13,7 @@ public class Character : ICharacter
         Attributes.Life.OnMinimum += Death;
 
         Abilities = new AbilitiesState(characterInfo.Abilities);
+        Abilities.LevelUp((int)AbilityType.Attack);
     }
 
     public void Update(float deltaTime)
