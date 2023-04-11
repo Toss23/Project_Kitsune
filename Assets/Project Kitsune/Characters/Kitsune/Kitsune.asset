@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9296c4285ee5784ab4d045f311c23f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
   m_Name: Kitsune
   m_EditorClassIdentifier: 
   _prefab: {fileID: 4577766868310080864, guid: 82234c4acae23f64b922d3533b8e2a57, type: 3}
@@ -17,7 +17,7 @@ MonoBehaviour:
   _regeneration: 0
   _damage: 1
   _critChance: 0
-  _critMultiplier: 50
+  _critMultiplier: 150
   _armour: 0
   _abilities:
   - {fileID: 274742418572752201, guid: 44e71e477bfb84e49bd6372e437b9856, type: 3}

@@ -2,8 +2,7 @@ public class CritChance : Attribute
 {
     public CritChance(float baseValue)
     {
-        BaseValue = baseValue;
-        Value = 0;
+        Value = baseValue;
         Minimum = 0;
         Maximum = 100 - baseValue;
     }

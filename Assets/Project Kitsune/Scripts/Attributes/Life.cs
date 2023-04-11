@@ -24,7 +24,7 @@ public class Life : Attribute
         {
             _timer -= _regenerationFrequercy;
             Add(Regeneration * _regenerationFrequercy);
-            OnLifeChange?.Invoke(Final);
+            OnLifeChange?.Invoke(Value);
         }
     }
 

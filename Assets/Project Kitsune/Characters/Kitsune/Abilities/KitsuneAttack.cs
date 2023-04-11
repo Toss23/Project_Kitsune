@@ -10,12 +10,12 @@ public class KitsuneAttack : Ability
         
     }
 
-    protected override void OnCollisionEnterWithEnemy(IEnemy enemy)
+    protected override void OnCollisionEnterWithEnemy(IUnit enemy)
     {
         
     }
 
-    protected override void OnCollisionStayWithEnemy(IEnemy enemy)
+    protected override void OnCollisionStayWithEnemy(IUnit enemy)
     {
         
     }

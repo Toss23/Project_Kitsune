@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public interface ICharacterView
+public interface IUnitView
 {
     public AbilityPoints AbilityPoints { get; }
-    public bool IsReversed { get; }
+
     public float Angle { get; }
 
-    public void Move(bool move);
+    public void CreateUnit(GameObject prefab);
     public void SetAngle(float angle);
-    public void SpawnCharacter(GameObject prefab);
+    public void IsMoving(bool active);
     public void SetPosition(Vector2 position);
 }

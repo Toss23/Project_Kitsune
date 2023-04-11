@@ -2,8 +2,7 @@ public class Armour : Attribute
 {
     public Armour(float baseValue)
     {
-        BaseValue = baseValue;
-        Value = 0;
+        Value = baseValue;
         Minimum = 0;
         Maximum = 100;
     }

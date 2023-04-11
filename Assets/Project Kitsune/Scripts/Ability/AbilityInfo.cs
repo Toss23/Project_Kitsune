@@ -20,7 +20,7 @@ public class AbilityInfo : ScriptableObject
     [SerializeField] private float[] _dotRate;
     [SerializeField] private float[] _dotDuration;
 
-    [SerializeField] private Type _abilityType = Type.Melee;
+    [SerializeField] private Type _abilityType = Type.Projectile;
     [SerializeField] private float _meleeAnimationTime;
 
     [SerializeField] private float _projectileSpeed = 10;

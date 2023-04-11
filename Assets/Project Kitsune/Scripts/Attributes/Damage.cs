@@ -7,11 +7,10 @@ public class Damage : Attribute
 
     public Damage(float baseValue, float critChance, float critMultiplier)
     {
-        BaseValue = baseValue;
         CritChance = new CritChance(critChance);
         CritMultiplier = new CritMultiplier(critMultiplier);
 
-        Value = 0;
+        Value = baseValue;
         Minimum = 0;
         Maximum = 1000;
     }
@@ -27,7 +26,7 @@ public class Damage : Attribute
         float finalDamage = ability.Info.Damage[abilityLevel];
 
         if (ability.Info.UseCharacterDamage)
-            finalDamage += damage.Final;
+            finalDamage += damage.Value;
 
         finalDamage *= ability.Info.DamageMultiplier[abilityLevel] / 100;
 
@@ -36,8 +35,8 @@ public class Damage : Attribute
 
         if (ability.Info.UseCharacterCrit)
         {
-            critChance += damage.CritChance.Final;
-            critMultiplier += damage.CritMultiplier.Final - 100;
+            critChance += damage.CritChance.Value;
+            critMultiplier += damage.CritMultiplier.Value - 100;
         }
 
         if (Random.Range(0f, 1f) <= critChance / 100)

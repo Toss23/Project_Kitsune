@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterView : MonoBehaviour, ICharacterView
+public class CharacterView : MonoBehaviour, IUnitView
 {
     [SerializeField] private Transform _delta;
 
@@ -14,7 +14,7 @@ public class CharacterView : MonoBehaviour, ICharacterView
     public bool IsReversed => _isReversed;
     public float Angle => _angle;
 
-    public void Move(bool move)
+    public void IsMoving(bool move)
     {
         _animator.SetBool("Move", move);
     }
@@ -26,7 +26,7 @@ public class CharacterView : MonoBehaviour, ICharacterView
         transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
     }
 
-    public void SpawnCharacter(GameObject prefab)
+    public void CreateUnit(GameObject prefab)
     {
         _character = Instantiate(prefab, _delta);
         _character.name = prefab.name;

@@ -1,4 +1,7 @@
-public class Enemy : IEnemy
+public class Enemy
 {
-    
+    public Enemy()
+    {
+
+    }
 }
