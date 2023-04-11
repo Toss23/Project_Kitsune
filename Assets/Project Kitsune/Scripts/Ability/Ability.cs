@@ -15,7 +15,6 @@ public abstract class Ability : MonoBehaviour, IAbility
     public AbilityInfo Info { get { return _info; } }
 
     private int _level;
-    private int _maxLevel;
     private float _dotDamageTimer = 0;
     private float _dotLifeTimer = 0;
     private float _projectileTimer = 0;
@@ -23,23 +22,18 @@ public abstract class Ability : MonoBehaviour, IAbility
     private Transform _pointToFusing;
     private bool _fused = false;
 
+    private Transform _nearestEnemy;
+
     public int Level => _level;
-    public int MaxLevel => _maxLevel;
+    public int MaxLevel => _info.Damage.Length - 1;
 
     public void Init(int level)
     {
         _level = level;
-        if (_level > _maxLevel)
-            _level = _maxLevel;
+        if (_level > MaxLevel)
+            _level = MaxLevel;
 
-        Debug.Log(_level + " / " + _maxLevel);
         transform.localScale *= _info.Radius[_level];
-    }
-
-    public void InitPrefab()
-    {
-        _level = 0;
-        _maxLevel = _info.Damage.Length - 1;
     }
 
     public void FuseWith(Transform transform)
@@ -49,6 +43,26 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     private void Awake()
     {   
+        if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.ProjectileAuto)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if (enemies.Length > 0)
+            {
+                float distanceMin = 100000;
+                GameObject nearestEnemy = null;
+                foreach (GameObject enemy in enemies)
+                {
+                    float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                    if (distance < distanceMin)
+                    {
+                        distanceMin = distance;
+                        nearestEnemy = enemy;
+                    }
+                }
+                _nearestEnemy = nearestEnemy.transform;
+            }
+        }
+
         OnCreate();
     }
 
@@ -72,7 +86,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         {
             if (_info.ProjectileAuto)
             {
-                // In progress
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, _nearestEnemy.rotation, 360 * Time.deltaTime);
             }
 
             float deltaX = Mathf.Cos(transform.eulerAngles.z * Mathf.Deg2Rad);
@@ -99,11 +113,17 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     protected abstract void OnCreate();
     protected abstract void OnUpdate();
+    protected abstract void OnCollisionStayWithEnemy(IEnemy enemy);
+    protected abstract void OnCollisionEnterWithEnemy(IEnemy enemy);
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_info.AbilityDamageType == AbilityInfo.DamageType.Hit)
-            CallbackOnHit(collision);
+        {
+            IEnemy enemy = CallbackOnHit(collision);
+            OnCollisionEnterWithEnemy(enemy);
+            DestroyOnHit();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -114,12 +134,14 @@ public abstract class Ability : MonoBehaviour, IAbility
             while (_dotDamageTimer >= _info.DotRate[_level])
             {
                 _dotDamageTimer -= _info.DotRate[_level];
-                CallbackOnHit(collision);
+                IEnemy enemy = CallbackOnHit(collision);
+                OnCollisionStayWithEnemy(enemy);
+                DestroyOnHit();
             }
         }
     }
 
-    private void CallbackOnHit(Collision2D collision)
+    private IEnemy CallbackOnHit(Collision2D collision)
     {
         EnemyPresenter enemyPresenter = collision.gameObject.GetComponent<EnemyPresenter>();
         if (enemyPresenter)
@@ -133,11 +155,17 @@ public abstract class Ability : MonoBehaviour, IAbility
                 continueAbility.transform.position = enemyPresenter.transform.position;
             }
 
-            if (_info.AbilityType == AbilityInfo.Type.Projectile && _info.DestroyOnHit)
-                Destroy();
-            else if (_info.AbilityType != AbilityInfo.Type.Projectile)
-                Destroy();
+            return enemy;
         }
+        return null;
+    }
+
+    private void DestroyOnHit()
+    {
+        if (_info.AbilityType == AbilityInfo.Type.Projectile && _info.DestroyOnHit)
+            Destroy();
+        else if (_info.AbilityType != AbilityInfo.Type.Projectile)
+            Destroy();
     }
 
     public void Destroy()

@@ -28,14 +28,14 @@ MonoBehaviour:
   _abilityType: 1
   _meleeAnimationTime: 0
   _projectileSpeed: 10
-  _projectileRange: 1
+  _projectileRange: 3
   _projectileCount: 00000000030000000000000000000000
   _projectileSplitAngle:
   - 0
   - 20
   - 0
   - 0
-  _projectileAuto: 0
+  _projectileAuto: 1
   _destroyOnHit: 0
   _haveContinueAbility: 0
   _continueAbility: {fileID: 0}

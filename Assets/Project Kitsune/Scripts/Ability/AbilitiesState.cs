@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class AbilitiesState
 {
@@ -20,12 +19,6 @@ public class AbilitiesState
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
         _casted = new bool[_abilities.Length];
-
-        foreach (IAbility ability in _abilities)
-        {
-            if (ability != null)
-                ability.InitPrefab();
-        }
 
         for (int i = 0; i < _abilities.Length; i++)
         {
@@ -64,7 +57,5 @@ public class AbilitiesState
         _levels[(int)type]++;
         if (_levels[(int)type] > _maxLevels[(int)type])
             _levels[(int)type] = _maxLevels[(int)type];
-
-        Debug.Log(_levels[(int)type]);
     }
 }
