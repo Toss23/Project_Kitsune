@@ -16,14 +16,8 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     public void IsMoving(bool move)
     {
-        _animator.SetBool("Move", move);
-    }
-
-    public void SetAngle(float angle)
-    {
-        _angle = angle;
-        _isReversed = Mathf.Abs(angle) > 90;
-        transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
+        if (_animator != null)
+            _animator.SetBool("Move", move);
     }
 
     public void CreateUnit(GameObject prefab)
@@ -38,5 +32,18 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void SetPosition(Vector2 position)
     {
         transform.position = position;
+    }
+
+    public void SetAngle(float angle)
+    {
+        _angle = angle;
+        _isReversed = Mathf.Abs(angle) > 90;
+        transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
+    }
+
+    public void SetPositionAndAngle(Vector2 position, float angle)
+    {
+        SetPosition(position);
+        SetAngle(angle);
     }
 }

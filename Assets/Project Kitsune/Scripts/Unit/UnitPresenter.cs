@@ -1,11 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
     [SerializeField] protected UnitInfo _info;
 
     protected IUnit _unit;
     protected IUnitView _unitView;
+    protected Rigidbody2D _rigidbody;
 
     private bool _isEnable = false;
     private bool _isCharacter;
@@ -15,17 +17,26 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     private void Awake()
     {
+        BeforeAwake();
+
+        _rigidbody = GetComponent<Rigidbody2D>();
         _unit = CreateUnit();
         _unitView = CreateUnitView();
         _unitView.CreateUnit(_info.Prefab);
         _isCharacter = IsCharacter();
-        OnAwake();
+
+        AfterAwake();
     }
 
-    protected abstract IUnit CreateUnit();
+    protected abstract void OnDisablePresenter();
+    protected abstract void OnEnablePresenter();
+
     protected abstract IUnitView CreateUnitView();
+    protected abstract IUnit CreateUnit();
     protected abstract bool IsCharacter();
-    protected abstract void OnAwake();
+
+    protected abstract void BeforeAwake();
+    protected abstract void AfterAwake();
 
     public void Enable()
     {
@@ -43,14 +54,19 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Abilities.OnCastReloaded -= CreateAbility;      
     }
 
-    protected abstract void OnEnablePresenter();
-    protected abstract void OnDisablePresenter();
-
     private void Update()
     {
         if (_isEnable)
         {
             _unit.Update(Time.deltaTime);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isEnable)
+        {
+            _unit.FixedUpdate(Time.fixedDeltaTime);
         }
     }
 

@@ -8,6 +8,7 @@ public interface IUnit
     public AbilitiesState Abilities { get; }
 
     public void Update(float deltaTime);
+    public void FixedUpdate(float deltaTime);
     public void RegisterAbility(IAbility ability);
     public void DisableAbilities();
     public void TakeDamage(float value);

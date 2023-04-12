@@ -10,8 +10,13 @@ public class CharacterPresenter : UnitPresenter
     protected override IUnit CreateUnit() => new Character(_info);
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
     protected override bool IsCharacter() => true;
-    
-    protected override void OnAwake()
+
+    protected override void BeforeAwake()
+    {
+        
+    }
+
+    protected override void AfterAwake()
     {
         Enable();
     }

@@ -25,7 +25,16 @@ public abstract class Unit : IUnit
     {
         Attributes.Life.Regenerate(deltaTime);
         Abilities.UpdateCastTime(deltaTime);
+        OnUpdate(deltaTime);
+    }   
+
+    public void FixedUpdate(float deltaTime)
+    {
+        OnFixedUpdate(deltaTime);
     }
+
+    protected abstract void OnFixedUpdate(float deltaTime);
+    protected abstract void OnUpdate(float deltaTime);
 
     public void RegisterAbility(IAbility ability)
     {
