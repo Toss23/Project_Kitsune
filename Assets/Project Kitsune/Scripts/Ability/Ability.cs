@@ -1,9 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum AbilityType
 {
     Attack, First, Second, Third, Ultimate
+}
+
+public enum Target
+{
+    Enemy, Character
 }
 
 public abstract class Ability : MonoBehaviour, IAbility
@@ -14,7 +20,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public AbilityInfo Info { get { return _info; } }
 
-    private bool _castedByCharacter;
+    private Target _target;
 
     private int _level;
     private float _dotDamageTimer = 0;
@@ -29,9 +35,9 @@ public abstract class Ability : MonoBehaviour, IAbility
     public int Level => _level;
     public int MaxLevel => _info.Damage.Length - 1;
 
-    public void Init(int level, bool castedByCharacter)
+    public void Init(int level, Target target)
     {
-        _castedByCharacter = castedByCharacter;
+        _target = target;
 
         _level = level;
         if (_level > MaxLevel)
@@ -41,7 +47,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
         if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.ProjectileAuto)
         {
-            GameObject[] units = GameObject.FindGameObjectsWithTag(_castedByCharacter ? "Enemy" : "Character");
+            GameObject[] units = GameObject.FindGameObjectsWithTag(_target == Target.Enemy ? "Enemy" : "Character");
             if (units.Length > 0)
             {
                 float distanceMin = 100000;
@@ -92,8 +98,10 @@ public abstract class Ability : MonoBehaviour, IAbility
             {
                 if (_nearestEnemy != null)
                 {
-                    float targetAngle = 0;
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, _nearestEnemy.rotation, 360 * Time.deltaTime);
+                    Vector2 delta = _nearestEnemy.transform.position - transform.position;
+                    float targetAngle = Mathf.Atan2(delta.y, delta.x);
+                    Quaternion quaternion = Quaternion.Euler(0, 0, targetAngle * Mathf.Rad2Deg);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternion, 360 * Time.deltaTime);
                 }
             }
 
@@ -160,8 +168,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         IUnitPresenter unitPresenter = collision.gameObject.GetComponent<IUnitPresenter>();
         if (unitPresenter != null)
         {
-            if ((_castedByCharacter == true & collision.transform.tag == "Enemy")
-                || (_castedByCharacter == false & collision.transform.tag == "Character"))
+            if (collision.transform.tag == _target.ToString())
             {
                 IUnit unit = unitPresenter.Unit;
                 OnHit?.Invoke(this, unit);

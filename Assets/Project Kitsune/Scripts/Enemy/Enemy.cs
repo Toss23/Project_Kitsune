@@ -1,7 +1,7 @@
-public class Enemy
+public class Enemy : Unit
 {
-    public Enemy()
+    public Enemy(UnitInfo info)
     {
-
+        Init(info);
     }
 }

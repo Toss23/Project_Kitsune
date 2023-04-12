@@ -1,10 +1,19 @@
+using System;
+using System.Collections.Generic;
+
 public abstract class Unit : IUnit
 {
+    public event Action OnDeath;
+
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesState Abilities { get; private set; }
 
+    private List<IAbility> _castedAbilities;
+
     protected void Init(UnitInfo info)
     {
+        _castedAbilities = new List<IAbility>();
+
         Attributes = new AttributesContainer(info);
         Attributes.Life.OnMinimum += Death;
 
@@ -21,6 +30,15 @@ public abstract class Unit : IUnit
     public void RegisterAbility(IAbility ability)
     {
         ability.OnHit += OnHitAbility;
+        _castedAbilities.Add(ability);
+    }
+
+    public void DisableAbilities()
+    {
+        foreach (IAbility ability in _castedAbilities)
+        {
+            ability.OnHit -= OnHitAbility;
+        }
     }
 
     public void TakeDamage(float value)
@@ -32,13 +50,11 @@ public abstract class Unit : IUnit
     {
         float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
         target.TakeDamage(damage);
+        ability.OnHit -= OnHitAbility;
     }
 
-    // In Progress
     private void Death()
     {
-        OnDeath();
+        OnDeath?.Invoke();
     }
-    
-    protected abstract void OnDeath();
 }

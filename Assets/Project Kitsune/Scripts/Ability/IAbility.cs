@@ -10,6 +10,6 @@ public interface IAbility
     public int MaxLevel { get; }
 
     public void FuseWith(Transform transform);
-    public void Init(int level, bool castedByCharacter);
+    public void Init(int level, Target target);
     public void Destroy();
 }

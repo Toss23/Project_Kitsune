@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class EnemyView : MonoBehaviour
+public class EnemyView : UnitView
 {
     
 }

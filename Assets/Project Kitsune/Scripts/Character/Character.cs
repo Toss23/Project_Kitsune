@@ -9,9 +9,4 @@ public class Character : Unit
         Controlable = new Controlable();
         Controlable.Speed = 3;
     }
-
-    protected override void OnDeath()
-    {
-        
-    }
 }

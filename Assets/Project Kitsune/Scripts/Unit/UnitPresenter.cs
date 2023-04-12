@@ -31,6 +31,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     {
         _isEnable = true;
         OnEnablePresenter();
+        _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += CreateAbility;       
     }
 
@@ -38,6 +39,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     {
         _isEnable = false;
         OnDisablePresenter();
+        _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= CreateAbility;      
     }
 
@@ -50,6 +52,13 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         {
             _unit.Update(Time.deltaTime);
         }
+    }
+
+    private void Death()
+    {
+        Disable();
+        _unit.DisableAbilities();
+        Destroy(gameObject);
     }
 
     protected void CreateAbility(IAbility ability, AbilityType type, int level)
@@ -70,7 +79,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
             for (int i = 0; i < count; i++)
             {
                 Ability abilityObject = Instantiate((Ability)ability);
-                abilityObject.Init(level, _isCharacter);
+                abilityObject.Init(level, _isCharacter ? Target.Enemy : Target.Character);
                 Transform abilityTransform = abilityObject.gameObject.transform;
                 abilityTransform.position = _unitView.AbilityPoints.Points[(int)type].transform.position;
                 abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
