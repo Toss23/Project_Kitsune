@@ -38,7 +38,7 @@ MonoBehaviour:
   - 1
   _damageMultiplier:
   - 100
-  - 0
+  - 100
   _castPerSecond:
   - 1
   - 1

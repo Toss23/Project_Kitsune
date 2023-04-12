@@ -28,6 +28,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         AfterAwake();
     }
 
+    protected abstract void OnDeath();
+
     protected abstract void OnDisablePresenter();
     protected abstract void OnEnablePresenter();
 
@@ -72,6 +74,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     private void Death()
     {
+        OnDeath();
         Disable();
         _unit.DisableAbilities();
         Destroy(gameObject);

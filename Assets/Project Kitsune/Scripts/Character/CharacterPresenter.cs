@@ -54,4 +54,9 @@ public class CharacterPresenter : UnitPresenter
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
     }
+
+    protected override void OnDeath()
+    {
+
+    }
 }
