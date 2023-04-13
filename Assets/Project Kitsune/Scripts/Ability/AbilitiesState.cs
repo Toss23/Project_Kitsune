@@ -58,4 +58,18 @@ public class AbilitiesState
         if (_levels[(int)type] > _maxLevels[(int)type])
             _levels[(int)type] = _maxLevels[(int)type];
     }
+
+    public void LevelUp(IAbility ability)
+    {
+        for (int i = 0; i < _abilities.Length; i++)
+        {
+            if (ability == _abilities[i])
+            {
+                _levels[i]++;
+                if (_levels[i] > _maxLevels[i])
+                    _levels[i] = _maxLevels[i];
+                break;
+            }
+        }
+    }
 }

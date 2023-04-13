@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public abstract class Unit : IUnit
 {
+    public event Action<float> OnLevelUp;
     public event Action OnDeath;
 
     public AttributesContainer Attributes { get; private set; }
@@ -16,6 +17,7 @@ public abstract class Unit : IUnit
 
         Attributes = new AttributesContainer(info);
         Attributes.Life.OnMinimum += Death;
+        Attributes.Level.OnLevelUp += LevelUp;
 
         Abilities = new AbilitiesState(info.Abilities);
         Abilities.LevelUp((int)AbilityType.Attack);
@@ -35,6 +37,11 @@ public abstract class Unit : IUnit
 
     protected abstract void OnFixedUpdate(float deltaTime);
     protected abstract void OnUpdate(float deltaTime);
+
+    private void LevelUp(float level)
+    {
+        OnLevelUp?.Invoke(level);
+    }
 
     public void RegisterAbility(IAbility ability)
     {

@@ -6,42 +6,50 @@ public class Joystick : MonoBehaviour
     public event Action<float, float> OnActive;
     public event Action<bool> IsActive;
 
+    [SerializeField] private GameObject _content;
     [SerializeField] private Transform _stick;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private int _maxRadiusStick = 200;
 
-    private Vector3 _screenSize;
-    private Vector3 _joystickPosition;
+    private Vector2 _screenSize;
+    private Vector2 _joystickPosition;
+    private Vector2 _stickPosition;
     private float _angle;
 
     private void Awake()
     {
         float width = Screen.width / _canvas.scaleFactor;
         float height = Screen.height / _canvas.scaleFactor;
-        _screenSize = new Vector3(width, height);
-        _joystickPosition = transform.localPosition;
+        _screenSize = new Vector2(width, height);
+        _content.SetActive(false);
     }
 
     private void Update()
     {
-        Vector3 stickPosition = Vector3.zero;
+        _stickPosition = Vector3.zero;
 
         if (Application.isMobilePlatform)
         {
             // Touch control
             if (Input.touchCount > 0)
             {
-                Touch touch = Input.GetTouch(0);
+                Touch touch = Input.GetTouch(Input.touchCount - 1);
                 switch (touch.phase)
                 {
                     case TouchPhase.Began:
+                        _content.SetActive(true);
+                        _joystickPosition = touch.position - _screenSize / 2f;
+                        transform.localPosition = _joystickPosition;
+                        break;
                     case TouchPhase.Moved:
                     case TouchPhase.Stationary:
-                        GetStickPositionAndAngle(touch.position, out stickPosition, out _angle);
+                        GetStickPositionAndAngle(touch.position, out _stickPosition, out _angle);
                         OnActive?.Invoke(_angle, Time.deltaTime);
                         IsActive?.Invoke(true);
                         break;
                     case TouchPhase.Ended:
+                        _content.SetActive(false);
+                        _stickPosition = Vector2.zero;
                         IsActive?.Invoke(false);
                         break;
                 }
@@ -50,38 +58,51 @@ public class Joystick : MonoBehaviour
         else
         {
             // Mouse control
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                _content.SetActive(true);
+                _joystickPosition = (Vector2)Input.mousePosition - _screenSize / 2f;
+                transform.localPosition = _joystickPosition;
+            }
+
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                GetStickPositionAndAngle(Input.mousePosition, out stickPosition, out _angle);
+                GetStickPositionAndAngle(Input.mousePosition, out _stickPosition, out _angle);
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                _content.SetActive(false);
+                _stickPosition = Vector2.zero;
             }
 
             // Keyboard control
             if (Input.GetKey(KeyCode.W))
             {
-                stickPosition = new Vector3(0, _maxRadiusStick);
+                _stickPosition = new Vector3(0, _maxRadiusStick);
                 _angle = 90;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                stickPosition = new Vector3(0, -_maxRadiusStick);
+                _stickPosition = new Vector3(0, -_maxRadiusStick);
                 _angle = -90;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                stickPosition = new Vector3(-_maxRadiusStick, 0);
+                _stickPosition = new Vector3(-_maxRadiusStick, 0);
                 _angle = 180;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                stickPosition = new Vector3(_maxRadiusStick, 0);
+                _stickPosition = new Vector3(_maxRadiusStick, 0);
                 _angle = 0;
                 OnActive?.Invoke(_angle, Time.deltaTime);
                 IsActive?.Invoke(true);
@@ -93,13 +114,12 @@ public class Joystick : MonoBehaviour
             }
         }
 
-        _stick.localPosition = Vector2.ClampMagnitude(stickPosition, _maxRadiusStick);
+        _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
     }
 
-    private void GetStickPositionAndAngle(Vector3 touchPosition, out Vector3 stickPosition, out float angle)
+    private void GetStickPositionAndAngle(Vector2 touchPosition, out Vector2 stickPosition, out float angle)
     {
-        touchPosition -= 0.5f * _screenSize;
-        stickPosition = touchPosition - _joystickPosition + new Vector3(_maxRadiusStick / 2, _maxRadiusStick / 2);
+        stickPosition = touchPosition - _screenSize / 2f - _joystickPosition;
         angle = Mathf.Atan2(stickPosition.y, stickPosition.x) * Mathf.Rad2Deg;
     }
 }
