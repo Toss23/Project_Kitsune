@@ -10,6 +10,8 @@ public class AbilitiesState
     private float[] _reloadTimes;
     private bool[] _casted;
 
+    private bool _freeze = false;
+
     public IAbility[] List => _abilities;
 
     public AbilitiesState(IAbility[] abilities)
@@ -27,24 +29,32 @@ public class AbilitiesState
         }
     }
 
+    public void Freeze(bool state)
+    {
+        _freeze = state;
+    }
+
     public void UpdateCastTime(float deltaTime)
     {
-        for (int i = 0; i < _abilities.Length; i++)
+        if (_freeze == false)
         {
-            if (_abilities[i] != null)
+            for (int i = 0; i < _abilities.Length; i++)
             {
-                if (_levels[i] > 0)
+                if (_abilities[i] != null)
                 {
-                    if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field ||
-                        (_abilities[i].Info.AbilityType == AbilityInfo.Type.Field && _casted[i] == false))
+                    if (_levels[i] > 0)
                     {
-                        _reloadTimes[i] += deltaTime;
-                        float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
-                        while (_reloadTimes[i] >= 1 / castPerSecond)
+                        if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field ||
+                            (_abilities[i].Info.AbilityType == AbilityInfo.Type.Field && _casted[i] == false))
                         {
-                            _reloadTimes[i] -= 1 / castPerSecond;
-                            _casted[i] = true;
-                            OnCastReloaded?.Invoke(_abilities[i], (AbilityType)i, _levels[i]);
+                            _reloadTimes[i] += deltaTime;
+                            float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
+                            while (_reloadTimes[i] >= 1 / castPerSecond)
+                            {
+                                _reloadTimes[i] -= 1 / castPerSecond;
+                                _casted[i] = true;
+                                OnCastReloaded?.Invoke(_abilities[i], (AbilityType)i, _levels[i]);
+                            }
                         }
                     }
                 }

@@ -12,8 +12,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     private bool _isEnable = false;
     private bool _isCharacter;
 
-    public IUnit Unit => _unit;
     public Transform Transform => transform;
+    public IUnit Unit => _unit;
 
     private void Awake()
     {

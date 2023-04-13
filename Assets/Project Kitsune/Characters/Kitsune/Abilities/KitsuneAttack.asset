@@ -18,16 +18,22 @@ MonoBehaviour:
   _dotRate:
   - 0
   - 1
+  - 1
+  - 1
   _dotDuration:
   - 0
+  - 5
+  - 5
   - 5
   _abilityType: 1
   _meleeAnimationTime: 0
   _projectileSpeed: 10
   _projectileRange: 3
-  _projectileCount: 0000000003000000
+  _projectileCount: 00000000010000000300000005000000
   _projectileSplitAngle:
   - 0
+  - 20
+  - 20
   - 20
   _projectileAuto: 1
   _destroyOnHit: 1
@@ -36,19 +42,31 @@ MonoBehaviour:
   _damage:
   - 0
   - 1
+  - 1
+  - 1
   _damageMultiplier:
   - 100
   - 100
+  - 100
+  - 200
   _castPerSecond:
   - 1
   - 1
+  - 2
+  - 2
   _critChance:
+  - 0
+  - 0
   - 0
   - 0
   _critMultiplier:
   - 100
   - 100
-  _description: 
+  - 100
+  - 100
+  _description: Attack
   _radius:
   - 5
   - 1
+  - 1
+  - 2

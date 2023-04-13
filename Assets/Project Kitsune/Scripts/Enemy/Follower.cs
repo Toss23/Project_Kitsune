@@ -9,6 +9,7 @@ public class Follower
     private Transform _target;
     private float _speed;
     private float _distanceMin;
+    private bool _freeze = false;
 
     private Rigidbody2D _rigidbody;
 
@@ -20,20 +21,37 @@ public class Follower
         _distanceMin = distanceMin;
     }
 
+    public void Freeze(bool state)
+    {
+        _freeze = state;
+
+        if (state)
+        {
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+    }
+
     public void Update(float deltaTime)
     {
-        bool isMoving = Vector2.Distance(_rigidbody.position, _target.position) >= _distanceMin;
-        if (isMoving)
+        if (_freeze == false)
         {
-            Vector2 position = _rigidbody.position;
-            Vector2 targetPosition = _target.position;
-            Vector2 direction = (targetPosition - position).normalized;
+            bool isMoving = Vector2.Distance(_rigidbody.position, _target.position) >= _distanceMin;
+            if (isMoving)
+            {
+                Vector2 position = _rigidbody.position;
+                Vector2 targetPosition = _target.position;
+                Vector2 direction = (targetPosition - position).normalized;
 
-            _rigidbody.MovePosition(_rigidbody.position + _speed * direction * deltaTime);
+                _rigidbody.MovePosition(_rigidbody.position + _speed * direction * deltaTime);
 
-            float angle = Mathf.Atan2(direction.y, direction.x);
-            OnMove?.Invoke(angle);
+                float angle = Mathf.Atan2(direction.y, direction.x);
+                OnMove?.Invoke(angle);
+            }
+            IsMoving?.Invoke(isMoving);
         }
-        IsMoving?.Invoke(isMoving);
     }
 }

@@ -1,11 +1,15 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(CharacterView))]
 public class CharacterPresenter : UnitPresenter
 {
+    public event Action<bool> Freeze;
+
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ProgressBar _lifeBar;
     [SerializeField] private ProgressBar _experienceBar;
+    [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
 
     protected override IUnit CreateUnit() => new Character(_info);
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
@@ -18,6 +22,7 @@ public class CharacterPresenter : UnitPresenter
 
     protected override void AfterAwake()
     {
+        _abilitiesSelectionPresenter.Init(this);
         Enable();
     }
 
@@ -36,6 +41,13 @@ public class CharacterPresenter : UnitPresenter
         Level level = _unit.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+
+        Freeze += controlable.Freeze;
+        Freeze += _unit.Abilities.Freeze;
+
+        AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
+        abilitiesSelection.onMethod += (abilities) => FreezeAll();
+        abilitiesSelection.OnSelectedAbility += (ability) => UnfreezeAll();
     }
 
     protected override void OnDisablePresenter()
@@ -53,6 +65,23 @@ public class CharacterPresenter : UnitPresenter
         Level level = _unit.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+
+        Freeze -= controlable.Freeze;
+        Freeze -= _unit.Abilities.Freeze;
+
+        AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
+        abilitiesSelection.onMethod -= (abilities) => FreezeAll();
+        abilitiesSelection.OnSelectedAbility -= (ability) => UnfreezeAll();
+    }
+
+    private void FreezeAll()
+    {
+        Freeze?.Invoke(true);
+    }
+
+    private void UnfreezeAll()
+    {
+        Freeze?.Invoke(false);
     }
 
     protected override void OnDeath()
