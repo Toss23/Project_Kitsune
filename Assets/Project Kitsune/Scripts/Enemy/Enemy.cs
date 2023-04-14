@@ -18,6 +18,6 @@ public class Enemy : Unit
 
     protected override void OnFixedUpdate(float deltaTime)
     {
-        Follower.Update(deltaTime);
+        Follower.FixedUpdate(deltaTime);
     }
 }

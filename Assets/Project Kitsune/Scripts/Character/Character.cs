@@ -17,6 +17,6 @@ public class Character : Unit
 
     protected override void OnFixedUpdate(float deltaTime)
     {
-        
+        Controlable.FixedUpdate(deltaTime);
     }
 }

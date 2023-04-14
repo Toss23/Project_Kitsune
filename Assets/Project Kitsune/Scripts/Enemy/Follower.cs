@@ -26,7 +26,7 @@ public class Follower
         _freeze = state;
     }
 
-    public void Update(float deltaTime)
+    public void FixedUpdate(float deltaTime)
     {
         if (_freeze == false)
         {

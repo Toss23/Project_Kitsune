@@ -5,11 +5,13 @@ public class Controlable
     private float _speed;
     private Rigidbody2D _rigidbody;
     private bool _freeze = false;
+    private Vector2 _position;
 
     public Controlable(Rigidbody2D rigidbody, float speed)
     {
         _rigidbody = rigidbody;
         _speed = speed;
+        _position = rigidbody.position;
     }
 
     public void Freeze(bool state)
@@ -28,8 +30,12 @@ public class Controlable
         {
             float deltaX = Mathf.Cos(angle * Mathf.Deg2Rad);
             float deltaY = Mathf.Sin(angle * Mathf.Deg2Rad);
-            Vector2 position = new Vector2(deltaX, deltaY) * _speed * deltaTime;
-            _rigidbody.MovePosition(_rigidbody.position + position);
+            _position += new Vector2(deltaX, deltaY) * _speed * deltaTime;
         }
+    }
+
+    public void FixedUpdate(float deltaTime)
+    {
+        _rigidbody.MovePosition(_position);
     }
 }
