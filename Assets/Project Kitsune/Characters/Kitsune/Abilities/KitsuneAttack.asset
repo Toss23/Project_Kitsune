@@ -41,7 +41,7 @@ MonoBehaviour:
   _continueAbility: {fileID: 0}
   _damage:
   - 0
-  - 1
+  - 10
   - 1
   - 1
   _damageMultiplier:

@@ -24,7 +24,7 @@ public class Joystick : MonoBehaviour
         _content.SetActive(false);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _stickPosition = Vector3.zero;
 
@@ -44,7 +44,7 @@ public class Joystick : MonoBehaviour
                     case TouchPhase.Moved:
                     case TouchPhase.Stationary:
                         GetStickPositionAndAngle(touch.position, out _stickPosition, out _angle);
-                        OnActive?.Invoke(_angle, Time.deltaTime);
+                        OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                         IsActive?.Invoke(true);
                         break;
                     case TouchPhase.Ended:
@@ -68,7 +68,7 @@ public class Joystick : MonoBehaviour
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 GetStickPositionAndAngle(Input.mousePosition, out _stickPosition, out _angle);
-                OnActive?.Invoke(_angle, Time.deltaTime);
+                OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                 IsActive?.Invoke(true);
             }
 
@@ -83,28 +83,28 @@ public class Joystick : MonoBehaviour
             {
                 _stickPosition = new Vector3(0, _maxRadiusStick);
                 _angle = 90;
-                OnActive?.Invoke(_angle, Time.deltaTime);
+                OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 _stickPosition = new Vector3(0, -_maxRadiusStick);
                 _angle = -90;
-                OnActive?.Invoke(_angle, Time.deltaTime);
+                OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 _stickPosition = new Vector3(-_maxRadiusStick, 0);
                 _angle = 180;
-                OnActive?.Invoke(_angle, Time.deltaTime);
+                OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                 IsActive?.Invoke(true);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 _stickPosition = new Vector3(_maxRadiusStick, 0);
                 _angle = 0;
-                OnActive?.Invoke(_angle, Time.deltaTime);
+                OnActive?.Invoke(_angle, Time.fixedDeltaTime);
                 IsActive?.Invoke(true);
             }
 

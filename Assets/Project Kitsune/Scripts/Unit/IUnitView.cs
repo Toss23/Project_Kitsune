@@ -8,7 +8,6 @@ public interface IUnitView
 
     public void CreateUnit(GameObject prefab);  
     public void IsMoving(bool active);
-    public void SetPosition(Vector2 position);
     public void SetAngle(float angle);
-    public void SetPositionAndAngle(Vector2 position, float angle);
+    public void Freeze(bool state);
 }

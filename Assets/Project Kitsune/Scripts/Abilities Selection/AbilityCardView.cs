@@ -11,17 +11,25 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
     [SerializeField] private TMP_Text _nameText;
 
     private IAbility _ability;
+    private Button _button;
 
     private void Awake()
     {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(OnClickButton);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClickButton);
     }
 
     public void SetAbility(IAbility ability)
     {
-        _ability = ability;
-        _nameText.text = ability.Info.Description;
+        if (ability != null)
+        {
+            _ability = ability;
+            _nameText.text = ability.Info.Description;
+        }
+        else
+        {
+            _nameText.text = "None";
+        }
     }
 
     private void OnClickButton()

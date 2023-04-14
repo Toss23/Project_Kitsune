@@ -4,14 +4,14 @@ using System;
 [RequireComponent(typeof(CharacterView))]
 public class CharacterPresenter : UnitPresenter
 {
-    public event Action<bool> Freeze;
+    public event Action<bool> OnFreeze;
 
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ProgressBar _lifeBar;
     [SerializeField] private ProgressBar _experienceBar;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
 
-    protected override IUnit CreateUnit() => new Character(_info);
+    protected override IUnit CreateUnit() => new Character(_info, GetComponent<Rigidbody2D>());
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
     protected override bool IsCharacter() => true;
 
@@ -32,7 +32,6 @@ public class CharacterPresenter : UnitPresenter
         _joystick.OnActive += (angle, deltaTime) => controlable.Move(angle, deltaTime);
         _joystick.OnActive += (angle, deltaTime) => _unitView.SetAngle(angle);
         _joystick.IsActive += (active) => _unitView.IsMoving(active);
-        controlable.OnMove += (position) => _unitView.SetPosition(position);
 
         Life life = _unit.Attributes.Life;
         _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
@@ -42,11 +41,12 @@ public class CharacterPresenter : UnitPresenter
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
 
-        Freeze += controlable.Freeze;
-        Freeze += _unit.Abilities.Freeze;
+        OnFreeze += controlable.Freeze;
+        OnFreeze += _unit.Abilities.Freeze;
+        OnFreeze += _unitView.Freeze;
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.onMethod += (abilities) => FreezeAll();
+        abilitiesSelection.OnAbilitiesListGenerated += (abilities) => FreezeAll();
         abilitiesSelection.OnSelectedAbility += (ability) => UnfreezeAll();
     }
 
@@ -56,7 +56,6 @@ public class CharacterPresenter : UnitPresenter
         _joystick.OnActive -= (angle, deltaTime) => controlable.Move(angle, deltaTime);
         _joystick.OnActive -= (angle, deltaTime) => _unitView.SetAngle(angle);
         _joystick.IsActive -= (active) => _unitView.IsMoving(active);
-        controlable.OnMove -= (position) => _unitView.SetPosition(position);
 
         Life life = _unit.Attributes.Life;
         _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
@@ -66,22 +65,23 @@ public class CharacterPresenter : UnitPresenter
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
 
-        Freeze -= controlable.Freeze;
-        Freeze -= _unit.Abilities.Freeze;
+        OnFreeze -= controlable.Freeze;
+        OnFreeze -= _unit.Abilities.Freeze;
+        OnFreeze -= _unitView.Freeze;
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.onMethod -= (abilities) => FreezeAll();
+        abilitiesSelection.OnAbilitiesListGenerated -= (abilities) => FreezeAll();
         abilitiesSelection.OnSelectedAbility -= (ability) => UnfreezeAll();
     }
 
     private void FreezeAll()
     {
-        Freeze?.Invoke(true);
+        OnFreeze?.Invoke(true);
     }
 
     private void UnfreezeAll()
     {
-        Freeze?.Invoke(false);
+        OnFreeze?.Invoke(false);
     }
 
     protected override void OnDeath()

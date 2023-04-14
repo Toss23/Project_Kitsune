@@ -1,29 +1,35 @@
-using System;
 using UnityEngine;
 
 public class Controlable
 {
-    public event Action<Vector2> OnMove;
-
-    public float Speed;
-
-    private Vector2 _position;
+    private float _speed;
+    private Rigidbody2D _rigidbody;
     private bool _freeze = false;
+
+    public Controlable(Rigidbody2D rigidbody, float speed)
+    {
+        _rigidbody = rigidbody;
+        _speed = speed;
+    }
 
     public void Freeze(bool state)
     {
         _freeze = state;
+
+        if (state)
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        else
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void Move(float angle, float deltaTime)
     {
         if (_freeze == false)
         {
-            angle *= Mathf.Deg2Rad;
-            float deltaX = Mathf.Cos(angle) * Speed * deltaTime;
-            float deltaY = Mathf.Sin(angle) * Speed * deltaTime;
-            _position += new Vector2(deltaX, deltaY);
-            OnMove?.Invoke(_position);
+            float deltaX = Mathf.Cos(angle * Mathf.Deg2Rad);
+            float deltaY = Mathf.Sin(angle * Mathf.Deg2Rad);
+            Vector2 position = new Vector2(deltaX, deltaY) * _speed * deltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + position);
         }
     }
 }

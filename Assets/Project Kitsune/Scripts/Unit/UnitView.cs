@@ -9,6 +9,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     protected AbilityPoints _abilityPoints;
     protected bool _isReversed;
     protected float _angle;
+    protected bool _freeze = false;
 
     public AbilityPoints AbilityPoints => _abilityPoints;
     public bool IsReversed => _isReversed;
@@ -17,7 +18,16 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void IsMoving(bool move)
     {
         if (_animator != null)
-            _animator.SetBool("Move", move);
+        {
+            if (_freeze == false)
+            {
+                _animator.SetBool("Move", move);
+            }
+            else
+            {
+                _animator.SetBool("Move", false);
+            }
+        }
     }
 
     public void CreateUnit(GameObject prefab)
@@ -29,21 +39,18 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _isReversed = false;
     }
 
-    public void SetPosition(Vector2 position)
-    {
-        transform.position = position;
-    }
-
     public void SetAngle(float angle)
     {
-        _angle = angle;
-        _isReversed = Mathf.Abs(angle) > 90;
-        transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
+        if (_freeze == false)
+        {
+            _angle = angle;
+            _isReversed = Mathf.Abs(angle) > 90;
+            transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
+        }
     }
 
-    public void SetPositionAndAngle(Vector2 position, float angle)
+    public void Freeze(bool state)
     {
-        SetPosition(position);
-        SetAngle(angle);
+        _freeze = state;
     }
 }

@@ -2,7 +2,7 @@ using System;
 
 public interface IUnit
 {
-    public event Action<float> OnLevelUp;
+    public event Action OnLevelUp;
     public event Action OnDeath;
 
     public AttributesContainer Attributes { get; }

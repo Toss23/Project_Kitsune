@@ -13,6 +13,8 @@ public class AbilitiesState
     private bool _freeze = false;
 
     public IAbility[] List => _abilities;
+    public int[] Levels => _levels;
+    public int[] MaxLevels => _maxLevels;
 
     public AbilitiesState(IAbility[] abilities)
     {
@@ -71,14 +73,17 @@ public class AbilitiesState
 
     public void LevelUp(IAbility ability)
     {
-        for (int i = 0; i < _abilities.Length; i++)
+        if (ability != null)
         {
-            if (ability == _abilities[i])
+            for (int i = 0; i < _abilities.Length; i++)
             {
-                _levels[i]++;
-                if (_levels[i] > _maxLevels[i])
-                    _levels[i] = _maxLevels[i];
-                break;
+                if (ability == _abilities[i])
+                {
+                    _levels[i]++;
+                    if (_levels[i] > _maxLevels[i])
+                        _levels[i] = _maxLevels[i];
+                    break;
+                }
             }
         }
     }

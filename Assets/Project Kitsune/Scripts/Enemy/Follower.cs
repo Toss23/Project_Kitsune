@@ -24,15 +24,6 @@ public class Follower
     public void Freeze(bool state)
     {
         _freeze = state;
-
-        if (state)
-        {
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else
-        {
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
     }
 
     public void Update(float deltaTime)

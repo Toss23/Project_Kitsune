@@ -24,16 +24,16 @@ public class AbilitiesSelectionPresenter : MonoBehaviour
 
     private void Enable()
     {
-        _unit.OnLevelUp += _abilitiesSelection.Method;
-        _abilitiesSelection.onMethod += _abilitiesSelectionView.Build;
+        _unit.OnLevelUp += _abilitiesSelection.GenerateAbilitiesList;
+        _abilitiesSelection.OnAbilitiesListGenerated += _abilitiesSelectionView.Build;
         _abilitiesSelectionView.OnSelected += _unit.Abilities.LevelUp;
         _abilitiesSelectionView.OnSelected += _abilitiesSelection.OnSelected;
     }
 
     private void Disable()
     {
-        _unit.OnLevelUp -= _abilitiesSelection.Method;
-        _abilitiesSelection.onMethod -= _abilitiesSelectionView.Build;
+        _unit.OnLevelUp -= _abilitiesSelection.GenerateAbilitiesList;
+        _abilitiesSelection.OnAbilitiesListGenerated -= _abilitiesSelectionView.Build;
         _abilitiesSelectionView.OnSelected -= _unit.Abilities.LevelUp;
         _abilitiesSelectionView.OnSelected -= _abilitiesSelection.OnSelected;
     }

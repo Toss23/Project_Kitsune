@@ -29,8 +29,8 @@ public class EnemyPresenter : UnitPresenter
         follower.OnMove += _unitView.SetAngle;
         follower.IsMoving += _unitView.IsMoving;
 
-        _characterPresenter.Freeze += follower.Freeze;
-        _characterPresenter.Freeze += _unit.Abilities.Freeze;
+        _characterPresenter.OnFreeze += follower.Freeze;
+        _characterPresenter.OnFreeze += _unit.Abilities.Freeze;
     }
 
     protected override void OnDisablePresenter()
@@ -39,8 +39,8 @@ public class EnemyPresenter : UnitPresenter
         follower.OnMove -= _unitView.SetAngle;
         follower.IsMoving -= _unitView.IsMoving;
 
-        _characterPresenter.Freeze -= follower.Freeze;
-        _characterPresenter.Freeze -= _unit.Abilities.Freeze;
+        _characterPresenter.OnFreeze -= follower.Freeze;
+        _characterPresenter.OnFreeze -= _unit.Abilities.Freeze;
     }
 
     protected override void OnDeath()

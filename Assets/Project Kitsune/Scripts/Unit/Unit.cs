@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class Unit : IUnit
 {
-    public event Action<float> OnLevelUp;
+    public event Action OnLevelUp;
     public event Action OnDeath;
 
     public AttributesContainer Attributes { get; private set; }
@@ -40,7 +40,7 @@ public abstract class Unit : IUnit
 
     private void LevelUp(float level)
     {
-        OnLevelUp?.Invoke(level);
+        OnLevelUp?.Invoke();
     }
 
     public void RegisterAbility(IAbility ability)

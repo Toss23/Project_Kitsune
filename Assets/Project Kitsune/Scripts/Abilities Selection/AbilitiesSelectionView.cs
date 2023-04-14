@@ -19,7 +19,17 @@ public class AbilitiesSelectionView : MonoBehaviour, IAbilitiesSelectionView
     {
         IAbilityCardView[] abilityCards = _abilityCards;
         for (int i = 0; i < abilities.Length; i++)
-            abilityCards[i].SetAbility(abilities[i]);
+        {
+            if (abilities[i] != null)
+            {
+                abilityCards[i].SetAbility(abilities[i]);
+                _abilityCards[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _abilityCards[i].gameObject.SetActive(false);
+            }
+        }
 
         Show();
     }
