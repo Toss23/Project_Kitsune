@@ -50,7 +50,6 @@ public class Joystick : MonoBehaviour
                     case TouchPhase.Ended:
                     case TouchPhase.Canceled:
                         _content.SetActive(false);
-                        _stickPosition = Vector2.zero;
                         IsActive?.Invoke(false);
                         break;
                 }

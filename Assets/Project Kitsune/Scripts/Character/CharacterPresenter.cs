@@ -6,7 +6,7 @@ public class CharacterPresenter : UnitPresenter
 {
     public event Action<bool> OnFreeze;
 
-    [SerializeField] private Joystick _joystick;
+    [SerializeField] private Joystick2 _joystick;
     [SerializeField] private ProgressBar _lifeBar;
     [SerializeField] private ProgressBar _experienceBar;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
