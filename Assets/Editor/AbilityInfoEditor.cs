@@ -248,7 +248,7 @@ public class AbilityInfoEditor : Editor
             for (int i = prevSize; i < _projectileCount.arraySize; i++)
             {
                 SerializedProperty element = _projectileCount.GetArrayElementAtIndex(i);
-                element.floatValue = 1;
+                element.intValue = 1;
             }
         }
 

@@ -23,7 +23,7 @@ MonoBehaviour:
   _armour: 0
   _attackAnimationTime: 1
   _abilities:
-  - {fileID: 0}
+  - {fileID: 1213999324271516995, guid: 2076b8a3fa22f974f8decf27424077a3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -84,7 +84,6 @@ public abstract class Unit : IUnit
             float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
             bool isProjectile = ability.Info.AbilityType == AbilityInfo.Type.Projectile;
             target.TakeDamage(damage, isProjectile);
-            ability.OnHit -= OnHitAbility;
         }
     }
 

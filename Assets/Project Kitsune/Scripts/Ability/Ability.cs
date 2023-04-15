@@ -126,7 +126,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     protected abstract void OnCollisionStayWithEnemy(IUnit enemy);
     protected abstract void OnCollisionEnterWithEnemy(IUnit enemy);
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_info.AbilityDamageType == AbilityInfo.DamageType.Hit)
         {
@@ -139,7 +139,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
         {
@@ -157,7 +157,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         }
     }
 
-    private IUnit CallbackOnHit(Collision2D collision)
+    private IUnit CallbackOnHit(Collider2D collision)
     {
         IUnitPresenter unitPresenter = collision.gameObject.GetComponent<IUnitPresenter>();
         if (unitPresenter != null)
@@ -181,7 +181,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     private void DestroyOnHit()
     {
-        if (_info.AbilityType == AbilityInfo.Type.Projectile && _info.DestroyOnHit)
+        if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.DestroyOnHit)
             Destroy();
         else if (_info.AbilityType != AbilityInfo.Type.Projectile)
             Destroy();
