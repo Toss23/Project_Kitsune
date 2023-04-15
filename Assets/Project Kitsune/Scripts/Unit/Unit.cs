@@ -19,8 +19,7 @@ public abstract class Unit : IUnit
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesState(info.Abilities);
-        Abilities.LevelUp((int)AbilityType.Attack);
+        Abilities = new AbilitiesState(info.Abilities, info.AttackAnimationTime);
     }
 
     public void Update(float deltaTime)
@@ -57,16 +56,36 @@ public abstract class Unit : IUnit
         }
     }
 
-    public void TakeDamage(float value)
+    public void TakeDamage(float value, bool isProjectile)
     {
-        Attributes.Life.Add(-value);
+        if (isProjectile)
+        {
+            Attributes.Life.Add(-value);
+        }
+        else
+        {
+            float pool = Attributes.MagicShield.Value - value;
+            if (pool >= 0)
+            {
+                Attributes.MagicShield.Add(-value);
+            }
+            else
+            {
+                Attributes.MagicShield.Set(0);
+                Attributes.Life.Add(pool);
+            }
+        }
     }
 
     private void OnHitAbility(IAbility ability, IUnit target)
     {
-        float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
-        target.TakeDamage(damage);
-        ability.OnHit -= OnHitAbility;
+        if (target != null)
+        {
+            float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
+            bool isProjectile = ability.Info.AbilityType == AbilityInfo.Type.Projectile;
+            target.TakeDamage(damage, isProjectile);
+            ability.OnHit -= OnHitAbility;
+        }
     }
 
     private void Death()

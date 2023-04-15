@@ -33,6 +33,9 @@ public class AbilityInfo : ScriptableObject
     [SerializeField] private bool _haveContinueAbility;
     [SerializeField] private Ability _continueAbility;
 
+    [SerializeField] private bool _haveAura;
+    [SerializeField] private GameObject _auraObject;
+
     [SerializeField] private float[] _damage;
     [SerializeField] private float[] _damageMultiplier;
 
@@ -41,6 +44,7 @@ public class AbilityInfo : ScriptableObject
     [SerializeField] private float[] _critChance;
     [SerializeField] private float[] _critMultiplier;
 
+    [SerializeField] private string _name;
     [SerializeField] private string _description;
 
     [SerializeField] private float[] _radius;
@@ -64,12 +68,16 @@ public class AbilityInfo : ScriptableObject
     public bool HaveContinueAbility => _haveContinueAbility;
     public Ability ContinueAbility => _continueAbility;
 
+    public bool HaveAura => _haveAura;
+    public GameObject AuraObject => _auraObject;
+
     public float[] Damage => _damage;
     public float[] DamageMultiplier => _damageMultiplier;
     public float[] CastPerSecond => _castPerSecond;
     public float[] CritChance => _critChance;
     public float[] CritMultiplier => _critMultiplier;
 
+    public string Name => _description;
     public string Description => _description;
 
     public float[] Radius => _radius;

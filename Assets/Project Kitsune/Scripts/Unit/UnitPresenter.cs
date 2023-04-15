@@ -43,17 +43,20 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     public void Enable()
     {
         _isEnable = true;
-        OnEnablePresenter();
         _unit.OnDeath += Death;
-        _unit.Abilities.OnCastReloaded += CreateAbility;       
+        _unit.Abilities.OnCastReloaded += CreateAbility;
+        _unit.Abilities.OnLevelUpAttack += _unitView.SetAttackAnimationTime;
+        if (_unit.Abilities.Levels[0] == 0) _unit.Abilities.LevelUp(0);
+        OnEnablePresenter();
     }
 
     public void Disable()
     {
         _isEnable = false;
-        OnDisablePresenter();
         _unit.OnDeath -= Death;
-        _unit.Abilities.OnCastReloaded -= CreateAbility;      
+        _unit.Abilities.OnCastReloaded -= CreateAbility;
+        _unit.Abilities.OnLevelUpAttack -= _unitView.SetAttackAnimationTime;
+        OnDisablePresenter();
     }
 
     private void Update()
@@ -80,7 +83,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         Destroy(gameObject);
     }
 
-    protected void CreateAbility(IAbility ability, AbilityType type, int level)
+    protected void CreateAbility(IAbility ability, int point, int level)
     {
         if (ability != null)
         {
@@ -100,12 +103,12 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
                 Ability abilityObject = Instantiate((Ability)ability);
                 abilityObject.Init(level, _isCharacter ? Target.Enemy : Target.Character);
                 Transform abilityTransform = abilityObject.gameObject.transform;
-                abilityTransform.position = _unitView.AbilityPoints.Points[(int)type].transform.position;
+                abilityTransform.position = _unitView.AbilityPoints.Points[point].transform.position;
                 abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
 
                 if (ability.Info.AbilityType == AbilityInfo.Type.Melee
                     || ability.Info.AbilityType == AbilityInfo.Type.Field)
-                    abilityObject.FuseWith(_unitView.AbilityPoints.Points[(int)type].transform);
+                    abilityObject.FuseWith(_unitView.AbilityPoints.Points[point].transform);
 
                 _unit.RegisterAbility(abilityObject);
             }

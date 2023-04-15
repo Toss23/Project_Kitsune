@@ -7,12 +7,17 @@ public class UnitInfoEditor : Editor
     private SerializedProperty _prefab;
 
     private SerializedProperty _life; 
-    private SerializedProperty _regeneration;
+    private SerializedProperty _lifeRegeneration;
+
+    private SerializedProperty _magicShield;
+    private SerializedProperty _magicShieldRegeneration;
+
     private SerializedProperty _damage;
     private SerializedProperty _critChance;
     private SerializedProperty _critMultiplier; 
     private SerializedProperty _armour;
 
+    private SerializedProperty _attackAnimationTime;
     private SerializedProperty _abilities;
 
     private void OnEnable()
@@ -20,12 +25,17 @@ public class UnitInfoEditor : Editor
         _prefab = serializedObject.FindProperty("_prefab");
 
         _life = serializedObject.FindProperty("_life");
-        _regeneration = serializedObject.FindProperty("_regeneration");
+        _lifeRegeneration = serializedObject.FindProperty("_lifeRegeneration");
+
+        _magicShield = serializedObject.FindProperty("_magicShield");
+        _magicShieldRegeneration = serializedObject.FindProperty("_magicShieldRegeneration");
+
         _damage = serializedObject.FindProperty("_damage");
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
         _armour = serializedObject.FindProperty("_armour");
 
+        _attackAnimationTime = serializedObject.FindProperty("_attackAnimationTime");
         _abilities = serializedObject.FindProperty("_abilities");
     }
 
@@ -80,6 +90,7 @@ public class UnitInfoEditor : Editor
         int width = 100;
         int space = 5;
         EditorGUILayout.LabelField("States", boldStyle);
+
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Life", GUILayout.Width(width));
         GUILayout.Space(space);
@@ -87,12 +98,25 @@ public class UnitInfoEditor : Editor
         GUILayout.Space(space);
         EditorGUILayout.LabelField("Armour", GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.BeginHorizontal();
         _life.floatValue = EditorGUILayout.FloatField(_life.floatValue, GUILayout.Width(width));
         GUILayout.Space(space);
-        _regeneration.floatValue = EditorGUILayout.FloatField(_regeneration.floatValue, GUILayout.Width(width));
+        _lifeRegeneration.floatValue = EditorGUILayout.FloatField(_lifeRegeneration.floatValue, GUILayout.Width(width));
         GUILayout.Space(space);
         _armour.floatValue = EditorGUILayout.FloatField(_armour.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Magic Shield", GUILayout.Width(width));
+        GUILayout.Space(space);
+        EditorGUILayout.LabelField("Regeneration", GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        _magicShield.floatValue = EditorGUILayout.FloatField(_magicShield.floatValue, GUILayout.Width(width));
+        GUILayout.Space(space);
+        _magicShieldRegeneration.floatValue = EditorGUILayout.FloatField(_magicShieldRegeneration.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
@@ -102,6 +126,7 @@ public class UnitInfoEditor : Editor
         GUILayout.Space(space);
         EditorGUILayout.LabelField("Crit Multiplier", GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.BeginHorizontal();
         _damage.floatValue = EditorGUILayout.FloatField(_damage.floatValue, GUILayout.Width(width));
         GUILayout.Space(space);
@@ -124,6 +149,15 @@ public class UnitInfoEditor : Editor
 
         width = 150;
         EditorGUILayout.LabelField("Abilities", boldStyle);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Attack Animation Time", GUILayout.Width(width));
+        GUILayout.Space(space);
+        _attackAnimationTime.floatValue = EditorGUILayout.FloatField(_attackAnimationTime.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
+        GUILayout.Space(space);
+
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Attack", GUILayout.Width(width));
         GUILayout.Space(space);

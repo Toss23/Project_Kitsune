@@ -4,7 +4,7 @@ public class Life : Attribute
 {
     public event Action<float> OnLifeChange;
 
-    public float Regeneration;
+    public float Regeneration { get; private set; }
 
     private float _timer = 0;
     private float _regenerationFrequercy = 0.1f;

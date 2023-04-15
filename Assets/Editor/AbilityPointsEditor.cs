@@ -4,11 +4,15 @@ using UnityEditor;
 [CustomEditor(typeof(AbilityPoints))]
 public class AbilityPointsEditor : Editor
 {
+    private SerializedProperty _unitInfo;
     private SerializedProperty _points;
+    private SerializedProperty _pointsAura;
 
     private void OnEnable()
     {
+        _unitInfo = serializedObject.FindProperty("_unitInfo");
         _points = serializedObject.FindProperty("_points");
+        _pointsAura = serializedObject.FindProperty("_pointsAura");
     }
 
     public override void OnInspectorGUI()
@@ -22,42 +26,69 @@ public class AbilityPointsEditor : Editor
         if (_points.arraySize != 5)
             _points.arraySize = 5;
 
-        SerializedProperty[] abilityPoint = new SerializedProperty[5];
+        if (_pointsAura.arraySize != 5)
+            _pointsAura.arraySize = 5;
+
+        SerializedProperty[] abilityPoints = new SerializedProperty[5];
         for (int i = 0; i < 5; i++)
-            abilityPoint[i] = _points.GetArrayElementAtIndex(i);
+            abilityPoints[i] = _points.GetArrayElementAtIndex(i);
+
+        SerializedProperty[] auraPoints = new SerializedProperty[5];
+        for (int i = 0; i < 5; i++)
+            auraPoints[i] = _pointsAura.GetArrayElementAtIndex(i);
 
         int width = 160;
-        int height = 30;
         int space = 5;
         EditorGUILayout.LabelField("Ability Points", boldStyle);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Attack", GUILayout.Width(width));
-        GUILayout.Space(space);
-        EditorGUILayout.LabelField("Ultimate", GUILayout.Width(width));
+        EditorGUILayout.LabelField("Unit Info", GUILayout.Width(60));
+        _unitInfo.objectReferenceValue = EditorGUILayout.ObjectField(_unitInfo.objectReferenceValue, typeof(UnitInfo), false, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
 
-        EditorGUILayout.BeginHorizontal();
-        abilityPoint[0].objectReferenceValue = EditorGUILayout.ObjectField(abilityPoint[0].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width), GUILayout.Height(height));
-        GUILayout.Space(space);
-        abilityPoint[4].objectReferenceValue = EditorGUILayout.ObjectField(abilityPoint[4].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width), GUILayout.Height(height));
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 1; i < 4; i++)
+        if (_unitInfo.objectReferenceValue != null)
         {
-            EditorGUILayout.LabelField("Ability " + i, GUILayout.Width(width));
-            GUILayout.Space(space);
-        }
-        EditorGUILayout.EndHorizontal();
+            bool[] haveAbility = new bool[5];
+            bool[] haveAura = new bool[5];
 
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 1; i < 4; i++)
-        {
-            abilityPoint[i].objectReferenceValue = EditorGUILayout.ObjectField(abilityPoint[i].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width), GUILayout.Height(height));
+            IAbility[] abilities = (_unitInfo.objectReferenceValue as UnitInfo).Abilities;
+            for (int i = 0; i < 5; i++)
+            {
+                haveAbility[i] = abilities[i] != null;
+                if (haveAbility[i])
+                {
+                    haveAura[i] = abilities[i].Info.HaveAura;
+                }
+            }
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("", GUILayout.Width(120));
+            EditorGUILayout.LabelField("Point", GUILayout.Width(width));
             GUILayout.Space(space);
+            EditorGUILayout.LabelField("Aura", GUILayout.Width(width));
+            EditorGUILayout.EndHorizontal();
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (haveAbility[i])
+                {
+                    string text = "Ability " + i;
+                    if (i == 0) text = "Attack";
+                    if (i == 4) text = "Ultimate";
+
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(text, GUILayout.Width(60));
+                    abilityPoints[i].objectReferenceValue = EditorGUILayout.ObjectField(abilityPoints[i].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width));
+                    if (haveAura[i])
+                    {
+                        GUILayout.Space(space);
+                        auraPoints[i].objectReferenceValue = EditorGUILayout.ObjectField(auraPoints[i].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width));
+                    }
+                    EditorGUILayout.EndHorizontal();
+                    GUILayout.Space(space);
+                }
+            }
         }
-        EditorGUILayout.EndHorizontal();
 
         serializedObject.ApplyModifiedProperties();
     }

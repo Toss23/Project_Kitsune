@@ -23,7 +23,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: d9a6ff3b7aeb6ab488809314863c2930, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackTimeMultiplier
   m_MirrorParameter: Flip
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -50,7 +50,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a89043fe1c9b8c84fb1596fb3fbc1396, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: AttackTimeMultiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -90,6 +90,12 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: Move
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: AttackTimeMultiplier
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

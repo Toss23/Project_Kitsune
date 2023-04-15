@@ -28,6 +28,9 @@ public class AbilityInfoEditor : Editor
     private SerializedProperty _haveContinueAbility;
     private SerializedProperty _continueAbility;
 
+    private SerializedProperty _haveAura;
+    private SerializedProperty _auraObject;
+
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
@@ -59,6 +62,9 @@ public class AbilityInfoEditor : Editor
 
         _haveContinueAbility = serializedObject.FindProperty("_haveContinueAbility");
         _continueAbility = serializedObject.FindProperty("_continueAbility");
+
+        _haveAura = serializedObject.FindProperty("_haveAura");
+        _auraObject = serializedObject.FindProperty("_auraObject");
 
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
@@ -167,10 +173,24 @@ public class AbilityInfoEditor : Editor
         EditorGUILayout.LabelField("Have continue", GUILayout.Width(100));
         _haveContinueAbility.boolValue = EditorGUILayout.Toggle(_haveContinueAbility.boolValue);
         EditorGUILayout.EndHorizontal();
+        if (_haveContinueAbility.boolValue)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Ability", GUILayout.Width(100));
+            _continueAbility.objectReferenceValue = EditorGUILayout.ObjectField(_continueAbility.objectReferenceValue, typeof(Ability), false, GUILayout.Width(200));
+            EditorGUILayout.EndHorizontal();
+        }
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Ability", GUILayout.Width(100));
-        _continueAbility.objectReferenceValue = EditorGUILayout.ObjectField(_continueAbility.objectReferenceValue, typeof(Ability), false, GUILayout.Width(200));
+        EditorGUILayout.LabelField("Have Aura", GUILayout.Width(100));
+        _haveAura.boolValue = EditorGUILayout.Toggle(_haveAura.boolValue);
         EditorGUILayout.EndHorizontal();
+        if (_haveAura.boolValue)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Aura", GUILayout.Width(100));
+            _auraObject.objectReferenceValue = EditorGUILayout.ObjectField(_auraObject.objectReferenceValue, typeof(GameObject), false, GUILayout.Width(200));
+            EditorGUILayout.EndHorizontal();
+        }
         EditorGUILayout.Space(10);
 
         EditorGUILayout.LabelField("Properties", boldStyle);

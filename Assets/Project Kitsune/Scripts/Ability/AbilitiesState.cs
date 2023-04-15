@@ -2,9 +2,19 @@ using System;
 
 public class AbilitiesState
 {
-    public event Action<IAbility, AbilityType, int> OnCastReloaded;
+    /// <summary>
+    /// IAbility - ability for cast <br/>
+    /// int - ability point <br/>
+    /// int - ability level <br/>
+    /// </summary>
+    public event Action<IAbility, int, int> OnCastReloaded;
+    /// <summary>
+    /// float - attack cast speed
+    /// </summary>
+    public event Action<float> OnLevelUpAttack;
 
     private IAbility[] _abilities;
+    private float _attackAnimationTime;
     private int[] _levels;
     private int[] _maxLevels;
     private float[] _reloadTimes;
@@ -16,9 +26,10 @@ public class AbilitiesState
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesState(IAbility[] abilities)
+    public AbilitiesState(IAbility[] abilities, float attackAnimationTime)
     {
         _abilities = abilities;
+        _attackAnimationTime = attackAnimationTime;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
@@ -55,7 +66,7 @@ public class AbilitiesState
                             {
                                 _reloadTimes[i] -= 1 / castPerSecond;
                                 _casted[i] = true;
-                                OnCastReloaded?.Invoke(_abilities[i], (AbilityType)i, _levels[i]);
+                                OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                             }
                         }
                     }
@@ -64,11 +75,17 @@ public class AbilitiesState
         }
     }
 
-    public void LevelUp(AbilityType type)
+    public void LevelUp(int type)
     {
-        _levels[(int)type]++;
-        if (_levels[(int)type] > _maxLevels[(int)type])
-            _levels[(int)type] = _maxLevels[(int)type];
+        _levels[type]++;
+        if (_levels[type] > _maxLevels[type])
+            _levels[type] = _maxLevels[type];
+
+        if (type == 0 & _abilities[0] != null)
+        {
+            float multiplier = _attackAnimationTime * _abilities[0].Info.CastPerSecond[_levels[0]];
+            OnLevelUpAttack?.Invoke(multiplier);
+        }
     }
 
     public void LevelUp(IAbility ability)
@@ -82,6 +99,13 @@ public class AbilitiesState
                     _levels[i]++;
                     if (_levels[i] > _maxLevels[i])
                         _levels[i] = _maxLevels[i];
+
+                    if (i == 0)
+                    {
+                        float multiplier = _attackAnimationTime * _abilities[0].Info.CastPerSecond[_levels[0]];
+                        OnLevelUpAttack?.Invoke(multiplier);
+                    }
+
                     break;
                 }
             }

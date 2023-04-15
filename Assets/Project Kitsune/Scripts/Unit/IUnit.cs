@@ -12,5 +12,5 @@ public interface IUnit
     public void FixedUpdate(float deltaTime);
     public void RegisterAbility(IAbility ability);
     public void DisableAbilities();
-    public void TakeDamage(float value);
+    public void TakeDamage(float value, bool isProjectile);
 }

@@ -1,17 +1,12 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum AbilityType
-{
-    Attack, First, Second, Third, Ultimate
-}
 
 public enum Target
 {
     Enemy, Character
 }
 
+[Serializable]
 public abstract class Ability : MonoBehaviour, IAbility
 {
     public event Action<IAbility, IUnit> OnHit;
@@ -29,7 +24,6 @@ public abstract class Ability : MonoBehaviour, IAbility
     private float _meleeTimer = 0;
     private Transform _pointToFusing;
     private bool _fused = false;
-
     private Transform _nearestEnemy;
 
     public int Level => _level;

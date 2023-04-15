@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
-  m_Name: Kitsune
+  m_Name: Onni
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4577766868310080864, guid: 82234c4acae23f64b922d3533b8e2a57, type: 3}
+  _prefab: {fileID: 1576545529191734021, guid: 8a3b20729fbed8a43bdf64797c78082f, type: 3}
   _life: 100
   _lifeRegeneration: 0
-  _magicShield: 100
+  _magicShield: 0
   _magicShieldRegeneration: 0
   _damage: 1
   _critChance: 0
   _critMultiplier: 150
   _armour: 0
-  _attackAnimationTime: 3
+  _attackAnimationTime: 1
   _abilities:
-  - {fileID: 274742418572752201, guid: 44e71e477bfb84e49bd6372e437b9856, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

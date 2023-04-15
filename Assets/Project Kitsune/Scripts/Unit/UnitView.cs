@@ -53,4 +53,12 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         _freeze = state;
     }
+
+    public void SetAttackAnimationTime(float multiplier)
+    {
+        if (_animator != null)
+        {
+            _animator.SetFloat("AttackTimeMultiplier", multiplier);
+        }
+    }
 }

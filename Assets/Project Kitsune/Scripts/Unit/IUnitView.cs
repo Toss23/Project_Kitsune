@@ -10,4 +10,5 @@ public interface IUnitView
     public void IsMoving(bool active);
     public void SetAngle(float angle);
     public void Freeze(bool state);
+    public void SetAttackAnimationTime(float time);
 }
