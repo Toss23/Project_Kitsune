@@ -13,4 +13,5 @@ public interface IUnit
     public void RegisterAbility(IAbility ability);
     public void DisableAbilities();
     public void TakeDamage(float value, bool isProjectile);
+    public void Immune(bool state);
 }

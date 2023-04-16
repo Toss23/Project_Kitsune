@@ -6,5 +6,5 @@ public interface IAbilitiesSelectionView
 
     public void Show();
     public void Hide();
-    public void Build(IAbility[] abilities);
+    public void Build(IAbility[] abilities, int[] levels);
 }

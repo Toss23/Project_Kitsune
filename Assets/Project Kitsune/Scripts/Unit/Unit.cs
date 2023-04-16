@@ -10,6 +10,7 @@ public abstract class Unit : IUnit
     public AbilitiesState Abilities { get; private set; }
 
     private List<IAbility> _castedAbilities;
+    private bool _isImmune = false;
 
     protected void Init(UnitInfo info)
     {
@@ -58,23 +59,31 @@ public abstract class Unit : IUnit
 
     public void TakeDamage(float value, bool isProjectile)
     {
-        if (isProjectile)
+        if (_isImmune == false)
         {
-            Attributes.Life.Add(-value);
-        }
-        else
-        {
-            float pool = Attributes.MagicShield.Value - value;
-            if (pool >= 0)
+            if (isProjectile)
             {
-                Attributes.MagicShield.Add(-value);
+                Attributes.Life.Add(-value);
             }
             else
             {
-                Attributes.MagicShield.Set(0);
-                Attributes.Life.Add(pool);
+                float pool = Attributes.MagicShield.Value - value;
+                if (pool >= 0)
+                {
+                    Attributes.MagicShield.Add(-value);
+                }
+                else
+                {
+                    Attributes.MagicShield.Set(0);
+                    Attributes.Life.Add(pool);
+                }
             }
         }
+    }
+
+    public void Immune(bool state)
+    {
+        _isImmune = state;
     }
 
     private void OnHitAbility(IAbility ability, IUnit target)

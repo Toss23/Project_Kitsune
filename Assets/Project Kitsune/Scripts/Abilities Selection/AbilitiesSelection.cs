@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class AbilitiesSelection
 {
-    public event Action<IAbility[]> OnAbilitiesListGenerated;
+    public event Action<IAbility[], int[]> OnAbilitiesListGenerated;
     public event Action<IAbility> OnSelectedAbility;
 
     private IUnit _unit;
@@ -43,13 +42,15 @@ public class AbilitiesSelection
 
         if (canLevelUp.Count > 0)
         {
-            abilitiesIdsForCards[0] = UnityEngine.Random.Range(0, canLevelUp.Count - 1);
-            canLevelUp.Remove(abilitiesIdsForCards[0]);
+            int random = UnityEngine.Random.Range(0, canLevelUp.Count);
+            abilitiesIdsForCards[0] = canLevelUp[random];
+            canLevelUp.Remove(canLevelUp[random]);
         }
 
         if (canLevelUp.Count > 0)
         {
-            abilitiesIdsForCards[1] = UnityEngine.Random.Range(0, canLevelUp.Count - 1);
+            int random = UnityEngine.Random.Range(0, canLevelUp.Count);
+            abilitiesIdsForCards[1] = canLevelUp[random];
         }
 
         if (allAbilityLearned)
@@ -64,13 +65,16 @@ public class AbilitiesSelection
         }
 
         IAbility[] abilitiesForCards = new IAbility[2];
+        int[] levels = new int[2];
         abilitiesForCards[0] = abilitiesIdsForCards[0] != -1 ? abilities.List[abilitiesIdsForCards[0]] : null;
+        levels[0] = abilitiesIdsForCards[0] != -1 ? abilities.Levels[abilitiesIdsForCards[0]] : 0;
         abilitiesForCards[1] = abilitiesIdsForCards[1] != -1 ? abilities.List[abilitiesIdsForCards[1]] : null;
+        levels[1] = abilitiesIdsForCards[1] != -1 ? abilities.Levels[abilitiesIdsForCards[1]] : 0;
 
         if (abilitiesIdsForCards[0] == -1 & abilitiesIdsForCards[1] == -1)
             OnSelectedAbility?.Invoke(null);
         else
-            OnAbilitiesListGenerated?.Invoke(abilitiesForCards);
+            OnAbilitiesListGenerated?.Invoke(abilitiesForCards, levels);
     }
 
     public void OnSelected(IAbility ability)

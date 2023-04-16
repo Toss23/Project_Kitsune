@@ -23,7 +23,6 @@ public abstract class Ability : MonoBehaviour, IAbility
     private float _projectileTimer = 0;
     private float _meleeTimer = 0;
     private Transform _pointToFusing;
-    private bool _fused = false;
     private Transform _nearestEnemy;
 
     public int Level => _level;
@@ -111,18 +110,15 @@ public abstract class Ability : MonoBehaviour, IAbility
 
         if (_info.AbilityType == AbilityInfo.Type.Field)
         {
-            if (_pointToFusing != null & _fused == false)
-            {
-                transform.parent = _pointToFusing;
-                _fused = true;
-            }
+            if (_pointToFusing != null)
+                transform.position = _pointToFusing.transform.position;
         }
 
-        OnUpdate();
+        OnUpdate(Time.deltaTime);
     }
 
     protected abstract void OnCreate();
-    protected abstract void OnUpdate();
+    protected abstract void OnUpdate(float deltaTime);
     protected abstract void OnCollisionStayWithEnemy(IUnit enemy);
     protected abstract void OnCollisionEnterWithEnemy(IUnit enemy);
 
@@ -183,7 +179,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     {
         if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.DestroyOnHit)
             Destroy();
-        else if (_info.AbilityType != AbilityInfo.Type.Projectile)
+        else if (_info.AbilityType != AbilityInfo.Type.Projectile & _info.AbilityType != AbilityInfo.Type.Field)
             Destroy();
     }
 

@@ -5,7 +5,7 @@ public class KitsuneAttack : Ability
         
     }
 
-    protected override void OnUpdate()
+    protected override void OnUpdate(float deltaTime)
     {
         
     }

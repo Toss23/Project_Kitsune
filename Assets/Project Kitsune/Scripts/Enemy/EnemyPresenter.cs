@@ -31,6 +31,7 @@ public class EnemyPresenter : UnitPresenter
 
         _characterPresenter.OnFreeze += follower.Freeze;
         _characterPresenter.OnFreeze += _unit.Abilities.Freeze;
+        _characterPresenter.OnFreeze += _unit.Immune;
     }
 
     protected override void OnDisablePresenter()
@@ -41,6 +42,7 @@ public class EnemyPresenter : UnitPresenter
 
         _characterPresenter.OnFreeze -= follower.Freeze;
         _characterPresenter.OnFreeze -= _unit.Abilities.Freeze;
+        _characterPresenter.OnFreeze -= _unit.Immune;
     }
 
     protected override void OnDeath()

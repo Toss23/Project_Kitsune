@@ -24,7 +24,7 @@ MonoBehaviour:
   _attackAnimationTime: 1
   _abilities:
   - {fileID: 1213999324271516995, guid: 2076b8a3fa22f974f8decf27424077a3, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -8214929800551353737, guid: 1917bf3124161fe46bb0495fd3590bc5, type: 3}
+  - {fileID: 5009820882724073540, guid: a08a6b8c46821cc47adf59759c0a6651, type: 3}
   - {fileID: 0}
   - {fileID: 0}

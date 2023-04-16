@@ -15,14 +15,14 @@ public class AbilitiesSelectionView : MonoBehaviour, IAbilitiesSelectionView
             abilityCard.OnClick += OnClickCard;
     }
 
-    public void Build(IAbility[] abilities)
+    public void Build(IAbility[] abilities, int[] levels)
     {
         IAbilityCardView[] abilityCards = _abilityCards;
         for (int i = 0; i < abilities.Length; i++)
         {
             if (abilities[i] != null)
             {
-                abilityCards[i].SetAbility(abilities[i]);
+                abilityCards[i].SetAbility(abilities[i], levels[i]);
                 _abilityCards[i].gameObject.SetActive(true);
             }
             else

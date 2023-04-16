@@ -44,9 +44,10 @@ public class CharacterPresenter : UnitPresenter
         OnFreeze += controlable.Freeze;
         OnFreeze += _unit.Abilities.Freeze;
         OnFreeze += _unitView.Freeze;
+        OnFreeze += _unit.Immune;
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.OnAbilitiesListGenerated += (abilities) => FreezeAll();
+        abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => FreezeAll();
         abilitiesSelection.OnSelectedAbility += (ability) => UnfreezeAll();
     }
 
@@ -68,9 +69,10 @@ public class CharacterPresenter : UnitPresenter
         OnFreeze -= controlable.Freeze;
         OnFreeze -= _unit.Abilities.Freeze;
         OnFreeze -= _unitView.Freeze;
+        OnFreeze -= _unit.Immune;
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.OnAbilitiesListGenerated -= (abilities) => FreezeAll();
+        abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => FreezeAll();
         abilitiesSelection.OnSelectedAbility -= (ability) => UnfreezeAll();
     }
 

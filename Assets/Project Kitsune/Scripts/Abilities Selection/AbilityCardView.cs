@@ -19,12 +19,12 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
         _button.onClick.AddListener(OnClickButton);
     }
 
-    public void SetAbility(IAbility ability)
+    public void SetAbility(IAbility ability, int level)
     {
         if (ability != null)
         {
             _ability = ability;
-            _nameText.text = ability.Info.Description;
+            _nameText.text = ability.Info.Description + " (" + level + "/" + ability.MaxLevel + ")";
         }
         else
         {

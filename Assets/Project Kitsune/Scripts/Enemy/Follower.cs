@@ -24,6 +24,11 @@ public class Follower
     public void Freeze(bool state)
     {
         _freeze = state;
+
+        if (state)
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        else
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public void FixedUpdate(float deltaTime)
@@ -39,7 +44,7 @@ public class Follower
 
                 _rigidbody.MovePosition(_rigidbody.position + _speed * direction * deltaTime);
 
-                float angle = Mathf.Atan2(direction.y, direction.x);
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 OnMove?.Invoke(angle);
             }
             IsMoving?.Invoke(isMoving);

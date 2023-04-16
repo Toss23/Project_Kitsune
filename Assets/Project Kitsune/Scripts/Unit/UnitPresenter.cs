@@ -14,6 +14,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public Transform Transform => transform;
     public IUnit Unit => _unit;
+    public IUnitView UnitView => _unitView;
 
     private void Awake()
     {
