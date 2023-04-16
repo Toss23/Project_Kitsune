@@ -3,20 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(AbilitiesSelectionView))]
 public class AbilitiesSelectionPresenter : MonoBehaviour
 {
-    private CharacterPresenter _characterPresenter;
     private IAbilitiesSelectionView _abilitiesSelectionView;
     private AbilitiesSelection _abilitiesSelection;
-    private IUnitPresenter _unitPresenter;
     private IUnit _unit;
 
     public AbilitiesSelection AbilitiesSelection => _abilitiesSelection;
 
-    public void Init(CharacterPresenter characterPresenter)
+    public void Init(IUnitPresenter characterPresenter)
     {
-        _characterPresenter = characterPresenter;
         _abilitiesSelectionView = GetComponent<AbilitiesSelectionView>();
-        _unitPresenter = _characterPresenter;
-        _unit = _unitPresenter.Unit;
+        _unit = characterPresenter.Unit;
         _abilitiesSelection = new AbilitiesSelection(_unit);
 
         Enable();

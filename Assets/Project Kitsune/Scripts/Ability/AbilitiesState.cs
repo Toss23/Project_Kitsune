@@ -58,8 +58,7 @@ public class AbilitiesState
                 {
                     if (_levels[i] > 0)
                     {
-                        if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field ||
-                            (_abilities[i].Info.AbilityType == AbilityInfo.Type.Field && _casted[i] == false))
+                        if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
                         {
                             _reloadTimes[i] += deltaTime;
                             float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
@@ -69,6 +68,11 @@ public class AbilitiesState
                                 _casted[i] = true;
                                 OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                             }
+                        }
+                        else if (_casted[i] == false)
+                        {
+                            _casted[i] = true;
+                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                         }
                     }
                 }
