@@ -105,7 +105,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
                 abilityObject.Init(level, _isCharacter ? Target.Enemy : Target.Character);
                 Transform abilityTransform = abilityObject.gameObject.transform;
                 abilityTransform.position = _unitView.AbilityPoints.Points[point].transform.position;
-                abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
+                if (ability.Info.AbilityType != AbilityInfo.Type.Field)
+                    abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
 
                 if (ability.Info.AbilityType == AbilityInfo.Type.Melee
                     || ability.Info.AbilityType == AbilityInfo.Type.Field)

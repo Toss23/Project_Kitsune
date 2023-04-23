@@ -27,7 +27,10 @@ public class OnniAbility2 : Ability
         _angle = 0;
         _circles = new GameObject[_count]; 
         for (int i = 0; i < _count; i++)
+        {
             _circles[i] = Instantiate(_circlePrefab, transform);
+            _circles[i].transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     protected override void OnUpdate(float deltaTime)

@@ -2,7 +2,7 @@ public class Experience : Attribute
 {
     public static readonly float[] MaximumList = new float[]
     {
-       0, 10, 50, 100, 200, 0
+       0, 1, 1, 1, 1, 0
     };
 
     public Experience(int level)

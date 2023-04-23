@@ -48,7 +48,7 @@ public class CharacterPresenter : UnitPresenter
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => FreezeAll();
-        abilitiesSelection.OnSelectedAbility += (ability) => UnfreezeAll();
+        abilitiesSelection.OnAbilityUpped += (ability) => UnfreezeAll();
     }
 
     protected override void OnDisablePresenter()
@@ -73,7 +73,7 @@ public class CharacterPresenter : UnitPresenter
 
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => FreezeAll();
-        abilitiesSelection.OnSelectedAbility -= (ability) => UnfreezeAll();
+        abilitiesSelection.OnAbilityUpped -= (ability) => UnfreezeAll();
     }
 
     private void FreezeAll()

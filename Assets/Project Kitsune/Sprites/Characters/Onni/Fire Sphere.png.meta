@@ -1,0 +1,685 @@
+fileFormatVersion: 2
+guid: 3c362db0d8676384bbd53a0031a7d8cf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fire Sphere_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1674.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98484a3a277ac1848bbaee2eddd7a7d6
+      internalID: 2026527322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1674.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8c1d503056acec4eb810d7439164ca6
+      internalID: -338312244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_2
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 1674.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1bafd8b2c5d7a46952c10551984ba8
+      internalID: 1622047393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_3
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1674.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78085665a60ce64c91ef3635550d1c1
+      internalID: 1706610979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_4
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 1674.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e9934a9a532c18428ccf0d7c18b28e8
+      internalID: 690271654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1256.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a8e5059d05b6947834d63de5d97f8f
+      internalID: 1769466223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_6
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1256.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e300706b5b7d6a4d82ba961efb84c32
+      internalID: 1816338025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_7
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 1256.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a31914219648940b579f28c2949e2d
+      internalID: 952895083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_8
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1256.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c191eb63050a9a94b9e18bda2559280a
+      internalID: -283716487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_9
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 1256.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011f37e473344884ea9a58808367fb63
+      internalID: -1022933463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 838.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154034a645648894ab1a3216ffdba7e6
+      internalID: -1728011332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_11
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 838.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f97e521f2fb554ba44fb4e729d2c48
+      internalID: -727932525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_12
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 838.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b6b31d92e0c39438f97b84209845c9
+      internalID: 774502763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_13
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 838.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdfcbac5b787c4408e85c87b21f971b
+      internalID: 1375123166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_14
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 838.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c17861a403778a4b94dcf5946322145
+      internalID: 1966174623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e2a704bb260ac44a5d305430d28bb6
+      internalID: 2107295296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_16
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 420.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c343953b97eb0c4fb36d3daf8314456
+      internalID: 1853160162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_17
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 420.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40517a02cf54c4c4988bc743f58c707a
+      internalID: 771078642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_18
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 420.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32095d747fc603c4a8fa57f5d3ec3dd6
+      internalID: 382023695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_19
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 420.4
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e515c668552c3143af5a277fda3f118
+      internalID: -1348978592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2.399994
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa7c0bc378f46646870c594f170aac3
+      internalID: -650007272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_21
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 2.399994
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e97d58b944c0c348aafdf622c6b87b6
+      internalID: -1797806757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_22
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 2.399994
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b5dc2ec2e7f4b40bf87239123abc3a
+      internalID: -1670071358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_23
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 2.399994
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b421c715fc3804eb5568813d5e9e0d
+      internalID: 1608988556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire Sphere_24
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 2.399994
+        width: 230
+        height: 418.6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4b2fc469a887f4996756ae87f191f1
+      internalID: -727675043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Fire Sphere_0: 2026527322
+      Fire Sphere_1: -338312244
+      Fire Sphere_10: -1728011332
+      Fire Sphere_11: -727932525
+      Fire Sphere_12: 774502763
+      Fire Sphere_13: 1375123166
+      Fire Sphere_14: 1966174623
+      Fire Sphere_15: 2107295296
+      Fire Sphere_16: 1853160162
+      Fire Sphere_17: 771078642
+      Fire Sphere_18: 382023695
+      Fire Sphere_19: -1348978592
+      Fire Sphere_2: 1622047393
+      Fire Sphere_20: -650007272
+      Fire Sphere_21: -1797806757
+      Fire Sphere_22: -1670071358
+      Fire Sphere_23: 1608988556
+      Fire Sphere_24: -727675043
+      Fire Sphere_3: 1706610979
+      Fire Sphere_4: 690271654
+      Fire Sphere_5: 1769466223
+      Fire Sphere_6: 1816338025
+      Fire Sphere_7: 952895083
+      Fire Sphere_8: -283716487
+      Fire Sphere_9: -1022933463
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
