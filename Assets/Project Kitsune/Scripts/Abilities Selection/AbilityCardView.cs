@@ -24,7 +24,7 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
         if (ability != null)
         {
             _ability = ability;
-            _nameText.text = ability.Info.Description + " (" + level + "/" + ability.MaxLevel + ")";
+            _nameText.text = ability.Info.Name + " (" + level + "/" + ability.MaxLevel + ")";
         }
         else
         {

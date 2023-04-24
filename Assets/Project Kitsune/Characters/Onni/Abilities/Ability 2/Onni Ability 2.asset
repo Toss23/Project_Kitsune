@@ -50,8 +50,8 @@ MonoBehaviour:
   _critMultiplier:
   - 100
   - 100
-  _name: 
-  _description: Fire Sphere
+  _name: Fire Sphere
+  _description: 
   _radius:
   - 1
   - 1

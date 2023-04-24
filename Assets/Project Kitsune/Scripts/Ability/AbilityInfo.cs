@@ -77,7 +77,7 @@ public class AbilityInfo : ScriptableObject
     public float[] CritChance => _critChance;
     public float[] CritMultiplier => _critMultiplier;
 
-    public string Name => _description;
+    public string Name => _name;
     public string Description => _description;
 
     public float[] Radius => _radius;

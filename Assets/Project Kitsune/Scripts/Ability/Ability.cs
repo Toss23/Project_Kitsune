@@ -183,6 +183,12 @@ public abstract class Ability : MonoBehaviour, IAbility
             Destroy();
     }
 
+    public void Description()
+    {
+        string description = Info.Description;
+
+    }
+
     public void Destroy()
     {
         Destroy(gameObject);

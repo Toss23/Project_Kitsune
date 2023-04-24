@@ -34,8 +34,11 @@ public class AbilityInfoEditor : Editor
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
+
     private SerializedProperty _critChance;
     private SerializedProperty _critMultiplier;
+
+    private SerializedProperty _name;
     private SerializedProperty _description;
 
     private SerializedProperty _radius;
@@ -72,6 +75,8 @@ public class AbilityInfoEditor : Editor
 
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
+
+        _name = serializedObject.FindProperty("_name");
         _description = serializedObject.FindProperty("_description");
 
         _radius = serializedObject.FindProperty("_radius");
@@ -87,15 +92,23 @@ public class AbilityInfoEditor : Editor
 
         EditorGUILayout.LabelField("Main", boldStyle);
         EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Name", GUILayout.Width(150));
+        _name.stringValue = EditorGUILayout.TextField(_name.stringValue, GUILayout.Width(150));
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Use Character Damage", GUILayout.Width(150));
         _useCharacterDamage.boolValue = EditorGUILayout.Toggle(_useCharacterDamage.boolValue);
         EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Use Character Crit", GUILayout.Width(150));
         _useCharacterCrit.boolValue = EditorGUILayout.Toggle(_useCharacterCrit.boolValue);
         EditorGUILayout.EndHorizontal();
+
         EditorGUILayout.LabelField("Description");
-        _description.stringValue = EditorGUILayout.TextArea(_description.stringValue, GUILayout.Width(300), GUILayout.MinHeight(40));
+        _description.stringValue = EditorGUILayout.TextArea(_description.stringValue, GUILayout.Width(500), GUILayout.MinHeight(40));
+        
         EditorGUILayout.Space(10);
 
         EditorGUILayout.LabelField("Damage Type", boldStyle);

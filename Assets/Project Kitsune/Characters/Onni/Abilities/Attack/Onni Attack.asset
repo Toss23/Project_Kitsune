@@ -66,8 +66,10 @@ MonoBehaviour:
   - 100
   - 100
   - 100
-  _name: 
-  _description: Attack
+  _name: Attack
+  _description: 'Onni use her sword for attack enemy
+
+'
   _radius:
   - 1
   - 1
