@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class OnniAbility1 : Ability
 {
-    private float _maxRadius;
-    private float _currentRadius;
-    private float _speed;
-    private bool _needScaleDown;
+    [SerializeField] private float _maxRadius = 8;
+    [SerializeField] private float _speed = 2;
+    private float _currentRadius = 1;
+    private bool _needScaleDown = false;
 
     protected override void OnCollisionEnterWithEnemy(IUnit enemy)
     {
@@ -19,10 +19,7 @@ public class OnniAbility1 : Ability
 
     protected override void OnCreate()
     {
-        _needScaleDown = false;
-        _currentRadius = 1;
-        _maxRadius = 8;
-        _speed = 2;
+        
     }
 
     protected override void OnUpdate(float deltaTime)
@@ -31,7 +28,7 @@ public class OnniAbility1 : Ability
         {
             _currentRadius += Time.deltaTime * _speed;
 
-            if (_currentRadius >= _maxRadius / 2f)
+            if (_currentRadius >= _maxRadius)
                 _needScaleDown = true;
         }
         else
@@ -45,5 +42,6 @@ public class OnniAbility1 : Ability
         }
 
         transform.localScale = new Vector3(_currentRadius, _currentRadius) * Info.Radius[Level];
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }
