@@ -43,7 +43,7 @@ MonoBehaviour:
   - 100
   _castPerSecond:
   - 1
-  - 0.1
+  - 0.3
   _critChance:
   - 0
   - 0
