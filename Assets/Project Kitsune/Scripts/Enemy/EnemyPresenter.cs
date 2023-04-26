@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyView))]
 public class EnemyPresenter : UnitPresenter
 {
+    [SerializeField] private GameObject _enemyObject;
     [SerializeField] private float _experience;
 
     private GameObject _target;
@@ -11,6 +12,7 @@ public class EnemyPresenter : UnitPresenter
     protected override IUnit CreateUnit() => new Enemy(_info, _target.transform, _rigidbody);
     protected override IUnitView CreateUnitView() => GetComponent<EnemyView>();
     protected override bool IsCharacter() => false;
+    protected override GameObject NonCharacterUnit() => _enemyObject;
 
     protected override void BeforeAwake()
     {

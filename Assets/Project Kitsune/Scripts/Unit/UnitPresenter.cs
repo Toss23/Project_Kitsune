@@ -11,6 +11,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     private bool _isEnable = false;
     private bool _isCharacter;
+    private GameObject _nonCharacterUnit;
 
     public Transform Transform => transform;
     public IUnit Unit => _unit;
@@ -23,8 +24,16 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _rigidbody = GetComponent<Rigidbody2D>();
         _unit = CreateUnit();
         _unitView = CreateUnitView();
-        _unitView.CreateUnit(_info.Prefab);
         _isCharacter = IsCharacter();
+        if (_isCharacter)
+        {
+            _unitView.CreateUnit(_info.Prefab);
+        }
+        else
+        {
+            _nonCharacterUnit = NonCharacterUnit();
+            _unitView.SetUnit(_nonCharacterUnit);
+        }
 
         AfterAwake();
     }
@@ -37,6 +46,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected abstract IUnitView CreateUnitView();
     protected abstract IUnit CreateUnit();
     protected abstract bool IsCharacter();
+    protected abstract GameObject NonCharacterUnit();
 
     protected abstract void BeforeAwake();
     protected abstract void AfterAwake();

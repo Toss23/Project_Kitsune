@@ -6,7 +6,8 @@ public interface IUnitView
     public bool IsReversed { get; }
     public float Angle { get; }
 
-    public void CreateUnit(GameObject prefab);  
+    public void CreateUnit(GameObject prefab);
+    public void SetUnit(GameObject unit);
     public void IsMoving(bool active);
     public void SetAngle(float angle);
     public void Freeze(bool state);

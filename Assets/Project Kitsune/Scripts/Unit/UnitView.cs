@@ -19,14 +19,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_animator != null)
         {
-            if (_freeze == false)
-            {
-                _animator.SetBool("Move", move);
-            }
-            else
-            {
-                _animator.SetBool("Move", false);
-            }
+            _animator.SetBool("Move", _freeze ? false : move);
         }
     }
 
@@ -34,6 +27,14 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         _unit = Instantiate(prefab, _delta);
         _unit.name = prefab.name;
+        _animator = _unit.GetComponent<Animator>();
+        _abilityPoints = _unit.GetComponent<AbilityPoints>();
+        _isReversed = false;
+    }
+
+    public void SetUnit(GameObject unit)
+    {
+        _unit = unit;
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isReversed = false;

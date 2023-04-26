@@ -44,3 +44,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4112477839
+    locked: 0
+  - name: Enemy
+    uniqueID: 2565982925
+    locked: 0
+  - name: Enemy Ability
+    uniqueID: 1663295495
+    locked: 0
+  - name: Character Ability
+    uniqueID: 3589988341
+    locked: 0
+  - name: Character Aura Back
+    uniqueID: 2088537861
+    locked: 0
+  - name: Character
+    uniqueID: 3427485681
+    locked: 0
+  - name: Character Aura Front
+    uniqueID: 4283144441
+    locked: 0
+  - name: UI
+    uniqueID: 1922732527
+    locked: 0
