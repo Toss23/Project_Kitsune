@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OnniAbility2 : Ability
+public class FireSpheres : Ability
 {
     [SerializeField] private GameObject _circlePrefab;
     [SerializeField] private int _count = 5;
@@ -9,8 +9,6 @@ public class OnniAbility2 : Ability
 
     private GameObject[] _circles;
     private float _angle;
-
-    private CharacterPresenter _characterPresenter;
 
     protected override void OnCollisionEnterWithEnemy(IUnit enemy)
     {

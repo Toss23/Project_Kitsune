@@ -10,29 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d538185ce0cfdb4eb5ee45fe3a1f6cc, type: 3}
-  m_Name: Onni Attack
+  m_Name: Dark Wave Info
   m_EditorClassIdentifier: 
   _useCharacterDamage: 1
-  _useCharacterCrit: 1
+  _useCharacterCrit: 0
   _abilityDamageType: 0
   _dotRate:
-  - 1
-  - 1
   - 1
   - 1
   _dotDuration:
   - 5
   - 5
-  - 5
-  - 5
   _abilityType: 1
   _meleeAnimationTime: 0
-  _projectileSpeed: 10
-  _projectileRange: 1
-  _projectileCount: 00000000010000000100000001000000
+  _projectileSpeed: 0
+  _projectileRange: 100
+  _projectileCount: 0100000001000000
   _projectileSplitAngle:
-  - 0
-  - 0
   - 0
   - 0
   _projectileAuto: 0
@@ -43,35 +37,21 @@ MonoBehaviour:
   _auraObject: {fileID: 0}
   _damage:
   - 0
-  - 5
-  - 5
-  - 5
+  - 10
   _damageMultiplier:
   - 100
   - 100
-  - 100
-  - 120
   _castPerSecond:
   - 1
-  - 1
-  - 1.2
-  - 1.4
+  - 0.3
   _critChance:
-  - 0
-  - 0
   - 0
   - 0
   _critMultiplier:
   - 100
   - 100
-  - 100
-  - 100
-  _name: Attack
-  _description: 'Onni use her sword for attack enemy
-
-'
+  _name: Dark Wave
+  _description: 
   _radius:
-  - 1
-  - 1
   - 1
   - 1

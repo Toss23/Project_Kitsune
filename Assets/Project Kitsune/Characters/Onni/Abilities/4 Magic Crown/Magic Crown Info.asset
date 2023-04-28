@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d538185ce0cfdb4eb5ee45fe3a1f6cc, type: 3}
-  m_Name: Onni Ability 1
+  m_Name: Magic Crown Info
   m_EditorClassIdentifier: 
-  _useCharacterDamage: 1
+  _useCharacterDamage: 0
   _useCharacterCrit: 0
   _abilityDamageType: 0
   _dotRate:
@@ -21,10 +21,10 @@ MonoBehaviour:
   _dotDuration:
   - 5
   - 5
-  _abilityType: 1
+  _abilityType: 2
   _meleeAnimationTime: 0
-  _projectileSpeed: 0
-  _projectileRange: 100
+  _projectileSpeed: 10
+  _projectileRange: 1
   _projectileCount: 0100000001000000
   _projectileSplitAngle:
   - 0
@@ -33,25 +33,25 @@ MonoBehaviour:
   _destroyOnHit: 0
   _haveContinueAbility: 0
   _continueAbility: {fileID: 0}
-  _haveAura: 0
-  _auraObject: {fileID: 0}
+  _haveAura: 1
+  _auraObject: {fileID: 7238842915207050401, guid: 518def125e6f0bd41a0342aee3d1713a, type: 3}
   _damage:
   - 0
-  - 10
+  - 0
   _damageMultiplier:
   - 100
-  - 100
+  - 0
   _castPerSecond:
   - 1
-  - 0.3
+  - 1
   _critChance:
   - 0
   - 0
   _critMultiplier:
   - 100
-  - 100
-  _name: Dark Wave
-  _description: 
+  - 0
+  _name: Magic Crown
+  _description: Protects Onni against projectile
   _radius:
   - 1
   - 1

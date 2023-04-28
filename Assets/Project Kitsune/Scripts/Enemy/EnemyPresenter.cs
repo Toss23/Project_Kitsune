@@ -12,12 +12,12 @@ public class EnemyPresenter : UnitPresenter
     protected override IUnit CreateUnit() => new Enemy(_info, _target.transform, _rigidbody);
     protected override IUnitView CreateUnitView() => GetComponent<EnemyView>();
     protected override bool IsCharacter() => false;
-    protected override GameObject NonCharacterUnit() => _enemyObject;
 
     protected override void BeforeAwake()
     {
         _target = GameObject.FindGameObjectWithTag("Character");
         _characterPresenter = _target.GetComponent<CharacterPresenter>();
+        _unitObject = _enemyObject;
     }
 
     protected override void AfterAwake()

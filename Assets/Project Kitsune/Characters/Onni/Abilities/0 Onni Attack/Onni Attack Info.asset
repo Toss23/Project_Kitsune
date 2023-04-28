@@ -10,23 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d538185ce0cfdb4eb5ee45fe3a1f6cc, type: 3}
-  m_Name: Onni Ability 2
+  m_Name: Onni Attack Info
   m_EditorClassIdentifier: 
   _useCharacterDamage: 1
-  _useCharacterCrit: 0
+  _useCharacterCrit: 1
   _abilityDamageType: 0
   _dotRate:
+  - 1
   - 1
   - 1
   _dotDuration:
   - 5
   - 5
-  _abilityType: 2
+  - 5
+  _abilityType: 1
   _meleeAnimationTime: 0
   _projectileSpeed: 10
   _projectileRange: 1
-  _projectileCount: 0100000001000000
+  _projectileCount: 000000000100000001000000
   _projectileSplitAngle:
+  - 0
   - 0
   - 0
   _projectileAuto: 0
@@ -37,21 +40,29 @@ MonoBehaviour:
   _auraObject: {fileID: 0}
   _damage:
   - 0
-  - 3
+  - 5
+  - 5
   _damageMultiplier:
+  - 100
   - 100
   - 100
   _castPerSecond:
   - 1
-  - 0.1
+  - 1
+  - 2
   _critChance:
+  - 0
   - 0
   - 0
   _critMultiplier:
   - 100
   - 100
-  _name: Fire Sphere
-  _description: 
+  - 100
+  _name: Attack
+  _description: 'Onni use her sword for attack enemy
+
+'
   _radius:
+  - 1
   - 1
   - 1

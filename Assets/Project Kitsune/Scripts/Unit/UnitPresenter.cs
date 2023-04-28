@@ -9,9 +9,10 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected IUnitView _unitView;
     protected Rigidbody2D _rigidbody;
 
+    protected GameObject _unitObject;
+
     private bool _isEnable = false;
     private bool _isCharacter;
-    private GameObject _nonCharacterUnit;
 
     public Transform Transform => transform;
     public IUnit Unit => _unit;
@@ -29,10 +30,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         {
             _unitView.CreateUnit(_info.Prefab);
         }
-        else
+        else if (_unitObject != null)
         {
-            _nonCharacterUnit = NonCharacterUnit();
-            _unitView.SetUnit(_nonCharacterUnit);
+            _unitView.SetUnit(_unitObject);
         }
 
         AfterAwake();
@@ -46,7 +46,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected abstract IUnitView CreateUnitView();
     protected abstract IUnit CreateUnit();
     protected abstract bool IsCharacter();
-    protected abstract GameObject NonCharacterUnit();
 
     protected abstract void BeforeAwake();
     protected abstract void AfterAwake();
@@ -112,6 +111,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
             for (int i = 0; i < count; i++)
             {
                 Ability abilityObject = Instantiate((Ability)ability);
+                abilityObject.name = ability.Info.Name;
                 abilityObject.Init(level, _isCharacter ? Target.Enemy : Target.Character);
                 Transform abilityTransform = abilityObject.gameObject.transform;
                 abilityTransform.position = _unitView.AbilityPoints.Points[point].transform.position;
@@ -123,6 +123,14 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
                     abilityObject.FuseWith(_unitView.AbilityPoints.Points[point].transform);
 
                 _unit.RegisterAbility(abilityObject);
+            }
+
+            if (ability.Info.HaveAura)
+            {
+                GameObject auraObject = Instantiate(ability.Info.AuraObject);
+                auraObject.transform.parent = _unitView.AbilityPoints.PointsAura[point].transform;
+                auraObject.transform.position = _unitView.AbilityPoints.PointsAura[point].transform.position;
+                auraObject.transform.localScale = ability.Info.AuraObject.transform.localScale;
             }
         }
     }

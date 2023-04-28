@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OnniAbility1 : Ability
+public class DarkWave : Ability
 {
     [SerializeField] private float _maxRadius = 8;
     [SerializeField] private float _speed = 2;

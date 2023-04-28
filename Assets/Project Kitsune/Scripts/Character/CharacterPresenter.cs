@@ -14,7 +14,6 @@ public class CharacterPresenter : UnitPresenter
     protected override IUnit CreateUnit() => new Character(_info, GetComponent<Rigidbody2D>());
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
     protected override bool IsCharacter() => true;
-    protected override GameObject NonCharacterUnit() => null;
 
     protected override void BeforeAwake()
     {
@@ -50,6 +49,7 @@ public class CharacterPresenter : UnitPresenter
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => FreezeAll();
         abilitiesSelection.OnAbilityUpped += (ability) => UnfreezeAll();
+        abilitiesSelection.OnAbilityUpCanceled += UnfreezeAll;
     }
 
     protected override void OnDisablePresenter()
@@ -75,6 +75,7 @@ public class CharacterPresenter : UnitPresenter
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => FreezeAll();
         abilitiesSelection.OnAbilityUpped -= (ability) => UnfreezeAll();
+        abilitiesSelection.OnAbilityUpCanceled -= UnfreezeAll;
     }
 
     private void FreezeAll()

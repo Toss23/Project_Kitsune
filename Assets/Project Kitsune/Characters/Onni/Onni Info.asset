@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
-  m_Name: Onni
+  m_Name: Onni Info
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1576545529191734021, guid: 8a3b20729fbed8a43bdf64797c78082f, type: 3}
   _life: 100
@@ -27,4 +27,4 @@ MonoBehaviour:
   - {fileID: -8214929800551353737, guid: 1917bf3124161fe46bb0495fd3590bc5, type: 3}
   - {fileID: 5009820882724073540, guid: a08a6b8c46821cc47adf59759c0a6651, type: 3}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -8768349664125518155, guid: 1af4f78995f5beb4aad2220252f8012c, type: 3}

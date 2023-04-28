@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class AbilitiesSelection
 {
     public event Action<IAbility[], int[]> OnAbilitiesListGenerated;
     public event Action<IAbility> OnAbilityUpped;
+    public event Action OnAbilityUpCanceled;
 
     private IUnit _unit;
     private int _abilityLevelUpCount = 0;
@@ -26,8 +28,11 @@ public class AbilitiesSelection
         if (_abilityLevelUpCount > 0)
         {
             _generating = false;
-            _abilityLevelUpCount--;
             GenerateAbilitiesList();
+        }
+        else
+        {
+            OnAbilityUpCanceled?.Invoke();
         }
     }
 
@@ -36,6 +41,7 @@ public class AbilitiesSelection
         if (_generating == false)
         {
             _generating = true;
+            _abilityLevelUpCount--;
 
             AbilitiesState abilities = _unit.Abilities;
 
@@ -98,10 +104,5 @@ public class AbilitiesSelection
             else
                 OnAbilitiesListGenerated?.Invoke(abilitiesForCards, levels);
         }
-    }
-
-    public void OnSelected(IAbility ability)
-    {
-        OnAbilityUpped?.Invoke(ability);
     }
 }

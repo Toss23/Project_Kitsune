@@ -121,6 +121,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     protected abstract void OnUpdate(float deltaTime);
     protected abstract void OnCollisionStayWithEnemy(IUnit enemy);
     protected abstract void OnCollisionEnterWithEnemy(IUnit enemy);
+    protected virtual void OnCollisionWithObject(GameObject gameObject) { }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -151,6 +152,9 @@ public abstract class Ability : MonoBehaviour, IAbility
                 }
             }
         }
+
+        if (collision.tag != "Untagged")
+            OnCollisionWithObject(collision.gameObject);
     }
 
     private IUnit CallbackOnHit(Collider2D collision)
