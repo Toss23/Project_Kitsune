@@ -8,6 +8,7 @@ public abstract class Unit : IUnit
 
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesState Abilities { get; private set; }
+    public CursesContainer Curses { get; private set; }
 
     private List<IAbility> _castedAbilities;
     private bool _isImmune = false;
@@ -21,12 +22,15 @@ public abstract class Unit : IUnit
         Attributes.Level.OnLevelUp += LevelUp;
 
         Abilities = new AbilitiesState(info.Abilities, info.AttackAnimationTime);
+
+        Curses = new CursesContainer();
     }
 
     public void Update(float deltaTime)
     {
         Attributes.Life.Regenerate(deltaTime);
         Abilities.UpdateCastTime(deltaTime);
+        Curses.Update(deltaTime);
         OnUpdate(deltaTime);
     }   
 

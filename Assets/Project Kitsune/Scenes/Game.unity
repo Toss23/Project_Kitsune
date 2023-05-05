@@ -2498,7 +2498,7 @@ GameObject:
   - component: {fileID: 1647114554}
   - component: {fileID: 1647114553}
   m_Layer: 5
-  m_Name: Joystick
+  m_Name: Joystick Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
