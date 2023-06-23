@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -43,7 +44,12 @@ public class AbilityInfoEditor : Editor
 
     private SerializedProperty _radius;
 
+    private SerializedProperty _abilityProperties;
+
     private PropertyTab _propertyTab = PropertyTab.Damage;
+
+    private string _propertyNameAdd = "";
+    private string _propertyNameDelete = "";
 
     private void OnEnable()
     {
@@ -80,6 +86,8 @@ public class AbilityInfoEditor : Editor
         _description = serializedObject.FindProperty("_description");
 
         _radius = serializedObject.FindProperty("_radius");
+
+        _abilityProperties = serializedObject.FindProperty("_abilityProperties");
     }
 
     public override void OnInspectorGUI()
@@ -495,6 +503,99 @@ public class AbilityInfoEditor : Editor
 
                 EditorGUILayout.EndHorizontal();
             }
+        }
+
+        GUILayout.Space(10);
+
+        EditorGUILayout.LabelField("Additional Property", boldStyle);       
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Level", GUILayout.Width(width / 2));
+        GUILayout.Space(space);
+
+        for (int i = 0; i < _abilityProperties.arraySize; i++)
+        {
+            SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
+            SerializedProperty propertyName = property.FindPropertyRelative("Name");
+            EditorGUILayout.LabelField(propertyName.stringValue, GUILayout.Width(width));
+            GUILayout.Space(space);
+        }
+
+        if (_abilityProperties.arraySize < 5)
+        {
+            _propertyNameAdd = EditorGUILayout.TextField(_propertyNameAdd, GUILayout.Width(width));
+            if (GUILayout.Button("+", GUILayout.Width(25)))
+            {
+                _abilityProperties.arraySize += 1;
+                SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(_abilityProperties.arraySize - 1);
+                SerializedProperty propertyName = property.FindPropertyRelative("Name");
+                SerializedProperty propertyValues = property.FindPropertyRelative("Values");
+                propertyName.stringValue = _propertyNameAdd;
+                propertyValues.arraySize = 0;
+                _propertyNameAdd = "";
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+
+        for (int i = 0; i < _abilityProperties.arraySize; i++)
+        {
+            SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
+            SerializedProperty propertyValues = property.FindPropertyRelative("Values");
+
+            if (propertyValues.arraySize != _damage.arraySize)
+            {
+                int prevSize = propertyValues.arraySize;
+                propertyValues.arraySize = _damage.arraySize;
+                for (int j = prevSize; j < propertyValues.arraySize; j++)
+                {
+                    SerializedProperty element = propertyValues.GetArrayElementAtIndex(j);
+                    element.floatValue = 0;
+                }
+            }
+        }
+
+        if (_abilityProperties.arraySize > 0)
+        {
+            for (int i = 1; i < _damage.arraySize; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(15);
+                EditorGUILayout.LabelField(i.ToString(), GUILayout.Width(25));
+                GUILayout.Space(space);
+
+                for (int j = 0; j < _abilityProperties.arraySize; j++)
+                {
+                    SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(j);
+                    SerializedProperty propertyValues = property.FindPropertyRelative("Values");
+                    SerializedProperty propertyValue = propertyValues.GetArrayElementAtIndex(i);
+                    propertyValue.floatValue = EditorGUILayout.FloatField(propertyValue.floatValue, GUILayout.Width(width));
+                    GUILayout.Space(space);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(10);
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Delete", GUILayout.Width(width / 2));
+            GUILayout.Space(space);
+            _propertyNameDelete = EditorGUILayout.TextField(_propertyNameDelete, GUILayout.Width(width));
+            if (GUILayout.Button("Confirm", GUILayout.Width(100)))
+            {
+                for (int i = 0; i < _abilityProperties.arraySize; i++)
+                {
+                    SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
+                    SerializedProperty propertyName = property.FindPropertyRelative("Name");
+
+                    if (propertyName.stringValue == _propertyNameDelete)
+                    {
+                        _abilityProperties.DeleteArrayElementAtIndex(i);
+                    }
+                }
+
+                _propertyNameDelete = "";
+            }
+            EditorGUILayout.EndHorizontal();
         }
 
         GUILayout.Space(20);

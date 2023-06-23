@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Ability Info", menuName = "Create Ability Info")]
@@ -49,6 +51,8 @@ public class AbilityInfo : ScriptableObject
 
     [SerializeField] private float[] _radius;
 
+    [SerializeField] private AbilityProperty[] _abilityProperties;
+
     public bool UseCharacterDamage => _useCharacterDamage;
     public bool UseCharacterCrit => _useCharacterCrit;
 
@@ -81,4 +85,13 @@ public class AbilityInfo : ScriptableObject
     public string Description => _description;
 
     public float[] Radius => _radius;
+
+    public AbilityProperty[] AbilityProperties => _abilityProperties;
+}
+
+[Serializable]
+public class AbilityProperty
+{
+    [SerializeField] public string Name;
+    [SerializeField] public float[] Values;
 }

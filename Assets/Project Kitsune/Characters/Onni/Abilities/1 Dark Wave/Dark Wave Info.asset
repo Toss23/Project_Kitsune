@@ -55,3 +55,12 @@ MonoBehaviour:
   _radius:
   - 1
   - 1
+  _abilityProperties:
+  - Name: MaxRadius
+    Values:
+    - 0
+    - 8
+  - Name: WaveSpeed
+    Values:
+    - 0
+    - 2

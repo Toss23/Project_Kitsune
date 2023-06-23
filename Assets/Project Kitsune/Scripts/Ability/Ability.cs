@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum Target
@@ -24,9 +25,11 @@ public abstract class Ability : MonoBehaviour, IAbility
     private float _meleeTimer = 0;
     private Transform _pointToFusing;
     private Transform _nearestEnemy;
+    private Dictionary<string, float> _properties;
 
     public int Level => _level;
     public int MaxLevel => _info.Damage.Length - 1;
+    public Dictionary<string, float> Properties => _properties;
 
     public void Init(int level, Target target)
     {
@@ -56,6 +59,12 @@ public abstract class Ability : MonoBehaviour, IAbility
                 }
                 _nearestEnemy = nearestEnemy.transform;
             }
+        }
+
+        _properties = new Dictionary<string, float>();
+        foreach (AbilityProperty param in _info.AbilityProperties)
+        {
+            _properties.Add(param.Name, param.Values[_level]);
         }
     }
 
@@ -185,12 +194,6 @@ public abstract class Ability : MonoBehaviour, IAbility
             Destroy();
         else if (_info.AbilityType != AbilityInfo.Type.Projectile & _info.AbilityType != AbilityInfo.Type.Field)
             Destroy();
-    }
-
-    public void Description()
-    {
-        string description = Info.Description;
-
     }
 
     public void Destroy()
