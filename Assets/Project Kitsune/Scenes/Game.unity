@@ -3456,6 +3456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delta: {fileID: 340553699}
+  _cursesPoint: {fileID: 340553699}
 --- !u!70 &2101839333
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

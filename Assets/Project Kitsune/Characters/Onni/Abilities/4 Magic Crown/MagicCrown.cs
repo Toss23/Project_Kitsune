@@ -4,7 +4,7 @@ public class MagicCrown : Ability
 {
     protected override void OnCollisionEnterWithEnemy(IUnit enemy)
     {
-
+        
     }
 
     protected override void OnCollisionStayWithEnemy(IUnit enemy)

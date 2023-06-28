@@ -3,44 +3,40 @@ using System.Collections.Generic;
 
 public class CursesContainer
 {
-    public event Action<Curse> OnCurseIsEnded;
+    public event Action<Curse> OnCursed;
+    public event Action<Curse> OnCurseCleared;
 
-    private Dictionary<Curse, float> _curses;
+    private List<Curse> _curses;
 
     public CursesContainer()
     {
-        _curses = new Dictionary<Curse, float>();
+        _curses = new List<Curse>();
     }
 
-    public void Add(Curse curse, float time, bool stack)
-    {
-        if (_curses.ContainsKey(curse))
+    public void Add(Curse curse)
+    {     
+        if (_curses.Exists(i => i.Type == curse.Type))
         {
-            if (stack)
-            {
-                if (_curses[curse] < time)
-                    _curses[curse] = time;
-            }
-            else
-            {
-                _curses.Add(curse, time);
-            }
+            Curse prevCurse = _curses.Find(i => i.Type == curse.Type);
+            prevCurse.Effect = Math.Max(prevCurse.Effect, curse.Effect);
+            prevCurse.Duration = curse.Duration;
         }
         else
         {
-            _curses.Add(curse, time);
+            _curses.Add(curse);
+            OnCursed?.Invoke(curse);
         }
     }
 
     public void Update(float deltaTime)
     {
-        foreach (var curse in _curses)
+        foreach (Curse curse in _curses)
         {
-            _curses[curse.Key] -= deltaTime;
-            if (_curses[curse.Key] <= 0)
+            curse.Duration -= deltaTime;
+            if (curse.Duration <= 0)
             {
-                OnCurseIsEnded?.Invoke(curse.Key);
-                _curses.Remove(curse.Key);
+                OnCurseCleared?.Invoke(curse);
+                _curses.Remove(curse);
             }
         }
     }

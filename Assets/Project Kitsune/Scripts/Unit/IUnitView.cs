@@ -3,7 +3,7 @@ using UnityEngine;
 public interface IUnitView
 {
     public AbilityPoints AbilityPoints { get; }
-    public bool IsReversed { get; }
+    public bool IsMirrored { get; }
     public float Angle { get; }
 
     public void CreateUnit(GameObject prefab);
@@ -12,4 +12,5 @@ public interface IUnitView
     public void SetAngle(float angle);
     public void Freeze(bool state);
     public void SetAttackAnimationTime(float time);
+    public void SetCurseIcon(Curse curse, bool active);
 }

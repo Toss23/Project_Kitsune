@@ -7,6 +7,7 @@ public interface IUnit
 
     public AttributesContainer Attributes { get; }
     public AbilitiesState Abilities { get; }
+    public CursesContainer Curses { get; }
 
     public void Update(float deltaTime);
     public void FixedUpdate(float deltaTime);

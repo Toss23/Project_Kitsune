@@ -1,18 +1,24 @@
+using System;
 using UnityEngine;
 
 public abstract class UnitView : MonoBehaviour, IUnitView
 {
+    [Header("Base Property")]
     [SerializeField] private Transform _delta;
+    [SerializeField] private Transform _cursesPoint;
 
-    protected GameObject _unit;
-    protected Animator _animator;
-    protected AbilityPoints _abilityPoints;
-    protected bool _isReversed;
-    protected float _angle;
-    protected bool _freeze = false;
+    private GameObject _unit;
+    private Animator _animator;
+    private AbilityPoints _abilityPoints;
+
+    private bool _isMirrored;
+    private float _angle;
+    private bool _freeze = false;
+
+    private GameObject[] _cursesIcon;
 
     public AbilityPoints AbilityPoints => _abilityPoints;
-    public bool IsReversed => _isReversed;
+    public bool IsMirrored => _isMirrored;
     public float Angle => _angle;
 
     public void IsMoving(bool move)
@@ -29,7 +35,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _unit.name = prefab.name;
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
-        _isReversed = false;
+        _isMirrored = false;
     }
 
     public void SetUnit(GameObject unit)
@@ -37,7 +43,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _unit = unit;
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
-        _isReversed = false;
+        _isMirrored = false;
     }
 
     public void SetAngle(float angle)
@@ -45,8 +51,8 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         if (_freeze == false)
         {
             _angle = angle;
-            _isReversed = Mathf.Abs(angle) > 90;
-            transform.rotation = Quaternion.Euler(0, _isReversed ? 180 : 0, 0);
+            _isMirrored = Mathf.Abs(angle) > 90;
+            transform.rotation = Quaternion.Euler(0, _isMirrored ? 180 : 0, 0);
         }
     }
 
@@ -61,5 +67,22 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         {
             _animator.SetFloat("AttackTimeMultiplier", multiplier);
         }
+    }
+
+    public void SetCurseIcon(Curse curse, bool active)
+    {
+        if (_cursesIcon == null)
+        {
+            int cursesCount = Enum.GetNames(typeof(Curse.CurseType)).Length;
+            _cursesIcon = new GameObject[cursesCount];
+
+            for (int i = 0; i < cursesCount; i++)
+            {
+                _cursesIcon[i] = Instantiate(Curse.CursesSpite[(Curse.CurseType)i], _cursesPoint);
+                _cursesIcon[i].SetActive(false);
+            }
+        }
+
+        _cursesIcon[(int)curse.Type].SetActive(active);
     }
 }
