@@ -63,6 +63,12 @@ public abstract class Unit : IUnit
 
     public void TakeDamage(float value, bool isProjectile)
     {
+        if (Curses.Have(CursesInfo.List.Weakness))
+        {
+            Curse weakness = Curses.Find(CursesInfo.List.Weakness);
+            value *= (1 + weakness.Effect / 100f) * CursesInfo.Weakness.InputDamageMultiplier;
+        }
+
         if (_isImmune == false)
         {
             if (isProjectile)
@@ -96,6 +102,13 @@ public abstract class Unit : IUnit
         {
             float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
             bool isProjectile = ability.Info.AbilityType == AbilityInfo.Type.Projectile;
+
+            if (Curses.Have(CursesInfo.List.Weakness))
+            {
+                Curse weakness = Curses.Find(CursesInfo.List.Weakness);
+                damage *= weakness.Effect / 100f * CursesInfo.Weakness.OutputDamageMultiplier;
+            }
+
             target.TakeDamage(damage, isProjectile);
         }
     }

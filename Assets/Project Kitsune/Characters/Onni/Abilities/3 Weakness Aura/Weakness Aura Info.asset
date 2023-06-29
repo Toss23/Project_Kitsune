@@ -59,7 +59,7 @@ MonoBehaviour:
   - 0
   - 0
   _name: Weakness Aura
-  _description: Aura
+  _description: Have #Effect aura
   _radius:
   - 1
   - 1
@@ -70,3 +70,8 @@ MonoBehaviour:
     - 0
     - 50
     - 100
+  - Name: Duration
+    Values:
+    - 0
+    - 60
+    - 60

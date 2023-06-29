@@ -73,16 +73,29 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_cursesIcon == null)
         {
-            int cursesCount = Enum.GetNames(typeof(Curse.CurseType)).Length;
-            _cursesIcon = new GameObject[cursesCount];
+            int cursesCount = Enum.GetNames(typeof(CursesInfo.List)).Length;
+            _cursesIcon = new GameObject[cursesCount + 1];
+
+            _cursesIcon[_cursesIcon.Length - 1] = Instantiate(CursesInfo.CenterSprite, _cursesPoint);
 
             for (int i = 0; i < cursesCount; i++)
             {
-                _cursesIcon[i] = Instantiate(Curse.CursesSpite[(Curse.CurseType)i], _cursesPoint);
+                _cursesIcon[i] = Instantiate(CursesInfo.Spites[(CursesInfo.List)i], _cursesPoint);
                 _cursesIcon[i].SetActive(false);
             }
         }
 
-        _cursesIcon[(int)curse.Type].SetActive(active);
+        _cursesIcon[(int)curse.Name].SetActive(active);
+
+        bool haveCurse = false;
+        foreach (GameObject curseIcon in _cursesIcon)
+        {
+            if (curseIcon.activeSelf == true)
+            {
+                haveCurse = true;
+                break;
+            }
+        }
+        _cursesIcon[_cursesIcon.Length - 1].SetActive(haveCurse);
     }
 }

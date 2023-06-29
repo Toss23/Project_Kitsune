@@ -4,27 +4,39 @@ using UnityEngine;
 [System.Serializable]
 public class Curse
 {
-    public enum CurseType
+    public CursesInfo.List Name;
+    public float Duration;
+    public float Effect;
+
+    public Curse(CursesInfo.List name, float duration, float effect)
+    {
+        Name = name;
+        Duration = duration;
+        Effect = effect;
+    }
+}
+
+public static class CursesInfo
+{
+    public enum List
     {
         Weakness, Forest, Shadow, Exposure
     }
 
-    public static Dictionary<CurseType, GameObject> CursesSpite = new Dictionary<CurseType, GameObject>()
+    public static Dictionary<List, GameObject> Spites = new Dictionary<List, GameObject>()
     {
-        { CurseType.Weakness, Resources.Load<GameObject>("Curses/Weakness") },
-        { CurseType.Forest, Resources.Load<GameObject>("Curses/Forest") },
-        { CurseType.Shadow, Resources.Load<GameObject>("Curses/Shadow") },
-        { CurseType.Exposure, Resources.Load<GameObject>("Curses/Exposure") }
+        { List.Weakness, Resources.Load<GameObject>("Curses/Weakness") },
+        { List.Forest, Resources.Load<GameObject>("Curses/Forest") },
+        { List.Shadow, Resources.Load<GameObject>("Curses/Shadow") },
+        { List.Exposure, Resources.Load<GameObject>("Curses/Exposure") }
     };
+    public static GameObject CenterSprite = Resources.Load<GameObject>("Curses/Center");
 
-    public CurseType Type;
-    public float Duration;
-    public float Effect;
+    public static Weakness Weakness = new Weakness();
+}
 
-    public Curse(CurseType type, float duration, float effect)
-    {
-        Type = type;
-        Duration = duration;
-        Effect = effect;
-    }
+public class Weakness
+{
+    public float OutputDamageMultiplier = 0.5f;
+    public float InputDamageMultiplier = 2f;
 }
