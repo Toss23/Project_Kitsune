@@ -6,6 +6,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     [Header("Base Property")]
     [SerializeField] private Transform _delta;
     [SerializeField] private Transform _cursesPoint;
+    [SerializeField] private Transform _shieldPoint;
 
     private GameObject _unit;
     private Animator _animator;
@@ -16,6 +17,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     private bool _freeze = false;
 
     private GameObject[] _cursesIcon;
+    private GameObject _magicShieldSprite;
 
     public AbilityPoints AbilityPoints => _abilityPoints;
     public bool IsMirrored => _isMirrored;
@@ -97,5 +99,16 @@ public abstract class UnitView : MonoBehaviour, IUnitView
             }
         }
         _cursesIcon[_cursesIcon.Length - 1].SetActive(haveCurse);
+    }
+
+    public void SetMagicShield(bool active)
+    {
+        if (_magicShieldSprite == null)
+        {
+            GameObject magicShield = Resources.Load<GameObject>("MagicShield");
+            _magicShieldSprite = Instantiate(magicShield, _shieldPoint);
+        }
+
+        _magicShieldSprite.SetActive(active);
     }
 }

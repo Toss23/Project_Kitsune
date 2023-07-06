@@ -15,8 +15,8 @@ MonoBehaviour:
   _prefab: {fileID: 1576545529191734021, guid: 8a3b20729fbed8a43bdf64797c78082f, type: 3}
   _life: 100
   _lifeRegeneration: 0
-  _magicShield: 0
-  _magicShieldRegeneration: 0
+  _magicShield: 100
+  _magicShieldRegeneration: 10
   _damage: 1
   _critChance: 0
   _critMultiplier: 150

@@ -56,6 +56,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += CreateAbility;
         _unit.Abilities.OnLevelUpAttack += _unitView.SetAttackAnimationTime;
+        _unit.Attributes.MagicShield.OnLifeChange += (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
         if (_unit.Abilities.Levels[0] == 0) _unit.Abilities.LevelUp(0);
@@ -68,6 +69,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= CreateAbility;
         _unit.Abilities.OnLevelUpAttack -= _unitView.SetAttackAnimationTime;
+        _unit.Attributes.MagicShield.OnLifeChange -= (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
         OnDisablePresenter();

@@ -13,4 +13,5 @@ public interface IUnitView
     public void Freeze(bool state);
     public void SetAttackAnimationTime(float time);
     public void SetCurseIcon(Curse curse, bool active);
+    public void SetMagicShield(bool active);
 }
