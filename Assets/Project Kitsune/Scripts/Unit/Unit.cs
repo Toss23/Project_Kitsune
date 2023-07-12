@@ -29,6 +29,7 @@ public abstract class Unit : IUnit
     public void Update(float deltaTime)
     {
         Attributes.Life.Regenerate(deltaTime);
+        Attributes.MagicShield.Regenerate(deltaTime);
         Abilities.UpdateCastTime(deltaTime);
         Curses.Update(deltaTime);
         OnUpdate(deltaTime);

@@ -36,11 +36,11 @@ public class CharacterPresenter : UnitPresenter
 
         Life life = _unit.Attributes.Life;
         _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
-        life.OnLifeChange += (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
+        life.OnChanged += (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
 
         Life magicShield = _unit.Attributes.MagicShield;
         _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
-        magicShield.OnLifeChange += (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
+        magicShield.OnChanged += (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
 
         Level level = _unit.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
@@ -65,10 +65,10 @@ public class CharacterPresenter : UnitPresenter
         _joystick.IsActive -= (active) => _unitView.IsMoving(active);
 
         Life life = _unit.Attributes.Life;
-        life.OnLifeChange -= (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
+        life.OnChanged -= (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
 
         Life magicShield = _unit.Attributes.MagicShield;
-        magicShield.OnLifeChange -= (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
+        magicShield.OnChanged -= (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
 
         Level level = _unit.Attributes.Level;
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());

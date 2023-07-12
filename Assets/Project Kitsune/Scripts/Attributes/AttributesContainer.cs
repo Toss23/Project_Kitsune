@@ -9,7 +9,7 @@ public class AttributesContainer
     public AttributesContainer(UnitInfo info)
     {
         Life = new Life(info.Life, info.LifeRegeneration);
-        MagicShield = new Life(info.Life, info.LifeRegeneration);
+        MagicShield = new Life(info.MagicShield, info.MagicShieldRegeneration);
         Level = new Level();
         Damage = new Damage(info.Damage, info.CritChance, info.CritMultiplier);
         Armour = new Armour(info.Armour);

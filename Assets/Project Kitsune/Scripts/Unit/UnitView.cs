@@ -107,6 +107,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         {
             GameObject magicShield = Resources.Load<GameObject>("MagicShield");
             _magicShieldSprite = Instantiate(magicShield, _shieldPoint);
+            _magicShieldSprite.name = "Magic Shield";
         }
 
         _magicShieldSprite.SetActive(active);

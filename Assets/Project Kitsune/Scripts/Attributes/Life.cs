@@ -2,7 +2,7 @@ using System;
 
 public class Life : Attribute
 {
-    public event Action<float> OnLifeChange;
+    public event Action<float> OnChanged;
 
     public float Regeneration { get; private set; }
 
@@ -19,18 +19,21 @@ public class Life : Attribute
 
     public void Regenerate(float deltaTime)
     {
-        _timer += deltaTime;
-        while (_timer >= _regenerationFrequercy)
+        if (Regeneration != 0)
         {
-            _timer -= _regenerationFrequercy;
-            Add(Regeneration * _regenerationFrequercy);
-            OnLifeChange?.Invoke(Value);
+            _timer += deltaTime;
+            while (_timer >= _regenerationFrequercy)
+            {
+                _timer -= _regenerationFrequercy;
+                Add(Regeneration * _regenerationFrequercy);
+                OnChanged?.Invoke(Value);
+            }
         }
     }
 
     public void TakeDamage(float damage)
     {
         Add(damage);
-        OnLifeChange?.Invoke(Value);
+        OnChanged?.Invoke(Value);
     }
 }
