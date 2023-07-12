@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class UnitView : MonoBehaviour, IUnitView
 {
     [Header("Base Property")]
-    [SerializeField] private Transform _delta;
+    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _cursesPoint;
     [SerializeField] private Transform _shieldPoint;
 
@@ -14,7 +14,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     private bool _isMirrored;
     private float _angle;
-    private bool _freeze = false;
+    private bool _active = true;
 
     private GameObject[] _cursesIcon;
     private GameObject _magicShieldSprite;
@@ -27,22 +27,14 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_animator != null)
         {
-            _animator.SetBool("Move", _freeze ? false : move);
+            _animator.SetBool("Move", _active ? move : false);
         }
     }
 
     public void CreateUnit(GameObject prefab)
     {
-        _unit = Instantiate(prefab, _delta);
+        _unit = Instantiate(prefab, _spawnPoint);
         _unit.name = prefab.name;
-        _animator = _unit.GetComponent<Animator>();
-        _abilityPoints = _unit.GetComponent<AbilityPoints>();
-        _isMirrored = false;
-    }
-
-    public void SetUnit(GameObject unit)
-    {
-        _unit = unit;
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
@@ -50,7 +42,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     public void SetAngle(float angle)
     {
-        if (_freeze == false)
+        if (_active)
         {
             _angle = angle;
             _isMirrored = Mathf.Abs(angle) > 90;
@@ -58,9 +50,9 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         }
     }
 
-    public void Freeze(bool state)
+    public void SetActive(bool active)
     {
-        _freeze = state;
+        _active = active;
     }
 
     public void SetAttackAnimationTime(float multiplier)

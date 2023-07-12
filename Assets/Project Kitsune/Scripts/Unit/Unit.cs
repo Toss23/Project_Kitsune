@@ -9,6 +9,7 @@ public abstract class Unit : IUnit
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesState Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }
+    public float ExperienceGain { get; private set; }
 
     private List<IAbility> _castedAbilities;
     private bool _isImmune = false;
@@ -24,6 +25,8 @@ public abstract class Unit : IUnit
         Abilities = new AbilitiesState(info.Abilities, info.AttackAnimationTime);
 
         Curses = new CursesContainer();
+
+        ExperienceGain = info.ExperienceGain;
     }
 
     public void Update(float deltaTime)

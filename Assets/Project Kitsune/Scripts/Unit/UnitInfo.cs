@@ -14,6 +14,8 @@ public class UnitInfo : ScriptableObject
     [SerializeField] private float _critMultiplier = 150;
     [SerializeField] private float _armour = 0;
 
+    [SerializeField] private float _experienceGain = 0;
+
     [SerializeField] private float _attackAnimationTime = 1f;
     [SerializeField] private Ability[] _abilities = new Ability[5];
 
@@ -26,6 +28,7 @@ public class UnitInfo : ScriptableObject
     public float CritChance => _critChance;
     public float CritMultiplier => _critMultiplier;
     public float Armour => _armour;
+    public float ExperienceGain => _experienceGain;
     public float AttackAnimationTime => _attackAnimationTime;
     public IAbility[] Abilities => _abilities;
 }

@@ -5,37 +5,34 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
     [SerializeField] protected UnitInfo _info;
 
+    // Base
+    protected UnitType _unitType;
     protected IUnit _unit;
     protected IUnitView _unitView;
+    protected GameObject _unitViewObject;
+
+    // Reference
     protected Rigidbody2D _rigidbody;
-
-    protected GameObject _unitObject;
-
-    private bool _isEnable = false;
-    private bool _isCharacter;
+    private IGameLogic _gameLogic;
 
     public Transform Transform => transform;
     public IUnit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
-    private void Awake()
+    public void Init(UnitType unitType)
     {
-        BeforeAwake();
-
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _unitType = unitType;
         _unit = CreateUnit();
         _unitView = CreateUnitView();
-        _isCharacter = IsCharacter();
-        if (_isCharacter)
-        {
-            _unitView.CreateUnit(_info.Prefab);
-        }
-        else if (_unitObject != null)
-        {
-            _unitView.SetUnit(_unitObject);
-        }
+        _unitView.CreateUnit(_info.Prefab);
 
-        AfterAwake();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _gameLogic = GameLogic.Instance;
+
+        _gameLogic.OnUpdate += _unit.Update;
+        _gameLogic.OnFixedUpdate += _unit.FixedUpdate;
+
+        Enable();
     }
 
     protected abstract void OnDeath();
@@ -45,14 +42,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     protected abstract IUnitView CreateUnitView();
     protected abstract IUnit CreateUnit();
-    protected abstract bool IsCharacter();
-
-    protected abstract void BeforeAwake();
-    protected abstract void AfterAwake();
 
     public void Enable()
     {
-        _isEnable = true;
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += CreateAbility;
         _unit.Abilities.OnLevelUpAttack += _unitView.SetAttackAnimationTime;
@@ -65,7 +57,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Disable()
     {
-        _isEnable = false;
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= CreateAbility;
         _unit.Abilities.OnLevelUpAttack -= _unitView.SetAttackAnimationTime;
@@ -73,22 +64,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
         OnDisablePresenter();
-    }
-
-    private void Update()
-    {
-        if (_isEnable)
-        {
-            _unit.Update(Time.deltaTime);
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isEnable)
-        {
-            _unit.FixedUpdate(Time.fixedDeltaTime);
-        }
     }
 
     private void Death()
@@ -118,7 +93,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
             {
                 Ability abilityObject = Instantiate((Ability)ability);
                 abilityObject.name = ability.Info.Name;
-                abilityObject.Init(level, _isCharacter ? Target.Enemy : Target.Character);
+                abilityObject.Init(level, (_unitType == UnitType.Character) ? Target.Enemy : Target.Character);
                 Transform abilityTransform = abilityObject.gameObject.transform;
                 abilityTransform.position = _unitView.AbilityPoints.Points[point].transform.position;
                 if (ability.Info.AbilityType != AbilityInfo.Type.Field)

@@ -63,7 +63,7 @@ MonoBehaviour:
   _radius:
   - 1
   - 1
-  - 1
+  - 2
   _abilityProperties:
   - Name: Effect
     Values:

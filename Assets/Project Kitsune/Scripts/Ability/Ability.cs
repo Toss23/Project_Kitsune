@@ -76,20 +76,21 @@ public abstract class Ability : MonoBehaviour, IAbility
     private void Awake()
     {   
         OnCreate();
+        GameLogic.Instance.OnUpdate += UpdateAbility;
     }
 
-    private void Update()
+    private void UpdateAbility(float deltaTime)
     {
         if (_info.AbilityType == AbilityInfo.Type.Melee)
         {
-            _meleeTimer += Time.deltaTime;
+            _meleeTimer += deltaTime;
             if (_meleeTimer >= _info.MeleeAnimationTime)
                 Destroy();
         }
 
         if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime && _info.AbilityType != AbilityInfo.Type.Field)
         {
-            _dotLifeTimer += Time.deltaTime;
+            _dotLifeTimer += deltaTime;
             if (_dotLifeTimer >= _info.DotDuration[_level])
                 Destroy();
         }
@@ -103,16 +104,16 @@ public abstract class Ability : MonoBehaviour, IAbility
                     Vector2 delta = _nearestEnemy.transform.position - transform.position;
                     float targetAngle = Mathf.Atan2(delta.y, delta.x);
                     Quaternion quaternion = Quaternion.Euler(0, 0, targetAngle * Mathf.Rad2Deg);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternion, 360 * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternion, 360 * deltaTime);
                 }
             }
 
             float deltaX = Mathf.Cos(transform.eulerAngles.z * Mathf.Deg2Rad);
             float deltaY = Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad);
-            Vector3 deltaPosition = new Vector3(deltaX, deltaY) * _info.ProjectileSpeed * Time.deltaTime;
+            Vector3 deltaPosition = new Vector3(deltaX, deltaY) * _info.ProjectileSpeed * deltaTime;
             transform.position += deltaPosition;
 
-            _projectileTimer += Time.deltaTime;
+            _projectileTimer += deltaTime;
             if (_projectileTimer >= _info.ProjectileRange)
                 Destroy();
         }
@@ -123,7 +124,7 @@ public abstract class Ability : MonoBehaviour, IAbility
                 transform.position = _pointToFusing.transform.position;
         }
 
-        OnUpdate(Time.deltaTime);
+        OnUpdate(deltaTime);
     }
 
     protected abstract void OnCreate();
@@ -144,26 +145,29 @@ public abstract class Ability : MonoBehaviour, IAbility
             }
         }
     }
-
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
+        if (GameLogic.Instance.Paused == false)
         {
-            _dotDamageTimer += Time.deltaTime;
-            while (_dotDamageTimer >= _info.DotRate[_level])
+            if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
             {
-                _dotDamageTimer -= _info.DotRate[_level];
-                IUnit unit = CallbackOnHit(collision);
-                if (unit != null)
+                _dotDamageTimer += Time.deltaTime;
+                while (_dotDamageTimer >= _info.DotRate[_level])
                 {
-                    OnCollisionStayWithEnemy(unit);
-                    DestroyOnHit();
+                    _dotDamageTimer -= _info.DotRate[_level];
+                    IUnit unit = CallbackOnHit(collision);
+                    if (unit != null)
+                    {
+                        OnCollisionStayWithEnemy(unit);
+                        DestroyOnHit();
+                    }
                 }
             }
-        }
 
-        if (collision.tag != "Untagged")
-            OnCollisionWithObject(collision.gameObject);
+            if (collision.tag != "Untagged")
+                OnCollisionWithObject(collision.gameObject);
+        }
     }
 
     private IUnit CallbackOnHit(Collider2D collision)
@@ -198,6 +202,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public void Destroy()
     {
+        GameLogic.Instance.OnUpdate -= UpdateAbility;
         Destroy(gameObject);
     }
 }

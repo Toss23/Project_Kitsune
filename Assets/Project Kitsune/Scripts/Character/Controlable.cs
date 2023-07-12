@@ -4,7 +4,7 @@ public class Controlable
 {
     private float _speed;
     private Rigidbody2D _rigidbody;
-    private bool _freeze = false;
+    private bool _active;
     private Vector2 _position;
 
     public Controlable(Rigidbody2D rigidbody, float speed)
@@ -12,21 +12,22 @@ public class Controlable
         _rigidbody = rigidbody;
         _speed = speed;
         _position = rigidbody.position;
+        _active = true;
     }
 
-    public void Freeze(bool state)
+    public void SetActive(bool active)
     {
-        _freeze = state;
+        _active = active;
 
-        if (state)
-            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-        else
+        if (active)
             _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        else
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void Move(float angle, float deltaTime)
     {
-        if (_freeze == false)
+        if (_active)
         {
             float deltaX = Mathf.Cos(angle * Mathf.Deg2Rad);
             float deltaY = Mathf.Sin(angle * Mathf.Deg2Rad);

@@ -4,28 +4,16 @@ using System;
 [RequireComponent(typeof(CharacterView))]
 public class CharacterPresenter : UnitPresenter
 {
-    public event Action<bool> OnFreeze;
-
     [SerializeField] private Joystick _joystick;
     [SerializeField] private ProgressBar _lifeBar;
     [SerializeField] private ProgressBar _magicShieldBar;
     [SerializeField] private ProgressBar _experienceBar;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
 
+    public Character UnitCharacter => (Character)_unit;
+
     protected override IUnit CreateUnit() => new Character(_info, GetComponent<Rigidbody2D>());
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
-    protected override bool IsCharacter() => true;
-
-    protected override void BeforeAwake()
-    {
-        
-    }
-
-    protected override void AfterAwake()
-    {
-        _abilitiesSelectionPresenter.Init(this);
-        Enable();
-    }
 
     protected override void OnEnablePresenter()
     {
@@ -46,15 +34,13 @@ public class CharacterPresenter : UnitPresenter
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
 
-        OnFreeze += controlable.Freeze;
-        OnFreeze += _unit.Abilities.Freeze;
-        OnFreeze += _unitView.Freeze;
-        OnFreeze += _unit.Immune;
-
+        
+        /*
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => FreezeAll();
         abilitiesSelection.OnAbilityUpped += (ability) => UnfreezeAll();
         abilitiesSelection.OnAbilityUpCanceled += UnfreezeAll;
+        */  
     }
 
     protected override void OnDisablePresenter()
@@ -72,30 +58,18 @@ public class CharacterPresenter : UnitPresenter
 
         Level level = _unit.Attributes.Level;
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-
-        OnFreeze -= controlable.Freeze;
-        OnFreeze -= _unit.Abilities.Freeze;
-        OnFreeze -= _unitView.Freeze;
-        OnFreeze -= _unit.Immune;
-
+        
+        
+        /*
         AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
         abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => FreezeAll();
         abilitiesSelection.OnAbilityUpped -= (ability) => UnfreezeAll();
         abilitiesSelection.OnAbilityUpCanceled -= UnfreezeAll;
-    }
-
-    private void FreezeAll()
-    {
-        OnFreeze?.Invoke(true);
-    }
-
-    private void UnfreezeAll()
-    {
-        OnFreeze?.Invoke(false);
+        */
     }
 
     protected override void OnDeath()
     {
-
+        GameLogic.Instance.EndGame();
     }
 }

@@ -17,6 +17,8 @@ public class UnitInfoEditor : Editor
     private SerializedProperty _critMultiplier; 
     private SerializedProperty _armour;
 
+    private SerializedProperty _experienceGain;
+
     private SerializedProperty _attackAnimationTime;
     private SerializedProperty _abilities;
 
@@ -34,6 +36,8 @@ public class UnitInfoEditor : Editor
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
         _armour = serializedObject.FindProperty("_armour");
+
+        _experienceGain = serializedObject.FindProperty("_experienceGain");
 
         _attackAnimationTime = serializedObject.FindProperty("_attackAnimationTime");
         _abilities = serializedObject.FindProperty("_abilities");
@@ -134,6 +138,15 @@ public class UnitInfoEditor : Editor
         GUILayout.Space(space);
         _critMultiplier.floatValue = EditorGUILayout.FloatField(_critMultiplier.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
+        GUILayout.Space(10);
+
+        EditorGUILayout.LabelField("Enemy", boldStyle);
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Experience Gain", GUILayout.Width(width));
+        _experienceGain.floatValue = EditorGUILayout.FloatField(_experienceGain.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
         GUILayout.Space(10);
 
         if (_abilities.arraySize != 5)

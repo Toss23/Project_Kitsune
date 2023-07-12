@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AbilitiesSelectionView))]
-public class AbilitiesSelectionPresenter : MonoBehaviour
+public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPresenter
 {
     private IAbilitiesSelectionView _abilitiesSelectionView;
     private AbilitiesSelection _abilitiesSelection;
@@ -18,7 +18,7 @@ public class AbilitiesSelectionPresenter : MonoBehaviour
         Enable();
     }
 
-    private void Enable()
+    public void Enable()
     {
         _unit.OnLevelUp += _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated += _abilitiesSelectionView.Build;
@@ -26,7 +26,7 @@ public class AbilitiesSelectionPresenter : MonoBehaviour
         _abilitiesSelectionView.OnSelected += (ability) => _abilitiesSelection.CheckRequirementAbilityUp();
     }
 
-    private void Disable()
+    public void Disable()
     {
         _unit.OnLevelUp -= _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated -= _abilitiesSelectionView.Build;

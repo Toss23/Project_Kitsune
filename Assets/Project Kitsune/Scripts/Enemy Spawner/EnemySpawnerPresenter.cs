@@ -11,24 +11,18 @@ public class EnemySpawnerPresenter : MonoBehaviour
     private void Awake()
     {
         _enemySpawner = new EnemySpawner(_info);
+        GameLogic.Instance.OnUpdate += _enemySpawner.Update;
         Enable();
-    }
-
-    private void Update()
-    {
-        _enemySpawner.Update(Time.deltaTime);
     }
 
     private void Enable()
     {
         _enemySpawner.SpawnEnemy += SpawnEnemy;
-        _characterPresenter.OnFreeze += _enemySpawner.Freeze;
     }
 
     private void Disable()
     {
         _enemySpawner.SpawnEnemy -= SpawnEnemy;
-        _characterPresenter.OnFreeze -= _enemySpawner.Freeze;
     }
 
     private void SpawnEnemy(IUnitPresenter unitPresenter)
