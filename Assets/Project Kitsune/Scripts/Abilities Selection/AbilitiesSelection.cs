@@ -1,31 +1,31 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class AbilitiesSelection
 {
     public event Action<IAbility[], int[]> OnAbilitiesListGenerated;
-    public event Action<IAbility> OnAbilityUpped;
     public event Action OnAbilityUpCanceled;
 
-    private IUnit _unit;
-    private int _abilityLevelUpCount = 0;
-    private bool _generating = false;
+    private IUnit _character;
+    private int _pointsToLevelUp;
+    private bool _generating;
 
-    public AbilitiesSelection(IUnit unit)
+    public AbilitiesSelection(IUnit character)
     {
-        _unit = unit;
+        _character = character;
+        _pointsToLevelUp = 0;
+        _generating = false;
     }
 
     public void AbilityLevelUp()
     {
-        _abilityLevelUpCount++;
+        _pointsToLevelUp++;
         GenerateAbilitiesList();
     }
 
     public void CheckRequirementAbilityUp()
     {
-        if (_abilityLevelUpCount > 0)
+        if (_pointsToLevelUp > 0)
         {
             _generating = false;
             GenerateAbilitiesList();
@@ -41,9 +41,9 @@ public class AbilitiesSelection
         if (_generating == false)
         {
             _generating = true;
-            _abilityLevelUpCount--;
+            _pointsToLevelUp--;
 
-            AbilitiesState abilities = _unit.Abilities;
+            AbilitiesState abilities = _character.Abilities;
 
             List<int> canLevelUp = new List<int>();
             int[] abilitiesIdsForCards = { -1, -1 };
@@ -100,7 +100,7 @@ public class AbilitiesSelection
             levels[1] = abilitiesIdsForCards[1] != -1 ? abilities.Levels[abilitiesIdsForCards[1]] : 0;
 
             if (abilitiesIdsForCards[0] == -1 & abilitiesIdsForCards[1] == -1)
-                OnAbilityUpped?.Invoke(null);
+                OnAbilityUpCanceled?.Invoke();
             else
                 OnAbilitiesListGenerated?.Invoke(abilitiesForCards, levels);
         }

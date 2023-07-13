@@ -21,16 +21,13 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Init(UnitType unitType)
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _gameLogic = GameLogic.Instance;
+
         _unitType = unitType;
         _unit = CreateUnit();
         _unitView = CreateUnitView();
         _unitView.CreateUnit(_info.Prefab);
-
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _gameLogic = GameLogic.Instance;
-
-        _gameLogic.OnUpdate += _unit.Update;
-        _gameLogic.OnFixedUpdate += _unit.FixedUpdate;
 
         Enable();
     }
@@ -45,6 +42,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Enable()
     {
+        _gameLogic.OnUpdate += _unit.Update;
+        _gameLogic.OnFixedUpdate += _unit.FixedUpdate;
+
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += CreateAbility;
         _unit.Abilities.OnLevelUpAttack += _unitView.SetAttackAnimationTime;
@@ -57,6 +57,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Disable()
     {
+        _gameLogic.OnUpdate -= _unit.Update;
+        _gameLogic.OnFixedUpdate -= _unit.FixedUpdate;
+
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= CreateAbility;
         _unit.Abilities.OnLevelUpAttack -= _unitView.SetAttackAnimationTime;

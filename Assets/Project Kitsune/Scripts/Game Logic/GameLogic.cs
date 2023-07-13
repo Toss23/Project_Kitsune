@@ -11,11 +11,13 @@ public class GameLogic : MonoBehaviour, IGameLogic
 
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
+    [SerializeField] private EnemySpawnerPresenter _enemySpawner;
 
     private bool _paused = false;
 
     public IUnitPresenter Character => _character;
     public IAbilitiesSelectionPresenter AbilitiesSelection => _abilitiesSelection;
+    public IEnemySpawnerPresenter EnemySpawner => _enemySpawner;
     public bool Paused => _paused;
 
     private void Awake()
@@ -48,6 +50,10 @@ public class GameLogic : MonoBehaviour, IGameLogic
         _abilitiesSelection.Init(Character);
         Debug.Log("[GL] Abilities Selection initialized...");
 
+        // Init Enemy Spawner
+        EnemySpawner.Init(Character);
+        Debug.Log("[GL] Enemy Spawner initialized...");
+
         // Get References
         _controlable = _character.UnitCharacter.Controlable;
         _unitView = _character.UnitView;
@@ -62,18 +68,24 @@ public class GameLogic : MonoBehaviour, IGameLogic
 
     public void PauseGame()
     {
-        _paused = true;
-        _controlable.SetActive(false);
-        _unitView.SetActive(false);
-        _unit.Immune(true);
+        if (_paused == false)
+        {
+            _paused = true;
+            _controlable.SetActive(false);
+            _unitView.SetActive(false);
+            _unit.Immune(true);
+        }
     }
 
     public void ContinueGame()
     {
-        _paused = false;
-        _controlable.SetActive(true);
-        _unitView.SetActive(true);
-        _unit.Immune(false);
+        if (_paused == true)
+        {
+            _paused = false;
+            _controlable.SetActive(true);
+            _unitView.SetActive(true);
+            _unit.Immune(false);
+        }
     }
 
     public void EndGame()

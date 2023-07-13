@@ -53,6 +53,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void SetActive(bool active)
     {
         _active = active;
+        _animator.SetLayerWeight(_animator.GetLayerIndex("Attack"), active ? 1 : 0);
     }
 
     public void SetAttackAnimationTime(float multiplier)

@@ -33,14 +33,6 @@ public class CharacterPresenter : UnitPresenter
         Level level = _unit.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-
-        
-        /*
-        AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => FreezeAll();
-        abilitiesSelection.OnAbilityUpped += (ability) => UnfreezeAll();
-        abilitiesSelection.OnAbilityUpCanceled += UnfreezeAll;
-        */  
     }
 
     protected override void OnDisablePresenter()
@@ -58,14 +50,6 @@ public class CharacterPresenter : UnitPresenter
 
         Level level = _unit.Attributes.Level;
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-        
-        
-        /*
-        AbilitiesSelection abilitiesSelection = _abilitiesSelectionPresenter.AbilitiesSelection;
-        abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => FreezeAll();
-        abilitiesSelection.OnAbilityUpped -= (ability) => UnfreezeAll();
-        abilitiesSelection.OnAbilityUpCanceled -= UnfreezeAll;
-        */
     }
 
     protected override void OnDeath()

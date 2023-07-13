@@ -7,6 +7,7 @@ public interface IGameLogic
 
     public IUnitPresenter Character { get; }
     public IAbilitiesSelectionPresenter AbilitiesSelection { get; }
+    public IEnemySpawnerPresenter EnemySpawner { get; }
     public bool Paused { get; }
 
     public void LoadGame();
