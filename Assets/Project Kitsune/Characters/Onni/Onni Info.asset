@@ -15,12 +15,13 @@ MonoBehaviour:
   _prefab: {fileID: 1576545529191734021, guid: 8a3b20729fbed8a43bdf64797c78082f, type: 3}
   _life: 100
   _lifeRegeneration: 0
-  _magicShield: 100
-  _magicShieldRegeneration: 10
+  _magicShield: 0
+  _magicShieldRegeneration: 1
   _damage: 1
   _critChance: 0
   _critMultiplier: 150
   _armour: 0
+  _experienceGain: 0
   _attackAnimationTime: 1
   _abilities:
   - {fileID: 1213999324271516995, guid: 2076b8a3fa22f974f8decf27424077a3, type: 3}

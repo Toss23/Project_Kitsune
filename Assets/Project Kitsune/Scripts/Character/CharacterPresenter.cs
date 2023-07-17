@@ -23,12 +23,11 @@ public class CharacterPresenter : UnitPresenter
         _joystick.IsActive += (active) => _unitView.IsMoving(active);
 
         Life life = _unit.Attributes.Life;
-        _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
-        life.OnChanged += (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
-
         Life magicShield = _unit.Attributes.MagicShield;
-        _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
-        magicShield.OnChanged += (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
+        UpdateLifeBar(life, magicShield);
+        _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
+        life.OnChanged += (value) => UpdateLifeBar(life, magicShield);
+        magicShield.OnChanged += (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
 
         Level level = _unit.Attributes.Level;
         _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
@@ -43,10 +42,9 @@ public class CharacterPresenter : UnitPresenter
         _joystick.IsActive -= (active) => _unitView.IsMoving(active);
 
         Life life = _unit.Attributes.Life;
-        life.OnChanged -= (value) => _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
-
         Life magicShield = _unit.Attributes.MagicShield;
-        magicShield.OnChanged -= (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), magicShield.ToString());
+        life.OnChanged -= (value) => UpdateLifeBar(life, magicShield);
+        magicShield.OnChanged -= (value) => _magicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
 
         Level level = _unit.Attributes.Level;
         level.OnExperienceChanged -= (value) => _experienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
@@ -55,5 +53,17 @@ public class CharacterPresenter : UnitPresenter
     protected override void OnDeath()
     {
         GameLogic.Instance.EndGame();
+    }
+
+    private void UpdateLifeBar(Life life, Life magicShield)
+    {
+        if (magicShield.Maximum > 0)
+        {
+            _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString() + " (" + magicShield.ToString() + ")");
+        }
+        else
+        {
+            _lifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
+        }
     }
 }

@@ -28,7 +28,7 @@ public abstract class Attribute
 
     public override string ToString()
     {
-        return Math.Round(Value) + "/" + Math.Round(Maximum);
+        return Math.Floor(Value) + "";
     }
 
     private float Normalize()
