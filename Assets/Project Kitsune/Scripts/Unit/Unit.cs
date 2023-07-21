@@ -7,7 +7,7 @@ public abstract class Unit : IUnit
     public event Action OnDeath;
 
     public AttributesContainer Attributes { get; private set; }
-    public AbilitiesState Abilities { get; private set; }
+    public AbilitiesContainer Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }
     public float ExperienceGain { get; private set; }
 
@@ -22,7 +22,7 @@ public abstract class Unit : IUnit
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesState(info.Abilities, info.AttackAnimationTime);
+        Abilities = new AbilitiesContainer(info.Abilities, info.AttackAnimationTime);
 
         Curses = new CursesContainer();
 

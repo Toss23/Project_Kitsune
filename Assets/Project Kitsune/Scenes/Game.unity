@@ -3614,11 +3614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: 44fba396f7a876446a817d54e4e78d9f, type: 2}
-  _joystick: {fileID: 1647114553}
-  _lifeBar: {fileID: 6766490}
-  _magicShieldBar: {fileID: 368625132}
-  _experienceBar: {fileID: 621491772}
-  _abilitiesSelectionPresenter: {fileID: 668563999}
 --- !u!114 &2101839332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3634,6 +3629,11 @@ MonoBehaviour:
   _spawnPoint: {fileID: 340553699}
   _cursesPoint: {fileID: 340553699}
   _shieldPoint: {fileID: 340553699}
+  _joystick: {fileID: 1647114553}
+  _lifeBar: {fileID: 6766490}
+  _magicShieldBar: {fileID: 368625132}
+  _experienceBar: {fileID: 621491772}
+  _abilitiesSelectionPresenter: {fileID: 668563999}
 --- !u!70 &2101839333
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

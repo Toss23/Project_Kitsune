@@ -6,7 +6,7 @@ public interface IUnit
     public event Action OnDeath;
 
     public AttributesContainer Attributes { get; }
-    public AbilitiesState Abilities { get; }
+    public AbilitiesContainer Abilities { get; }
     public CursesContainer Curses { get; }
     public float ExperienceGain { get; }
 

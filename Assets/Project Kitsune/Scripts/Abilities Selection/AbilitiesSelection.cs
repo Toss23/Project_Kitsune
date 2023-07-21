@@ -43,7 +43,7 @@ public class AbilitiesSelection
             _generating = true;
             _pointsToLevelUp--;
 
-            AbilitiesState abilities = _character.Abilities;
+            AbilitiesContainer abilities = _character.Abilities;
 
             List<int> canLevelUp = new List<int>();
             int[] abilitiesIdsForCards = { -1, -1 };

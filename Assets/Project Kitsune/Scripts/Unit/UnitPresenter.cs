@@ -9,7 +9,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected UnitType _unitType;
     protected IUnit _unit;
     protected IUnitView _unitView;
-    protected GameObject _unitViewObject;
 
     // Reference
     protected Rigidbody2D _rigidbody;
@@ -77,7 +76,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         Destroy(gameObject);
     }
 
-    protected void CreateAbility(IAbility ability, int point, int level)
+    private void CreateAbility(IAbility ability, int point, int level)
     {
         if (ability != null)
         {

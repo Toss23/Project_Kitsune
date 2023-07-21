@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Controlable
+public class Controllable
 {
     private float _speed;
     private Rigidbody2D _rigidbody;
     private bool _active;
     private Vector2 _position;
 
-    public Controlable(Rigidbody2D rigidbody, float speed)
+    public Controllable(Rigidbody2D rigidbody, float speed)
     {
         _rigidbody = rigidbody;
         _speed = speed;

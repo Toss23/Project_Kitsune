@@ -47,7 +47,7 @@ public class GameLogic : MonoBehaviour, IGameLogic
         Debug.Log("[GL] Character initialized...");
 
         // Init Ability Selection
-        _abilitiesSelection.Init(Character);
+        AbilitiesSelection.Init(Character);
         Debug.Log("[GL] Abilities Selection initialized...");
 
         // Init Enemy Spawner
@@ -55,14 +55,14 @@ public class GameLogic : MonoBehaviour, IGameLogic
         Debug.Log("[GL] Enemy Spawner initialized...");
 
         // Get References
-        _controlable = _character.UnitCharacter.Controlable;
+        _controlable = _character.Character.Controllable;
         _unitView = _character.UnitView;
         _unit = _character.Unit;
         Debug.Log("[GL] Got references...");
     }
 
     // Reference for Pause
-    private Controlable _controlable;
+    private Controllable _controlable;
     private IUnitView _unitView;
     private IUnit _unit;
 

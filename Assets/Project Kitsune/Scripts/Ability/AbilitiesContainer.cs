@@ -1,6 +1,6 @@
 using System;
 
-public class AbilitiesState
+public class AbilitiesContainer
 {
     /// <summary>
     /// IAbility - ability for cast <br/>
@@ -24,7 +24,7 @@ public class AbilitiesState
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesState(IAbility[] abilities, float attackAnimationTime)
+    public AbilitiesContainer(IAbility[] abilities, float attackAnimationTime)
     {
         _abilities = abilities;
         _attackAnimationTime = attackAnimationTime;
@@ -100,7 +100,6 @@ public class AbilitiesState
                         float multiplier = _attackAnimationTime * _abilities[0].Info.CastPerSecond[_levels[0]];
                         OnLevelUpAttack?.Invoke(multiplier);
                     }
-
                     break;
                 }
             }

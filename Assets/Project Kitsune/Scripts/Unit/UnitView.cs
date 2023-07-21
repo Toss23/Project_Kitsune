@@ -20,16 +20,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     private GameObject _magicShieldSprite;
 
     public AbilityPoints AbilityPoints => _abilityPoints;
-    public bool IsMirrored => _isMirrored;
     public float Angle => _angle;
-
-    public void IsMoving(bool move)
-    {
-        if (_animator != null)
-        {
-            _animator.SetBool("Move", _active ? move : false);
-        }
-    }
 
     public void CreateUnit(GameObject prefab)
     {
@@ -38,6 +29,14 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
+    }
+
+    public void IsMoving(bool move)
+    {
+        if (_animator != null)
+        {
+            _animator.SetBool("Move", _active ? move : false);
+        }
     }
 
     public void SetAngle(float angle)
