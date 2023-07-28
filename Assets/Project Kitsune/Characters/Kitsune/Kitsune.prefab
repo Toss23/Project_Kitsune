@@ -1513,7 +1513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6836194688384975769}
   m_Layer: 0
-  m_Name: Left Downn Bone
+  m_Name: Left Down Foot Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2315,7 +2315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373794075794921972}
   m_Layer: 0
-  m_Name: Left Up Bone
+  m_Name: Left Up Foot Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
