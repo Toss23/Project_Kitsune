@@ -52,7 +52,10 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void SetActive(bool active)
     {
         _active = active;
-        _animator.SetLayerWeight(_animator.GetLayerIndex("Attack"), active ? 1 : 0);
+        int attackAnimationIndex = _animator.GetLayerIndex("Attack");
+        if (attackAnimationIndex != -1) {
+            _animator.SetLayerWeight(attackAnimationIndex, active ? 1 : 0);
+        }
     }
 
     public void SetAttackAnimationTime(float multiplier)
@@ -74,7 +77,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
             for (int i = 0; i < cursesCount; i++)
             {
-                _cursesIcon[i] = Instantiate(CursesInfo.Spites[(CursesInfo.List)i], _cursesPoint);
+                _cursesIcon[i] = Instantiate(CursesInfo.Sprites[(CursesInfo.List)i], _cursesPoint);
                 _cursesIcon[i].SetActive(false);
             }
         }

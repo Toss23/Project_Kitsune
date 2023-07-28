@@ -19,43 +19,38 @@ MonoBehaviour:
   - 0
   - 1
   - 1
-  - 1
   _dotDuration:
   - 0
-  - 5
   - 5
   - 5
   _abilityType: 1
   _meleeAnimationTime: 0
   _projectileSpeed: 10
   _projectileRange: 3
-  _projectileCount: 00000000010000000300000005000000
+  _projectileCount: 000000000100000001000000
   _projectileSplitAngle:
   - 0
-  - 20
-  - 20
-  - 20
+  - 0
+  - 0
   _projectileAuto: 1
   _destroyOnHit: 1
   _haveContinueAbility: 0
   _continueAbility: {fileID: 0}
+  _haveAura: 0
+  _auraObject: {fileID: 0}
   _damage:
   - 0
-  - 10
   - 1
   - 1
   _damageMultiplier:
-  - 100
   - 100
   - 100
   - 200
   _castPerSecond:
   - 1
   - 1
-  - 2
-  - 2
+  - 1
   _critChance:
-  - 0
   - 0
   - 0
   - 0
@@ -63,10 +58,10 @@ MonoBehaviour:
   - 100
   - 100
   - 100
-  - 100
+  _name: Kitsune Attack
   _description: Attack
   _radius:
   - 5
   - 1
   - 1
-  - 2
+  _abilityProperties: []
