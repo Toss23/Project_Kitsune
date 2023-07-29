@@ -93,7 +93,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: HandFanLeft
+  - name: HandFanRight
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -110,7 +110,7 @@ ScriptedImporter:
       guid: a5ecc12a733595f42bc79651ed8b6754
       position: {x: -16.885925, y: -122.42206, z: 0}
       rotation: {x: 0, y: 0, z: 0.52623224, w: 0.85034096}
-      length: 158.09106
+      length: 158.0911
       parentId: -1
       color:
         serializedVersion: 2
@@ -509,7 +509,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 254, y: -393}
     spritePosition: {x: 559, y: 699}
-  - name: HandLeft-2
+  - name: HandRight-2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -526,7 +526,7 @@ ScriptedImporter:
       guid: a5ecc12a733595f42bc79651ed8b6754
       position: {x: 8.114075, y: 14.577942, z: 0}
       rotation: {x: 0, y: 0, z: 0.52623224, w: 0.85034096}
-      length: 158.09106
+      length: 158.0911
       parentId: -1
       color:
         serializedVersion: 2
@@ -914,7 +914,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: -214, y: 153}
     spritePosition: {x: 534, y: 562}
-  - name: HandFanRight
+  - name: HandFanLef
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -930,8 +930,8 @@ ScriptedImporter:
     - name: Left Down Hand Bone
       guid: 3d242ffb416863549869bfd4fc2242da
       position: {x: 84.618164, y: 226.44879, z: 0}
-      rotation: {x: 0, y: 0, z: -0.74038184, w: 0.6721867}
-      length: 176.8107
+      rotation: {x: 0, y: 0, z: -0.7403818, w: 0.6721866}
+      length: 176.81073
       parentId: -1
       color:
         serializedVersion: 2
@@ -1297,7 +1297,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 296, y: 413}
     spritePosition: {x: 293, y: 302}
-  - name: HandRight-2
+  - name: HandLef-2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1313,8 +1313,8 @@ ScriptedImporter:
     - name: Left Down Hand Bone
       guid: 3d242ffb416863549869bfd4fc2242da
       position: {x: 35.618164, y: 200.44879, z: 0}
-      rotation: {x: 0, y: 0, z: -0.74038184, w: 0.6721867}
-      length: 176.8107
+      rotation: {x: 0, y: 0, z: -0.7403818, w: 0.6721866}
+      length: 176.81073
       parentId: -1
       color:
         serializedVersion: 2
@@ -1614,7 +1614,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 392, y: 387}
     spritePosition: {x: 342, y: 328}
-  - name: SleeveRight
+  - name: SleeveLeft
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1986,7 +1986,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 468, y: 174}
     spritePosition: {x: 329, y: 541}
-  - name: HandRight-1
+  - name: HandLeft-1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -2840,7 +2840,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 267, y: -358}
     spritePosition: {x: 383, y: 362}
-  - name: Hand
+  - name: Head
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -3749,7 +3749,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 72, y: -442}
     spritePosition: {x: 359, y: 446}
-  - name: SleeveLeft
+  - name: SleeveRigh
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -4121,7 +4121,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 313, y: 246}
     spritePosition: {x: 484, y: 576}
-  - name: HandLeft-1
+  - name: HandRigh-1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -4942,7 +4942,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 462, y: -558}
     spritePosition: {x: 351, y: 562}
-  - name: LegRight-1
+  - name: LegLef-1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -5281,7 +5281,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 41, y: 430}
     spritePosition: {x: 389, y: 285}
-  - name: ShoeRight
+  - name: ShoeLeft
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -5983,7 +5983,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 525, y: 438}
     spritePosition: {x: 380, y: 23}
-  - name: LegRight-2
+  - name: LegLef-2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -6366,7 +6366,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: -379, y: 690}
     spritePosition: {x: 383, y: 25}
-  - name: LegLeft-1
+  - name: LegRight-1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -6383,7 +6383,7 @@ ScriptedImporter:
       guid: c0336bc710adbf34cab9f27a33a8463b
       position: {x: 39.24231, y: 211.38641, z: 0}
       rotation: {x: 0, y: 0, z: -0.71932703, w: 0.6946717}
-      length: 195.40909
+      length: 195.40906
       parentId: -1
       color:
         serializedVersion: 2
@@ -6705,7 +6705,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 52, y: 432}
     spritePosition: {x: 461, y: 283}
-  - name: ShoeLeft
+  - name: ShoeRight
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -7363,7 +7363,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: -241, y: 685}
     spritePosition: {x: 451, y: 30}
-  - name: LegLeft-2
+  - name: LegRight-2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -9696,14 +9696,14 @@ ScriptedImporter:
       guid: c0336bc710adbf34cab9f27a33a8463b
       position: {x: 201.8524, y: 43.198265, z: 0}
       rotation: {x: 0, y: 0, z: -0.01449299, w: 0.999895}
-      length: 195.40909
+      length: 195.40906
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: Right Down Foot Bone
       guid: e2d66ea0dc3a36f42a0a8fe8d7380801
-      position: {x: 195.40904, y: -0.00008472057, z: 0}
+      position: {x: 195.40901, y: -0.000085784486, z: 0}
       rotation: {x: 0, y: 0, z: 0.024643105, w: 0.9996963}
       length: 236.18983
       parentId: 3
@@ -9722,7 +9722,7 @@ ScriptedImporter:
     - name: Left Down Hand Bone
       guid: 3d242ffb416863549869bfd4fc2242da
       position: {x: 134.78902, y: 0.000027739748, z: 0}
-      rotation: {x: 0, y: 0, z: 0.0066233594, w: 0.9999781}
+      rotation: {x: 0, y: 0, z: 0.006623362, w: 0.99997807}
       length: 176.81073
       parentId: 5
       color:
@@ -9740,7 +9740,7 @@ ScriptedImporter:
     - name: Right Down Hand Bone
       guid: a5ecc12a733595f42bc79651ed8b6754
       position: {x: 112.55617, y: 0.0000011190223, z: 0}
-      rotation: {x: 0, y: 0, z: 0.9101022, w: 0.41438392}
+      rotation: {x: 0, y: 0, z: 0.91010225, w: 0.41438395}
       length: 158.09108
       parentId: 7
       color:
@@ -9765,6 +9765,15 @@ ScriptedImporter:
         serializedVersion: 2
         rgba: 4286578943
     parts:
+    - spritePosition:
+        x: 0
+        y: 0
+        width: 56
+        height: 54
+      spriteId: 85aab7da30b54df45a98052a6288770f
+      bones: 01000000
+      parentGroup: 0
+      order: 0
     - spritePosition:
         x: 559
         y: 699
