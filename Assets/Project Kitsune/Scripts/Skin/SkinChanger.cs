@@ -34,7 +34,7 @@ public class SkinChanger : MonoBehaviour
                     {
                         if (skin¿ccessory != null)
                         {
-                            skin¿ccessory.gameObject.SetActive(skin¿ccessory.SelectedSkin == _selectedCategory);
+                            skin¿ccessory.gameObject.SetActive(skin¿ccessory.SelectedCategory == _selectedCategory);
                         }
                     }
                 }
