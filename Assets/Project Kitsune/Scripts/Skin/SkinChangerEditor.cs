@@ -9,7 +9,6 @@ public class SkinChangerEditor : Editor
     private SerializedProperty _spriteLibraryAsset;
     private SerializedProperty _selectedCategory;
     private SerializedProperty _spriteResolvers;
-    private SerializedProperty _skin¿ccessories;
 
     private SkinChanger _skinChanger;
 
@@ -20,7 +19,6 @@ public class SkinChangerEditor : Editor
         _spriteLibraryAsset = serializedObject.FindProperty("_spriteLibraryAsset");
         _selectedCategory = serializedObject.FindProperty("_selectedCategory");
         _spriteResolvers = serializedObject.FindProperty("_spriteResolvers");
-        _skin¿ccessories = serializedObject.FindProperty("_skin¿ccessories");
     }
 
     public override void OnInspectorGUI()
@@ -61,7 +59,6 @@ public class SkinChangerEditor : Editor
         }
 
         EditorGUILayout.PropertyField(_spriteResolvers);
-        EditorGUILayout.PropertyField(_skin¿ccessories);
 
         serializedObject.ApplyModifiedProperties();
     }

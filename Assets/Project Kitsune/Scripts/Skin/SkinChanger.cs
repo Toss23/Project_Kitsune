@@ -8,7 +8,6 @@ public class SkinChanger : MonoBehaviour
     [SerializeField] private SpriteLibraryAsset _spriteLibraryAsset;
     [SerializeField] private string _selectedCategory;
     [SerializeField] private SpriteResolver[] _spriteResolvers;
-    [SerializeField] private Skin¿ccessory[] _skin¿ccessories;
 
     public SpriteLibraryAsset SpriteLibraryAsset => _spriteLibraryAsset;
 
@@ -25,17 +24,6 @@ public class SkinChanger : MonoBehaviour
                     if (spriteResolver != null)
                     {
                         spriteResolver.SetCategoryAndLabel(_selectedCategory, spriteResolver.GetLabel());
-                    }
-                }
-
-                if (_skin¿ccessories != null)
-                {
-                    foreach (Skin¿ccessory skin¿ccessory in _skin¿ccessories)
-                    {
-                        if (skin¿ccessory != null)
-                        {
-                            skin¿ccessory.gameObject.SetActive(skin¿ccessory.SelectedCategory == _selectedCategory);
-                        }
                     }
                 }
             }
