@@ -15,6 +15,7 @@ public class AbilitiesContainer
 
     private IAbility[] _abilities;
     private float _animationAttackSpeed;
+    private float _animationTimeToAttack;
     private int[] _levels;
     private int[] _maxLevels;
     private float[] _reloadTimes;
@@ -24,10 +25,11 @@ public class AbilitiesContainer
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesContainer(IAbility[] abilities, float animationAttackSpeed)
+    public AbilitiesContainer(IAbility[] abilities, UnitInfo unitInfo)
     {
         _abilities = abilities;
-        _animationAttackSpeed = animationAttackSpeed;
+        _animationAttackSpeed = unitInfo.AnimationAttackSpeed;
+        _animationTimeToAttack = unitInfo.AnimationTimeToAttack;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
@@ -45,26 +47,42 @@ public class AbilitiesContainer
         
         for (int i = 0; i < _abilities.Length; i++)
         {
-            if (_abilities[i] != null)
+            if (_abilities[i] != null & _levels[i] > 0)
             {
-                if (_levels[i] > 0)
+                if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
                 {
-                    if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
+                    _reloadTimes[i] += deltaTime;
+                    float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
+
+                    if (i != 0)
                     {
-                        _reloadTimes[i] += deltaTime;
-                        float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
                         while (_reloadTimes[i] >= 1 / castPerSecond)
                         {
                             _reloadTimes[i] -= 1 / castPerSecond;
-                            _casted[i] = true;
                             OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                         }
                     }
-                    else if (_casted[i] == false)
+                    else
                     {
-                        _casted[i] = true;
-                        OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
+                        float attackSpeed = 1 / castPerSecond * _animationTimeToAttack;
+
+                        if (_reloadTimes[i] >= attackSpeed & _casted[i] == false)
+                        {
+                            _casted[i] = true;
+                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
+                        }
+
+                        while (_reloadTimes[i] >= 1 / castPerSecond)
+                        {
+                            _casted[i] = false;
+                            _reloadTimes[i] -= 1 / castPerSecond;
+                        }
                     }
+                }
+                else if (_casted[i] == false)
+                {
+                    _casted[i] = true;
+                    OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                 }
             }
         }

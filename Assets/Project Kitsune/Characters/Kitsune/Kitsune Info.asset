@@ -21,7 +21,9 @@ MonoBehaviour:
   _critChance: 0
   _critMultiplier: 150
   _armour: 0
-  _attackAnimationTime: 3
+  _experienceGain: 0
+  _animationAttackSpeed: 1
+  _animationTimeToAttack: 0.5
   _abilities:
   - {fileID: 274742418572752201, guid: 44e71e477bfb84e49bd6372e437b9856, type: 3}
   - {fileID: 0}

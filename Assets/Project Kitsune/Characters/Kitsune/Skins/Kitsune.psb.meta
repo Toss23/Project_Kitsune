@@ -10264,6 +10264,16 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Lower Cloth
+    spriteName: Lower Cloth
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 30a655d05182766478e9a7ae019b2b92
+    layerID: 5
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Tails
     spriteName: 
     isGroup: 1
@@ -10277,7 +10287,7 @@ ScriptedImporter:
   - name: Tail 1
     spriteName: Tail 1
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: 4d6098d1280a30b4baf26e2a3557bd7c
     layerID: 4
     mosaicPosition: {x: 456, y: 461}
@@ -10287,7 +10297,7 @@ ScriptedImporter:
   - name: Tail 2
     spriteName: Tail 2
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: 93974107a4bc87b4186f7ec316f7b6ee
     layerID: 3
     mosaicPosition: {x: 4, y: 461}
@@ -10297,20 +10307,10 @@ ScriptedImporter:
   - name: Tail 3
     spriteName: Tail 3
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: dc11571a2b7757140bc8a40a32e08a48
     layerID: 2
     mosaicPosition: {x: 224, y: 461}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Lower Cloth
-    spriteName: Lower Cloth
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 30a655d05182766478e9a7ae019b2b92
-    layerID: 5
-    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1

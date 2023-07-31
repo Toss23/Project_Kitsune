@@ -5132,6 +5132,16 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 0
+  - name: Lower Clothes
+    spriteName: Lower Clothes
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 839912e5e3732d348a00b51384d39baa
+    layerID: 5
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Tails
     spriteName: 
     isGroup: 1
@@ -5145,7 +5155,7 @@ ScriptedImporter:
   - name: Tail 1
     spriteName: Tail 1
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: 3675cde21ce13194cb69d7ac928d8ee7
     layerID: 4
     mosaicPosition: {x: 723, y: 4}
@@ -5155,7 +5165,7 @@ ScriptedImporter:
   - name: Tail 2
     spriteName: Tail 2
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: 7618f2928bc0e924b8d702b753ccc0e9
     layerID: 3
     mosaicPosition: {x: 271, y: 4}
@@ -5165,22 +5175,12 @@ ScriptedImporter:
   - name: Tail 2
     spriteName: Tail 2
     isGroup: 0
-    parentIndex: 23
+    parentIndex: 24
     spriteID: 2f5ca4d719b6c8843b22f2e64d57c94e
     layerID: 2
     mosaicPosition: {x: 491, y: 4}
     flatten: 0
     isImported: 0
-    isVisible: 1
-  - name: Lower Clothes
-    spriteName: Lower Clothes
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 839912e5e3732d348a00b51384d39baa
-    layerID: 5
-    mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 1
     isVisible: 1
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []

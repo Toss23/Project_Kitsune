@@ -8,10 +8,8 @@ public class UnitInfoEditor : Editor
 
     private SerializedProperty _life; 
     private SerializedProperty _lifeRegeneration;
-
     private SerializedProperty _magicShield;
     private SerializedProperty _magicShieldRegeneration;
-
     private SerializedProperty _damage;
     private SerializedProperty _critChance;
     private SerializedProperty _critMultiplier; 
@@ -20,6 +18,8 @@ public class UnitInfoEditor : Editor
     private SerializedProperty _experienceGain;
 
     private SerializedProperty _animationAttackSpeed;
+    private SerializedProperty _animationTimeToAttack;
+
     private SerializedProperty _abilities;
 
     private void OnEnable()
@@ -40,6 +40,8 @@ public class UnitInfoEditor : Editor
         _experienceGain = serializedObject.FindProperty("_experienceGain");
 
         _animationAttackSpeed = serializedObject.FindProperty("_animationAttackSpeed");
+        _animationTimeToAttack = serializedObject.FindProperty("_animationTimeToAttack");
+
         _abilities = serializedObject.FindProperty("_abilities");
     }
 
@@ -163,10 +165,22 @@ public class UnitInfoEditor : Editor
         width = 150;
         EditorGUILayout.LabelField("Abilities", boldStyle);
 
+        EditorGUILayout.BeginVertical();
+        EditorGUILayout.LabelField("Animation Attack Speed is the full animation time");
+        EditorGUILayout.LabelField("Animation Time To Attack is the animation time to create an attack ability");
+        EditorGUILayout.EndVertical();
+        GUILayout.Space(space);
+
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Animation Attack Speed", GUILayout.Width(width));
         GUILayout.Space(space);
         _animationAttackSpeed.floatValue = EditorGUILayout.FloatField(_animationAttackSpeed.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Animation Time To Attack", GUILayout.Width(width));
+        GUILayout.Space(space);
+        _animationTimeToAttack.floatValue = EditorGUILayout.FloatField(_animationTimeToAttack.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(space);
