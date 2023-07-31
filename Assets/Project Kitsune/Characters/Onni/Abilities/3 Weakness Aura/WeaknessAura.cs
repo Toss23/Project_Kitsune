@@ -1,11 +1,11 @@
 public class WeaknessAura : Ability
 {
-    protected override void OnCollisionEnterWithEnemy(IUnit enemy)
+    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target)
     {
-        enemy.Curses.Add(new Curse(CursesInfo.List.Weakness, Properties["Duration"], Properties["Effect"]));
+        target.Curses.Add(new Curse(CursesInfo.List.Weakness, Properties["Duration"], Properties["Effect"]));
     }
 
-    protected override void OnCollisionStayWithEnemy(IUnit enemy)
+    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target)
     {
         
     }

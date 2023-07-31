@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class MagicCrown : Ability
 {
-    protected override void OnCollisionEnterWithEnemy(IUnit enemy)
+    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target)
     {
         
     }
 
-    protected override void OnCollisionStayWithEnemy(IUnit enemy)
+    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target)
     {
         
     }

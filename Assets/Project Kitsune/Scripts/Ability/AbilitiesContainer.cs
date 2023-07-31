@@ -96,6 +96,8 @@ public class AbilitiesContainer
 
         if (type == 0 & _abilities[0] != null)
         {
+            _casted[0] = false;
+            _reloadTimes[0] = 0;
             float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
             OnLevelUpAttack?.Invoke(attackSpeed);
         }
@@ -115,6 +117,8 @@ public class AbilitiesContainer
 
                     if (i == 0)
                     {
+                        _casted[0] = false;
+                        _reloadTimes[0] = 0;
                         float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
                         OnLevelUpAttack?.Invoke(attackSpeed);
                     }

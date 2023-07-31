@@ -10,12 +10,12 @@ public class FireSpheres : Ability
     private GameObject[] _circles;
     private float _angle;
 
-    protected override void OnCollisionEnterWithEnemy(IUnit enemy)
+    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target)
     {
         
     }
 
-    protected override void OnCollisionStayWithEnemy(IUnit enemy)
+    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target)
     {
         
     }
@@ -36,7 +36,9 @@ public class FireSpheres : Ability
         _angle -= deltaTime * _speed;
 
         if (_angle <= -360)
-            _angle += 360;      
+        {
+            _angle += 360;
+        }
 
         float deltaAngle = 360f / _count;
 

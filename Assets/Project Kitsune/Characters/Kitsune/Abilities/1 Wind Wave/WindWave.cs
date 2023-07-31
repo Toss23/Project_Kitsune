@@ -1,4 +1,4 @@
-public class OnniAttack : Ability
+public class WindWave : Ability
 {
     protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target)
     {

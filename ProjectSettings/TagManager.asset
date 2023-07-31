@@ -47,6 +47,9 @@ TagManager:
   - name: Background
     uniqueID: 4112477839
     locked: 0
+  - name: Character Ability Back
+    uniqueID: 3993985227
+    locked: 0
   - name: Enemy
     uniqueID: 2565982925
     locked: 0

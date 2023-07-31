@@ -27,9 +27,11 @@ public class AbilityInfo : ScriptableObject
 
     [SerializeField] private float _projectileSpeed = 10;
     [SerializeField] private float _projectileRange = 1;
+    [SerializeField] private float _projectileSpawnOffset = 0;
     [SerializeField] private int[] _projectileCount;
     [SerializeField] private float[] _projectileSplitAngle;
-    [SerializeField] private bool _projectileAuto;
+    [SerializeField] private bool _projectileAutoTarget;
+    [SerializeField] private bool _projectileAutoAim;
     [SerializeField] private bool _destroyOnHit;
 
     [SerializeField] private bool _haveContinueAbility;
@@ -62,11 +64,14 @@ public class AbilityInfo : ScriptableObject
 
     public Type AbilityType => _abilityType;
     public float MeleeAnimationTime => _meleeAnimationTime;
+
     public float ProjectileSpeed => _projectileSpeed;
     public float ProjectileRange => _projectileRange;
+    public float ProjectileSpawnOffset => _projectileSpawnOffset;
     public int[] ProjectileCount => _projectileCount;
     public float[] ProjectileSpliteAngle => _projectileSplitAngle;
-    public bool ProjectileAuto => _projectileAuto;
+    public bool ProjectileAutoTarget => _projectileAutoTarget;
+    public bool ProjectileAutoAim => _projectileAutoAim;
     public bool DestroyOnHit => _destroyOnHit;
 
     public bool HaveContinueAbility => _haveContinueAbility;

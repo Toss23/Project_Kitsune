@@ -21,9 +21,11 @@ public class AbilityInfoEditor : Editor
     private SerializedProperty _meleeAnimationTime;
     private SerializedProperty _projectileSpeed;
     private SerializedProperty _projectileRange;
+    private SerializedProperty _projectileSpawnOffset;
     private SerializedProperty _projectileCount;
     private SerializedProperty _projectileSplitAngle;
-    private SerializedProperty _projectileAuto;
+    private SerializedProperty _projectileAutoTarget;
+    private SerializedProperty _projectileAutoAim;
     private SerializedProperty _destroyOnHit;
 
     private SerializedProperty _haveContinueAbility;
@@ -64,9 +66,11 @@ public class AbilityInfoEditor : Editor
         _meleeAnimationTime = serializedObject.FindProperty("_meleeAnimationTime");
         _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
         _projectileRange = serializedObject.FindProperty("_projectileRange");
+        _projectileSpawnOffset = serializedObject.FindProperty("_projectileSpawnOffset");
         _projectileCount = serializedObject.FindProperty("_projectileCount");
         _projectileSplitAngle = serializedObject.FindProperty("_projectileSplitAngle");
-        _projectileAuto = serializedObject.FindProperty("_projectileAuto");
+        _projectileAutoTarget = serializedObject.FindProperty("_projectileAutoTarget");
+        _projectileAutoAim = serializedObject.FindProperty("_projectileAutoAim");
         _destroyOnHit = serializedObject.FindProperty("_destroyOnHit");
 
         _haveContinueAbility = serializedObject.FindProperty("_haveContinueAbility");
@@ -142,7 +146,7 @@ public class AbilityInfoEditor : Editor
         GUI.backgroundColor = baseColor;
         EditorGUILayout.EndHorizontal();
 
-        if (_abilityType.enumValueIndex == 0)
+        if (_abilityType.enumValueIndex == 0 & _abilityDamageType.enumValueIndex == 0)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Animation time", GUILayout.Width(100));
@@ -153,19 +157,29 @@ public class AbilityInfoEditor : Editor
         if (_abilityType.enumValueIndex == 1)
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Projectile Speed", GUILayout.Width(100));
+            EditorGUILayout.LabelField("Speed", GUILayout.Width(100));
             _projectileSpeed.floatValue = EditorGUILayout.FloatField(_projectileSpeed.floatValue, GUILayout.Width(70));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Projectile Range", GUILayout.Width(100));
+            EditorGUILayout.LabelField("Range", GUILayout.Width(100));
             _projectileRange.floatValue = EditorGUILayout.FloatField(_projectileRange.floatValue, GUILayout.Width(70));
             EditorGUILayout.LabelField("sec", GUILayout.Width(100));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Spawn Offset", GUILayout.Width(100));
+            _projectileSpawnOffset.floatValue = EditorGUILayout.FloatField(_projectileSpawnOffset.floatValue, GUILayout.Width(70));
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Auto-Target", GUILayout.Width(100));
-            _projectileAuto.boolValue = EditorGUILayout.Toggle(_projectileAuto.boolValue);
+            _projectileAutoTarget.boolValue = EditorGUILayout.Toggle(_projectileAutoTarget.boolValue);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Auto-Aim", GUILayout.Width(100));
+            _projectileAutoAim.boolValue = EditorGUILayout.Toggle(_projectileAutoAim.boolValue);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
@@ -217,6 +231,12 @@ public class AbilityInfoEditor : Editor
         EditorGUILayout.LabelField("Properties", boldStyle);
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Max Level", GUILayout.Width(100));
+
+        if (_damage.arraySize == 0)
+        {
+            _damage.arraySize = 1;
+        }
+
         _damage.arraySize = EditorGUILayout.IntField(_damage.arraySize - 1, GUILayout.Width(50)) + 1;
         if (_damageMultiplier.arraySize != _damage.arraySize)
         {

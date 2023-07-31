@@ -5,11 +5,20 @@ public class DarkWave : Ability
     private float _currentRadius = 1;
     private bool _needScaleDown = false;
 
-    protected override void OnCollisionEnterWithEnemy(IUnit enemy) { }
+    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target) 
+    { 
+    
+    }
 
-    protected override void OnCollisionStayWithEnemy(IUnit enemy) { }
+    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target) 
+    { 
+    
+    }
 
-    protected override void OnCreate() { }
+    protected override void OnCreate() 
+    { 
+    
+    }
 
     protected override void OnUpdate(float deltaTime)
     {
@@ -18,7 +27,9 @@ public class DarkWave : Ability
             _currentRadius += Time.deltaTime * Properties["WaveSpeed"];
 
             if (_currentRadius >= Properties["MaxRadius"])
+            {
                 _needScaleDown = true;
+            }
         }
         else
         {

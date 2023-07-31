@@ -93,19 +93,34 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
             for (int i = 0; i < count; i++)
             {
-                Ability abilityObject = Instantiate((Ability)ability);
-                abilityObject.name = ability.Info.Name;
-                abilityObject.Init(level, (_unitType == UnitType.Character) ? Target.Enemy : Target.Character);
-                Transform abilityTransform = abilityObject.gameObject.transform;
-                abilityTransform.position = _unitView.AbilityPoints.Points[point].transform.position;
-                if (ability.Info.AbilityType != AbilityInfo.Type.Field)
-                    abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
+                if (_unitView.AbilityPoints.Points[point] != null)
+                {
+                    // Create
+                    Ability abilityObject = Instantiate((Ability)ability);
+                    abilityObject.name = ability.Info.Name;
 
-                if (ability.Info.AbilityType == AbilityInfo.Type.Melee
-                    || ability.Info.AbilityType == AbilityInfo.Type.Field)
-                    abilityObject.FuseWith(_unitView.AbilityPoints.Points[point].transform);
+                    // Locate
+                    Transform abilityTransform = abilityObject.gameObject.transform;
 
-                _unit.RegisterAbility(abilityObject);
+                    if (ability.Info.AbilityType != AbilityInfo.Type.Field)
+                        abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
+
+                    Vector3 position = _unitView.AbilityPoints.Points[point].transform.position;
+                    abilityTransform.position = position;
+
+                    // Fuse with Point
+                    if (ability.Info.AbilityType == AbilityInfo.Type.Melee
+                        || ability.Info.AbilityType == AbilityInfo.Type.Field)
+                        abilityObject.FuseWith(_unitView.AbilityPoints.Points[point].transform);
+
+                    // Init
+                    abilityObject.Init(_unit, level, (_unitType == UnitType.Character) ? Target.Enemy : Target.Character);
+                    _unit.RegisterAbility(abilityObject);
+                }
+                else
+                {
+                    Debug.Log("[Error] Ability Point (" + i + ") is not found!");
+                }
             }
 
             if (ability.Info.HaveAura)

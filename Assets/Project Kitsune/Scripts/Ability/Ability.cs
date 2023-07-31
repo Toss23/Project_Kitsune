@@ -8,6 +8,7 @@ public enum Target
 }
 
 [Serializable]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Ability : MonoBehaviour, IAbility
 {
     public event Action<IAbility, IUnit> OnHit;
@@ -16,6 +17,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public AbilityInfo Info { get { return _info; } }
 
+    private IUnit _caster;
     private Target _target;
 
     private int _level;
@@ -24,15 +26,18 @@ public abstract class Ability : MonoBehaviour, IAbility
     private float _projectileTimer = 0;
     private float _meleeTimer = 0;
     private Transform _pointToFusing;
-    private Transform _nearestEnemy;
     private Dictionary<string, float> _properties;
+
+    private Transform _targetedEnemy;
 
     public int Level => _level;
     public int MaxLevel => _info.Damage.Length - 1;
     public Dictionary<string, float> Properties => _properties;
+    public Transform TargetedEnemy => _targetedEnemy;
 
-    public void Init(int level, Target target)
+    public void Init(IUnit caster, int level, Target target)
     {
+        _caster = caster;
         _target = target;
 
         _level = level;
@@ -41,23 +46,27 @@ public abstract class Ability : MonoBehaviour, IAbility
 
         transform.localScale *= _info.Radius[_level];
 
-        if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.ProjectileAuto)
+        if (_info.AbilityType == AbilityInfo.Type.Projectile)
         {
-            GameObject[] units = GameObject.FindGameObjectsWithTag(_target == Target.Enemy ? "Enemy" : "Character");
-            if (units.Length > 0)
+            _targetedEnemy = FindNearestEnemy();
+
+            if (_info.ProjectileAutoAim)
             {
-                float distanceMin = 100000;
-                GameObject nearestEnemy = null;
-                foreach (GameObject unit in units)
+                if (_targetedEnemy != null)
                 {
-                    float distance = Vector3.Distance(transform.position, unit.transform.position);
-                    if (distance < distanceMin)
-                    {
-                        distanceMin = distance;
-                        nearestEnemy = unit;
-                    }
+                    Vector2 delta = _targetedEnemy.transform.position - transform.position;
+                    float targetAngle = Mathf.Atan2(delta.y, delta.x);
+                    Quaternion quaternion = Quaternion.Euler(0, 0, targetAngle * Mathf.Rad2Deg);
+                    transform.rotation = quaternion;
                 }
-                _nearestEnemy = nearestEnemy.transform;
+            }
+
+            if (_info.ProjectileSpawnOffset > 0)
+            {
+                float angle = transform.eulerAngles.z;
+                Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+                Debug.Log(angle + " / " + offset);
+                transform.position += offset * _info.ProjectileSpawnOffset;
             }
         }
 
@@ -66,6 +75,30 @@ public abstract class Ability : MonoBehaviour, IAbility
         {
             _properties.Add(param.Name, param.Values[_level]);
         }
+
+        OnCreate();
+        GameLogic.Instance.OnUpdate += UpdateAbility;
+    }
+
+    protected Transform FindNearestEnemy()
+    {
+        GameObject[] units = GameObject.FindGameObjectsWithTag(_target == Target.Enemy ? "Enemy" : "Character");
+        if (units.Length > 0)
+        {
+            float distanceMin = 100000;
+            GameObject nearestEnemy = null;
+            foreach (GameObject unit in units)
+            {
+                float distance = Vector3.Distance(transform.position, unit.transform.position);
+                if (distance < distanceMin)
+                {
+                    distanceMin = distance;
+                    nearestEnemy = unit;
+                }
+            }
+            return nearestEnemy.transform;
+        }
+        return null;
     }
 
     public void FuseWith(Transform transform)
@@ -73,15 +106,9 @@ public abstract class Ability : MonoBehaviour, IAbility
         _pointToFusing = transform;
     }
 
-    private void Awake()
-    {   
-        OnCreate();
-        GameLogic.Instance.OnUpdate += UpdateAbility;
-    }
-
     private void UpdateAbility(float deltaTime)
     {
-        if (_info.AbilityType == AbilityInfo.Type.Melee)
+        if (_info.AbilityType == AbilityInfo.Type.Melee & _info.AbilityDamageType != AbilityInfo.DamageType.DamageOverTime)
         {
             _meleeTimer += deltaTime;
             if (_meleeTimer >= _info.MeleeAnimationTime)
@@ -97,11 +124,11 @@ public abstract class Ability : MonoBehaviour, IAbility
 
         if (_info.AbilityType == AbilityInfo.Type.Projectile)
         {
-            if (_info.ProjectileAuto)
+            if (_info.ProjectileAutoTarget)
             {
-                if (_nearestEnemy != null)
+                if (_targetedEnemy != null)
                 {
-                    Vector2 delta = _nearestEnemy.transform.position - transform.position;
+                    Vector2 delta = _targetedEnemy.transform.position - transform.position;
                     float targetAngle = Mathf.Atan2(delta.y, delta.x);
                     Quaternion quaternion = Quaternion.Euler(0, 0, targetAngle * Mathf.Rad2Deg);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, quaternion, 360 * deltaTime);
@@ -127,21 +154,25 @@ public abstract class Ability : MonoBehaviour, IAbility
         OnUpdate(deltaTime);
     }
 
-    protected abstract void OnCreate();
-    protected abstract void OnUpdate(float deltaTime);
-    protected abstract void OnCollisionStayWithEnemy(IUnit enemy);
-    protected abstract void OnCollisionEnterWithEnemy(IUnit enemy);
     protected virtual void OnCollisionWithObject(GameObject gameObject) { }
+    protected abstract void OnCollisionStayWithEnemy(IUnit caster, IUnit target);
+    protected abstract void OnCollisionEnterWithEnemy(IUnit caster, IUnit target);
+    protected abstract void OnUpdate(float deltaTime);
+    protected abstract void OnCreate();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_info.AbilityDamageType == AbilityInfo.DamageType.Hit)
         {
-            IUnit unit = CallbackOnHit(collision);
-            if (unit != null)
+            IUnit target = CallbackOnHit(collision);
+            if (target != null)
             {
-                OnCollisionEnterWithEnemy(unit);
-                DestroyOnHit();
+                OnCollisionEnterWithEnemy(_caster, target);
+                
+                if (_info.DestroyOnHit)
+                {
+                    Destroy();
+                }
             }
         }
     }
@@ -156,11 +187,15 @@ public abstract class Ability : MonoBehaviour, IAbility
                 while (_dotDamageTimer >= _info.DotRate[_level])
                 {
                     _dotDamageTimer -= _info.DotRate[_level];
-                    IUnit unit = CallbackOnHit(collision);
-                    if (unit != null)
+                    IUnit target = CallbackOnHit(collision);
+                    if (target != null)
                     {
-                        OnCollisionStayWithEnemy(unit);
-                        DestroyOnHit();
+                        OnCollisionStayWithEnemy(_caster, target);
+                        
+                        if (_info.DestroyOnHit)
+                        {
+                            Destroy();
+                        }
                     }
                 }
             }
@@ -190,14 +225,6 @@ public abstract class Ability : MonoBehaviour, IAbility
             }
         }
         return null;
-    }
-
-    private void DestroyOnHit()
-    {
-        if (_info.AbilityType == AbilityInfo.Type.Projectile & _info.DestroyOnHit)
-            Destroy();
-        else if (_info.AbilityType != AbilityInfo.Type.Projectile & _info.AbilityType != AbilityInfo.Type.Field)
-            Destroy();
     }
 
     public void Destroy()

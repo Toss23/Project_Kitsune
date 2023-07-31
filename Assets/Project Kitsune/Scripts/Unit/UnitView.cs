@@ -29,6 +29,11 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
+
+        if (_animator != null)
+        {
+            _animator.SetBool("Attacking", true);
+        }
     }
 
     public void IsMoving(bool move)
@@ -53,7 +58,9 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         _active = active;
         int attackAnimationIndex = _animator.GetLayerIndex("Attack");
-        if (attackAnimationIndex != -1) {
+        if (attackAnimationIndex != -1) 
+        {
+            _animator.SetBool("Attacking", active);
             _animator.SetLayerWeight(attackAnimationIndex, active ? 1 : 0);
         }
     }
