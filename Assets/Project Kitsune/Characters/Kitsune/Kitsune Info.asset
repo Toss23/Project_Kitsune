@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
-  m_Name: Kitsune
+  m_Name: Kitsune Info
   m_EditorClassIdentifier: 
   _prefab: {fileID: 4577766868310080864, guid: 82234c4acae23f64b922d3533b8e2a57, type: 3}
   _life: 100

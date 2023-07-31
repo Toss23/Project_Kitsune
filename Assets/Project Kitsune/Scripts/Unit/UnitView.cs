@@ -35,7 +35,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_animator != null)
         {
-            _animator.SetBool("Move", _active ? move : false);
+            _animator.SetBool("Moving", _active ? move : false);
         }
     }
 
@@ -58,11 +58,11 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         }
     }
 
-    public void SetAttackAnimationTime(float multiplier)
+    public void SetAnimationAttackSpeed(float speed)
     {
         if (_animator != null)
         {
-            _animator.SetFloat("AttackTimeMultiplier", multiplier);
+            _animator.SetFloat("AttackSpeed", speed);
         }
     }
 

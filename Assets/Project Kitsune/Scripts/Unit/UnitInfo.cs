@@ -16,7 +16,7 @@ public class UnitInfo : ScriptableObject
 
     [SerializeField] private float _experienceGain = 0;
 
-    [SerializeField] private float _attackAnimationTime = 1f;
+    [SerializeField] private float _animationAttackSpeed = 1f;
     [SerializeField] private Ability[] _abilities = new Ability[5];
 
     public GameObject Prefab => _prefab;
@@ -29,6 +29,6 @@ public class UnitInfo : ScriptableObject
     public float CritMultiplier => _critMultiplier;
     public float Armour => _armour;
     public float ExperienceGain => _experienceGain;
-    public float AttackAnimationTime => _attackAnimationTime;
+    public float AnimationAttackSpeed => _animationAttackSpeed;
     public IAbility[] Abilities => _abilities;
 }

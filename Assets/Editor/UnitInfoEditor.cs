@@ -19,7 +19,7 @@ public class UnitInfoEditor : Editor
 
     private SerializedProperty _experienceGain;
 
-    private SerializedProperty _attackAnimationTime;
+    private SerializedProperty _animationAttackSpeed;
     private SerializedProperty _abilities;
 
     private void OnEnable()
@@ -39,7 +39,7 @@ public class UnitInfoEditor : Editor
 
         _experienceGain = serializedObject.FindProperty("_experienceGain");
 
-        _attackAnimationTime = serializedObject.FindProperty("_attackAnimationTime");
+        _animationAttackSpeed = serializedObject.FindProperty("_animationAttackSpeed");
         _abilities = serializedObject.FindProperty("_abilities");
     }
 
@@ -164,9 +164,9 @@ public class UnitInfoEditor : Editor
         EditorGUILayout.LabelField("Abilities", boldStyle);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Attack Animation Time", GUILayout.Width(width));
+        EditorGUILayout.LabelField("Animation Attack Speed", GUILayout.Width(width));
         GUILayout.Space(space);
-        _attackAnimationTime.floatValue = EditorGUILayout.FloatField(_attackAnimationTime.floatValue, GUILayout.Width(width));
+        _animationAttackSpeed.floatValue = EditorGUILayout.FloatField(_animationAttackSpeed.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(space);

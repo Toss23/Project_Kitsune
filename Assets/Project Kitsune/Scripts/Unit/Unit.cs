@@ -22,7 +22,7 @@ public abstract class Unit : IUnit
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesContainer(info.Abilities, info.AttackAnimationTime);
+        Abilities = new AbilitiesContainer(info.Abilities, info.AnimationAttackSpeed);
 
         Curses = new CursesContainer();
 

@@ -9,12 +9,12 @@ public class AbilitiesContainer
     /// </summary>
     public event Action<IAbility, int, int> OnCastReloaded;
     /// <summary>
-    /// float - attack cast speed
+    /// float - attack speed
     /// </summary>
     public event Action<float> OnLevelUpAttack;
 
     private IAbility[] _abilities;
-    private float _attackAnimationTime;
+    private float _animationAttackSpeed;
     private int[] _levels;
     private int[] _maxLevels;
     private float[] _reloadTimes;
@@ -24,10 +24,10 @@ public class AbilitiesContainer
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesContainer(IAbility[] abilities, float attackAnimationTime)
+    public AbilitiesContainer(IAbility[] abilities, float animationAttackSpeed)
     {
         _abilities = abilities;
-        _attackAnimationTime = attackAnimationTime;
+        _animationAttackSpeed = animationAttackSpeed;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
@@ -78,8 +78,8 @@ public class AbilitiesContainer
 
         if (type == 0 & _abilities[0] != null)
         {
-            float multiplier = _attackAnimationTime * _abilities[0].Info.CastPerSecond[_levels[0]];
-            OnLevelUpAttack?.Invoke(multiplier);
+            float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
+            OnLevelUpAttack?.Invoke(attackSpeed);
         }
     }
 
@@ -97,8 +97,8 @@ public class AbilitiesContainer
 
                     if (i == 0)
                     {
-                        float multiplier = _attackAnimationTime * _abilities[0].Info.CastPerSecond[_levels[0]];
-                        OnLevelUpAttack?.Invoke(multiplier);
+                        float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
+                        OnLevelUpAttack?.Invoke(attackSpeed);
                     }
                     break;
                 }
