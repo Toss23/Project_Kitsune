@@ -65,7 +65,6 @@ public abstract class Ability : MonoBehaviour, IAbility
             {
                 float angle = transform.eulerAngles.z;
                 Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
-                Debug.Log(angle + " / " + offset);
                 transform.position += offset * _info.ProjectileSpawnOffset;
             }
         }
