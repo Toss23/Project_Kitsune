@@ -37,6 +37,7 @@ public abstract class Attribute
 
         if (Value <= Minimum)
         {
+            excess = Value - Minimum;
             Value = Minimum;
             OnMinimum?.Invoke();
         }
