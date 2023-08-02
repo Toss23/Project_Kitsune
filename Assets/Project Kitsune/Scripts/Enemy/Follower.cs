@@ -7,17 +7,18 @@ public class Follower
     public event Action<float> OnMove;
     public event Action<bool> IsMoving;
 
+    public float Movespeed;
+
     private Transform _target;
-    private float _speed;
     private float _distanceMin;
 
     private Rigidbody2D _rigidbody;
 
-    public Follower(Transform target, Rigidbody2D rigidbody, float speed, float distanceMin)
+    public Follower(Transform target, Rigidbody2D rigidbody, float distanceMin)
     {
         _target = target;
         _rigidbody = rigidbody;
-        _speed = speed;
+        Movespeed = 0;
         _distanceMin = distanceMin;
     }
 
@@ -30,7 +31,7 @@ public class Follower
             Vector2 targetPosition = _target.position;
             Vector2 direction = (targetPosition - position).normalized;
 
-            _rigidbody.MovePosition(_rigidbody.position + _speed * direction * deltaTime);
+            _rigidbody.MovePosition(_rigidbody.position + Movespeed * direction * deltaTime);
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             OnMove?.Invoke(angle);

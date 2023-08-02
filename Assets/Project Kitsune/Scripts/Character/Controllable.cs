@@ -1,16 +1,17 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Controllable
 {
-    private float _speed;
+    public float Movespeed;
     private Rigidbody2D _rigidbody;
     private bool _active;
     private Vector2 _position;
 
-    public Controllable(Rigidbody2D rigidbody, float speed)
+    public Controllable(Rigidbody2D rigidbody)
     {
+        Movespeed = 1;
         _rigidbody = rigidbody;
-        _speed = speed;
         _position = rigidbody.position;
         _active = true;
     }
@@ -31,7 +32,7 @@ public class Controllable
         {
             float deltaX = Mathf.Cos(angle * Mathf.Deg2Rad);
             float deltaY = Mathf.Sin(angle * Mathf.Deg2Rad);
-            _position += new Vector2(deltaX, deltaY) * _speed * deltaTime;
+            _position += new Vector2(deltaX, deltaY) * Movespeed * deltaTime;
         }
     }
 

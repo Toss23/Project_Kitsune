@@ -18,7 +18,9 @@ MonoBehaviour:
   _dotRate:
   - 1
   - 1
+  - 1
   _dotDuration:
+  - 5
   - 5
   - 5
   _abilityType: 2
@@ -26,8 +28,9 @@ MonoBehaviour:
   _projectileSpeed: 10
   _projectileRange: 1
   _projectileSpawnOffset: 0
-  _projectileCount: 0100000001000000
+  _projectileCount: 010000000100000001000000
   _projectileSplitAngle:
+  - 0
   - 0
   - 0
   _projectileAutoTarget: 0
@@ -40,29 +43,39 @@ MonoBehaviour:
   _damage:
   - 0
   - 0
+  - 0
   _damageMultiplier:
+  - 100
   - 100
   - 100
   _castPerSecond:
   - 1
   - 1
+  - 1
   _critChance:
+  - 0
   - 0
   - 0
   _critMultiplier:
   - 100
   - 100
+  - 100
   _name: Forest Wind Aura
-  _description: 
+  _description: 'Curse enemy "Forest Curse"
+
+    Effect: #Effect%'
   _radius:
+  - 1
   - 1
   - 1
   _abilityProperties:
   - Name: Effect
     Values:
     - 0
+    - 50
     - 100
   - Name: Duration
     Values:
     - 0
-    - 60
+    - 30
+    - 30

@@ -54,7 +54,7 @@ public class AbilityPointsEditor : Editor
             IAbility[] abilities = (_unitInfo.objectReferenceValue as UnitInfo).Abilities;
             for (int i = 0; i < 5; i++)
             {
-                haveAbility[i] = abilities[i] != null;
+                haveAbility[i] = abilities[i] != null & abilities[i].Info != null;
                 if (haveAbility[i])
                 {
                     haveAura[i] = abilities[i].Info.HaveAura;

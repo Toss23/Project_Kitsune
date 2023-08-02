@@ -7,12 +7,12 @@ public class Character : Unit
     public Character(UnitInfo info, Rigidbody2D rigidbody)
     {
         Init(info);
-        Controllable = new Controllable(rigidbody, 3);
+        Controllable = new Controllable(rigidbody);
     }
 
     protected override void OnUpdate(float deltaTime)
     {
-        
+        Controllable.Movespeed = Attributes.Movespeed.Value;
     }
 
     protected override void OnFixedUpdate(float deltaTime)

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Button))]
 public class AbilityCardView : MonoBehaviour, IAbilityCardView
@@ -9,6 +10,9 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
     public event Action<IAbility> OnClick;
 
     [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private Image _iconImage;
+    [SerializeField] private TMP_Text _levelText;
+    [SerializeField] private TMP_Text _descriptionText;
 
     private IAbility _ability;
     private Button _button;
@@ -24,7 +28,52 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
         if (ability != null)
         {
             _ability = ability;
-            _nameText.text = ability.Info.Name + " (" + level + "/" + ability.MaxLevel + ")";
+
+            level++;
+
+            if (_nameText != null)
+            {
+                _nameText.text = ability.Info.Name;
+            }
+
+            if (_iconImage != null)
+            {
+                // WIP
+            }
+
+            if (_levelText != null)
+            {
+                _levelText.text = "Level: " + level;
+            }
+
+            if (_descriptionText != null)
+            {
+                string description = ability.Info.Description;
+
+                Dictionary<string, float> replace = new Dictionary<string, float>();
+                replace.Add("#Damage", ability.Info.Damage[level]);
+                replace.Add("#Multiplier", ability.Info.DamageMultiplier[level]);
+                replace.Add("#CastPerSecond", ability.Info.CastPerSecond[level]);
+                replace.Add("#CritChance", ability.Info.CritChance[level]);
+                replace.Add("#CritMultiplier", ability.Info.CritMultiplier[level]);
+                replace.Add("#ProjectileCount", ability.Info.ProjectileCount[level]);
+                replace.Add("#ProjectileSpliteAngle", ability.Info.ProjectileSpliteAngle[level]);
+                replace.Add("#DotRate", ability.Info.DotRate[level]);
+                replace.Add("#DotDuration", ability.Info.DotDuration[level]);
+                replace.Add("#Radius", ability.Info.Radius[level]);
+
+                foreach (AbilityProperty property in ability.Info.AbilityProperties)
+                {
+                    replace.Add("#" + property.Name, property.Values[level]);
+                }
+
+                foreach (KeyValuePair<string, float> entry in replace)
+                {
+                    description = description.Replace(entry.Key, "<color=red>" + entry.Value + "</color>");
+                }
+
+                _descriptionText.text = description;
+            }
         }
         else
         {

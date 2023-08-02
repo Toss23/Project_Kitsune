@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IAbility
@@ -6,6 +7,7 @@ public interface IAbility
     public event Action<IAbility, IUnit> OnHit;
 
     public AbilityInfo Info { get; }
+    public Dictionary<string, float> Properties { get; }
     public int Level { get; }
     public int MaxLevel { get; }
 

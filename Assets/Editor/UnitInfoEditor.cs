@@ -14,6 +14,7 @@ public class UnitInfoEditor : Editor
     private SerializedProperty _critChance;
     private SerializedProperty _critMultiplier; 
     private SerializedProperty _armour;
+    private SerializedProperty _movespeed;
 
     private SerializedProperty _experienceGain;
 
@@ -37,6 +38,7 @@ public class UnitInfoEditor : Editor
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
         _armour = serializedObject.FindProperty("_armour");
 
+        _movespeed = serializedObject.FindProperty("_movespeed");
         _experienceGain = serializedObject.FindProperty("_experienceGain");
 
         _animationAttackSpeed = serializedObject.FindProperty("_animationAttackSpeed");
@@ -140,15 +142,22 @@ public class UnitInfoEditor : Editor
         GUILayout.Space(space);
         _critMultiplier.floatValue = EditorGUILayout.FloatField(_critMultiplier.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Movespeed", GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        _movespeed.floatValue = EditorGUILayout.FloatField(_movespeed.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
+
         GUILayout.Space(10);
 
         EditorGUILayout.LabelField("Enemy", boldStyle);
-
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Experience Gain", GUILayout.Width(width));
         _experienceGain.floatValue = EditorGUILayout.FloatField(_experienceGain.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
-
         GUILayout.Space(10);
 
         if (_abilities.arraySize != 5)

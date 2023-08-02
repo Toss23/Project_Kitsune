@@ -12,6 +12,7 @@ public class AbilitiesContainer
     /// float - attack speed
     /// </summary>
     public event Action<float> OnLevelUpAttack;
+    public event Action<IAbility> OnLevelUpField;
 
     private IAbility[] _abilities;
     private float _animationAttackSpeed;
@@ -88,18 +89,27 @@ public class AbilitiesContainer
         }
     }
 
-    public void LevelUp(int type)
+    public void LevelUp(int index)
     {
-        _levels[type]++;
-        if (_levels[type] > _maxLevels[type])
-            _levels[type] = _maxLevels[type];
-
-        if (type == 0 & _abilities[0] != null)
+        if (_abilities[index] != null)
         {
-            _casted[0] = false;
-            _reloadTimes[0] = 0;
-            float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
-            OnLevelUpAttack?.Invoke(attackSpeed);
+            _levels[index]++;
+            if (_levels[index] > _maxLevels[index])
+                _levels[index] = _maxLevels[index];
+
+            if (index == 0)
+            {
+                _casted[0] = false;
+                _reloadTimes[0] = 0;
+                float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
+                OnLevelUpAttack?.Invoke(attackSpeed);
+            }
+
+            if (_abilities[index].Info.AbilityType == AbilityInfo.Type.Field)
+            {
+                _casted[index] = false;
+                OnLevelUpField?.Invoke(_abilities[index]);
+            }
         }
     }
 
@@ -111,17 +121,7 @@ public class AbilitiesContainer
             {
                 if (ability == _abilities[i])
                 {
-                    _levels[i]++;
-                    if (_levels[i] > _maxLevels[i])
-                        _levels[i] = _maxLevels[i];
-
-                    if (i == 0)
-                    {
-                        _casted[0] = false;
-                        _reloadTimes[0] = 0;
-                        float attackSpeed = _animationAttackSpeed * _abilities[0].Info.CastPerSecond[_levels[0]];
-                        OnLevelUpAttack?.Invoke(attackSpeed);
-                    }
+                    LevelUp(i);
                     break;
                 }
             }

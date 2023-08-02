@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AbilityCaster))]
 public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
     [SerializeField] protected UnitInfo _info;
@@ -9,19 +10,24 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected UnitType _unitType;
     protected IUnit _unit;
     protected IUnitView _unitView;
+    protected IAbilityCaster _abilityCaster;
 
     // Reference
     protected Rigidbody2D _rigidbody;
     private IGameLogic _gameLogic;
 
     public Transform Transform => transform;
+    public UnitType UnitType => _unitType;
     public IUnit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
     public void Init(UnitType unitType)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _abilityCaster = GetComponent<AbilityCaster>();
         _gameLogic = GameLogic.Instance;
+
+        _abilityCaster.Init(this);
 
         _unitType = unitType;
         _unit = CreateUnit();
@@ -45,8 +51,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _gameLogic.OnFixedUpdate += _unit.FixedUpdate;
 
         _unit.OnDeath += Death;
-        _unit.Abilities.OnCastReloaded += CreateAbility;
+        _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
         _unit.Abilities.OnLevelUpAttack += _unitView.SetAnimationAttackSpeed;
+        _unit.Abilities.OnLevelUpField += _unit.TryRemoveField;
         _unit.Attributes.MagicShield.OnChanged += (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
@@ -60,8 +67,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _gameLogic.OnFixedUpdate -= _unit.FixedUpdate;
 
         _unit.OnDeath -= Death;
-        _unit.Abilities.OnCastReloaded -= CreateAbility;
+        _unit.Abilities.OnCastReloaded -= _abilityCaster.CreateAbility;
         _unit.Abilities.OnLevelUpAttack -= _unitView.SetAnimationAttackSpeed;
+        _unit.Abilities.OnLevelUpField -= _unit.TryRemoveField;
         _unit.Attributes.MagicShield.OnChanged -= (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
@@ -74,62 +82,5 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         Disable();
         _unit.DisableAbilities();
         Destroy(gameObject);
-    }
-
-    private void CreateAbility(IAbility ability, int point, int level)
-    {
-        if (ability != null)
-        {
-            int count = 1;
-            float deltaAngle = 0;
-            float startAngle = 0;
-
-            if (ability.Info.AbilityType == AbilityInfo.Type.Projectile)
-            {
-                count = ability.Info.ProjectileCount[level];
-                deltaAngle = ability.Info.ProjectileSpliteAngle[level];
-                startAngle = -count * deltaAngle / 2f;
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                if (_unitView.AbilityPoints.Points[point] != null)
-                {
-                    // Create
-                    Ability abilityObject = Instantiate((Ability)ability);
-                    abilityObject.name = ability.Info.Name;
-
-                    // Locate
-                    Transform abilityTransform = abilityObject.gameObject.transform;
-
-                    if (ability.Info.AbilityType != AbilityInfo.Type.Field)
-                        abilityTransform.Rotate(new Vector3(0, 0, _unitView.Angle + startAngle + deltaAngle * i));
-
-                    Vector3 position = _unitView.AbilityPoints.Points[point].transform.position;
-                    abilityTransform.position = position;
-
-                    // Fuse with Point
-                    if (ability.Info.AbilityType == AbilityInfo.Type.Melee
-                        || ability.Info.AbilityType == AbilityInfo.Type.Field)
-                        abilityObject.FuseWith(_unitView.AbilityPoints.Points[point].transform);
-
-                    // Init
-                    abilityObject.Init(_unit, level, (_unitType == UnitType.Character) ? Target.Enemy : Target.Character);
-                    _unit.RegisterAbility(abilityObject);
-                }
-                else
-                {
-                    Debug.Log("[Error] Ability Point (" + i + ") is not found!");
-                }
-            }
-
-            if (ability.Info.HaveAura)
-            {
-                GameObject auraObject = Instantiate(ability.Info.AuraObject);
-                auraObject.transform.parent = _unitView.AbilityPoints.PointsAura[point].transform;
-                auraObject.transform.position = _unitView.AbilityPoints.PointsAura[point].transform.position;
-                auraObject.transform.localScale = ability.Info.AuraObject.transform.localScale;
-            }
-        }
     }
 }

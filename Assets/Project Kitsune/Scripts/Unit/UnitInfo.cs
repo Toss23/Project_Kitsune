@@ -13,7 +13,7 @@ public class UnitInfo : ScriptableObject
     [SerializeField] private float _critChance = 0;
     [SerializeField] private float _critMultiplier = 150;
     [SerializeField] private float _armour = 0;
-
+    [SerializeField] private float _movespeed = 1;
     [SerializeField] private float _experienceGain = 0;
 
     [SerializeField] private float _animationAttackSpeed = 1f;
@@ -30,6 +30,7 @@ public class UnitInfo : ScriptableObject
     public float CritChance => _critChance;
     public float CritMultiplier => _critMultiplier;
     public float Armour => _armour;
+    public float Movespeed => _movespeed;
     public float ExperienceGain => _experienceGain;
     public float AnimationAttackSpeed => _animationAttackSpeed;
     public float AnimationTimeToAttack => _animationTimeToAttack;

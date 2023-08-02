@@ -69,7 +69,13 @@ MonoBehaviour:
   - 100
   - 100
   _name: Tornado
-  _description: 
+  _description: 'Kitsune create tornado on nearest enemy
+
+    Tornado exists for
+    #DotDuration seconds and deals #Damage damage every #DotRate seconds
+
+    Range:
+    #Range'
   _radius:
   - 1
   - 1

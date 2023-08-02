@@ -7,12 +7,12 @@ public class Enemy : Unit
     public Enemy(UnitInfo info, Rigidbody2D rigidbody)
     {
         Init(info);
-        Follower = new Follower(GameLogic.Instance.Character.Transform, rigidbody, 1, 1.2f);
+        Follower = new Follower(GameLogic.Instance.Character.Transform, rigidbody, 1.2f);
     }
 
     protected override void OnUpdate(float deltaTime)
     {
-        
+        Follower.Movespeed = Attributes.Movespeed.Value;
     }
 
     protected override void OnFixedUpdate(float deltaTime)

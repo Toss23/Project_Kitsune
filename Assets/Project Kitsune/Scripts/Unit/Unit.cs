@@ -6,27 +6,28 @@ public abstract class Unit : IUnit
     public event Action OnLevelUp;
     public event Action OnDeath;
 
+    private UnitInfo _unitInfo;
+
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesContainer Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }
-    public float ExperienceGain { get; private set; }
+    public UnitInfo UnitInfo => _unitInfo;
 
     private List<IAbility> _castedAbilities;
     private bool _isImmune = false;
 
-    protected void Init(UnitInfo info)
+    protected void Init(UnitInfo unitInfo)
     {
+        _unitInfo = unitInfo;
         _castedAbilities = new List<IAbility>();
 
-        Attributes = new AttributesContainer(info);
+        Attributes = new AttributesContainer(unitInfo);
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesContainer(info.Abilities, info);
+        Abilities = new AbilitiesContainer(unitInfo.Abilities, unitInfo);
 
         Curses = new CursesContainer();
-
-        ExperienceGain = info.ExperienceGain;
     }
 
     public void Update(float deltaTime)
@@ -57,6 +58,15 @@ public abstract class Unit : IUnit
         _castedAbilities.Add(ability);
     }
 
+    public void TryRemoveField(IAbility ability)
+    {
+        IAbility field = _castedAbilities.Find(item => item.Info.Name == ability.Info.Name);
+        if (field != null)
+        {
+            field.Destroy();
+        }
+    }
+
     public void DisableAbilities()
     {
         foreach (IAbility ability in _castedAbilities)
@@ -72,6 +82,8 @@ public abstract class Unit : IUnit
             Curse weakness = Curses.Find(CursesInfo.List.Weakness);
             value *= (1 + weakness.Effect / 100f) * CursesInfo.Weakness.InputDamageMultiplier;
         }
+
+        value *= (1 - _unitInfo.Armour / 100f);
 
         if (_isImmune == false)
         {

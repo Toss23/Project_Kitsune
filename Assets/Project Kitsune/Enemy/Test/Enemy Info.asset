@@ -21,8 +21,10 @@ MonoBehaviour:
   _critChance: 0
   _critMultiplier: 150
   _armour: 0
+  _movespeed: 1
   _experienceGain: 10
-  _attackAnimationTime: 1
+  _animationAttackSpeed: 1
+  _animationTimeToAttack: 1
   _abilities:
   - {fileID: 0}
   - {fileID: 0}

@@ -22,6 +22,6 @@ public class EnemyPresenter : UnitPresenter
 
     protected override void OnDeath()
     {
-        GameLogic.Instance.Character.Unit.Attributes.Level.AddExperience(Unit.ExperienceGain);
+        GameLogic.Instance.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
     }
 }

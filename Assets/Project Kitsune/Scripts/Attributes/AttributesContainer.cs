@@ -5,6 +5,7 @@ public class AttributesContainer
     public Level Level { get; }
     public Damage Damage { get; }
     public Armour Armour { get; }
+    public Movespeed Movespeed { get; }
 
     public AttributesContainer(UnitInfo info)
     {
@@ -13,6 +14,7 @@ public class AttributesContainer
         Level = new Level();
         Damage = new Damage(info.Damage, info.CritChance, info.CritMultiplier);
         Armour = new Armour(info.Armour);
+        Movespeed = new Movespeed(info.Movespeed);
     }
 
     public void Update(float deltaTime)

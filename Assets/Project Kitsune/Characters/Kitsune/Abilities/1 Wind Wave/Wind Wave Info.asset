@@ -53,7 +53,9 @@ MonoBehaviour:
   - 100
   - 100
   _name: Wind Wave
-  _description: 
+  _description: 'Kitsune fire wave and deals #Damage damage on the way
+
+    [Auto-Aim]'
   _radius:
   - 1
   - 1
