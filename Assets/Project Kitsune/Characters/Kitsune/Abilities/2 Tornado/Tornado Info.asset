@@ -31,7 +31,7 @@ MonoBehaviour:
   _projectileRange: 0
   _projectileSpawnOffset: 0
   _projectileCount: 01000000010000000100000001000000
-  _projectileSplitAngle:
+  _projectileAngle:
   - 0
   - 0
   - 0
@@ -75,7 +75,7 @@ MonoBehaviour:
     #DotDuration seconds and deals #Damage damage every #DotRate seconds
 
     Range:
-    #Range'
+    #Radius'
   _radius:
   - 1
   - 1

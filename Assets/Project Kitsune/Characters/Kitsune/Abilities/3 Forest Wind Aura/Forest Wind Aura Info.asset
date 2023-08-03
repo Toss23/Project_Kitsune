@@ -29,7 +29,7 @@ MonoBehaviour:
   _projectileRange: 1
   _projectileSpawnOffset: 0
   _projectileCount: 010000000100000001000000
-  _projectileSplitAngle:
+  _projectileAngle:
   - 0
   - 0
   - 0
@@ -61,9 +61,12 @@ MonoBehaviour:
   - 100
   - 100
   _name: Forest Wind Aura
-  _description: 'Curse enemy "Forest Curse"
+  _description: 'Curse enemy with "Forest Curse"
 
-    Effect: #Effect%'
+    Effect: #Effect%
+
+    Duration:
+    #Duration seconds'
   _radius:
   - 1
   - 1
