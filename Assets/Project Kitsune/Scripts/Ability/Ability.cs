@@ -2,11 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Target
-{
-    Enemy, Character
-}
-
 [Serializable]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Ability : MonoBehaviour, IAbility
@@ -18,7 +13,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     public AbilityInfo Info { get { return _info; } }
 
     private IUnit _caster;
-    private Target _target;
+    private UnitType _target;
 
     private int _level;
     private float _dotDamageTimer = 0;
@@ -27,24 +22,27 @@ public abstract class Ability : MonoBehaviour, IAbility
     private float _meleeTimer = 0;
     private Transform _pointToFusing;
     private Dictionary<string, float> _properties;
-
     private Transform _targetedEnemy;
+
+    private AbilityModifier _abilityModifier;
 
     public int Level => _level;
     public int MaxLevel => _info.Damage.Length - 1;
     public Dictionary<string, float> Properties => _properties;
     public Transform TargetedEnemy => _targetedEnemy;
+    public AbilityModifier AbilityModifier => _abilityModifier;
 
-    public void Init(IUnit caster, int level, Target target)
+    public void Init(int level, IUnit caster, UnitType target, AbilityModifier abilityModifier)
     {
         _caster = caster;
         _target = target;
+        _abilityModifier = abilityModifier;
 
         _level = level;
         if (_level > MaxLevel)
             _level = MaxLevel;
 
-        transform.localScale *= _info.Radius[_level];
+        transform.localScale *= _info.Radius[_level] + abilityModifier.Radius;
 
         if (_info.AbilityType == AbilityInfo.Type.Projectile)
         {
@@ -75,13 +73,13 @@ public abstract class Ability : MonoBehaviour, IAbility
             _properties.Add(param.Name, param.Values[_level]);
         }
 
-        OnCreate();
+        OnCreateAbility(_caster);
         GameLogic.Instance.OnUpdate += UpdateAbility;
     }
 
     protected Transform FindNearestEnemy()
     {
-        GameObject[] units = GameObject.FindGameObjectsWithTag(_target == Target.Enemy ? "Enemy" : "Character");
+        GameObject[] units = GameObject.FindGameObjectsWithTag(_target == UnitType.Enemy ? "Enemy" : "Character");
         if (units.Length > 0)
         {
             float distanceMin = 100000;
@@ -117,7 +115,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime && _info.AbilityType != AbilityInfo.Type.Field)
         {
             _dotLifeTimer += deltaTime;
-            if (_dotLifeTimer >= _info.DotDuration[_level])
+            if (_dotLifeTimer >= _info.DotDuration[_level] + _abilityModifier.DotDuration)
                 Destroy();
         }
 
@@ -150,14 +148,15 @@ public abstract class Ability : MonoBehaviour, IAbility
                 transform.position = _pointToFusing.transform.position;
         }
 
-        OnUpdate(deltaTime);
+        OnUpdateAbility(_caster, deltaTime);
     }
 
     protected virtual void OnCollisionWithObject(GameObject gameObject) { }
     protected abstract void OnCollisionStayWithEnemy(IUnit caster, IUnit target);
     protected abstract void OnCollisionEnterWithEnemy(IUnit caster, IUnit target);
-    protected abstract void OnUpdate(float deltaTime);
-    protected abstract void OnCreate();
+    protected abstract void OnDestroyAbility(IUnit caster);
+    protected abstract void OnUpdateAbility(IUnit caster, float deltaTime);
+    protected abstract void OnCreateAbility(IUnit caster);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -183,9 +182,12 @@ public abstract class Ability : MonoBehaviour, IAbility
             if (_info.AbilityDamageType == AbilityInfo.DamageType.DamageOverTime)
             {
                 _dotDamageTimer += Time.deltaTime;
-                while (_dotDamageTimer >= _info.DotRate[_level])
+
+                float rate = Mathf.Max(_info.DotRate[_level] + _abilityModifier.DotRate, 0.1f);
+
+                while (_dotDamageTimer >= rate)
                 {
-                    _dotDamageTimer -= _info.DotRate[_level];
+                    _dotDamageTimer -= rate;
                     IUnit target = CallbackOnHit(collision);
                     if (target != null)
                     {
@@ -228,6 +230,7 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public void Destroy()
     {
+        OnDestroyAbility(_caster);
         GameLogic.Instance.OnUpdate -= UpdateAbility;
         Destroy(gameObject);
     }

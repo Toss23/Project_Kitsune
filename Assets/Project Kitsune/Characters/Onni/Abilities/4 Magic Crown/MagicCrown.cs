@@ -24,13 +24,18 @@ public class MagicCrown : Ability
         }
     }
 
-    protected override void OnCreate()
+    protected override void OnCreateAbility(IUnit caster)
     {
         
     }
 
-    protected override void OnUpdate(float deltaTime)
+    protected override void OnUpdateAbility(IUnit caster, float deltaTime)
     {
         
+    }
+
+    protected override void OnDestroyAbility(IUnit caster)
+    {
+
     }
 }

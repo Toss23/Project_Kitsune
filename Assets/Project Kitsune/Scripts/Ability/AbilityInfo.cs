@@ -29,7 +29,7 @@ public class AbilityInfo : ScriptableObject
     [SerializeField] private float _projectileRange = 1;
     [SerializeField] private float _projectileSpawnOffset = 0;
     [SerializeField] private int[] _projectileCount;
-    [SerializeField] private float[] _projectileSplitAngle;
+    [SerializeField] private float[] _projectileAngle;
     [SerializeField] private bool _projectileAutoTarget;
     [SerializeField] private bool _projectileAutoAim;
     [SerializeField] private bool _destroyOnHit;
@@ -69,7 +69,7 @@ public class AbilityInfo : ScriptableObject
     public float ProjectileRange => _projectileRange;
     public float ProjectileSpawnOffset => _projectileSpawnOffset;
     public int[] ProjectileCount => _projectileCount;
-    public float[] ProjectileSpliteAngle => _projectileSplitAngle;
+    public float[] ProjectileAngle => _projectileAngle;
     public bool ProjectileAutoTarget => _projectileAutoTarget;
     public bool ProjectileAutoAim => _projectileAutoAim;
     public bool DestroyOnHit => _destroyOnHit;

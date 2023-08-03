@@ -57,7 +57,7 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
                 replace.Add("#CritChance", ability.Info.CritChance[level]);
                 replace.Add("#CritMultiplier", ability.Info.CritMultiplier[level]);
                 replace.Add("#ProjectileCount", ability.Info.ProjectileCount[level]);
-                replace.Add("#ProjectileSpliteAngle", ability.Info.ProjectileSpliteAngle[level]);
+                replace.Add("#ProjectileAngle", ability.Info.ProjectileAngle[level]);
                 replace.Add("#DotRate", ability.Info.DotRate[level]);
                 replace.Add("#DotDuration", ability.Info.DotDuration[level]);
                 replace.Add("#Radius", ability.Info.Radius[level]);

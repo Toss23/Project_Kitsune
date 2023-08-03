@@ -10,8 +10,9 @@ public interface IAbility
     public Dictionary<string, float> Properties { get; }
     public int Level { get; }
     public int MaxLevel { get; }
+    public AbilityModifier AbilityModifier { get; }
 
     public void FuseWith(Transform transform);
-    public void Init(IUnit caster, int level, Target target);
+    public void Init(int level, IUnit caster, UnitType target, AbilityModifier abilityModifier);
     public void Destroy();
 }

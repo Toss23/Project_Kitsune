@@ -12,7 +12,7 @@ public class Tornado : Ability
         
     }
 
-    protected override void OnCreate()
+    protected override void OnCreateAbility(IUnit caster)
     {
         Transform nearestEnemy = FindNearestEnemy();
         if (nearestEnemy != null)
@@ -21,8 +21,13 @@ public class Tornado : Ability
         }
     }
 
-    protected override void OnUpdate(float deltaTime)
+    protected override void OnUpdateAbility(IUnit caster, float deltaTime)
     {
         
+    }
+
+    protected override void OnDestroyAbility(IUnit caster)
+    {
+
     }
 }

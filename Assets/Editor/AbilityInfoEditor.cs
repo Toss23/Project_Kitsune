@@ -23,7 +23,7 @@ public class AbilityInfoEditor : Editor
     private SerializedProperty _projectileRange;
     private SerializedProperty _projectileSpawnOffset;
     private SerializedProperty _projectileCount;
-    private SerializedProperty _projectileSplitAngle;
+    private SerializedProperty _projectileAngle;
     private SerializedProperty _projectileAutoTarget;
     private SerializedProperty _projectileAutoAim;
     private SerializedProperty _destroyOnHit;
@@ -68,7 +68,7 @@ public class AbilityInfoEditor : Editor
         _projectileRange = serializedObject.FindProperty("_projectileRange");
         _projectileSpawnOffset = serializedObject.FindProperty("_projectileSpawnOffset");
         _projectileCount = serializedObject.FindProperty("_projectileCount");
-        _projectileSplitAngle = serializedObject.FindProperty("_projectileSplitAngle");
+        _projectileAngle = serializedObject.FindProperty("_projectileAngle");
         _projectileAutoTarget = serializedObject.FindProperty("_projectileAutoTarget");
         _projectileAutoAim = serializedObject.FindProperty("_projectileAutoAim");
         _destroyOnHit = serializedObject.FindProperty("_destroyOnHit");
@@ -293,13 +293,13 @@ public class AbilityInfoEditor : Editor
             }
         }
 
-        if (_projectileSplitAngle.arraySize != _damage.arraySize)
+        if (_projectileAngle.arraySize != _damage.arraySize)
         {
-            int prevSize = _projectileSplitAngle.arraySize;
-            _projectileSplitAngle.arraySize = _damage.arraySize;
-            for (int i = prevSize; i < _projectileSplitAngle.arraySize; i++)
+            int prevSize = _projectileAngle.arraySize;
+            _projectileAngle.arraySize = _damage.arraySize;
+            for (int i = prevSize; i < _projectileAngle.arraySize; i++)
             {
-                SerializedProperty element = _projectileSplitAngle.GetArrayElementAtIndex(i);
+                SerializedProperty element = _projectileAngle.GetArrayElementAtIndex(i);
                 element.floatValue = 0;
             }
         }
@@ -445,7 +445,7 @@ public class AbilityInfoEditor : Editor
             GUILayout.Space(space);
             EditorGUILayout.LabelField("Count", GUILayout.Width(width));
             GUILayout.Space(space);
-            EditorGUILayout.LabelField("Split Angle", GUILayout.Width(width));
+            EditorGUILayout.LabelField("Angle", GUILayout.Width(width));
             EditorGUILayout.EndHorizontal();
 
             for (int i = 1; i < _damage.arraySize; i++)
@@ -459,7 +459,7 @@ public class AbilityInfoEditor : Editor
                 _projectileCountValue.intValue = EditorGUILayout.IntField(_projectileCountValue.intValue, GUILayout.Width(width));
                 GUILayout.Space(space);
 
-                SerializedProperty _projectileSplitAngleValue = _projectileSplitAngle.GetArrayElementAtIndex(i);
+                SerializedProperty _projectileSplitAngleValue = _projectileAngle.GetArrayElementAtIndex(i);
                 _projectileSplitAngleValue.floatValue = EditorGUILayout.FloatField(_projectileSplitAngleValue.floatValue, GUILayout.Width(width));
                 GUILayout.Space(space);
                 

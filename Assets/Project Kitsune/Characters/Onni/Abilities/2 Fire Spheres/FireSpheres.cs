@@ -20,7 +20,7 @@ public class FireSpheres : Ability
         
     }
 
-    protected override void OnCreate()
+    protected override void OnCreateAbility(IUnit caster)
     {
         _angle = 0;
         _circles = new GameObject[_count]; 
@@ -31,7 +31,7 @@ public class FireSpheres : Ability
         }
     }
 
-    protected override void OnUpdate(float deltaTime)
+    protected override void OnUpdateAbility(IUnit caster, float deltaTime)
     {
         _angle -= deltaTime * _speed;
 
@@ -49,5 +49,10 @@ public class FireSpheres : Ability
             position.y = _radius * Mathf.Sin((_angle + deltaAngle * i) * Mathf.Deg2Rad);
             _circles[i].transform.localPosition = position;
         }
+    }
+
+    protected override void OnDestroyAbility(IUnit caster)
+    {
+
     }
 }

@@ -8,6 +8,7 @@ public interface IUnit
     public AttributesContainer Attributes { get; }
     public AbilitiesContainer Abilities { get; }
     public CursesContainer Curses { get; }
+    public ModifiersContainer ModifiersContainer { get; }
     public UnitInfo UnitInfo { get; }
 
     public void Update(float deltaTime);

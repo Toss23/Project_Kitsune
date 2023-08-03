@@ -11,6 +11,7 @@ public abstract class Unit : IUnit
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesContainer Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }
+    public ModifiersContainer ModifiersContainer { get; private set; }
     public UnitInfo UnitInfo => _unitInfo;
 
     private List<IAbility> _castedAbilities;
@@ -21,13 +22,15 @@ public abstract class Unit : IUnit
         _unitInfo = unitInfo;
         _castedAbilities = new List<IAbility>();
 
+        ModifiersContainer = new ModifiersContainer(Attributes);
+
         Attributes = new AttributesContainer(unitInfo);
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesContainer(unitInfo.Abilities, unitInfo);
+        Abilities = new AbilitiesContainer(unitInfo.Abilities, unitInfo, ModifiersContainer.AbilityModifiers);
 
-        Curses = new CursesContainer();
+        Curses = new CursesContainer();    
     }
 
     public void Update(float deltaTime)
@@ -54,7 +57,7 @@ public abstract class Unit : IUnit
 
     public void RegisterAbility(IAbility ability)
     {
-        ability.OnHit += OnHitAbility;
+        ability.OnHit += DamageTarget;
         _castedAbilities.Add(ability);
     }
 
@@ -71,7 +74,7 @@ public abstract class Unit : IUnit
     {
         foreach (IAbility ability in _castedAbilities)
         {
-            ability.OnHit -= OnHitAbility;
+            ability.OnHit -= DamageTarget;
         }
     }
 
@@ -112,7 +115,7 @@ public abstract class Unit : IUnit
         _isImmune = state;
     }
 
-    private void OnHitAbility(IAbility ability, IUnit target)
+    private void DamageTarget(IAbility ability, IUnit target)
     {
         if (target != null)
         {

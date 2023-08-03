@@ -21,12 +21,13 @@ public class AbilitiesContainer
     private int[] _maxLevels;
     private float[] _reloadTimes;
     private bool[] _casted;
+    private AbilityModifier[] _abilityModifiers;
 
     public IAbility[] List => _abilities;
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesContainer(IAbility[] abilities, UnitInfo unitInfo)
+    public AbilitiesContainer(IAbility[] abilities, UnitInfo unitInfo, AbilityModifier[] abilityModifiers)
     {
         _abilities = abilities;
         _animationAttackSpeed = unitInfo.AnimationAttackSpeed;
@@ -35,6 +36,7 @@ public class AbilitiesContainer
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
         _casted = new bool[_abilities.Length];
+        _abilityModifiers = abilityModifiers;
 
         for (int i = 0; i < _abilities.Length; i++)
         {
@@ -44,8 +46,7 @@ public class AbilitiesContainer
     }
 
     public void UpdateCastTime(float deltaTime)
-    {
-        
+    {       
         for (int i = 0; i < _abilities.Length; i++)
         {
             if (_abilities[i] != null & _levels[i] > 0)
@@ -53,7 +54,7 @@ public class AbilitiesContainer
                 if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
                 {
                     _reloadTimes[i] += deltaTime;
-                    float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]];
+                    float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]] + _abilityModifiers[i].CastPerSecond;
 
                     if (i != 0)
                     {
