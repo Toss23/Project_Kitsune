@@ -32,7 +32,7 @@ public class AbilitiesContainer
     {
         _unit = unit;
         _abilities = abilities;
-        _animationAttackSpeed = unit.UnitInfo.AnimationAttackSpeed;
+        _animationAttackSpeed = unit.UnitInfo.AnimationAttackTime;
         _animationTimeToAttack = unit.UnitInfo.AnimationTimeToAttack;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
@@ -78,16 +78,10 @@ public class AbilitiesContainer
                     {
                         float attackSpeed = 1 / castPerSecond * _animationTimeToAttack;
 
-                        if (_reloadTimes[i] >= attackSpeed & _casted[i] == false)
+                        while (_reloadTimes[i] >= attackSpeed)
                         {
-                            _casted[i] = true;
-                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
-                        }
-
-                        while (_reloadTimes[i] >= 1 / castPerSecond)
-                        {
-                            _casted[i] = false;
                             _reloadTimes[i] -= 1 / castPerSecond;
+                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                         }
                     }
                 }

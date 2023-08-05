@@ -18,7 +18,7 @@ public class UnitInfoEditor : Editor
 
     private SerializedProperty _experienceGain;
 
-    private SerializedProperty _animationAttackSpeed;
+    private SerializedProperty _animationAttackTime;
     private SerializedProperty _animationTimeToAttack;
 
     private SerializedProperty _abilities;
@@ -41,7 +41,7 @@ public class UnitInfoEditor : Editor
         _movespeed = serializedObject.FindProperty("_movespeed");
         _experienceGain = serializedObject.FindProperty("_experienceGain");
 
-        _animationAttackSpeed = serializedObject.FindProperty("_animationAttackSpeed");
+        _animationAttackTime = serializedObject.FindProperty("_animationAttackTime");
         _animationTimeToAttack = serializedObject.FindProperty("_animationTimeToAttack");
 
         _abilities = serializedObject.FindProperty("_abilities");
@@ -174,16 +174,10 @@ public class UnitInfoEditor : Editor
         width = 150;
         EditorGUILayout.LabelField("Abilities", boldStyle);
 
-        EditorGUILayout.BeginVertical();
-        EditorGUILayout.LabelField("Animation Attack Speed is the full animation time");
-        EditorGUILayout.LabelField("Animation Time To Attack is the animation time to create an attack ability");
-        EditorGUILayout.EndVertical();
-        GUILayout.Space(space);
-
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Animation Attack Speed", GUILayout.Width(width));
+        EditorGUILayout.LabelField("Animation Attack Time", GUILayout.Width(width));
         GUILayout.Space(space);
-        _animationAttackSpeed.floatValue = EditorGUILayout.FloatField(_animationAttackSpeed.floatValue, GUILayout.Width(width));
+        _animationAttackTime.floatValue = EditorGUILayout.FloatField(_animationAttackTime.floatValue, GUILayout.Width(width));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
