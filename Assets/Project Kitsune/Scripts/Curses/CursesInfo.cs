@@ -26,13 +26,14 @@ public static class CursesInfo
 
 public class Weakness
 {
-    public float OutputDamageMultiplier = 0.5f;
-    public float InputDamageMultiplier = 2f;
+    public float OutputDamageMultiplier = 0.5f;     // 50% reduce Deal Damage
+    public float InputDamageMultiplier = 2f;        // 200% increased Damage Taken
 }
 
 public class Forest
 {
-    
+    public float CastSpeedMultiplier = 0.5f;        // 50% reduce Cast per Second
+    public float MovespeedMultiplier = 0.5f;        // 50% reduce Movespeed
 }
 
 public class Shadow

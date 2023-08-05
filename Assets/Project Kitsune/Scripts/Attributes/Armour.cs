@@ -4,6 +4,8 @@ public class Armour : Attribute
     {
         Value = baseValue;
         Minimum = 0;
-        Maximum = 100;
+        Maximum = 90;
     }
+
+    protected override bool ClampOnChange() => false;
 }

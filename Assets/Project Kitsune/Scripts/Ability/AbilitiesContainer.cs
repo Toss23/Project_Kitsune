@@ -14,6 +14,7 @@ public class AbilitiesContainer
     public event Action<float> OnLevelUpAttack;
     public event Action<IAbility> OnLevelUpField;
 
+    private IUnit _unit;
     private IAbility[] _abilities;
     private float _animationAttackSpeed;
     private float _animationTimeToAttack;
@@ -27,11 +28,12 @@ public class AbilitiesContainer
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesContainer(IAbility[] abilities, UnitInfo unitInfo, AbilityModifier[] abilityModifiers)
+    public AbilitiesContainer(IUnit unit, IAbility[] abilities, AbilityModifier[] abilityModifiers)
     {
+        _unit = unit;
         _abilities = abilities;
-        _animationAttackSpeed = unitInfo.AnimationAttackSpeed;
-        _animationTimeToAttack = unitInfo.AnimationTimeToAttack;
+        _animationAttackSpeed = unit.UnitInfo.AnimationAttackSpeed;
+        _animationTimeToAttack = unit.UnitInfo.AnimationTimeToAttack;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
         _reloadTimes = new float[_abilities.Length];
@@ -45,7 +47,7 @@ public class AbilitiesContainer
         }
     }
 
-    public void UpdateCastTime(float deltaTime)
+    public void Update(float deltaTime)
     {       
         for (int i = 0; i < _abilities.Length; i++)
         {
@@ -53,8 +55,16 @@ public class AbilitiesContainer
             {
                 if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
                 {
+                    float castMultiplier = 1;
+                    if (_unit.Curses.Have(CursesInfo.List.Forest))
+                    {
+                        Curse forest = _unit.Curses.Find(CursesInfo.List.Forest);
+                        castMultiplier = 1 - CursesInfo.Forest.CastSpeedMultiplier * forest.Effect / 100;
+                    }
+
                     _reloadTimes[i] += deltaTime;
                     float castPerSecond = _abilities[i].Info.CastPerSecond[_levels[i]] + _abilityModifiers[i].CastPerSecond;
+                    castPerSecond *= castMultiplier;
 
                     if (i != 0)
                     {

@@ -7,10 +7,12 @@ public class CursesContainer
     public event Action<Curse> OnCurseCleared;
 
     private List<Curse> _curses;
+    private List<Curse> _cursesToRemove;
 
     public CursesContainer()
     {
         _curses = new List<Curse>();
+        _cursesToRemove = new List<Curse>();
     }
 
     public void Add(Curse curse)
@@ -35,10 +37,17 @@ public class CursesContainer
             curse.Duration -= deltaTime;
             if (curse.Duration <= 0)
             {
-                OnCurseCleared?.Invoke(curse);
-                _curses.Remove(curse);
+                _cursesToRemove.Add(curse);
             }
         }
+
+        foreach (Curse curse in _cursesToRemove)
+        {
+            OnCurseCleared?.Invoke(curse);
+            _curses.Remove(curse);
+        }
+
+        _cursesToRemove.Clear();
     }
 
     public bool Have(CursesInfo.List curse)

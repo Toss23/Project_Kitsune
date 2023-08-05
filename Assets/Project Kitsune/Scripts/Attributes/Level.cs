@@ -1,4 +1,5 @@
 using System;
+
 public class Level : Attribute
 {
     public event Action<float> OnExperienceChanged;
@@ -16,6 +17,8 @@ public class Level : Attribute
         _experience.Set(0);
         _experience.OnMaximum += LevelUp;
     }
+
+    protected override bool ClampOnChange() => true;
 
     public void AddExperience(float value)
     {

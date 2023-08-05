@@ -10,6 +10,8 @@ public class Experience : Attribute
         NextLevel(level);
     }
 
+    protected override bool ClampOnChange() => true;
+
     public void NextLevel(int level)
     {
         Value = 0;

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class ModifiersContainer
 {
     private AttributesContainer _attributesContainer;
@@ -18,49 +20,37 @@ public class ModifiersContainer
 
     public void Add(AbilityModifier abilityModifier)
     {
-        _abilityModifiers[abilityModifier.AbilityIndex] = Sum(_abilityModifiers[abilityModifier.AbilityIndex], abilityModifier);
+        _abilityModifiers[abilityModifier.AbilityIndex].Add(abilityModifier);
     }
 
     public void Remove(AbilityModifier abilityModifier)
     {
-        _abilityModifiers[abilityModifier.AbilityIndex] = Difference(_abilityModifiers[abilityModifier.AbilityIndex], abilityModifier);
+        _abilityModifiers[abilityModifier.AbilityIndex].Subtract(abilityModifier);
     }
 
-    private AbilityModifier Sum(AbilityModifier first, AbilityModifier second)
+    public void Add(AttributeModifier attributeModifier)
     {
-        first.Damage += second.Damage;
-        first.Multiplier += second.Multiplier;
-        first.CastPerSecond += second.CastPerSecond;
-        first.CritChance += second.CritChance;
-        first.CritMultiplier += second.CritMultiplier;
-
-        first.ProjectileCount += second.ProjectileCount;
-        first.ProjectileAngle += second.ProjectileAngle;
-
-        first.DotRate += second.DotRate;
-        first.DotDuration += second.DotDuration;
-
-        first.Radius += second.Radius;
-
-        return first;
+        _attributesContainer.Life.AddMaximum(attributeModifier.Life);
+        _attributesContainer.Life.Regeneration.Add(attributeModifier.LifeRegeneration);
+        _attributesContainer.MagicShield.AddMaximum(attributeModifier.MagicShield);
+        _attributesContainer.MagicShield.Regeneration.Add(attributeModifier.MagicShieldRegeneration);
+        _attributesContainer.Armour.Add(attributeModifier.Armour);
+        _attributesContainer.Damage.Add(attributeModifier.Damage);
+        _attributesContainer.Damage.CritChance.Add(attributeModifier.CritChance);
+        _attributesContainer.Damage.CritMultiplier.Add(attributeModifier.CritMultiplier);
+        _attributesContainer.Movespeed.Add(attributeModifier.Movespeed);
     }
 
-    private AbilityModifier Difference(AbilityModifier first, AbilityModifier second)
+    public void Remove(AttributeModifier attributeModifier)
     {
-        first.Damage -= second.Damage;
-        first.Multiplier -= second.Multiplier;
-        first.CastPerSecond -= second.CastPerSecond;
-        first.CritChance -= second.CritChance;
-        first.CritMultiplier -= second.CritMultiplier;
-
-        first.ProjectileCount -= second.ProjectileCount;
-        first.ProjectileAngle -= second.ProjectileAngle;
-
-        first.DotRate -= second.DotRate;
-        first.DotDuration -= second.DotDuration;
-
-        first.Radius -= second.Radius;
-
-        return first;
+        _attributesContainer.Life.SubtractMaximum(attributeModifier.Life);
+        _attributesContainer.Life.Regeneration.Subtract(attributeModifier.LifeRegeneration);
+        _attributesContainer.MagicShield.SubtractMaximum(attributeModifier.MagicShield);
+        _attributesContainer.MagicShield.Regeneration.Subtract(attributeModifier.MagicShieldRegeneration);
+        _attributesContainer.Armour.Subtract(attributeModifier.Armour);
+        _attributesContainer.Damage.Subtract(attributeModifier.Damage);
+        _attributesContainer.Damage.CritChance.Subtract(attributeModifier.CritChance);
+        _attributesContainer.Damage.CritMultiplier.Subtract(attributeModifier.CritMultiplier);
+        _attributesContainer.Movespeed.Subtract(attributeModifier.Movespeed);
     }
 }

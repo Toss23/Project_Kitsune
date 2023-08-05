@@ -43,15 +43,15 @@ MonoBehaviour:
   _damage:
   - 0
   - 5
-  - 1
+  - 0
   _damageMultiplier:
   - 100
   - 100
   - 200
   _castPerSecond:
   - 1
-  - 0.5
   - 1
+  - 0.5
   _critChance:
   - 0
   - 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class Unit : IUnit
 {
@@ -24,20 +25,19 @@ public abstract class Unit : IUnit
 
         ModifiersContainer = new ModifiersContainer(Attributes);
 
-        Attributes = new AttributesContainer(unitInfo);
+        Attributes = new AttributesContainer(this);
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
 
-        Abilities = new AbilitiesContainer(unitInfo.Abilities, unitInfo, ModifiersContainer.AbilityModifiers);
+        Abilities = new AbilitiesContainer(this, unitInfo.Abilities, ModifiersContainer.AbilityModifiers);
 
         Curses = new CursesContainer();    
     }
 
     public void Update(float deltaTime)
     {
-        Attributes.Life.Regenerate(deltaTime);
-        Attributes.MagicShield.Regenerate(deltaTime);
-        Abilities.UpdateCastTime(deltaTime);
+        Attributes.Update(deltaTime);
+        Abilities.Update(deltaTime);
         Curses.Update(deltaTime);
         OnUpdate(deltaTime);
     }   
@@ -57,7 +57,7 @@ public abstract class Unit : IUnit
 
     public void RegisterAbility(IAbility ability)
     {
-        ability.OnHit += DamageTarget;
+        ability.OnHit += DealDamage;
         _castedAbilities.Add(ability);
     }
 
@@ -74,7 +74,7 @@ public abstract class Unit : IUnit
     {
         foreach (IAbility ability in _castedAbilities)
         {
-            ability.OnHit -= DamageTarget;
+            ability.OnHit -= DealDamage;
         }
     }
 
@@ -92,20 +92,12 @@ public abstract class Unit : IUnit
         {
             if (isProjectile)
             {
-                Attributes.Life.Add(-value);
+                Attributes.Life.Subtract(value);
             }
             else
             {
-                float pool = Attributes.MagicShield.Value - value;
-                if (pool >= 0)
-                {
-                    Attributes.MagicShield.Add(-value);
-                }
-                else
-                {
-                    Attributes.MagicShield.Set(0);
-                    Attributes.Life.Add(pool);
-                }
+                float excess = Attributes.MagicShield.Subtract(value);
+                Attributes.Life.Subtract(excess);
             }
         }
     }
@@ -115,7 +107,7 @@ public abstract class Unit : IUnit
         _isImmune = state;
     }
 
-    private void DamageTarget(IAbility ability, IUnit target)
+    private void DealDamage(IAbility ability, IUnit target)
     {
         if (target != null)
         {

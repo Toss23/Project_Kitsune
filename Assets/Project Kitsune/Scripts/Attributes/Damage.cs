@@ -15,6 +15,15 @@ public class Damage : Attribute
         Maximum = 1000;
     }
 
+    protected override bool ClampOnChange() => false;
+
+    public override void ResetToDefault()
+    {
+        base.ResetToDefault();
+        CritChance.ResetToDefault();
+        CritMultiplier.ResetToDefault();
+    }
+
     /// <summary>
     /// ADamage - Ability Damage
     /// CDamage - Character Damage

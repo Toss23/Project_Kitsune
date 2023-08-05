@@ -5,7 +5,7 @@ public class Curse
     public float Duration;
     public float Effect;
 
-    public Curse(CursesInfo.List name, float duration, float effect)
+    public Curse(CursesInfo.List name, float effect, float duration)
     {
         Name = name;
         Duration = duration;

@@ -17,13 +17,13 @@ MonoBehaviour:
   _abilityDamageType: 1
   _dotRate:
   - 1
-  - 1
-  - 0.8
+  - 0.5
+  - 0.5
   - 0.5
   _dotDuration:
   - 5
-  - 3
-  - 3
+  - 5
+  - 7
   - 10
   _abilityType: 0
   _meleeAnimationTime: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   _auraObject: {fileID: 0}
   _damage:
   - 0
-  - 1
-  - 1
-  - 2
+  - 10
+  - 10
+  - 10
   _damageMultiplier:
   - 100
   - 100

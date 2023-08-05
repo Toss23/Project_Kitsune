@@ -6,4 +6,6 @@ public class CritChance : Attribute
         Minimum = 0;
         Maximum = 100 - baseValue;
     }
+
+    protected override bool ClampOnChange() => false;
 }

@@ -21,4 +21,38 @@ public class AbilityModifier
     {
         AbilityIndex = abilityIndex;
     }
+
+    public void Add(AbilityModifier abilityModifier)
+    {
+        Damage += abilityModifier.Damage;
+        Multiplier += abilityModifier.Multiplier;
+        CastPerSecond += abilityModifier.CastPerSecond;
+        CritChance += abilityModifier.CritChance;
+        CritMultiplier += abilityModifier.CritMultiplier;
+
+        ProjectileCount += abilityModifier.ProjectileCount;
+        ProjectileAngle += abilityModifier.ProjectileAngle;
+
+        DotRate += abilityModifier.DotRate;
+        DotDuration += abilityModifier.DotDuration;
+
+        Radius += abilityModifier.Radius;
+    }
+
+    public void Subtract(AbilityModifier abilityModifier)
+    {
+        Damage -= abilityModifier.Damage;
+        Multiplier -= abilityModifier.Multiplier;
+        CastPerSecond -= abilityModifier.CastPerSecond;
+        CritChance -= abilityModifier.CritChance;
+        CritMultiplier -= abilityModifier.CritMultiplier;
+
+        ProjectileCount -= abilityModifier.ProjectileCount;
+        ProjectileAngle -= abilityModifier.ProjectileAngle;
+
+        DotRate -= abilityModifier.DotRate;
+        DotDuration -= abilityModifier.DotDuration;
+
+        Radius -= abilityModifier.Radius;
+    }
 }

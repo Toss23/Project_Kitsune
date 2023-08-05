@@ -6,4 +6,6 @@
         Minimum = 0;
         Maximum = 10;
     }
+
+    protected override bool ClampOnChange() => false;
 }

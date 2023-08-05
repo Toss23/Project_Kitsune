@@ -6,4 +6,6 @@ public class CritMultiplier : Attribute
         Minimum = 0;
         Maximum = 450;
     }
+
+    protected override bool ClampOnChange() => false;
 }

@@ -5,50 +5,135 @@ public abstract class Attribute
     public event Action OnMinimum;
     public event Action OnMaximum;
 
-    public float Value { get; protected set; }
+    private float _value;
+
+    public float Value 
+    {
+        get 
+        {
+            float value = _value;
+            if (ClampOnChange() == false)
+            {
+                value = Clamp()[0];
+            }
+            return value * Multiplier;
+        }
+        protected set
+        {
+            _value = value;
+        }
+    }
+
     public float Minimum { get; protected set; }
     public float Maximum { get; protected set; }
+    public float Multiplier = 1f;
 
-    public virtual void Set(float value)
+    private float _valueDefault = 0;
+    private float _minimumDefault = 0;
+    private float _maximumDefault = 0;
+
+    protected virtual void SaveDefault()
     {
-        Value = value;
-        Normalize();
+        _valueDefault = _value;
+        _minimumDefault = Minimum;
+        _maximumDefault = Maximum;
+    }
+
+    public virtual void ResetToDefault()
+    {
+        _value = _valueDefault;
+        Minimum = _minimumDefault;
+        Maximum = _maximumDefault;
+    }
+
+    public virtual float Set(float value)
+    {
+        _value = value;
+        float excess = Clamp()[1];
+        if (ClampOnChange())
+        {
+            ApplyClamp();
+        }
+        return excess;
     }
 
     public virtual float Add(float value)
     {
-        Value += value;
-        return Normalize();
+        if (value > 0)
+        {
+            _value += value;
+            float excess = Clamp()[1];
+            if (ClampOnChange())
+            {
+                ApplyClamp();
+            }
+            return excess;
+        }
+        return 0;
     }
+
+    public virtual float Subtract(float value)
+    {
+        if (value > 0)
+        {
+            _value -= value;
+            float excess = Clamp()[1];
+            if (ClampOnChange())
+            {
+                ApplyClamp();
+            }
+            return excess;
+        }
+        return 0;
+    }
+
+    protected abstract bool ClampOnChange();
 
     public virtual float GetPercent()
     {
-        return Value / Maximum * 100;
+        return _value / Maximum * 100;
     }
 
     public override string ToString()
     {
-        return Math.Floor(Value) + "";
+        return Math.Floor(_value) + "";
     }
 
-    private float Normalize()
+    private float[] ApplyClamp()
     {
-        float excess = 0;
+        float[] result = Clamp();
+        _value = result[0];
 
-        if (Value <= Minimum)
+        if (_value == Maximum)
         {
-            excess = Value - Minimum;
-            Value = Minimum;
-            OnMinimum?.Invoke();
-        }
-
-        if (Value >= Maximum)
-        {
-            excess = Value - Maximum;
-            Value = Maximum;
             OnMaximum?.Invoke();
         }
 
-        return excess;
+        if (_value == Minimum)
+        {
+            OnMinimum?.Invoke();
+        }
+
+        return new float[] { _value, result[1] };
+    }
+
+    private float[] Clamp()
+    {
+        float value = _value;
+        float excess = 0;
+
+        if (value <= Minimum)
+        {
+            excess = Math.Abs(_value - Minimum);
+            value = Minimum;
+        }
+
+        if (value >= Maximum)
+        {
+            excess = Math.Abs(_value - Maximum);
+            value = Maximum;
+        }
+
+        return new float[] { value, excess };
     }
 }
