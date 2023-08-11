@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
-  m_Name: Enemy Info
+  m_Name: Spider Info
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7174420870157631545, guid: 50f356c4aa76443459e5a8e85de2a305, type: 3}
+  _prefab: {fileID: 4613465456555824459, guid: 693af9048b044384881413529c35878a, type: 3}
   _life: 10
   _lifeRegeneration: 0
   _magicShield: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   _armour: 0
   _movespeed: 1
   _experienceGain: 10
-  _animationAttackSpeed: 1
+  _animationAttackTime: 1
   _animationTimeToAttack: 1
   _abilities:
   - {fileID: 0}

@@ -4,6 +4,8 @@ public interface IGameLogic
 {
     public event Action<float> OnUpdate;
     public event Action<float> OnFixedUpdate;
+    public event Action OnPauseGame;
+    public event Action OnContinueGame;
 
     public IUnitPresenter Character { get; }
     public IAbilitiesSelectionPresenter AbilitiesSelection { get; }

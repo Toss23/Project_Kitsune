@@ -22,6 +22,7 @@ public class EnemyPresenter : UnitPresenter
 
     protected override void OnDeath()
     {
+        ((Enemy)_unit).Follower.Disable();
         GameLogic.Instance.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
     }
 }

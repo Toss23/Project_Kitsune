@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UnitView : MonoBehaviour, IUnitView
@@ -22,6 +23,16 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public AbilityPoints AbilityPoints => _abilityPoints;
     public float Angle => _angle;
 
+    private Dictionary<SpriteRenderer, int> _spriteRenderers;
+
+    private void Update()
+    {
+        foreach (var renderer in _spriteRenderers)
+        {
+            renderer.Key.sortingOrder = renderer.Value - (int)(transform.position.y * 100);
+        }
+    }
+
     public void CreateUnit(GameObject prefab)
     {
         _unit = Instantiate(prefab, _spawnPoint);
@@ -33,6 +44,13 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         if (_animator != null)
         {
             _animator.SetBool("Attacking", true);
+        }
+
+        _spriteRenderers = new Dictionary<SpriteRenderer, int>();
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            _spriteRenderers.Add(spriteRenderer, spriteRenderer.sortingOrder);
         }
     }
 

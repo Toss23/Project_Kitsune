@@ -47,11 +47,11 @@ TagManager:
   - name: Background
     uniqueID: 4112477839
     locked: 0
-  - name: Character Ability Back
+  - name: Character Ability Background
     uniqueID: 3993985227
     locked: 0
-  - name: Enemy
-    uniqueID: 2565982925
+  - name: Character Aura Back
+    uniqueID: 2088537861
     locked: 0
   - name: Enemy Ability
     uniqueID: 1663295495
@@ -59,10 +59,7 @@ TagManager:
   - name: Character Ability
     uniqueID: 3589988341
     locked: 0
-  - name: Character Aura Back
-    uniqueID: 2088537861
-    locked: 0
-  - name: Character
+  - name: Unit
     uniqueID: 3427485681
     locked: 0
   - name: Character Aura Front

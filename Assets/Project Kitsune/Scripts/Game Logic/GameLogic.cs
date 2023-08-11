@@ -8,6 +8,8 @@ public class GameLogic : MonoBehaviour, IGameLogic
 
     public event Action<float> OnUpdate;
     public event Action<float> OnFixedUpdate;
+    public event Action OnPauseGame;
+    public event Action OnContinueGame;
 
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
@@ -74,6 +76,7 @@ public class GameLogic : MonoBehaviour, IGameLogic
             _controlable.SetActive(false);
             _unitView.SetActive(false);
             _unit.Immune(true);
+            OnPauseGame?.Invoke();
         }
     }
 
@@ -85,6 +88,7 @@ public class GameLogic : MonoBehaviour, IGameLogic
             _controlable.SetActive(true);
             _unitView.SetActive(true);
             _unit.Immune(false);
+            OnContinueGame?.Invoke();
         }
     }
 

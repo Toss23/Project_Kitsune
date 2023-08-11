@@ -45,9 +45,9 @@ MonoBehaviour:
   _auraObject: {fileID: 0}
   _damage:
   - 0
-  - 10
-  - 10
-  - 10
+  - 0
+  - 0
+  - 0
   _damageMultiplier:
   - 100
   - 100

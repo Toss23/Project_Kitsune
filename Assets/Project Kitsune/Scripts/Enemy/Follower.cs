@@ -13,6 +13,7 @@ public class Follower
     private float _distanceMin;
 
     private Rigidbody2D _rigidbody;
+    private IGameLogic _gameLogic;
 
     public Follower(Transform target, Rigidbody2D rigidbody, float distanceMin)
     {
@@ -20,11 +21,26 @@ public class Follower
         _rigidbody = rigidbody;
         Movespeed = 0;
         _distanceMin = distanceMin;
+        _gameLogic = GameLogic.Instance;
+        Enable();
+    }
+
+    public void Enable()
+    {
+        _gameLogic.OnPauseGame += () => FreezeRigidbody(true);
+        _gameLogic.OnContinueGame += () => FreezeRigidbody(false);
+    }
+
+    public void Disable()
+    {
+        _gameLogic.OnPauseGame -= () => FreezeRigidbody(true);
+        _gameLogic.OnContinueGame -= () => FreezeRigidbody(false);
     }
 
     public void FixedUpdate(float deltaTime)
     {
-        bool isMoving = Vector2.Distance(_rigidbody.position, _target.position) >= _distanceMin;
+        bool isMoving = Vector2.Distance(_rigidbody.position, _target.position) > _distanceMin;
+        FreezeRigidbody(!isMoving);
         if (isMoving)
         {
             Vector2 position = _rigidbody.position;
@@ -37,5 +53,22 @@ public class Follower
             OnMove?.Invoke(angle);
         }
         IsMoving?.Invoke(isMoving);     
+    }
+
+    private void FreezeRigidbody(bool freeze)
+    {
+        if (_rigidbody != null)
+        {
+            if (freeze)
+            {
+                _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+                IsMoving?.Invoke(false);
+            }
+            else
+            {
+                _rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+        }
+      
     }
 }

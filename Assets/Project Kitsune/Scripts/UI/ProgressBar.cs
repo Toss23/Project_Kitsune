@@ -6,6 +6,7 @@ public class ProgressBar : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject _bar;
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private bool _hideOnNull = false;
 
     private Transform _barTransform;
 
@@ -25,13 +26,30 @@ public class ProgressBar : MonoBehaviour
 
             if (value > 0)
             {
+                if (_hideOnNull)
+                {
+                    _bar.SetActive(true);
+                }
+
                 _barTransform.localScale = new Vector3(value / 100f, 1, 1);
+            }
+            else
+            {
+                if (_hideOnNull)
+                {
+                    _bar.SetActive(false);
+                }
             }
         }
 
         if (_text != null)
         {
             _text.text = text;
+
+            if (_hideOnNull)
+            {
+                _text.gameObject.SetActive(value > 0);
+            }
         }
     }
 }
