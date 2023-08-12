@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
   m_Name: Kitsune Info
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8512140233983805134, guid: 1f74e70538638d743a29ac86fd230fd7, type: 3}
+  _prefab: {fileID: 8918573873229000251, guid: 714fe1d3c7afd4a41aba42d7dde54b9e, type: 3}
   _life: 100
   _lifeRegeneration: 0
   _magicShield: 0
