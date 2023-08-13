@@ -3327,6 +3327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf85752276711d4c959ac695b6da01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sortingOrderOffset: 6
   _spawnPoint: {fileID: 340553699}
   _cursesPoint: {fileID: 340553699}
   _shieldPoint: {fileID: 340553699}

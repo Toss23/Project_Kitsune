@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class UnitView : MonoBehaviour, IUnitView
 {
     [Header("Base Property")]
+    [SerializeField] private int _sortingOrderOffset;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _cursesPoint;
     [SerializeField] private Transform _shieldPoint;
@@ -20,16 +21,16 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     private GameObject[] _cursesIcon;
     private GameObject _magicShieldSprite;
 
+    private SpriteRenderer _spriteRenderer;
+
     public AbilityPoints AbilityPoints => _abilityPoints;
     public float Angle => _angle;
 
-    private Dictionary<SpriteRenderer, int> _spriteRenderers;
-
     private void Update()
     {
-        foreach (var renderer in _spriteRenderers)
+        if (_spriteRenderer != null)
         {
-            renderer.Key.sortingOrder = renderer.Value - (int)(transform.position.y * 100);
+            _spriteRenderer.sortingOrder = -1 * Mathf.FloorToInt(transform.position.y * 10) + _sortingOrderOffset;
         }
     }
 
@@ -41,16 +42,11 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
 
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
         if (_animator != null)
         {
             _animator.SetBool("Attacking", true);
-        }
-
-        _spriteRenderers = new Dictionary<SpriteRenderer, int>();
-        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
-        {
-            _spriteRenderers.Add(spriteRenderer, spriteRenderer.sortingOrder);
         }
     }
 

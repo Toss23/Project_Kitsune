@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
   m_Name: Spider Info
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4613465456555824459, guid: 693af9048b044384881413529c35878a, type: 3}
+  _prefab: {fileID: 2710559128760523838, guid: bedb0945998db5d4c980a8f8fdc87657, type: 3}
   _life: 10
   _lifeRegeneration: 0
   _magicShield: 0

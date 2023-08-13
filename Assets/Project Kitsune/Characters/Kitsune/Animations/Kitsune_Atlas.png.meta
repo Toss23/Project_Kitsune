@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -142,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -163,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 960
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -184,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1440
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -205,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1920
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -226,7 +226,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2400
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -247,7 +247,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2880
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -268,7 +268,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3360
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -289,7 +289,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3840
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -310,7 +310,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4320
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -331,7 +331,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4800
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -352,7 +352,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5280
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -373,7 +373,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5760
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -394,7 +394,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6240
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -415,7 +415,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6720
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -436,7 +436,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7200
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -457,7 +457,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7680
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -478,7 +478,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8160
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -499,7 +499,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8640
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -520,7 +520,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9120
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -541,7 +541,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9600
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -562,7 +562,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10080
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -583,7 +583,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10560
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -604,7 +604,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11040
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -625,7 +625,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11520
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -646,7 +646,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12000
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -667,7 +667,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12480
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -688,7 +688,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12960
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -709,7 +709,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13440
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -730,7 +730,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13920
-        y: 2400
+        y: 5600
         width: 480
         height: 800
       alignment: 0
@@ -751,7 +751,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -772,7 +772,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -793,7 +793,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 960
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -814,7 +814,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1440
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -835,7 +835,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1920
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -856,7 +856,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2400
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -877,7 +877,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2880
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -898,7 +898,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3360
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -919,7 +919,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3840
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -940,7 +940,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4320
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -961,7 +961,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4800
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -982,7 +982,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5280
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1003,7 +1003,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5760
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1024,7 +1024,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6240
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1045,7 +1045,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6720
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1066,7 +1066,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7200
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1087,7 +1087,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7680
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1108,7 +1108,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8160
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1129,7 +1129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8640
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1150,7 +1150,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9120
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1171,7 +1171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9600
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1192,7 +1192,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10080
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1213,7 +1213,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10560
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1234,7 +1234,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11040
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1255,7 +1255,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11520
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1276,7 +1276,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12000
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1297,7 +1297,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12480
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1318,7 +1318,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12960
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1339,7 +1339,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13440
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1360,7 +1360,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13920
-        y: 1600
+        y: 4800
         width: 480
         height: 800
       alignment: 0
@@ -1381,7 +1381,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1402,7 +1402,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1423,7 +1423,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 960
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1444,7 +1444,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1440
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1465,7 +1465,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1920
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1486,7 +1486,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2400
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1507,7 +1507,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2880
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1528,7 +1528,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3360
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1549,7 +1549,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3840
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1570,7 +1570,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4320
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1591,7 +1591,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4800
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1612,7 +1612,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5280
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1633,7 +1633,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5760
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1654,7 +1654,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6240
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1675,7 +1675,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6720
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1696,7 +1696,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7200
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1717,7 +1717,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7680
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1738,7 +1738,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8160
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1759,7 +1759,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8640
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1780,7 +1780,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9120
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1801,7 +1801,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9600
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1822,7 +1822,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10080
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1843,7 +1843,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10560
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1864,7 +1864,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11040
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1885,7 +1885,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11520
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1906,7 +1906,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12000
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1927,7 +1927,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12480
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1948,7 +1948,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12960
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1969,7 +1969,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13440
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -1990,7 +1990,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13920
-        y: 800
+        y: 4000
         width: 480
         height: 800
       alignment: 0
@@ -2011,7 +2011,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2032,7 +2032,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2053,7 +2053,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 960
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2074,7 +2074,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1440
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2095,7 +2095,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1920
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2116,7 +2116,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2400
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2137,7 +2137,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2880
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2158,7 +2158,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3360
-        y: 0
+        y: 3200
         width: 480
         height: 800
       alignment: 0
@@ -2179,6 +2179,2358 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3840
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7043111c8b431744395c539f65c217a1
+      internalID: -791665782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_99
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1baa154fdcfb1d64190e0e0155740f40
+      internalID: -1249169782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_100
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d790d13a09cc1894f95019d12613a1e0
+      internalID: -505388890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_101
+      rect:
+        serializedVersion: 2
+        x: 5280
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3fee10f8f229d488f9ed8db3abc9e4
+      internalID: 1192998469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_102
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c7fce4eef503074dbd0429197edd09c
+      internalID: -649077177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_103
+      rect:
+        serializedVersion: 2
+        x: 6240
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1057a66949d0945af860fa39a287a3
+      internalID: 501182090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_104
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5c469a0ac21bf45bba59d027f80205
+      internalID: 1630380090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_105
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2878c1b23c833ee44a5eae1ef9e38230
+      internalID: -1563353169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_106
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4784a16de6961fd4aa2d58327b52e9ae
+      internalID: 1108053123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_107
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9909e5358a160d847accc74ef31a1c67
+      internalID: -523911235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_108
+      rect:
+        serializedVersion: 2
+        x: 8640
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49ec3e6ca1dd1042af8fa861703f009
+      internalID: 738872982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_109
+      rect:
+        serializedVersion: 2
+        x: 9120
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc4a9790bf248f43a9aa844d45cdedf
+      internalID: 1821648882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_110
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa7dec0501969c0428d6fd46157025d0
+      internalID: -990514087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_111
+      rect:
+        serializedVersion: 2
+        x: 10080
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7525d39b191136c419b748406d6a7ff3
+      internalID: 905761034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_112
+      rect:
+        serializedVersion: 2
+        x: 10560
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b397d92f121026499a3e960bb0d5b40
+      internalID: -2142071951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_113
+      rect:
+        serializedVersion: 2
+        x: 11040
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1ecfc3ec2755f43b4e076a406c286c
+      internalID: 572916596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_114
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d1c87c5d8b1b194991b18eff7461b47
+      internalID: 1750740454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_115
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4a1ded8f44e6d4eaf6014205645001
+      internalID: -1416718820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_116
+      rect:
+        serializedVersion: 2
+        x: 12480
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ee17d6ef42407841a1ebc7affaad387
+      internalID: 1002143940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_117
+      rect:
+        serializedVersion: 2
+        x: 12960
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6a5836fe7a1b84e87fb09a1f68cfd8
+      internalID: -800015745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_118
+      rect:
+        serializedVersion: 2
+        x: 13440
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fac2bd7ccdd35d478b84a3ff51b2957
+      internalID: 100610458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_119
+      rect:
+        serializedVersion: 2
+        x: 13920
+        y: 3200
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725c2e080a9d7e14fa9f6ee439ff72d8
+      internalID: -1900905139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb87ac265e5100f49820fa256a752304
+      internalID: 1029593933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_121
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac51dd2029578848a25bca338a240f7
+      internalID: 726812511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_122
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3269927f22418da4481d8fec62e0705b
+      internalID: 213314631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_123
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78fd3d4d80742f46af3576bcb1b1f58
+      internalID: 1841150473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_124
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27add0fa357dff94fb823417f49d9208
+      internalID: -1056098051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_125
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1332f7d19b1f5744bf2fed0f04d8514
+      internalID: -2003319752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_126
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a50b2cf4d89144ab922d8256ef6a23
+      internalID: 621732212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_127
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e24c7d0e633f474784147c2bd1ee909
+      internalID: 566015782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_128
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c71eeeab7140814b884001258704b9a
+      internalID: 847127177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_129
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea5176efdcdef3498fc63764b7d0a7d
+      internalID: -12187208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_130
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11348ebbd86ace94c8efc3ac9a40ef73
+      internalID: 1983157957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_131
+      rect:
+        serializedVersion: 2
+        x: 5280
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950dc6e31cb1965489ecbaba49b0b7c0
+      internalID: -1099203864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_132
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57377776abd475641bb8ef5cdc485bed
+      internalID: 619666347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_133
+      rect:
+        serializedVersion: 2
+        x: 6240
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab47bb98c9205245a52c5d0f8b2542d
+      internalID: 1881241741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_134
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184fe0387ea055543b561f87f8cd0138
+      internalID: 924633618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_135
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85833b0ad0878ba4f90a9bca135a4166
+      internalID: 2021556007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_136
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d682ff5633e55324fb705173faacd0c8
+      internalID: -1953399610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_137
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f420672bc30f7479e907ee705a508b
+      internalID: -866670276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_138
+      rect:
+        serializedVersion: 2
+        x: 8640
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4522674cf37a39a4d9994c71cdf82d09
+      internalID: -1731238042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_139
+      rect:
+        serializedVersion: 2
+        x: 9120
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a94bbb213000fa48b2da3c6ce897783
+      internalID: -430066219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_140
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91c23d3108b7434d84c4cba75e227b9
+      internalID: -1463482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_141
+      rect:
+        serializedVersion: 2
+        x: 10080
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a92b72e59de464f8705a63066d3794
+      internalID: 441237396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_142
+      rect:
+        serializedVersion: 2
+        x: 10560
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454d7bd1306038e4ba6aa592616aebdf
+      internalID: 1785716454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_143
+      rect:
+        serializedVersion: 2
+        x: 11040
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e5d2899f57cb04a9f155d20a06bee3
+      internalID: 1707058285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_144
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3337608e97d6556449abd5de692e12d4
+      internalID: 1609205900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_145
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9906f381c88bef54586edebe7d43a56b
+      internalID: -1016826713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_146
+      rect:
+        serializedVersion: 2
+        x: 12480
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ed0b3d23d45044c8872b3a4526cb4d
+      internalID: -1927973467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_147
+      rect:
+        serializedVersion: 2
+        x: 12960
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a3314e1ca8648a499e0dcd7b7eb52f5
+      internalID: -1075047093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_148
+      rect:
+        serializedVersion: 2
+        x: 13440
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598b3ab2c20b74a43a7d43feb5133e8b
+      internalID: -27597143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_149
+      rect:
+        serializedVersion: 2
+        x: 13920
+        y: 2400
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f9b35d96b5a5d40a5e9c6644124abf
+      internalID: 1328610523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_150
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19036a4a2da4d764183c2653ad57d2bc
+      internalID: -448546048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_151
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2496f88eeea560440abf450afd8605d6
+      internalID: -144910485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_152
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 163bbc7c36920a74b8b1c787ec3362e5
+      internalID: 1897446231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_153
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653e87918724a4a42a2b2edef8426b33
+      internalID: 671394643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_154
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c6a4c78356a2846a80259cc24f2f80
+      internalID: -2101509389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_155
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5732074c2643346bbfc22c09f2696e
+      internalID: -944434109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_156
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da96f04a93368b429f71c0169af4e58
+      internalID: -114593617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_157
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14dc58bd51d3a5e41b8c94724e8975cc
+      internalID: 162904017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_158
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da6697df8cf38b478fbafc67f64b361
+      internalID: -1386193280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_159
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6621824ece17ebe4cbc6e488a9b9ae60
+      internalID: 1758768308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_160
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2068319a544c214692bf5fd995c8a28
+      internalID: -957760734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_161
+      rect:
+        serializedVersion: 2
+        x: 5280
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f2a8f3a341e0054b99095eb19546640
+      internalID: -137037240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_162
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ee3970b21d0224aba1776e9b479c4f
+      internalID: -1039828825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_163
+      rect:
+        serializedVersion: 2
+        x: 6240
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495b423f07445784993fe7037dfdbbe9
+      internalID: -1965020018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_164
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452fdd652befc3041a134b4362f3e75f
+      internalID: 316025077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_165
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1baa9ec74e152c41abb83bc8ee3978c
+      internalID: -1553646035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_166
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4506b1fa899a29e41a543aa5f626631c
+      internalID: -822467130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_167
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a36b1cf45cf32c4ab3185e2dabaff2b
+      internalID: 86403366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_168
+      rect:
+        serializedVersion: 2
+        x: 8640
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3161521792176f4a8222b317051a6d8
+      internalID: 1334087773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_169
+      rect:
+        serializedVersion: 2
+        x: 9120
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341da03230ca56f449643e767c317dd8
+      internalID: 12513479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_170
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca4c947d0ed16224a9a2c21a9cf218d9
+      internalID: 2107025783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_171
+      rect:
+        serializedVersion: 2
+        x: 10080
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5a87c3e12a36549b5f364ee25da7db
+      internalID: 63122483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_172
+      rect:
+        serializedVersion: 2
+        x: 10560
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a36a5091987be49804116e85cc04f8
+      internalID: -1324112446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_173
+      rect:
+        serializedVersion: 2
+        x: 11040
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55cb4bf494f3c1349a3fb4727805dbf4
+      internalID: 642118362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_174
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d802a8c5de13e454ebc71bd79c6c2166
+      internalID: -472978549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_175
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8048aa6c4309564687b4817c05cf44c
+      internalID: -2118498158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_176
+      rect:
+        serializedVersion: 2
+        x: 12480
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1ba33a76ed87a4384153114254d56a
+      internalID: -304140340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_177
+      rect:
+        serializedVersion: 2
+        x: 12960
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de6c863f7959744cbd11ad0fcbafc1a
+      internalID: -47326476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_178
+      rect:
+        serializedVersion: 2
+        x: 13440
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8d71852d4eaf3409b766ce1d7fc8f2
+      internalID: 2002872307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_179
+      rect:
+        serializedVersion: 2
+        x: 13920
+        y: 1600
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fdbdc2464ff8b84b9f4f49fece0d829
+      internalID: -1976508608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270c0b92c652b9743a017337fb446fab
+      internalID: -1687530666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_181
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c75dfde3a30060458a4024a53615a4b
+      internalID: -944869876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_182
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ebe1d1b8190a745912854b628e06d9
+      internalID: 1298956219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_183
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895d5a73ad82bfb4e9d6af68ed831d40
+      internalID: -2113986102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_184
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30ee924438e14f43be196ab8fbe853f
+      internalID: 295918644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_185
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c2a4731d704f948aae7486cc00091f
+      internalID: 139528235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_186
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff01d00fa99ca945b4a06473fe208ce
+      internalID: -1241574236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_187
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29d7008a511d9704db94458fbc473767
+      internalID: 145747773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_188
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3bcd6884b07c54a84cf6966f2a7372
+      internalID: 648630597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_189
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac4d2215f96ed174cad6e34b767508e8
+      internalID: -1563701258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_190
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d89a33c1f4e794fb8cceb2384e5f58
+      internalID: -2108353648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_191
+      rect:
+        serializedVersion: 2
+        x: 5280
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea5aa514f251664fbe4d20933e2a09d
+      internalID: 1860989469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_192
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97d69b27cb137b4899b4bf41e4c1e56
+      internalID: -1421296947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_193
+      rect:
+        serializedVersion: 2
+        x: 6240
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079d06fa4040ca4438d5923a0bc0b4db
+      internalID: 2016208459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_194
+      rect:
+        serializedVersion: 2
+        x: 6720
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5310f931722cfb947b1d6ddd9d8a0b2a
+      internalID: 2097995980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_195
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18825f353cadea549a654177e22b01aa
+      internalID: 569390845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_196
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5cda908915a1cd40957a07830e5a8cc
+      internalID: 1152688681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_197
+      rect:
+        serializedVersion: 2
+        x: 8160
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 954e1c5b6f9f7b6459b33219c96fc54c
+      internalID: -335300410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_198
+      rect:
+        serializedVersion: 2
+        x: 8640
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32151441044a20f40a15ec54a0773a58
+      internalID: 1806026165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_199
+      rect:
+        serializedVersion: 2
+        x: 9120
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf76f45119a7c9245835cccc1b1451e5
+      internalID: -916161274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_200
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db8e75a2f3005b468b7dfec702576a6
+      internalID: 127105141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_201
+      rect:
+        serializedVersion: 2
+        x: 10080
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e20c38fdbe4014abff3616199bb6fe
+      internalID: -147350238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_202
+      rect:
+        serializedVersion: 2
+        x: 10560
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d102acfb31d602498ced152aca50d69
+      internalID: 17672357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_203
+      rect:
+        serializedVersion: 2
+        x: 11040
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110e8a3b8db5bc9419b1c4b3f2bac58e
+      internalID: 901450175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_204
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06e73c631a744d4fb38c39f86a57251
+      internalID: 119436690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_205
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4bcb6984a98dd4cbcafe82d6791cb6
+      internalID: 949238936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_206
+      rect:
+        serializedVersion: 2
+        x: 12480
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eddc35dece8caef4291595e90e802552
+      internalID: -1725162608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_207
+      rect:
+        serializedVersion: 2
+        x: 12960
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724ca41d546bae148922f890268f966d
+      internalID: 1158101700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_208
+      rect:
+        serializedVersion: 2
+        x: 13440
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91cb59aea638a24c91a17e4a9978e36
+      internalID: -2091176546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_209
+      rect:
+        serializedVersion: 2
+        x: 13920
+        y: 800
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f62959e5c7d91d346a92cfee766ab048
+      internalID: 1402481814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_210
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 480
         height: 800
@@ -2189,14 +4541,182 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29935e2f02c0e3642b162552a3eeabaa
-      internalID: -791665782
+      spriteID: 681e74ff5201b944b97dd60a8c1e3a47
+      internalID: -1823404884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_99
+      name: Kitsune_Atlas_211
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 831e7f58e8cb3e04ebed26eeb9e37fde
+      internalID: -811370501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_212
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9224689efccdfd346919dcb2689cc0c0
+      internalID: -1394919758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_213
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74528a5511beb04d8344aa63014ce02
+      internalID: 872130577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_214
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d8c9cf7599f544d8c9df1667e139a9
+      internalID: 1734431149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_215
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987c62f144794f24e9fec2c8093179bb
+      internalID: -935778793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_216
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffca2f889e9c1184db0c3b7355524667
+      internalID: 886400374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_217
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c2aa0155500364f94d79616e6b3f0c
+      internalID: 1845047824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_218
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 480
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61d77a2993f8c243b3fc22ad3fe2210
+      internalID: 1442269729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kitsune_Atlas_219
       rect:
         serializedVersion: 2
         x: 4320
@@ -2210,14 +4730,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e06249a54972cac43b0075e2f7b5f2f3
-      internalID: -1249169782
+      spriteID: e12167b0b02718641a8ffb328f3ed46d
+      internalID: -1688018032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_100
+      name: Kitsune_Atlas_220
       rect:
         serializedVersion: 2
         x: 4800
@@ -2231,14 +4751,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c2ef3de7d504a8498c33b9930c35de1
-      internalID: -505388890
+      spriteID: 95a6cff7bffa05343a2126b9736fe4ca
+      internalID: -288779466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_101
+      name: Kitsune_Atlas_221
       rect:
         serializedVersion: 2
         x: 5280
@@ -2252,14 +4772,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c8ba284a3527214bbddf2c5d524ce22
-      internalID: 1192998469
+      spriteID: b666a0bdc2fdbef4eacb173b4cca55f2
+      internalID: 1459263857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_102
+      name: Kitsune_Atlas_222
       rect:
         serializedVersion: 2
         x: 5760
@@ -2273,14 +4793,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 588f4790e6fba694abf3c67924a05ada
-      internalID: -649077177
+      spriteID: ba6ccc6e5107f3e42b64cc229557a104
+      internalID: 949549081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_103
+      name: Kitsune_Atlas_223
       rect:
         serializedVersion: 2
         x: 6240
@@ -2294,14 +4814,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b1688fb62598db4bb23cf7972d4a05b
-      internalID: 501182090
+      spriteID: 6cf6f834ea73c5f4c8d7d78b6d4d1607
+      internalID: -2086824342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_104
+      name: Kitsune_Atlas_224
       rect:
         serializedVersion: 2
         x: 6720
@@ -2315,14 +4835,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1ec5e88885f2ce4b820b5ec3aee02f6
-      internalID: 1630380090
+      spriteID: da4966642c58fbe4f9e889f73ce46157
+      internalID: -1348827117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_105
+      name: Kitsune_Atlas_225
       rect:
         serializedVersion: 2
         x: 7200
@@ -2336,14 +4856,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65d94683a8719ab4a961788596f32a5a
-      internalID: -1563353169
+      spriteID: e96490691cd1f454ba85872e53fd22fd
+      internalID: 85039941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_106
+      name: Kitsune_Atlas_226
       rect:
         serializedVersion: 2
         x: 7680
@@ -2357,14 +4877,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c93f5be14224bb45966846c1caa7a1c
-      internalID: 1108053123
+      spriteID: c1fdeced633540349822b24a051dcf3b
+      internalID: 508655247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_107
+      name: Kitsune_Atlas_227
       rect:
         serializedVersion: 2
         x: 8160
@@ -2378,14 +4898,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f99bbed2d0b9bae408dea2cc378773c0
-      internalID: -523911235
+      spriteID: 02a1492b967a3504e9451bb447de5691
+      internalID: 401176795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_108
+      name: Kitsune_Atlas_228
       rect:
         serializedVersion: 2
         x: 8640
@@ -2399,14 +4919,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe2192f819c812047a3ca380f558fd36
-      internalID: 738872982
+      spriteID: e3d724e7fea78f74c9f9ee1af78e034c
+      internalID: 1007658218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_109
+      name: Kitsune_Atlas_229
       rect:
         serializedVersion: 2
         x: 9120
@@ -2420,14 +4940,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9d0d6591b7ccc046b510453b255c806
-      internalID: 1821648882
+      spriteID: f8a2ed2e4464538468dabff56c17e872
+      internalID: -1168423809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_110
+      name: Kitsune_Atlas_230
       rect:
         serializedVersion: 2
         x: 9600
@@ -2441,14 +4961,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbbeda6b44e354346b961ce1f50adce6
-      internalID: -990514087
+      spriteID: 0de2cfa4e44cab24ab15038f6e4a9969
+      internalID: 813364010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_111
+      name: Kitsune_Atlas_231
       rect:
         serializedVersion: 2
         x: 10080
@@ -2462,14 +4982,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27375fbd2bb85f54bba2ad0bdc91fb54
-      internalID: 905761034
+      spriteID: 08fd36dc29d5e0341b9911373fe66c26
+      internalID: 252003820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_112
+      name: Kitsune_Atlas_232
       rect:
         serializedVersion: 2
         x: 10560
@@ -2483,14 +5003,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac837b6a16a3cf44b9800f7fd5d43cf5
-      internalID: -2142071951
+      spriteID: 963bde45f551970448485f77a6c341bc
+      internalID: -165457500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_113
+      name: Kitsune_Atlas_233
       rect:
         serializedVersion: 2
         x: 11040
@@ -2504,14 +5024,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e2433e4dc1dd704096573aafd6095a3
-      internalID: 572916596
+      spriteID: 989ab438287829a4eaadc9f2f856eb12
+      internalID: 1096771438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_114
+      name: Kitsune_Atlas_234
       rect:
         serializedVersion: 2
         x: 11520
@@ -2525,14 +5045,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f68a640a7074b0448186d172810e131
-      internalID: 1750740454
+      spriteID: 83516258200783247b8fde5fccd3199f
+      internalID: -724402899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_115
+      name: Kitsune_Atlas_235
       rect:
         serializedVersion: 2
         x: 12000
@@ -2546,14 +5066,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9de7a142d90c764e81b95201be5d9a6
-      internalID: -1416718820
+      spriteID: 79d68c181c262204c9353c6e49f7aa71
+      internalID: -587482894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_116
+      name: Kitsune_Atlas_236
       rect:
         serializedVersion: 2
         x: 12480
@@ -2567,14 +5087,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 596f254a9626c8d4a96493e3e508d448
-      internalID: 1002143940
+      spriteID: 3344f0ed4c64ca44498e78792d949e1f
+      internalID: 1809093909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_117
+      name: Kitsune_Atlas_237
       rect:
         serializedVersion: 2
         x: 12960
@@ -2588,14 +5108,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 942c5599900c2ed4b9bc6b5945fde7d3
-      internalID: -800015745
+      spriteID: 3d4de852ec60c5445b1400c6706e8035
+      internalID: -2043664553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_118
+      name: Kitsune_Atlas_238
       rect:
         serializedVersion: 2
         x: 13440
@@ -2609,14 +5129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 028b2eddb708bb54793a78182fa473c0
-      internalID: 100610458
+      spriteID: 92b1d02bfe583734e9ef71dfec8c43c3
+      internalID: 1394166898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kitsune_Atlas_119
+      name: Kitsune_Atlas_239
       rect:
         serializedVersion: 2
         x: 13920
@@ -2630,8 +5150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08b327d876e270c4a9f1cc510e6c9171
-      internalID: -1900905139
+      spriteID: 3c07163d46d0cdd479043b04eac7e9c3
+      internalID: -691898914
       vertices: []
       indices: 
       edges: []
@@ -2672,18 +5192,138 @@ TextureImporter:
       Kitsune_Atlas_118: 100610458
       Kitsune_Atlas_119: -1900905139
       Kitsune_Atlas_12: -1846947730
+      Kitsune_Atlas_120: 1029593933
+      Kitsune_Atlas_121: 726812511
+      Kitsune_Atlas_122: 213314631
+      Kitsune_Atlas_123: 1841150473
+      Kitsune_Atlas_124: -1056098051
+      Kitsune_Atlas_125: -2003319752
+      Kitsune_Atlas_126: 621732212
+      Kitsune_Atlas_127: 566015782
+      Kitsune_Atlas_128: 847127177
+      Kitsune_Atlas_129: -12187208
       Kitsune_Atlas_13: 154815332
+      Kitsune_Atlas_130: 1983157957
+      Kitsune_Atlas_131: -1099203864
+      Kitsune_Atlas_132: 619666347
+      Kitsune_Atlas_133: 1881241741
+      Kitsune_Atlas_134: 924633618
+      Kitsune_Atlas_135: 2021556007
+      Kitsune_Atlas_136: -1953399610
+      Kitsune_Atlas_137: -866670276
+      Kitsune_Atlas_138: -1731238042
+      Kitsune_Atlas_139: -430066219
       Kitsune_Atlas_14: 358081016
+      Kitsune_Atlas_140: -1463482
+      Kitsune_Atlas_141: 441237396
+      Kitsune_Atlas_142: 1785716454
+      Kitsune_Atlas_143: 1707058285
+      Kitsune_Atlas_144: 1609205900
+      Kitsune_Atlas_145: -1016826713
+      Kitsune_Atlas_146: -1927973467
+      Kitsune_Atlas_147: -1075047093
+      Kitsune_Atlas_148: -27597143
+      Kitsune_Atlas_149: 1328610523
       Kitsune_Atlas_15: 1071722151
+      Kitsune_Atlas_150: -448546048
+      Kitsune_Atlas_151: -144910485
+      Kitsune_Atlas_152: 1897446231
+      Kitsune_Atlas_153: 671394643
+      Kitsune_Atlas_154: -2101509389
+      Kitsune_Atlas_155: -944434109
+      Kitsune_Atlas_156: -114593617
+      Kitsune_Atlas_157: 162904017
+      Kitsune_Atlas_158: -1386193280
+      Kitsune_Atlas_159: 1758768308
       Kitsune_Atlas_16: -1312778417
+      Kitsune_Atlas_160: -957760734
+      Kitsune_Atlas_161: -137037240
+      Kitsune_Atlas_162: -1039828825
+      Kitsune_Atlas_163: -1965020018
+      Kitsune_Atlas_164: 316025077
+      Kitsune_Atlas_165: -1553646035
+      Kitsune_Atlas_166: -822467130
+      Kitsune_Atlas_167: 86403366
+      Kitsune_Atlas_168: 1334087773
+      Kitsune_Atlas_169: 12513479
       Kitsune_Atlas_17: -980016285
+      Kitsune_Atlas_170: 2107025783
+      Kitsune_Atlas_171: 63122483
+      Kitsune_Atlas_172: -1324112446
+      Kitsune_Atlas_173: 642118362
+      Kitsune_Atlas_174: -472978549
+      Kitsune_Atlas_175: -2118498158
+      Kitsune_Atlas_176: -304140340
+      Kitsune_Atlas_177: -47326476
+      Kitsune_Atlas_178: 2002872307
+      Kitsune_Atlas_179: -1976508608
       Kitsune_Atlas_18: 416473787
+      Kitsune_Atlas_180: -1687530666
+      Kitsune_Atlas_181: -944869876
+      Kitsune_Atlas_182: 1298956219
+      Kitsune_Atlas_183: -2113986102
+      Kitsune_Atlas_184: 295918644
+      Kitsune_Atlas_185: 139528235
+      Kitsune_Atlas_186: -1241574236
+      Kitsune_Atlas_187: 145747773
+      Kitsune_Atlas_188: 648630597
+      Kitsune_Atlas_189: -1563701258
       Kitsune_Atlas_19: -678921708
+      Kitsune_Atlas_190: -2108353648
+      Kitsune_Atlas_191: 1860989469
+      Kitsune_Atlas_192: -1421296947
+      Kitsune_Atlas_193: 2016208459
+      Kitsune_Atlas_194: 2097995980
+      Kitsune_Atlas_195: 569390845
+      Kitsune_Atlas_196: 1152688681
+      Kitsune_Atlas_197: -335300410
+      Kitsune_Atlas_198: 1806026165
+      Kitsune_Atlas_199: -916161274
       Kitsune_Atlas_2: -699601952
       Kitsune_Atlas_20: 1679633595
+      Kitsune_Atlas_200: 127105141
+      Kitsune_Atlas_201: -147350238
+      Kitsune_Atlas_202: 17672357
+      Kitsune_Atlas_203: 901450175
+      Kitsune_Atlas_204: 119436690
+      Kitsune_Atlas_205: 949238936
+      Kitsune_Atlas_206: -1725162608
+      Kitsune_Atlas_207: 1158101700
+      Kitsune_Atlas_208: -2091176546
+      Kitsune_Atlas_209: 1402481814
       Kitsune_Atlas_21: -815809403
+      Kitsune_Atlas_210: -1823404884
+      Kitsune_Atlas_211: -811370501
+      Kitsune_Atlas_212: -1394919758
+      Kitsune_Atlas_213: 872130577
+      Kitsune_Atlas_214: 1734431149
+      Kitsune_Atlas_215: -935778793
+      Kitsune_Atlas_216: 886400374
+      Kitsune_Atlas_217: 1845047824
+      Kitsune_Atlas_218: 1442269729
+      Kitsune_Atlas_219: -1688018032
       Kitsune_Atlas_22: -1671405285
+      Kitsune_Atlas_220: -288779466
+      Kitsune_Atlas_221: 1459263857
+      Kitsune_Atlas_222: 949549081
+      Kitsune_Atlas_223: -2086824342
+      Kitsune_Atlas_224: -1348827117
+      Kitsune_Atlas_225: 85039941
+      Kitsune_Atlas_226: 508655247
+      Kitsune_Atlas_227: 401176795
+      Kitsune_Atlas_228: 1007658218
+      Kitsune_Atlas_229: -1168423809
       Kitsune_Atlas_23: 1286044513
+      Kitsune_Atlas_230: 813364010
+      Kitsune_Atlas_231: 252003820
+      Kitsune_Atlas_232: -165457500
+      Kitsune_Atlas_233: 1096771438
+      Kitsune_Atlas_234: -724402899
+      Kitsune_Atlas_235: -587482894
+      Kitsune_Atlas_236: 1809093909
+      Kitsune_Atlas_237: -2043664553
+      Kitsune_Atlas_238: 1394166898
+      Kitsune_Atlas_239: -691898914
       Kitsune_Atlas_24: 17400070
       Kitsune_Atlas_25: -1632230365
       Kitsune_Atlas_26: 515242596
