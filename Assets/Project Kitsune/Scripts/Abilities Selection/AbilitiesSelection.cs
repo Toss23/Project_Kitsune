@@ -6,11 +6,11 @@ public class AbilitiesSelection
     public event Action<IAbility[], int[]> OnAbilitiesListGenerated;
     public event Action OnAbilityUpCanceled;
 
-    private IUnit _character;
+    private Unit _character;
     private int _pointsToLevelUp;
     private bool _generating;
 
-    public AbilitiesSelection(IUnit character)
+    public AbilitiesSelection(Unit character)
     {
         _character = character;
         _pointsToLevelUp = 0;

@@ -14,7 +14,7 @@ public class AbilitiesContainer
     public event Action<float> OnLevelUpAttack;
     public event Action<IAbility> OnLevelUpField;
 
-    private IUnit _unit;
+    private Unit _unit;
     private IAbility[] _abilities;
     private float _animationAttackSpeed;
     private float _animationTimeToAttack;
@@ -28,7 +28,7 @@ public class AbilitiesContainer
     public int[] Levels => _levels;
     public int[] MaxLevels => _maxLevels;
 
-    public AbilitiesContainer(IUnit unit, IAbility[] abilities, AbilityModifier[] abilityModifiers)
+    public AbilitiesContainer(Unit unit, IAbility[] abilities, AbilityModifier[] abilityModifiers)
     {
         _unit = unit;
         _abilities = abilities;
@@ -53,7 +53,7 @@ public class AbilitiesContainer
         {
             if (_abilities[i] != null & _levels[i] > 0)
             {
-                if (_abilities[i].Info.AbilityType != AbilityInfo.Type.Field)                           
+                if (_abilities[i].Info.Type != AbilityInfo.AbilityType.Field)                           
                 {
                     float castMultiplier = 1;
                     if (_unit.Curses.Have(CursesInfo.List.Forest))
@@ -110,7 +110,7 @@ public class AbilitiesContainer
                 OnLevelUpAttack?.Invoke(attackSpeed);
             }
 
-            if (_abilities[index].Info.AbilityType == AbilityInfo.Type.Field)
+            if (_abilities[index].Info.Type == AbilityInfo.AbilityType.Field)
             {
                 _casted[index] = false;
                 OnLevelUpField?.Invoke(_abilities[index]);

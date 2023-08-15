@@ -66,7 +66,7 @@ public class GameLogic : MonoBehaviour, IGameLogic
     // Reference for Pause
     private Controllable _controlable;
     private IUnitView _unitView;
-    private IUnit _unit;
+    private Unit _unit;
 
     public void PauseGame()
     {

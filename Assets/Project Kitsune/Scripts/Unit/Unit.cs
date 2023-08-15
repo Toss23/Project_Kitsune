@@ -1,26 +1,27 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class Unit : IUnit
+public abstract class Unit
 {
     public event Action OnLevelUp;
     public event Action OnDeath;
 
     private UnitInfo _unitInfo;
+    private IUnitPresenter _unitPresenter;
+    private List<IAbility> _castedAbilities;
+    private bool _isImmune = false;
 
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesContainer Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }
     public ModifiersContainer ModifiersContainer { get; private set; }
     public UnitInfo UnitInfo => _unitInfo;
+    public IUnitPresenter UnitPresenter => _unitPresenter;
 
-    private List<IAbility> _castedAbilities;
-    private bool _isImmune = false;
-
-    protected void Init(UnitInfo unitInfo)
+    protected void Init(UnitInfo unitInfo, IUnitPresenter unitPresenter)
     {
         _unitInfo = unitInfo;
+        _unitPresenter = unitPresenter;
         _castedAbilities = new List<IAbility>();
 
         ModifiersContainer = new ModifiersContainer(Attributes);
@@ -107,12 +108,12 @@ public abstract class Unit : IUnit
         _isImmune = state;
     }
 
-    private void DealDamage(IAbility ability, IUnit target)
+    private void DealDamage(IAbility ability, Unit target)
     {
         if (target != null)
         {
             float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
-            bool isProjectile = ability.Info.AbilityType == AbilityInfo.Type.Projectile;
+            bool isProjectile = ability.Info.Type == AbilityInfo.AbilityType.Projectile;
 
             if (Curses.Have(CursesInfo.List.Weakness))
             {

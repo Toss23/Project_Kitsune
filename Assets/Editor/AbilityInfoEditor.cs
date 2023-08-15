@@ -10,41 +10,35 @@ public class AbilityInfoEditor : Editor
         Damage, Projectile, DamageOverTime, Other
     }
 
+    private SerializedProperty _name;
+    private SerializedProperty _description;
+
     private SerializedProperty _useCharacterDamage;
     private SerializedProperty _useCharacterCrit;
 
+    private SerializedProperty _duration;
+    private SerializedProperty _damage;
+    private SerializedProperty _damageMultiplier;
+    private SerializedProperty _castPerSecond;
+    private SerializedProperty _critChance;
+    private SerializedProperty _critMultiplier;
+    private SerializedProperty _scale;
+
     private SerializedProperty _abilityDamageType;
     private SerializedProperty _dotRate;
-    private SerializedProperty _dotDuration;
-
-    private SerializedProperty _abilityType;
-    private SerializedProperty _meleeAnimationTime;
-    private SerializedProperty _projectileSpeed;
-    private SerializedProperty _projectileRange;
-    private SerializedProperty _projectileSpawnOffset;
-    private SerializedProperty _projectileCount;
-    private SerializedProperty _projectileAngle;
-    private SerializedProperty _projectileAutoTarget;
-    private SerializedProperty _projectileAutoAim;
-    private SerializedProperty _destroyOnHit;
-
-    private SerializedProperty _haveContinueAbility;
-    private SerializedProperty _continueAbility;
 
     private SerializedProperty _haveAura;
     private SerializedProperty _auraObject;
 
-    private SerializedProperty _damage;
-    private SerializedProperty _damageMultiplier;
-    private SerializedProperty _castPerSecond;
+    private SerializedProperty _destroyOnHit;
 
-    private SerializedProperty _critChance;
-    private SerializedProperty _critMultiplier;
-
-    private SerializedProperty _name;
-    private SerializedProperty _description;
-
-    private SerializedProperty _radius;
+    private SerializedProperty _type;
+    private SerializedProperty _projectileSpeed;
+    private SerializedProperty _projectileSpawnOffset;
+    private SerializedProperty _projectileCount;
+    private SerializedProperty _projectileAngle;
+    private SerializedProperty _projectileFollowsTarget;
+    private SerializedProperty _projectileAimTarget;
 
     private SerializedProperty _abilityProperties;
 
@@ -55,26 +49,24 @@ public class AbilityInfoEditor : Editor
 
     private void OnEnable()
     {
+        _name = serializedObject.FindProperty("_name");
+        _description = serializedObject.FindProperty("_description");
+
         _useCharacterDamage = serializedObject.FindProperty("_useCharacterDamage");
         _useCharacterCrit = serializedObject.FindProperty("_useCharacterCrit");
 
-        _abilityType = serializedObject.FindProperty("_abilityType");
+        _type = serializedObject.FindProperty("_type");
         _dotRate = serializedObject.FindProperty("_dotRate");
-        _dotDuration = serializedObject.FindProperty("_dotDuration");
+        _duration = serializedObject.FindProperty("_duration");
 
         _abilityDamageType = serializedObject.FindProperty("_abilityDamageType");
-        _meleeAnimationTime = serializedObject.FindProperty("_meleeAnimationTime");
         _projectileSpeed = serializedObject.FindProperty("_projectileSpeed");
-        _projectileRange = serializedObject.FindProperty("_projectileRange");
         _projectileSpawnOffset = serializedObject.FindProperty("_projectileSpawnOffset");
         _projectileCount = serializedObject.FindProperty("_projectileCount");
         _projectileAngle = serializedObject.FindProperty("_projectileAngle");
-        _projectileAutoTarget = serializedObject.FindProperty("_projectileAutoTarget");
-        _projectileAutoAim = serializedObject.FindProperty("_projectileAutoAim");
+        _projectileFollowsTarget = serializedObject.FindProperty("_projectileFollowsTarget");
+        _projectileAimTarget = serializedObject.FindProperty("_projectileAimTarget");
         _destroyOnHit = serializedObject.FindProperty("_destroyOnHit");
-
-        _haveContinueAbility = serializedObject.FindProperty("_haveContinueAbility");
-        _continueAbility = serializedObject.FindProperty("_continueAbility");
 
         _haveAura = serializedObject.FindProperty("_haveAura");
         _auraObject = serializedObject.FindProperty("_auraObject");
@@ -82,14 +74,10 @@ public class AbilityInfoEditor : Editor
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
         _castPerSecond = serializedObject.FindProperty("_castPerSecond");
-
         _critChance = serializedObject.FindProperty("_critChance");
         _critMultiplier = serializedObject.FindProperty("_critMultiplier");
 
-        _name = serializedObject.FindProperty("_name");
-        _description = serializedObject.FindProperty("_description");
-
-        _radius = serializedObject.FindProperty("_radius");
+        _scale = serializedObject.FindProperty("_scale");
 
         _abilityProperties = serializedObject.FindProperty("_abilityProperties");
     }
@@ -108,6 +96,10 @@ public class AbilityInfoEditor : Editor
         _name.stringValue = EditorGUILayout.TextField(_name.stringValue, GUILayout.Width(150));
         EditorGUILayout.EndHorizontal();
 
+        EditorGUILayout.LabelField("Description");
+        _description.stringValue = EditorGUILayout.TextArea(_description.stringValue, GUILayout.Width(500), GUILayout.MinHeight(40));
+
+
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Use Character Damage", GUILayout.Width(150));
         _useCharacterDamage.boolValue = EditorGUILayout.Toggle(_useCharacterDamage.boolValue);
@@ -117,9 +109,6 @@ public class AbilityInfoEditor : Editor
         EditorGUILayout.LabelField("Use Character Crit", GUILayout.Width(150));
         _useCharacterCrit.boolValue = EditorGUILayout.Toggle(_useCharacterCrit.boolValue);
         EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.LabelField("Description");
-        _description.stringValue = EditorGUILayout.TextArea(_description.stringValue, GUILayout.Width(500), GUILayout.MinHeight(40));
         
         EditorGUILayout.Space(10);
 
@@ -127,44 +116,30 @@ public class AbilityInfoEditor : Editor
         EditorGUILayout.BeginHorizontal();
         Color baseColor = GUI.backgroundColor;
 
-        if (_abilityType.enumValueIndex == 0)
+        if (_type.enumValueIndex == 0)
             GUI.backgroundColor = Color.cyan;
         if (GUILayout.Button("Melee", GUILayout.Width(150)))
-            _abilityType.enumValueIndex = 0;
+            _type.enumValueIndex = 0;
         GUI.backgroundColor = baseColor;
 
-        if (_abilityType.enumValueIndex == 1)
+        if (_type.enumValueIndex == 1)
             GUI.backgroundColor = Color.cyan;
         if (GUILayout.Button("Projectile", GUILayout.Width(150)))
-            _abilityType.enumValueIndex = 1;
+            _type.enumValueIndex = 1;
         GUI.backgroundColor = baseColor;
 
-        if (_abilityType.enumValueIndex == 2)
+        if (_type.enumValueIndex == 2)
             GUI.backgroundColor = Color.cyan;
         if (GUILayout.Button("Field", GUILayout.Width(150)))
-            _abilityType.enumValueIndex = 2;
+            _type.enumValueIndex = 2;
         GUI.backgroundColor = baseColor;
         EditorGUILayout.EndHorizontal();
 
-        if (_abilityType.enumValueIndex == 0 & _abilityDamageType.enumValueIndex == 0)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Animation time", GUILayout.Width(100));
-            _meleeAnimationTime.floatValue = EditorGUILayout.FloatField(_meleeAnimationTime.floatValue, GUILayout.Width(70));
-            EditorGUILayout.EndHorizontal();
-        }
-
-        if (_abilityType.enumValueIndex == 1)
+        if (_type.enumValueIndex == 1)
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Speed", GUILayout.Width(100));
             _projectileSpeed.floatValue = EditorGUILayout.FloatField(_projectileSpeed.floatValue, GUILayout.Width(70));
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Range", GUILayout.Width(100));
-            _projectileRange.floatValue = EditorGUILayout.FloatField(_projectileRange.floatValue, GUILayout.Width(70));
-            EditorGUILayout.LabelField("sec", GUILayout.Width(100));
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
@@ -174,12 +149,12 @@ public class AbilityInfoEditor : Editor
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Auto-Target", GUILayout.Width(100));
-            _projectileAutoTarget.boolValue = EditorGUILayout.Toggle(_projectileAutoTarget.boolValue);
+            _projectileFollowsTarget.boolValue = EditorGUILayout.Toggle(_projectileFollowsTarget.boolValue);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Auto-Aim", GUILayout.Width(100));
-            _projectileAutoAim.boolValue = EditorGUILayout.Toggle(_projectileAutoAim.boolValue);
+            _projectileAimTarget.boolValue = EditorGUILayout.Toggle(_projectileAimTarget.boolValue);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();
@@ -203,18 +178,6 @@ public class AbilityInfoEditor : Editor
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space(10);
 
-        EditorGUILayout.LabelField("Continue Ability", boldStyle);
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Have continue", GUILayout.Width(100));
-        _haveContinueAbility.boolValue = EditorGUILayout.Toggle(_haveContinueAbility.boolValue);
-        EditorGUILayout.EndHorizontal();
-        if (_haveContinueAbility.boolValue)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Ability", GUILayout.Width(100));
-            _continueAbility.objectReferenceValue = EditorGUILayout.ObjectField(_continueAbility.objectReferenceValue, typeof(Ability), false, GUILayout.Width(200));
-            EditorGUILayout.EndHorizontal();
-        }
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Have Aura", GUILayout.Width(100));
         _haveAura.boolValue = EditorGUILayout.Toggle(_haveAura.boolValue);
@@ -315,24 +278,24 @@ public class AbilityInfoEditor : Editor
             }
         }
 
-        if (_dotDuration.arraySize != _damage.arraySize)
+        if (_duration.arraySize != _damage.arraySize)
         {
-            int prevSize = _dotDuration.arraySize;
-            _dotDuration.arraySize = _damage.arraySize;
-            for (int i = prevSize; i < _dotDuration.arraySize; i++)
+            int prevSize = _duration.arraySize;
+            _duration.arraySize = _damage.arraySize;
+            for (int i = prevSize; i < _duration.arraySize; i++)
             {
-                SerializedProperty element = _dotDuration.GetArrayElementAtIndex(i);
+                SerializedProperty element = _duration.GetArrayElementAtIndex(i);
                 element.floatValue = 5;
             }
         }
 
-        if (_radius.arraySize != _damage.arraySize)
+        if (_scale.arraySize != _damage.arraySize)
         {
-            int prevSize = _radius.arraySize;
-            _radius.arraySize = _damage.arraySize;
-            for (int i = prevSize; i < _radius.arraySize; i++)
+            int prevSize = _scale.arraySize;
+            _scale.arraySize = _damage.arraySize;
+            for (int i = prevSize; i < _scale.arraySize; i++)
             {
-                SerializedProperty element = _radius.GetArrayElementAtIndex(i);
+                SerializedProperty element = _scale.GetArrayElementAtIndex(i);
                 element.floatValue = 1;
             }
         }
@@ -350,7 +313,7 @@ public class AbilityInfoEditor : Editor
             _propertyTab = PropertyTab.Damage;
 
         GUI.backgroundColor = baseColor;
-        if (_abilityType.enumValueIndex != 1)
+        if (_type.enumValueIndex != 1)
         {
             if (_propertyTab == PropertyTab.Projectile)
                 _propertyTab = PropertyTab.Damage;
@@ -360,7 +323,7 @@ public class AbilityInfoEditor : Editor
 
         if (_propertyTab == PropertyTab.Projectile)
             GUI.backgroundColor = Color.cyan;
-        if (GUILayout.Button("Projectile", GUILayout.Width(120)) && _abilityType.enumValueIndex == 1)
+        if (GUILayout.Button("Projectile", GUILayout.Width(120)) && _type.enumValueIndex == 1)
             _propertyTab = PropertyTab.Projectile;
 
         GUI.backgroundColor = baseColor;
@@ -395,7 +358,7 @@ public class AbilityInfoEditor : Editor
             GUILayout.Space(space);
             EditorGUILayout.LabelField("Muliplier", GUILayout.Width(width));
             GUILayout.Space(space);
-            if (_abilityType.enumValueIndex != 2)
+            if (_type.enumValueIndex != 2)
             {
                 EditorGUILayout.LabelField("Cast per Sec", GUILayout.Width(width));
                 GUILayout.Space(space);
@@ -420,7 +383,7 @@ public class AbilityInfoEditor : Editor
                 _damageMultiplierValue.floatValue = EditorGUILayout.FloatField(_damageMultiplierValue.floatValue, GUILayout.Width(width));
                 GUILayout.Space(space);
 
-                if (_abilityType.enumValueIndex != 2)
+                if (_type.enumValueIndex != 2)
                 {
                     SerializedProperty _castPerSecondValue = _castPerSecond.GetArrayElementAtIndex(i);
                     _castPerSecondValue.floatValue = EditorGUILayout.FloatField(_castPerSecondValue.floatValue, GUILayout.Width(width));
@@ -473,8 +436,6 @@ public class AbilityInfoEditor : Editor
             EditorGUILayout.LabelField("Level", GUILayout.Width(width / 2));
             GUILayout.Space(space);
             EditorGUILayout.LabelField("Rate", GUILayout.Width(width));
-            GUILayout.Space(space);
-            EditorGUILayout.LabelField("Duration", GUILayout.Width(width));
             EditorGUILayout.EndHorizontal();
 
             for (int i = 1; i < _damage.arraySize; i++)
@@ -486,17 +447,6 @@ public class AbilityInfoEditor : Editor
 
                 SerializedProperty _dotRateElement = _dotRate.GetArrayElementAtIndex(i);
                 _dotRateElement.floatValue = EditorGUILayout.FloatField(_dotRateElement.floatValue, GUILayout.Width(width));
-                GUILayout.Space(space);
-
-                if (_abilityType.enumValueIndex != 2)
-                {
-                    SerializedProperty _dotDurationElement = _dotDuration.GetArrayElementAtIndex(i);
-                    _dotDurationElement.floatValue = EditorGUILayout.FloatField(_dotDurationElement.floatValue, GUILayout.Width(width));
-                }
-                else
-                {
-                    EditorGUILayout.LabelField("Infinity", GUILayout.Width(width));
-                }
 
                 EditorGUILayout.EndHorizontal();
             }
@@ -517,7 +467,7 @@ public class AbilityInfoEditor : Editor
                 EditorGUILayout.LabelField(i.ToString(), GUILayout.Width(25));
                 GUILayout.Space(space);
 
-                SerializedProperty _radiusElement = _radius.GetArrayElementAtIndex(i);
+                SerializedProperty _radiusElement = _scale.GetArrayElementAtIndex(i);
                 _radiusElement.floatValue = EditorGUILayout.FloatField(_radiusElement.floatValue, GUILayout.Width(width));
                 GUILayout.Space(space);
 

@@ -59,8 +59,8 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
                 replace.Add("#ProjectileCount", ability.Info.ProjectileCount[level]);
                 replace.Add("#ProjectileAngle", ability.Info.ProjectileAngle[level]);
                 replace.Add("#DotRate", ability.Info.DotRate[level]);
-                replace.Add("#DotDuration", ability.Info.DotDuration[level]);
-                replace.Add("#Radius", ability.Info.Radius[level]);
+                replace.Add("#DotDuration", ability.Info.Duration[level]);
+                replace.Add("#Radius", ability.Info.Scale[level]);
 
                 foreach (AbilityProperty property in ability.Info.AbilityProperties)
                 {

@@ -7,9 +7,9 @@ public class AttributesContainer
     public Armour Armour { get; }
     public Movespeed Movespeed { get; }
 
-    private IUnit _unit;
+    private Unit _unit;
 
-    public AttributesContainer(IUnit unit)
+    public AttributesContainer(Unit unit)
     {
         _unit = unit;
         Life = new Life(unit.UnitInfo.Life, unit.UnitInfo.LifeRegeneration);

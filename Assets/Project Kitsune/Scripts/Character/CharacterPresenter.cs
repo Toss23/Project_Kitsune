@@ -5,7 +5,7 @@ public class CharacterPresenter : UnitPresenter
 {
     public Character Character => (Character)_unit;
 
-    protected override IUnit CreateUnit() => new Character(_info, GetComponent<Rigidbody2D>());
+    protected override Unit CreateUnit() => new Character(_info, this, GetComponent<Rigidbody2D>());
     protected override IUnitView CreateUnitView() => GetComponent<CharacterView>();
 
     protected override void OnEnablePresenter()

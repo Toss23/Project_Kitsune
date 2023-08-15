@@ -7,7 +7,7 @@ public enum UnitType
 
 public interface IUnitPresenter
 {
-    public IUnit Unit { get; }
+    public Unit Unit { get; }
     public IUnitView UnitView { get; }
     public UnitType UnitType { get; }
     public Transform Transform { get; }

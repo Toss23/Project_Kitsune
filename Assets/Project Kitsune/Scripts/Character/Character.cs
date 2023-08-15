@@ -4,9 +4,9 @@ public class Character : Unit
 {
     public Controllable Controllable { get; private set; }
 
-    public Character(UnitInfo info, Rigidbody2D rigidbody)
+    public Character(UnitInfo info, IUnitPresenter unitPresenter, Rigidbody2D rigidbody)
     {
-        Init(info);
+        Init(info, unitPresenter);
         Controllable = new Controllable(rigidbody);
     }
 

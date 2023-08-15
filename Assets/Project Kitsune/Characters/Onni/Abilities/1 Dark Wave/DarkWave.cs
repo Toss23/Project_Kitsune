@@ -5,22 +5,22 @@ public class DarkWave : Ability
     private float _currentRadius = 1;
     private bool _needScaleDown = false;
 
-    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target) 
+    protected override void OnCollisionEnterWithEnemy(Unit caster, Unit target) 
     { 
     
     }
 
-    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target) 
+    protected override void OnCollisionStayWithEnemy(Unit caster, Unit target) 
     { 
     
     }
 
-    protected override void OnCreateAbility(IUnit caster) 
+    protected override void OnCreateAbility(Unit caster) 
     { 
     
     }
 
-    protected override void OnUpdateAbility(IUnit caster, float deltaTime)
+    protected override void OnUpdateAbility(Unit caster, float deltaTime)
     {
         if (_needScaleDown == false)
         {
@@ -41,11 +41,11 @@ public class DarkWave : Ability
             }
         }
 
-        transform.localScale = new Vector3(_currentRadius, _currentRadius) * Info.Radius[Level];
+        transform.localScale = new Vector3(_currentRadius, _currentRadius) * Info.Scale[Level];
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
-    protected override void OnDestroyAbility(IUnit caster)
+    protected override void OnDestroyAbility(Unit caster)
     {
 
     }

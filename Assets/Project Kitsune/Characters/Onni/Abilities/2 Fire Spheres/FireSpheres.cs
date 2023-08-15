@@ -10,17 +10,17 @@ public class FireSpheres : Ability
     private GameObject[] _circles;
     private float _angle;
 
-    protected override void OnCollisionEnterWithEnemy(IUnit caster, IUnit target)
+    protected override void OnCollisionEnterWithEnemy(Unit caster, Unit target)
     {
         
     }
 
-    protected override void OnCollisionStayWithEnemy(IUnit caster, IUnit target)
+    protected override void OnCollisionStayWithEnemy(Unit caster, Unit target)
     {
         
     }
 
-    protected override void OnCreateAbility(IUnit caster)
+    protected override void OnCreateAbility(Unit caster)
     {
         _angle = 0;
         _circles = new GameObject[_count]; 
@@ -31,7 +31,7 @@ public class FireSpheres : Ability
         }
     }
 
-    protected override void OnUpdateAbility(IUnit caster, float deltaTime)
+    protected override void OnUpdateAbility(Unit caster, float deltaTime)
     {
         _angle -= deltaTime * _speed;
 
@@ -51,7 +51,7 @@ public class FireSpheres : Ability
         }
     }
 
-    protected override void OnDestroyAbility(IUnit caster)
+    protected override void OnDestroyAbility(Unit caster)
     {
 
     }

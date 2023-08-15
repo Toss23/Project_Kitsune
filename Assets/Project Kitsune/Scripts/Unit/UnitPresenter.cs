@@ -8,7 +8,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     // Base
     protected UnitType _unitType;
-    protected IUnit _unit;
+    protected Unit _unit;
     protected IUnitView _unitView;
     protected IAbilityCaster _abilityCaster;
 
@@ -18,7 +18,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public Transform Transform => transform;
     public UnitType UnitType => _unitType;
-    public IUnit Unit => _unit;
+    public Unit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
     public void Init(UnitType unitType)
@@ -43,7 +43,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
     protected abstract void OnEnablePresenter();
 
     protected abstract IUnitView CreateUnitView();
-    protected abstract IUnit CreateUnit();
+    protected abstract Unit CreateUnit();
 
     public void Enable()
     {

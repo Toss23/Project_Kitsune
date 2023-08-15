@@ -9,19 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b55b3088ec3c14b8728ddcf89e94c6, type: 3}
-  m_Name: Dot Ability Data
+  m_Script: {fileID: 11500000, guid: 8e16cfdcaa11f6e46aa7ef879ebaf900, type: 3}
+  m_Name: Range Ability Data
   m_EditorClassIdentifier: 
   _name: 
   _description: 
   _useCharacterDamage: 0
   _useCharacterCrit: 0
+  _damageType: 0
   _damage: []
   _damageMultiplier: []
-  _castPerSecond: []
+  _cooldown: []
   _critChance: []
   _critMultiplier: []
   _scale: []
-  _damageRate: []
   _haveDuration: 0
   _duration: []
+  _abilityProperties: []
+  _speed: 0
+  _spawnOffset: 0
+  _count: 
+  _tiltAngle: []
+  _aimNearEnemy: 0
+  _followsTarget: 0
+  _destroyOnHit: 0

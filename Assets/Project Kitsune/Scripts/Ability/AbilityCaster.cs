@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityCaster : MonoBehaviour, IAbilityCaster
@@ -21,7 +20,7 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
 
             AbilityModifier abilityModifier = _unitPresenter.Unit.ModifiersContainer.AbilityModifiers[abilityIndex];
 
-            if (ability.Info.AbilityType == AbilityInfo.Type.Projectile)
+            if (ability.Info.Type == AbilityInfo.AbilityType.Projectile)
             {
                 count = ability.Info.ProjectileCount[level];
                 angle = ability.Info.ProjectileAngle[level];
@@ -47,15 +46,15 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
                     // Locate
                     Transform abilityTransform = abilityObject.gameObject.transform;
 
-                    if (ability.Info.AbilityType != AbilityInfo.Type.Field)
+                    if (ability.Info.Type != AbilityInfo.AbilityType.Field)
                         abilityTransform.Rotate(new Vector3(0, 0, _unitPresenter.UnitView.Angle + startAngle + deltaAngle * i));
 
                     Vector3 position = _unitPresenter.UnitView.AbilityPoints.Points[abilityIndex].transform.position;
                     abilityTransform.position = position;
 
                     // Fuse with Point
-                    if (ability.Info.AbilityType == AbilityInfo.Type.Melee
-                        || ability.Info.AbilityType == AbilityInfo.Type.Field)
+                    if (ability.Info.Type == AbilityInfo.AbilityType.Melee
+                        || ability.Info.Type == AbilityInfo.AbilityType.Field)
                         abilityObject.FuseWith(_unitPresenter.UnitView.AbilityPoints.Points[abilityIndex].transform);
 
                     // Init

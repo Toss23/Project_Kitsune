@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyView))]
 public class EnemyPresenter : UnitPresenter
 {
-    protected override IUnit CreateUnit() => new Enemy(_info, _rigidbody);
+    protected override Unit CreateUnit() => new Enemy(_info, this, _rigidbody);
     protected override IUnitView CreateUnitView() => GetComponent<EnemyView>();
 
     protected override void OnEnablePresenter()

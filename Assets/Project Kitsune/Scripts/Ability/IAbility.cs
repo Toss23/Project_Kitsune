@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IAbility
 {
-    public event Action<IAbility, IUnit> OnHit;
+    public event Action<IAbility, Unit> OnHit;
 
     public AbilityInfo Info { get; }
     public Dictionary<string, float> Properties { get; }
@@ -13,6 +13,6 @@ public interface IAbility
     public AbilityModifier AbilityModifier { get; }
 
     public void FuseWith(Transform transform);
-    public void Init(int level, IUnit caster, UnitType target, AbilityModifier abilityModifier);
+    public void Init(int level, Unit caster, UnitType target, AbilityModifier abilityModifier);
     public void Destroy();
 }

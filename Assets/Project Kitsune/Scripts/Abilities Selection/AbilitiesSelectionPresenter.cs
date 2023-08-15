@@ -5,7 +5,7 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
 {
     private IAbilitiesSelectionView _abilitiesSelectionView;
     private AbilitiesSelection _abilitiesSelection;
-    private IUnit _character;
+    private Unit _character;
     private IGameLogic _gameLogic;
 
     public AbilitiesSelection AbilitiesSelection => _abilitiesSelection;
