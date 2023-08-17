@@ -62,12 +62,12 @@ public abstract class Unit
         _castedAbilities.Add(ability);
     }
 
-    public void TryRemoveField(IAbility ability)
+    public void TryRemovePassiveAbility(IAbility ability)
     {
-        IAbility field = _castedAbilities.Find(item => item.Info.Name == ability.Info.Name);
-        if (field != null)
+        IAbility passive = _castedAbilities.Find(item => item.AbilityData.Name == ability.AbilityData.Name);
+        if (passive != null)
         {
-            field.Destroy();
+            passive.DestroyAbility();
         }
     }
 
@@ -113,7 +113,7 @@ public abstract class Unit
         if (target != null)
         {
             float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
-            bool isProjectile = ability.Info.Type == AbilityInfo.AbilityType.Projectile;
+            bool isProjectile = ability.AbilityData.GetAbilityType() == AbilityData.Type.Range;
 
             if (Curses.Have(CursesInfo.List.Weakness))
             {

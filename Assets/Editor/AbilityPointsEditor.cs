@@ -6,13 +6,11 @@ public class AbilityPointsEditor : Editor
 {
     private SerializedProperty _unitInfo;
     private SerializedProperty _points;
-    private SerializedProperty _pointsAura;
 
     private void OnEnable()
     {
         _unitInfo = serializedObject.FindProperty("_unitInfo");
         _points = serializedObject.FindProperty("_points");
-        _pointsAura = serializedObject.FindProperty("_pointsAura");
     }
 
     public override void OnInspectorGUI()
@@ -26,16 +24,9 @@ public class AbilityPointsEditor : Editor
         if (_points.arraySize != 5)
             _points.arraySize = 5;
 
-        if (_pointsAura.arraySize != 5)
-            _pointsAura.arraySize = 5;
-
         SerializedProperty[] abilityPoints = new SerializedProperty[5];
         for (int i = 0; i < 5; i++)
             abilityPoints[i] = _points.GetArrayElementAtIndex(i);
-
-        SerializedProperty[] auraPoints = new SerializedProperty[5];
-        for (int i = 0; i < 5; i++)
-            auraPoints[i] = _pointsAura.GetArrayElementAtIndex(i);
 
         int width = 160;
         int space = 5;
@@ -54,11 +45,7 @@ public class AbilityPointsEditor : Editor
             IAbility[] abilities = (_unitInfo.objectReferenceValue as UnitInfo).Abilities;
             for (int i = 0; i < 5; i++)
             {
-                haveAbility[i] = abilities[i] != null & abilities[i].Info != null;
-                if (haveAbility[i])
-                {
-                    haveAura[i] = abilities[i].Info.HaveAura;
-                }
+                haveAbility[i] = abilities[i] != null & abilities[i].AbilityData != null;
             }
 
             EditorGUILayout.BeginHorizontal();
@@ -79,11 +66,6 @@ public class AbilityPointsEditor : Editor
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField(text, GUILayout.Width(60));
                     abilityPoints[i].objectReferenceValue = EditorGUILayout.ObjectField(abilityPoints[i].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width));
-                    if (haveAura[i])
-                    {
-                        GUILayout.Space(space);
-                        auraPoints[i].objectReferenceValue = EditorGUILayout.ObjectField(auraPoints[i].objectReferenceValue, typeof(GameObject), true, GUILayout.Width(width));
-                    }
                     EditorGUILayout.EndHorizontal();
                     GUILayout.Space(space);
                 }

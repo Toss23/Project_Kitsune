@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireSpheres : Ability
+public class FireSpheres : HitAbility
 {
     [SerializeField] private GameObject _circlePrefab;
     [SerializeField] private int _count = 5;
@@ -10,20 +10,12 @@ public class FireSpheres : Ability
     private GameObject[] _circles;
     private float _angle;
 
-    protected override void OnCollisionEnterWithEnemy(Unit caster, Unit target)
+    protected override void OnCreateAbility()
     {
-        
-    }
+        base.OnCreateAbility();
 
-    protected override void OnCollisionStayWithEnemy(Unit caster, Unit target)
-    {
-        
-    }
-
-    protected override void OnCreateAbility(Unit caster)
-    {
         _angle = 0;
-        _circles = new GameObject[_count]; 
+        _circles = new GameObject[_count];
         for (int i = 0; i < _count; i++)
         {
             _circles[i] = Instantiate(_circlePrefab, transform);
@@ -31,7 +23,7 @@ public class FireSpheres : Ability
         }
     }
 
-    protected override void OnUpdateAbility(Unit caster, float deltaTime)
+    protected override void OnUpdateAbility(float deltaTime)
     {
         _angle -= deltaTime * _speed;
 
@@ -49,10 +41,5 @@ public class FireSpheres : Ability
             position.y = _radius * Mathf.Sin((_angle + deltaAngle * i) * Mathf.Deg2Rad);
             _circles[i].transform.localPosition = position;
         }
-    }
-
-    protected override void OnDestroyAbility(Unit caster)
-    {
-
     }
 }

@@ -83,7 +83,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_animator != null)
         {
-            _animator.SetFloat("AttackSpeed", speed);
+            //_animator.SetFloat("AttackSpeed", speed);
         }
     }
 

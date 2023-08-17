@@ -1,27 +1,9 @@
-public class WeaknessAura : Ability
+public class WeaknessAura : HitAbility
 {
-    protected override void OnCollisionEnterWithEnemy(Unit caster, Unit target)
+    protected override void OnHitEnemy(Unit enemy)
     {
-        target.Curses.Add(new Curse(CursesInfo.List.Weakness, Properties["Effect"], Properties["Duration"]));
-    }
+        base.OnHitEnemy(enemy);
 
-    protected override void OnCollisionStayWithEnemy(Unit caster, Unit target)
-    {
-        
-    }
-
-    protected override void OnCreateAbility(Unit caster)
-    {
-        
-    }
-
-    protected override void OnUpdateAbility(Unit caster, float deltaTime)
-    {
-        
-    }
-
-    protected override void OnDestroyAbility(Unit caster)
-    {
-
+        enemy.Curses.Add(new Curse(CursesInfo.List.Weakness, Properties["Effect"], Properties["Duration"]));
     }
 }

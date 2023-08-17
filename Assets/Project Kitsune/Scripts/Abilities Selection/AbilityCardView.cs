@@ -33,7 +33,7 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
 
             if (_nameText != null)
             {
-                _nameText.text = ability.Info.Name;
+                _nameText.text = ability.AbilityData.Name;
             }
 
             if (_iconImage != null)
@@ -48,21 +48,36 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
 
             if (_descriptionText != null)
             {
-                string description = ability.Info.Description;
+                AbilityData abilityData = ability.AbilityData;
+
+                string description = abilityData.Description;
 
                 Dictionary<string, float> replace = new Dictionary<string, float>();
-                replace.Add("#Damage", ability.Info.Damage[level]);
-                replace.Add("#Multiplier", ability.Info.DamageMultiplier[level]);
-                replace.Add("#CastPerSecond", ability.Info.CastPerSecond[level]);
-                replace.Add("#CritChance", ability.Info.CritChance[level]);
-                replace.Add("#CritMultiplier", ability.Info.CritMultiplier[level]);
-                replace.Add("#ProjectileCount", ability.Info.ProjectileCount[level]);
-                replace.Add("#ProjectileAngle", ability.Info.ProjectileAngle[level]);
-                replace.Add("#DotRate", ability.Info.DotRate[level]);
-                replace.Add("#DotDuration", ability.Info.Duration[level]);
-                replace.Add("#Radius", ability.Info.Scale[level]);
 
-                foreach (AbilityProperty property in ability.Info.AbilityProperties)
+                replace.Add("#Scale", abilityData.Scale.Get(level));
+                replace.Add("#Duration", abilityData.Duration.Get(level));
+
+                if (ability.AbilityData.GetAbilityType() == AbilityData.Type.Base 
+                    | ability.AbilityData.GetAbilityType() == AbilityData.Type.Range)
+                {
+                    BaseAbilityData baseAbilityData = (BaseAbilityData)ability.AbilityData;
+                    replace.Add("#Damage", baseAbilityData.Damage.Get(level));
+                    replace.Add("#Multiplier", baseAbilityData.DamageMultiplier.Get(level));
+                    replace.Add("#CastPerSecond", baseAbilityData.CastPerSecond.Get(level));
+                    replace.Add("#CritChance", baseAbilityData.CritChance.Get(level));
+                    replace.Add("#CritMultiplier", baseAbilityData.CritMultiplier.Get(level));
+                    replace.Add("#DotRate", baseAbilityData.DotRate.Get(level));
+                }
+
+                if (ability.AbilityData.GetAbilityType() == AbilityData.Type.Range)
+                {
+                    RangeAbilityData rangeAbilityData = (RangeAbilityData)ability.AbilityData;
+                    replace.Add("#Speed", rangeAbilityData.Speed);
+                    replace.Add("#Count", rangeAbilityData.Count.Get(level));
+                    replace.Add("#TiltAngle", rangeAbilityData.TiltAngle.Get(level));
+                }
+
+                foreach (AbilityProperty property in ability.AbilityData.AbilityProperties)
                 {
                     replace.Add("#" + property.Name, property.Values[level]);
                 }

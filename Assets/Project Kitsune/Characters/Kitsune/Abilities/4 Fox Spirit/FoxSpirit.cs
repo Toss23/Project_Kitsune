@@ -2,17 +2,7 @@ public class FoxSpirit : Ability
 {
     private AbilityModifier _abilityModifierAttack;
 
-    protected override void OnCollisionEnterWithEnemy(Unit caster, Unit target)
-    {
-        
-    }
-
-    protected override void OnCollisionStayWithEnemy(Unit caster, Unit target)
-    {
-        
-    }
-
-    protected override void OnCreateAbility(Unit caster)
+    protected override void OnCreateAbility()
     {
         _abilityModifierAttack = new AbilityModifier(0)
         {
@@ -20,16 +10,11 @@ public class FoxSpirit : Ability
             ProjectileAngle = 60
         };
 
-        caster.ModifiersContainer.Add(_abilityModifierAttack);
+        _caster.ModifiersContainer.Add(_abilityModifierAttack);
     }
 
-    protected override void OnUpdateAbility(Unit caster, float deltaTime)
+    protected override void OnDestroyAbility()
     {
-        
-    }
-
-    protected override void OnDestroyAbility(Unit caster)
-    {
-        caster.ModifiersContainer.Remove(_abilityModifierAttack);
+        _caster.ModifiersContainer.Remove(_abilityModifierAttack);
     }
 }
