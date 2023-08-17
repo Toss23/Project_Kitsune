@@ -6,6 +6,7 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
 {
     public event Action<IAbility2, Unit> OnHit;
 
+    [Header("Data")]
     [SerializeField] private AbilityData _abilityData;
 
     // Init
@@ -20,7 +21,7 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
     protected Transform _nearestEnemy;
 
     // Private fields
-    private IGameLogic _gameLogic;
+    protected IGameLogic _gameLogic;
 
     // Logic
     private float _duration;
@@ -41,6 +42,16 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
 
         // Rescale
         transform.localScale *= _abilityData.Scale[_level] + abilityModifier.Radius;
+
+        // Spawn on nearest enemy
+        if (_abilityData.SpawnOnNearestEnemy)
+        {
+            _nearestEnemy = FindNearestEnemy();
+            if (_nearestEnemy != null)
+            {
+                transform.position = _nearestEnemy.position;
+            }
+        }
 
         // Range Ability
         if (_abilityData.GetType() == typeof(RangeAbilityData))
@@ -111,7 +122,7 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
 
     private void UpdateAbility(float deltaTime)
     {
-        OnUpdate(deltaTime);
+        OnUpdateAbility(deltaTime);
 
         // Update Duration
         if (_abilityData.HaveDuration)
@@ -137,7 +148,7 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
             }
         }
         
-        OnLateUpdate(deltaTime);
+        OnLateUpdateAbility(deltaTime);
     }
 
     private void UpdateRangeAbility(float deltaTime)
@@ -168,8 +179,8 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
         transform.position += deltaPosition;
     }
 
-    protected abstract void OnUpdate(float deltaTime);
-    protected abstract void OnLateUpdate(float deltaTime);
+    protected abstract void OnUpdateAbility(float deltaTime);
+    protected abstract void OnLateUpdateAbility(float deltaTime);
 
     public void DestroyAbility()
     {
@@ -180,7 +191,7 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
 
     protected abstract void OnDestroyAbility();
 
-    protected Unit HitCollisionEnemy(Collision2D collision)
+    protected Unit HitCollisionEnemy(Collider2D collision)
     {
         IUnitPresenter unitPresenter = collision.gameObject.GetComponent<IUnitPresenter>();
         if (unitPresenter != null)

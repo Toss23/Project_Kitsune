@@ -23,4 +23,14 @@ public class RangeAbilityData : BaseAbilityData
     public bool AimNearestEnemy => _aimNearestEnemy;
     public bool FollowNearestEnemy => _followNearestEnemy;
     public bool DestroyOnHit => _destroyOnHit;
+
+    public override int GetMaxLevel()
+    {
+        int maxLevel = base.GetMaxLevel();
+        if (_count != null & _tiltAngle != null)
+        {
+            maxLevel = Mathf.Max(maxLevel, _count.Length, _tiltAngle.Length) - 1;
+        }
+        return maxLevel;
+    }
 }

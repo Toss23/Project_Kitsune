@@ -14,15 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: 
   _description: 
+  _fuseWithCaster: 0
+  _spawnOnNearestEnemy: 0
+  _scale:
+  - 0
+  - 0
+  _haveDuration: 0
+  _duration:
+  - 0
+  - 0
+  _abilityProperties: []
   _useCharacterDamage: 0
   _useCharacterCrit: 0
-  _damageType: 0
-  _damage: []
-  _damageMultiplier: []
-  _cooldown: []
-  _critChance: []
-  _critMultiplier: []
-  _scale: []
-  _haveDuration: 0
-  _duration: []
-  _abilityProperties: []
+  _damage:
+  - 0
+  - 0
+  - 0
+  _damageMultiplier:
+  - 0
+  - 0
+  _castPerSecond:
+  - 0
+  - 0
+  _critChance:
+  - 0
+  - 0
+  _critMultiplier:
+  - 0
+  - 0
+  _dotRate:
+  - 0
+  - 0
