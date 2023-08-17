@@ -26,7 +26,7 @@ public class RangeAbilityData : BaseAbilityData
 
     public override int GetMaxLevel()
     {
-        int maxLevel = base.GetMaxLevel();
+        int maxLevel = base.GetMaxLevel() + 1;
         if (_count != null & _tiltAngle != null)
         {
             maxLevel = Mathf.Max(maxLevel, _count.Length, _tiltAngle.Length) - 1;

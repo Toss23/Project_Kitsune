@@ -26,7 +26,7 @@ public class BaseAbilityData : AbilityData
 
     public override int GetMaxLevel()
     {
-        int maxLevel = base.GetMaxLevel();
+        int maxLevel = base.GetMaxLevel() + 1;
         if (_damage != null & _damageMultiplier != null & _castPerSecond != null & _critChance != null & _critMultiplier != null & _dotRate != null)
         {
             maxLevel = Mathf.Max(maxLevel, _damage.Length, _damageMultiplier.Length, _castPerSecond.Length, _critChance.Length, _critMultiplier.Length, _dotRate.Length) - 1;

@@ -53,38 +53,33 @@ public class BaseAbilityDataEditor : AbilityDataEditor
 
         if (_openedTab == "Damage")
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Use Character Damage", GUILayout.Width(width + 50));
-            _useCharacterDamage.boolValue = EditorGUILayout.Toggle(_useCharacterDamage.boolValue);
-            EditorGUILayout.EndHorizontal();
-
+            AddBoolField(_useCharacterDamage, "Use Character Damage", width + 50);
             AddColumns(width, "Damage", "Multiplier", "Cast per Second", "Dot Rate");
             for (int level = 1; level <= _maxLevel + 1; level++)
             {
                 EditorGUILayout.BeginHorizontal();
                 AddLevelField(level, width);
-                AddField(_damage, level, width);
-                AddField(_damageMultiplier, level, width);
-                AddField(_castPerSecond, level, width);
-                AddField(_dotRate, level, width);
+                AddField<float>(_damage, level, width);
+                AddField<float>(_damageMultiplier, level, width);
+                AddField<float>(_castPerSecond, level, width);
+                AddField<float>(_dotRate, level, width);
                 EditorGUILayout.EndHorizontal();
             }
         }
 
         if (_openedTab == "Crit Damage")
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Use Character Crit", GUILayout.Width(width + 50));
-            _useCharacterCrit.boolValue = EditorGUILayout.Toggle(_useCharacterCrit.boolValue);
-            EditorGUILayout.EndHorizontal();
+            AddBoolField(_useCharacterCrit, "Use Character Crit", width + 50);
+
+            GUILayout.Space(10);
 
             AddColumns(width, "Crit Chance", "Crit Multiplier");
             for (int level = 1; level <= _maxLevel + 1; level++)
             {
                 EditorGUILayout.BeginHorizontal();
                 AddLevelField(level, width);
-                AddField(_critChance, level, width);
-                AddField(_critMultiplier, level, width);
+                AddField<float>(_critChance, level, width);
+                AddField<float>(_critMultiplier, level, width);
                 EditorGUILayout.EndHorizontal();
             }
         }

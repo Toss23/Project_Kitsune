@@ -97,13 +97,11 @@ public class AbilityDataEditor : Editor
         AdditionalTabButton(width);
         AddTabButton("Custom", width);
         EditorGUILayout.EndHorizontal();
+        GUILayout.Space(10);
 
         if (_openedTab == "Main")
         {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Have Duration", GUILayout.Width(width));
-            _haveDuration.boolValue = EditorGUILayout.Toggle(_haveDuration.boolValue);
-            EditorGUILayout.EndHorizontal();
+            AddBoolField(_haveDuration, "Have Duration", width);
 
             // Values
             EditorGUILayout.BeginHorizontal();
@@ -122,10 +120,10 @@ public class AbilityDataEditor : Editor
                 EditorGUILayout.BeginHorizontal();
 
                 AddLevelField(level, width);
-                AddField(_scale, level, width);
+                AddField<float>(_scale, level, width);
                 if (_haveDuration.boolValue == true)
                 {
-                    AddField(_duration, level, width);
+                    AddField<float>(_duration, level, width);
                 }
 
                 EditorGUILayout.EndHorizontal();
@@ -174,11 +172,8 @@ public class AbilityDataEditor : Editor
                 {
                     SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
                     SerializedProperty propertyValues = property.FindPropertyRelative("Values");
-                    if (propertyValues.arraySize < 2)
-                    {
-                        propertyValues.arraySize = 2;
-                    }
-                    AddField(propertyValues, level, width);
+                    InitPropertyArray(propertyValues);
+                    AddField<float>(propertyValues, level, width);
                 }
 
                 EditorGUILayout.EndHorizontal();
@@ -209,6 +204,22 @@ public class AbilityDataEditor : Editor
         }
 
         serializedObject.ApplyModifiedProperties();
+    }
+
+    protected void AddBoolField(SerializedProperty serializedProperty, string name, int width)
+    {
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(name, GUILayout.Width(width));
+        serializedProperty.boolValue = EditorGUILayout.Toggle(serializedProperty.boolValue);
+        EditorGUILayout.EndHorizontal();
+    }
+
+    protected void AddFloatField(SerializedProperty serializedProperty, string name, int width)
+    {
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(name, GUILayout.Width(width));
+        serializedProperty.floatValue = EditorGUILayout.FloatField(serializedProperty.floatValue, GUILayout.Width(width));
+        EditorGUILayout.EndHorizontal();
     }
 
     protected void AddTabButton(string name, int width)
@@ -276,12 +287,19 @@ public class AbilityDataEditor : Editor
         GUILayout.Space(10);
     }
 
-    protected void AddField(SerializedProperty array, int i, int width)
+    protected void AddField<T>(SerializedProperty array, int i, int width)
     {
         if (i < array.arraySize)
         {
             SerializedProperty element = array.GetArrayElementAtIndex(i);
-            element.floatValue = EditorGUILayout.FloatField(element.floatValue, GUILayout.Width(width));
+            if (typeof(T) == typeof(float))
+            {
+                element.floatValue = EditorGUILayout.FloatField(element.floatValue, GUILayout.Width(width));
+            }
+            else if (typeof(T) == typeof(int))
+            {
+                element.intValue = EditorGUILayout.IntField(element.intValue, GUILayout.Width(width));
+            }
         }
         else if (i == _maxLevel + 1)
         {

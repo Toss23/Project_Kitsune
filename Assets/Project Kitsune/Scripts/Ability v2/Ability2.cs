@@ -28,6 +28,9 @@ public abstract class Ability2 : MonoBehaviour, IAbility2
 
     // References
     public AbilityData AbilityData => _abilityData;
+    public int Level => _level;
+    public AbilityModifier AbilityModifier => _abilityModifier;
+    public Dictionary<string, float> Properties => _properties;
 
     public void Init(int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
     {
