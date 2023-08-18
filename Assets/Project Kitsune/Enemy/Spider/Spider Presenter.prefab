@@ -50,9 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d74df99ac6887a4aa49d3b04f10451e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sortingOrderOffset: 0
   _spawnPoint: {fileID: 1282980310747655630}
   _cursesPoint: {fileID: 8301004227553444759}
-  _shieldPoint: {fileID: 0}
+  _shieldPoint: {fileID: 1282980310747655630}
 --- !u!114 &1210909013644819758
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,6 +36,10 @@ public abstract class Ability : MonoBehaviour, IAbility
 
     public void Init(int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
     {
+        // Game Logic
+        _gameLogic = GameLogic.Instance;
+        _gameLogic.OnUpdate += UpdateAbility;
+
         // References
         _abilityIndex = abilityIndex;
         _level = level;
@@ -55,7 +59,21 @@ public abstract class Ability : MonoBehaviour, IAbility
             _nearestEnemy = FindNearestEnemy();
             if (_nearestEnemy != null)
             {
-                transform.position = _nearestEnemy.position;
+                if (_abilityData.SpawnRange == 0)
+                {
+                    transform.position = _nearestEnemy.position;
+                }
+                else
+                {
+                    if (Vector2.Distance(transform.position, _nearestEnemy.position) <= _abilityData.SpawnRange)
+                    {
+                        transform.position = _nearestEnemy.position;
+                    }
+                    else
+                    {
+                        DestroyAbility();
+                    }
+                }
             }
         }
 
@@ -64,9 +82,6 @@ public abstract class Ability : MonoBehaviour, IAbility
         {
             InitRangeAbility();
         }
-
-        _gameLogic = GameLogic.Instance;
-        _gameLogic.OnUpdate += UpdateAbility;
 
         OnCreateAbility();
     }

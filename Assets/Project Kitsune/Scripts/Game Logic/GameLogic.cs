@@ -95,6 +95,6 @@ public class GameLogic : MonoBehaviour, IGameLogic
     public void EndGame()
     {
         Instance = null;
-        SceneManager.LoadScene("Game");
+        PauseGame();
     }
 }

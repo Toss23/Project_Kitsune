@@ -89,8 +89,8 @@ public class AbilitiesContainer
                 }
                 else if (_casted[i] == false)
                 {
-                    _casted[i] = true;
                     OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
+                    _casted[i] = true;
                 }
             }
         }
@@ -120,8 +120,8 @@ public class AbilitiesContainer
 
             if (_abilities[index].AbilityData.GetAbilityType() == AbilityData.Type.Passive)
             {
-                _casted[index] = false;
                 OnLevelUpPassive?.Invoke(_abilities[index]);
+                _casted[index] = false;
             }
         }
     }
@@ -132,7 +132,7 @@ public class AbilitiesContainer
         {
             for (int i = 0; i < _abilities.Length; i++)
             {
-                if (ability == _abilities[i])
+                if (ability.AbilityData.Name == _abilities[i].AbilityData.Name)
                 {
                     LevelUp(i);
                     break;

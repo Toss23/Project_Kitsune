@@ -50,8 +50,9 @@ public class CharacterPresenter : UnitPresenter
         level.OnExperienceChanged -= (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
-    protected override void OnDeath()
+    protected override void Death()
     {
+        _unit.DisableAbilities();
         GameLogic.Instance.EndGame();
     }
 

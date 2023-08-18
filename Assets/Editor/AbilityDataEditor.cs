@@ -11,6 +11,7 @@ public class AbilityDataEditor : Editor
 
     private SerializedProperty _fuseWithCaster;
     private SerializedProperty _spawnOnNearestEnemy;
+    private SerializedProperty _spawnRange;
 
     private SerializedProperty _scale;
     private SerializedProperty _haveDuration;
@@ -37,8 +38,9 @@ public class AbilityDataEditor : Editor
 
         _fuseWithCaster = serializedObject.FindProperty("_fuseWithCaster");
         _spawnOnNearestEnemy = serializedObject.FindProperty("_spawnOnNearestEnemy");
-        _scale = serializedObject.FindProperty("_scale");
+        _spawnRange = serializedObject.FindProperty("_spawnRange");
 
+        _scale = serializedObject.FindProperty("_scale");
         _haveDuration = serializedObject.FindProperty("_haveDuration");
         _duration = serializedObject.FindProperty("_duration");
 
@@ -86,6 +88,19 @@ public class AbilityDataEditor : Editor
         EditorGUILayout.LabelField("Spawn on Enemy", GUILayout.Width(width + 20));
         _spawnOnNearestEnemy.boolValue = EditorGUILayout.Toggle(_spawnOnNearestEnemy.boolValue);
         EditorGUILayout.EndHorizontal();
+
+        if (_spawnOnNearestEnemy.boolValue)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Spawn Range", GUILayout.Width(width + 20));
+            _spawnRange.floatValue = EditorGUILayout.FloatField(_spawnRange.floatValue, GUILayout.Width(width));
+            EditorGUILayout.EndHorizontal();
+
+            if (_spawnRange.floatValue < 0)
+            {
+                _spawnRange.floatValue = 0;
+            }
+        }
 
         EditorGUILayout.Space(20);
         EditorGUILayout.LabelField("Values", boldStyle);

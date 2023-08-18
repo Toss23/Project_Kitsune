@@ -21,6 +21,7 @@ MonoBehaviour:
     at the nearest enemy'
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
+  _spawnRange: 0
   _scale:
   - 0
   - 1
@@ -33,7 +34,7 @@ MonoBehaviour:
   _useCharacterCrit: 0
   _damage:
   - 0
-  - 1
+  - 3
   _damageMultiplier:
   - 0
   - 100

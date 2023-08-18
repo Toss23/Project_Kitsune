@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Spider Attack
   _description: 
-  _fuseWithCaster: 1
-  _spawnOnNearestEnemy: 0
+  _fuseWithCaster: 0
+  _spawnOnNearestEnemy: 1
+  _spawnRange: 1.7
   _scale:
   - 0
   - 1

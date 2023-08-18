@@ -14,6 +14,7 @@ public class AbilityData : ScriptableObject
 
     [SerializeField] private bool _fuseWithCaster;
     [SerializeField] private bool _spawnOnNearestEnemy;
+    [SerializeField] private float _spawnRange;
 
     [SerializeField] private float[] _scale;
     [SerializeField] private bool _haveDuration;
@@ -26,6 +27,7 @@ public class AbilityData : ScriptableObject
 
     public bool FuseWithCaster => _fuseWithCaster;
     public bool SpawnOnNearestEnemy => _spawnOnNearestEnemy;
+    public float SpawnRange => _spawnRange;
 
     public ArrayData<float> Scale => new ArrayData<float>(_scale);
     public bool HaveDuration => _haveDuration;

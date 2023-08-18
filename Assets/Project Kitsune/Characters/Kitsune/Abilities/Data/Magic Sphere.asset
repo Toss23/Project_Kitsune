@@ -18,6 +18,7 @@ MonoBehaviour:
     Deals #Damage damage'
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
+  _spawnRange: 0
   _scale:
   - 0
   - 1
@@ -26,12 +27,12 @@ MonoBehaviour:
   - 0
   - 2
   _abilityProperties: []
-  _useCharacterDamage: 0
+  _useCharacterDamage: 1
   _useCharacterCrit: 0
   _damage:
   - 0
   - 2
-  - 0
+  - 3
   _damageMultiplier:
   - 0
   - 100

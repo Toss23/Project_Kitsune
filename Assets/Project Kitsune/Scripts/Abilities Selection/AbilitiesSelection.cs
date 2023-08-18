@@ -32,6 +32,7 @@ public class AbilitiesSelection
         }
         else
         {
+            _generating = false;
             OnAbilityUpCanceled?.Invoke();
         }
     }

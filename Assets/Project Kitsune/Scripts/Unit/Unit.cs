@@ -68,6 +68,7 @@ public abstract class Unit
         IAbility passive = _castedAbilities.Find(item => item.AbilityData.Name == ability.AbilityData.Name);
         if (passive != null)
         {
+            _castedAbilities.Remove(passive);
             passive.DestroyAbility();
         }
     }

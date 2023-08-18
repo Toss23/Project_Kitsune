@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
     private static GameObject DamageIndication;
+    private static GameObject DamageIndicationParent;
 
     [SerializeField] protected UnitInfo _info;
 
@@ -28,6 +29,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         if (DamageIndication == null)
         {
             DamageIndication = Resources.Load<GameObject>("Damage");
+            DamageIndicationParent = GameObject.FindWithTag("Damage Indication");
         }
 
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -43,8 +45,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         Enable();
     }
-
-    protected abstract void OnDeath();
 
     protected abstract void OnDisablePresenter();
     protected abstract void OnEnablePresenter();
@@ -89,9 +89,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         OnDisablePresenter();
     }
 
-    private void Death()
+    protected virtual void Death()
     {
-        OnDeath();
         Disable();
         _unit.DisableAbilities();
         Destroy(gameObject);
@@ -102,7 +101,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         if (target != null)
         {
             Transform spawnTransform = target.UnitPresenter.Transform;
-            GameObject damageIndication = Instantiate(DamageIndication);
+            GameObject damageIndication = Instantiate(DamageIndication, DamageIndicationParent.transform);
+            damageIndication.name = "Damage <" + target + ">";
             damageIndication.transform.position = spawnTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
             damageIndication.GetComponent<DamageIndication>().Init(damage);
         }

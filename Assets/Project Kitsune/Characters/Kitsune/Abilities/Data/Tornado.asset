@@ -24,6 +24,7 @@ MonoBehaviour:
     #Scale'
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 1
+  _spawnRange: 0
   _scale:
   - 0
   - 1
@@ -36,8 +37,8 @@ MonoBehaviour:
   _useCharacterCrit: 0
   _damage:
   - 0
-  - 0
-  - 2
+  - 1
+  - 1
   _damageMultiplier:
   - 0
   - 100
