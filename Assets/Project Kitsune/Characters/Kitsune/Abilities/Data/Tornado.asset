@@ -9,35 +9,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e16cfdcaa11f6e46aa7ef879ebaf900, type: 3}
-  m_Name: Magic Sphere
+  m_Script: {fileID: 11500000, guid: 01e94f5d687e76c42903ce3ac60a8b88, type: 3}
+  m_Name: Tornado
   m_EditorClassIdentifier: 
-  _name: Magic Sphere
-  _description: 'Deals #Damage damage
+  _name: Tornado
+  _description: 'Create tornado on nearest enemy every #CastPerSecond second
 
-    Projectile count: #Count'
+    Deals
+    #Damage damage over time every #DotRate second
+
+    Duration: #Duration
+
+    Radius:
+    #Scale'
   _fuseWithCaster: 0
-  _spawnOnNearestEnemy: 0
+  _spawnOnNearestEnemy: 1
   _scale:
   - 0
   - 1
   _haveDuration: 1
   _duration:
   - 0
-  - 5
+  - 3
   _abilityProperties: []
-  _useCharacterDamage: 1
+  _useCharacterDamage: 0
   _useCharacterCrit: 0
   _damage:
   - 0
-  - 3
-  - 5
+  - 0
+  - 2
   _damageMultiplier:
   - 0
   - 100
   _castPerSecond:
   - 0
-  - 1
+  - 0.2
   _critChance:
   - 0
   - 0
@@ -46,14 +52,5 @@ MonoBehaviour:
   - 0
   _dotRate:
   - 0
-  - 0
-  _speed: 10
-  _spawnOffset: 0
-  _count: 000000000100000002000000
-  _tiltAngle:
-  - 0
-  - 0
-  - 30
-  _aimNearestEnemy: 0
-  _followNearestEnemy: 1
-  _destroyOnHit: 1
+  - 0.5
+  - 0.25

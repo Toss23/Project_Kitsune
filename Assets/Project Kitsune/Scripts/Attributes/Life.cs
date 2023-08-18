@@ -47,10 +47,11 @@ public class Life : Attribute
         }
     }
 
-    public void TakeDamage(float damage)
+    public float TakeDamage(float damage)
     {
-        Subtract(damage);
+        float excess = Subtract(damage);
         OnChanged?.Invoke(Value);
+        return excess;
     }
 
     public void AddMaximum(float value)

@@ -4,6 +4,6 @@ public class ForestWindAura : HitAbility
     {
         base.OnHitEnemy(enemy);
 
-        enemy.Curses.Add(new Curse(CursesInfo.List.Forest, Properties["Effect"], Properties["Duration"]));
+        enemy.Curses.Add(new Curse(CursesInfo.List.Forest, Properties["Effect"], Properties["CurseDuration"]));
     }
 }

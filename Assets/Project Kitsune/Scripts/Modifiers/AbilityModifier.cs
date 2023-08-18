@@ -10,12 +10,12 @@ public class AbilityModifier
     public float CritMultiplier = 0;
 
     public int ProjectileCount = 0;
-    public float ProjectileAngle = 0;
+    public float ProjectileTiltAngle = 0;
 
     public float DotRate = 0;
-    public float DotDuration = 0;
+    public float Duration = 0;
 
-    public float Radius = 0;
+    public float Scale = 0;
 
     public AbilityModifier(int abilityIndex)
     {
@@ -31,12 +31,12 @@ public class AbilityModifier
         CritMultiplier += abilityModifier.CritMultiplier;
 
         ProjectileCount += abilityModifier.ProjectileCount;
-        ProjectileAngle += abilityModifier.ProjectileAngle;
+        ProjectileTiltAngle += abilityModifier.ProjectileTiltAngle;
 
         DotRate += abilityModifier.DotRate;
-        DotDuration += abilityModifier.DotDuration;
+        Duration += abilityModifier.Duration;
 
-        Radius += abilityModifier.Radius;
+        Scale += abilityModifier.Scale;
     }
 
     public void Subtract(AbilityModifier abilityModifier)
@@ -48,11 +48,11 @@ public class AbilityModifier
         CritMultiplier -= abilityModifier.CritMultiplier;
 
         ProjectileCount -= abilityModifier.ProjectileCount;
-        ProjectileAngle -= abilityModifier.ProjectileAngle;
+        ProjectileTiltAngle -= abilityModifier.ProjectileTiltAngle;
 
         DotRate -= abilityModifier.DotRate;
-        DotDuration -= abilityModifier.DotDuration;
+        Duration -= abilityModifier.Duration;
 
-        Radius -= abilityModifier.Radius;
+        Scale -= abilityModifier.Scale;
     }
 }

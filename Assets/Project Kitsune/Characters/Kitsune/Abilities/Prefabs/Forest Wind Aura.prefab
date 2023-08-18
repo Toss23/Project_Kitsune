@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8495121188177815455}
   - component: {fileID: 2799785572724092946}
   m_Layer: 8
-  m_Name: Forest Wind Aura Prefab
+  m_Name: Forest Wind Aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

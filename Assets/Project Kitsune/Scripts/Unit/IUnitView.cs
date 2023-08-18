@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IUnitView
 {
-    public AbilityPoints AbilityPoints { get; }
+    public IAbilityPoints AbilityPoints { get; }
     public float Angle { get; }
 
     public void CreateUnit(GameObject prefab);

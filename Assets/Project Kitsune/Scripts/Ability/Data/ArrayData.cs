@@ -2,6 +2,8 @@
 {
     private T[] _values;
 
+    public int Length => _values.Length;
+
     public ArrayData(T[] values)
     {
         _values = values;
@@ -17,7 +19,7 @@
         }
         else
         {
-            result = _values[_values.Length - 1];
+            result = _values[Length - 1];
         }
 
         return result;

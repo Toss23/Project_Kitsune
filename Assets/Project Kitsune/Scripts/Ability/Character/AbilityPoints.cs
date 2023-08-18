@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AbilityPoints : MonoBehaviour
+public class AbilityPoints : MonoBehaviour, IAbilityPoints
 {
     [SerializeField] private UnitInfo _unitInfo;
     [SerializeField] private GameObject[] _points;

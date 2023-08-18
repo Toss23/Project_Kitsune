@@ -52,6 +52,11 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
 
                 string description = abilityData.Description;
 
+                Dictionary<string, string> replaceCurses = new Dictionary<string, string>();
+
+                replaceCurses.Add("#Forest", "Forest Curse");
+                replaceCurses.Add("#Weakness", "Weakness Curse");
+
                 Dictionary<string, float> replace = new Dictionary<string, float>();
 
                 replace.Add("#Scale", abilityData.Scale.Get(level));
@@ -79,12 +84,20 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
 
                 foreach (AbilityProperty property in ability.AbilityData.AbilityProperties)
                 {
-                    replace.Add("#" + property.Name, property.Values[level]);
+                    if (property.Name != "")
+                    {
+                        replace.Add("#" + property.Name, property.Values.Get(level));
+                    }
                 }
 
                 foreach (KeyValuePair<string, float> entry in replace)
                 {
                     description = description.Replace(entry.Key, "<color=red>" + entry.Value + "</color>");
+                }
+
+                foreach (KeyValuePair<string, string> entry in replaceCurses)
+                {
+                    description = description.Replace(entry.Key, "<color=#36A538>" + entry.Value + "</color>");
                 }
 
                 _descriptionText.text = description;

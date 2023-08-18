@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Ability : MonoBehaviour, IAbility
 {
     public event Action<IAbility, Unit> OnHit;
@@ -10,6 +11,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     [SerializeField] private AbilityData _abilityData;
 
     // Init
+    protected int _abilityIndex;
     protected int _level;
     protected Unit _caster;
     protected UnitType _target;
@@ -32,9 +34,10 @@ public abstract class Ability : MonoBehaviour, IAbility
     public AbilityModifier AbilityModifier => _abilityModifier;
     public Dictionary<string, float> Properties => _properties;
 
-    public void Init(int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
+    public void Init(int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
     {
         // References
+        _abilityIndex = abilityIndex;
         _level = level;
         _caster = caster;
         _target = target;
@@ -44,7 +47,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         _properties = AbilityProperty.ListToDictionary(_level, _abilityData.AbilityProperties);
 
         // Rescale
-        transform.localScale *= _abilityData.Scale.Get(_level) + abilityModifier.Radius;
+        transform.localScale *= _abilityData.Scale.Get(_level) + abilityModifier.Scale;
 
         // Spawn on nearest enemy
         if (_abilityData.SpawnOnNearestEnemy)
@@ -140,7 +143,18 @@ public abstract class Ability : MonoBehaviour, IAbility
         // Fuse position with caster
         if (_abilityData.FuseWithCaster)
         {
-            transform.position = _caster.UnitPresenter.Transform.position;
+            if (_caster != null)
+            {
+                GameObject point = _caster.UnitPresenter.UnitView.AbilityPoints.Points[_abilityIndex];
+                if (point != null)
+                {
+                    transform.position = point.transform.position;
+                }
+                else
+                {
+                    DestroyAbility();
+                }
+            }
         }
         else
         {

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UnitView : MonoBehaviour, IUnitView
@@ -12,7 +11,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     private GameObject _unit;
     private Animator _animator;
-    private AbilityPoints _abilityPoints;
+    private IAbilityPoints _abilityPoints;
 
     private bool _isMirrored;
     private float _angle;
@@ -23,7 +22,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     private SpriteRenderer _spriteRenderer;
 
-    public AbilityPoints AbilityPoints => _abilityPoints;
+    public IAbilityPoints AbilityPoints => _abilityPoints;
     public float Angle => _angle;
 
     private void Update()
@@ -71,12 +70,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void SetActive(bool active)
     {
         _active = active;
-        int attackAnimationIndex = _animator.GetLayerIndex("Attack");
-        if (attackAnimationIndex != -1) 
-        {
-            _animator.SetBool("Attacking", active);
-            _animator.SetLayerWeight(attackAnimationIndex, active ? 1 : 0);
-        }
+        _animator.SetBool("Attacking", active);
     }
 
     public void SetAnimationAttackSpeed(float speed)

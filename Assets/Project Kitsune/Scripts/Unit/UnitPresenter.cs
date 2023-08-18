@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AbilityCaster))]
 public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
+    private static GameObject DamageIndication;
+
     [SerializeField] protected UnitInfo _info;
 
     // Base
@@ -23,6 +25,11 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Init(UnitType unitType)
     {
+        if (DamageIndication == null)
+        {
+            DamageIndication = Resources.Load<GameObject>("Damage");
+        }
+
         _rigidbody = GetComponent<Rigidbody2D>();
         _abilityCaster = GetComponent<AbilityCaster>();
         _gameLogic = GameLogic.Instance;
@@ -58,6 +65,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
         if (_unit.Abilities.Levels[0] == 0) _unit.Abilities.LevelUp(0);
+
+        _unit.OnDealDamage += ShowDealDamage;
+
         OnEnablePresenter();
     }
 
@@ -73,6 +83,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Attributes.MagicShield.OnChanged -= (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
+
+        _unit.OnDealDamage -= ShowDealDamage;
+
         OnDisablePresenter();
     }
 
@@ -82,5 +95,16 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         Disable();
         _unit.DisableAbilities();
         Destroy(gameObject);
+    }
+
+    private void ShowDealDamage(float damage, Unit target)
+    {
+        if (target != null)
+        {
+            Transform spawnTransform = target.UnitPresenter.Transform;
+            GameObject damageIndication = Instantiate(DamageIndication);
+            damageIndication.transform.position = spawnTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
+            damageIndication.GetComponent<DamageIndication>().Init(damage);
+        }
     }
 }

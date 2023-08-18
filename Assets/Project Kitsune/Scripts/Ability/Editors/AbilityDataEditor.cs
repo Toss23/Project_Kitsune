@@ -141,7 +141,7 @@ public class AbilityDataEditor : Editor
             for (int i = 0; i < _abilityProperties.arraySize; i++)
             {
                 SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
-                SerializedProperty propertyName = property.FindPropertyRelative("Name");
+                SerializedProperty propertyName = property.FindPropertyRelative("_name");
                 EditorGUILayout.LabelField(propertyName.stringValue, GUILayout.Width(width));
                 GUILayout.Space(10);
             }
@@ -149,12 +149,12 @@ public class AbilityDataEditor : Editor
             if (_abilityProperties.arraySize < 5)
             {
                 _propertyNameAdd = EditorGUILayout.TextField(_propertyNameAdd, GUILayout.Width(width));
-                if (GUILayout.Button("+", GUILayout.Width(25)))
+                if (GUILayout.Button("+", GUILayout.Width(25)) & _propertyNameAdd != "")
                 {
                     _abilityProperties.arraySize += 1;
                     SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(_abilityProperties.arraySize - 1);
-                    SerializedProperty propertyName = property.FindPropertyRelative("Name");
-                    SerializedProperty propertyValues = property.FindPropertyRelative("Values");
+                    SerializedProperty propertyName = property.FindPropertyRelative("_name");
+                    SerializedProperty propertyValues = property.FindPropertyRelative("_values");
                     propertyName.stringValue = _propertyNameAdd;
                     propertyValues.arraySize = 2;
                     _propertyNameAdd = "";
@@ -171,7 +171,7 @@ public class AbilityDataEditor : Editor
                 for (int i = 0; i < _abilityProperties.arraySize; i++)
                 {
                     SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
-                    SerializedProperty propertyValues = property.FindPropertyRelative("Values");
+                    SerializedProperty propertyValues = property.FindPropertyRelative("_values");
                     InitPropertyArray(propertyValues);
                     AddField<float>(propertyValues, level, 0, width);
                 }
@@ -190,7 +190,7 @@ public class AbilityDataEditor : Editor
                 for (int i = 0; i < _abilityProperties.arraySize; i++)
                 {
                     SerializedProperty property = _abilityProperties.GetArrayElementAtIndex(i);
-                    SerializedProperty propertyName = property.FindPropertyRelative("Name");
+                    SerializedProperty propertyName = property.FindPropertyRelative("_name");
 
                     if (propertyName.stringValue == _propertyNameDelete)
                     {

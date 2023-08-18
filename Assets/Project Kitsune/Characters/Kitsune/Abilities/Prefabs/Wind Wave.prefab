@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2435172303617024288}
   - component: {fileID: 3465208837474870655}
   m_Layer: 8
-  m_Name: Wand Wave
+  m_Name: Wind Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

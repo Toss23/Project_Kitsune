@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1749357810754258035}
   - component: {fileID: 698369662199573641}
   m_Layer: 8
-  m_Name: Magic Sphere Prefab
+  m_Name: Magic Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

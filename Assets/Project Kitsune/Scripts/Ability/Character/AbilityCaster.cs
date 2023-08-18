@@ -28,7 +28,7 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
                 angle = rangeAbilityData.TiltAngle.Get(level);
 
                 count += abilityModifier.ProjectileCount;
-                angle += abilityModifier.ProjectileAngle;
+                angle += abilityModifier.ProjectileTiltAngle;
 
                 if (count >= 2)
                 {
@@ -58,7 +58,7 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
 
                     // Init
                     UnitType target = (_unitPresenter.UnitType == UnitType.Character) ? UnitType.Enemy : UnitType.Character;
-                    abilityObject.Init(level, _unitPresenter.Unit, target, abilityModifier);
+                    abilityObject.Init(abilityIndex, level, _unitPresenter.Unit, target, abilityModifier);
                     _unitPresenter.Unit.RegisterAbility(abilityObject);
                 }
                 else

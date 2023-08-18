@@ -5,6 +5,7 @@ public abstract class Unit
 {
     public event Action OnLevelUp;
     public event Action OnDeath;
+    public event Action<float, Unit> OnDealDamage;
 
     private UnitInfo _unitInfo;
     private IUnitPresenter _unitPresenter;
@@ -93,12 +94,12 @@ public abstract class Unit
         {
             if (isProjectile)
             {
-                Attributes.Life.Subtract(value);
+                Attributes.Life.TakeDamage(value);
             }
             else
             {
-                float excess = Attributes.MagicShield.Subtract(value);
-                Attributes.Life.Subtract(excess);
+                float excess = Attributes.MagicShield.TakeDamage(value);
+                Attributes.Life.TakeDamage(excess);
             }
         }
     }
@@ -121,7 +122,11 @@ public abstract class Unit
                 damage *= weakness.Effect / 100f * CursesInfo.Weakness.OutputDamageMultiplier;
             }
 
-            target.TakeDamage(damage, isProjectile);
+            if (damage != 0)
+            {
+                target.TakeDamage(damage, isProjectile);
+                OnDealDamage?.Invoke(damage, target);
+            }
         }
     }
 

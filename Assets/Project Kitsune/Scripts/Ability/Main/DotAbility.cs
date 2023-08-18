@@ -17,11 +17,12 @@ public class DotAbility : Ability
     {
         if (_baseAbilityData != null)
         {
-            if (_gameLogic.Paused != false)
+            if (_gameLogic.Paused == false)
             {
                 _dotTimer += Time.deltaTime;
 
                 float dotRate = Mathf.Max(_baseAbilityData.DotRate.Get(_level) + _abilityModifier.DotRate, 0.1f);
+
                 while (_dotTimer >= dotRate)
                 {
                     _dotTimer -= dotRate;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2857213660400323771}
   - component: {fileID: 6702684582326436386}
   m_Layer: 0
-  m_Name: Fox Spirit Prefab
+  m_Name: Fox Spirit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

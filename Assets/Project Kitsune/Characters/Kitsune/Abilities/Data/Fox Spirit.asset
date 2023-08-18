@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e94f5d687e76c42903ce3ac60a8b88, type: 3}
-  m_Name: Tornado
+  m_Script: {fileID: 11500000, guid: cf39b57059993f34e8ef6cec8b6eba3d, type: 3}
+  m_Name: Fox Spirit
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
+  _name: Fox Spirit
+  _description: Give Kitsune buffs for other abilities
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
   _scale:
@@ -23,24 +23,12 @@ MonoBehaviour:
   _duration:
   - 0
   - 0
-  _abilityProperties: []
-  _useCharacterDamage: 0
-  _useCharacterCrit: 0
-  _damage:
-  - 0
-  - 0
-  _damageMultiplier:
-  - 0
-  - 0
-  _castPerSecond:
-  - 0
-  - 0
-  _critChance:
-  - 0
-  - 0
-  _critMultiplier:
-  - 0
-  - 0
-  _dotRate:
-  - 0
-  - 0
+  _abilityProperties:
+  - _name: MS_Count
+    _values:
+    - 0
+    - 2
+  - _name: T_Scale
+    _values:
+    - 0
+    - 1
