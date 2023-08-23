@@ -6,18 +6,17 @@ public class AttributesContainer
     public Damage Damage { get; }
     public Armour Armour { get; }
     public Movespeed Movespeed { get; }
-
-    private Unit _unit;
+    public ActionSpeed ActionSpeed { get; }
 
     public AttributesContainer(Unit unit)
     {
-        _unit = unit;
         Life = new Life(unit.UnitInfo.Life, unit.UnitInfo.LifeRegeneration);
         MagicShield = new Life(unit.UnitInfo.MagicShield, unit.UnitInfo.MagicShieldRegeneration);
         Level = new Level();
         Damage = new Damage(unit.UnitInfo.Damage, unit.UnitInfo.CritChance, unit.UnitInfo.CritMultiplier);
         Armour = new Armour(unit.UnitInfo.Armour);
         Movespeed = new Movespeed(unit.UnitInfo.Movespeed);
+        ActionSpeed = new ActionSpeed();
     }
 
     public void ResetToDefault()
@@ -27,21 +26,12 @@ public class AttributesContainer
         Damage.ResetToDefault();
         Armour.ResetToDefault();
         Movespeed.ResetToDefault();
+        ActionSpeed.ResetToDefault();
     }
 
     public void Update(float deltaTime)
     {
         Life.Regenerate(deltaTime);
         MagicShield.Regenerate(deltaTime);
-
-        if (_unit.Curses.Have(CursesInfo.List.Forest))
-        {
-            Curse forest = _unit.Curses.Find(CursesInfo.List.Forest);
-            Movespeed.Multiplier = 1 - CursesInfo.Forest.MovespeedMultiplier * forest.Effect / 100;
-        }
-        else
-        {
-            Movespeed.Multiplier = 1;
-        }
     }
 }

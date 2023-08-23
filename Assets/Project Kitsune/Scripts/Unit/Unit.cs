@@ -33,7 +33,9 @@ public abstract class Unit
 
         Abilities = new AbilitiesContainer(this, unitInfo.Abilities, ModifiersContainer.AbilityModifiers);
 
-        Curses = new CursesContainer();    
+        Curses = new CursesContainer();
+        Curses.OnCursed += OnCursed;
+        Curses.OnCurseCleared += OnCurseCleared;
     }
 
     public void Update(float deltaTime)
@@ -129,6 +131,32 @@ public abstract class Unit
                 OnDealDamage?.Invoke(damage, target);
             }
         }
+    }
+
+    private void OnCursed(Curse curse)
+    {
+        /*
+        if (curse.Name == CursesInfo.List.Forest)
+        {
+            ModifiersContainer.Add(new AttributeModifier()
+            {
+                Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
+                ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
+            });
+        }*/
+    }
+
+    private void OnCurseCleared(Curse curse)
+    {
+        /*
+        if (curse.Name == CursesInfo.List.Forest)
+        {
+            ModifiersContainer.Remove(new AttributeModifier()
+            {
+                Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
+                ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
+            });
+        }*/
     }
 
     private void Death()

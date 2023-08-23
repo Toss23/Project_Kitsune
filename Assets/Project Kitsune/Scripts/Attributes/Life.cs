@@ -2,7 +2,7 @@ using System;
 
 public class Life : Attribute
 {
-    public event Action<float> OnChanged;
+    public new event Action<float> OnChanged;
 
     public LifeRegeneration Regeneration { get; private set; }
 

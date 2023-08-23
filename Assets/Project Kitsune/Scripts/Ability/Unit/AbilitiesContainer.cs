@@ -8,15 +8,10 @@ public class AbilitiesContainer
     /// int - ability level <br/>
     /// </summary>
     public event Action<IAbility, int, int> OnCastReloaded;
-    /// <summary>
-    /// float - attack speed
-    /// </summary>
-    public event Action<float> OnLevelUpAttack;
     public event Action<IAbility> OnLevelUpPassive;
 
     private Unit _unit;
     private IAbility[] _abilities;
-    private float _animationAttackSpeed;
     private float _animationTimeToAttack;
     private int[] _levels;
     private int[] _maxLevels;
@@ -32,7 +27,6 @@ public class AbilitiesContainer
     {
         _unit = unit;
         _abilities = abilities;
-        _animationAttackSpeed = unit.UnitInfo.AnimationAttackTime;
         _animationTimeToAttack = unit.UnitInfo.AnimationTimeToAttack;
         _levels = new int[_abilities.Length];
         _maxLevels = new int[_abilities.Length];
@@ -48,7 +42,10 @@ public class AbilitiesContainer
     }
 
     public void Update(float deltaTime)
-    {       
+    {
+        float actionSpeed = _unit.Attributes.ActionSpeed.Value;
+        deltaTime *= actionSpeed;
+
         for (int i = 0; i < _abilities.Length; i++)
         {
             if (_abilities[i] != null & _levels[i] > 0)
@@ -56,35 +53,19 @@ public class AbilitiesContainer
                 if (_abilities[i].AbilityData.GetAbilityType() != AbilityData.Type.Passive)                           
                 {
                     BaseAbilityData baseAbilityData = (BaseAbilityData)_abilities[i].AbilityData;
-
-                    float castMultiplier = 1;
-                    if (_unit.Curses.Have(CursesInfo.List.Forest))
-                    {
-                        Curse forest = _unit.Curses.Find(CursesInfo.List.Forest);
-                        castMultiplier = 1 - CursesInfo.Forest.CastSpeedMultiplier * forest.Effect / 100;
-                    }
-
                     _reloadTimes[i] += deltaTime;
                     float castPerSecond = baseAbilityData.CastPerSecond.Get(_levels[i]) + _abilityModifiers[i].CastPerSecond;
-                    castPerSecond *= castMultiplier;
-
-                    if (i != 0)
+                    float attackTime = 1 / castPerSecond;
+                    
+                    if (i == 0)
                     {
-                        while (_reloadTimes[i] >= 1 / castPerSecond)
-                        {
-                            _reloadTimes[i] -= 1 / castPerSecond;
-                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
-                        }
+                        attackTime *= _animationTimeToAttack;
                     }
-                    else
-                    {
-                        float attackSpeed = 1 / castPerSecond * _animationTimeToAttack;
 
-                        while (_reloadTimes[i] >= attackSpeed)
-                        {
-                            _reloadTimes[i] -= 1 / castPerSecond;
-                            OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
-                        }
+                    while (_reloadTimes[i] >= attackTime)
+                    {
+                        _reloadTimes[i] -= 1 / castPerSecond;
+                        OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
                     }
                 }
                 else if (_casted[i] == false)
@@ -106,16 +87,8 @@ public class AbilitiesContainer
 
             if (index == 0)
             {
-                if (_abilities[0].AbilityData.GetAbilityType() == AbilityData.Type.Base
-                    | _abilities[0].AbilityData.GetAbilityType() == AbilityData.Type.Range)
-                {
-                    BaseAbilityData baseAbilityData = (BaseAbilityData)_abilities[0].AbilityData;
-
-                    _casted[0] = false;
-                    _reloadTimes[0] = 0;
-                    float attackSpeed = _animationAttackSpeed * baseAbilityData.CastPerSecond.Get(_levels[0]);
-                    OnLevelUpAttack?.Invoke(attackSpeed);
-                }
+                _casted[0] = false;
+                _reloadTimes[0] = 0;
             }
 
             if (_abilities[index].AbilityData.GetAbilityType() == AbilityData.Type.Passive)

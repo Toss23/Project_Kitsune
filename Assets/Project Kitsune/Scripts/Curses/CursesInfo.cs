@@ -32,8 +32,7 @@ public class Weakness
 
 public class Forest
 {
-    public float CastSpeedMultiplier = 0.5f;        // 50% reduce Cast per Second
-    public float MovespeedMultiplier = 0.5f;        // 50% reduce Movespeed
+    public float ActionSpeedMultiplier = 0.5f;        // 50% reduce Action Second
 }
 
 public class Shadow

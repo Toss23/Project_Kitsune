@@ -13,8 +13,10 @@ public class AttributeModifier
 
     public float Movespeed = 0;
 
+    public float ActionSpeed = 0;
+
     public AttributeModifier()
     {
-
+        
     }
 }

@@ -44,7 +44,16 @@ public class ModifiersContainer
             _attributesContainer.Damage.Add(attributeModifier.Damage);
             _attributesContainer.Damage.CritChance.Add(attributeModifier.CritChance);
             _attributesContainer.Damage.CritMultiplier.Add(attributeModifier.CritMultiplier);
-            _attributesContainer.Movespeed.Add(attributeModifier.Movespeed);
+
+            if (attributeModifier.Movespeed != 0)
+            {
+                _attributesContainer.Movespeed.Multiply(attributeModifier.Movespeed);
+            }
+
+            if (attributeModifier.ActionSpeed != 0)
+            {
+                _attributesContainer.ActionSpeed.Multiply(attributeModifier.ActionSpeed);
+            }
         }
     }
 
@@ -60,7 +69,16 @@ public class ModifiersContainer
             _attributesContainer.Damage.Subtract(attributeModifier.Damage);
             _attributesContainer.Damage.CritChance.Subtract(attributeModifier.CritChance);
             _attributesContainer.Damage.CritMultiplier.Subtract(attributeModifier.CritMultiplier);
-            _attributesContainer.Movespeed.Subtract(attributeModifier.Movespeed);
+
+            if (attributeModifier.Movespeed != 0)
+            {
+                _attributesContainer.Movespeed.Divide(attributeModifier.Movespeed);
+            }
+
+            if (attributeModifier.ActionSpeed != 0)
+            {
+                _attributesContainer.ActionSpeed.Divide(attributeModifier.ActionSpeed);
+            }
         }
     }
 }

@@ -59,8 +59,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
-        _unit.Abilities.OnLevelUpAttack += _unitView.SetAnimationAttackSpeed;
         _unit.Abilities.OnLevelUpPassive += _unit.TryRemovePassiveAbility;
+        _unit.Attributes.ActionSpeed.OnMultiplierChanged += _unitView.SetActionSpeed;
         _unit.Attributes.MagicShield.OnChanged += (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
@@ -78,8 +78,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= _abilityCaster.CreateAbility;
-        _unit.Abilities.OnLevelUpAttack -= _unitView.SetAnimationAttackSpeed;
         _unit.Abilities.OnLevelUpPassive -= _unit.TryRemovePassiveAbility;
+        _unit.Attributes.ActionSpeed.OnMultiplierChanged -= _unitView.SetActionSpeed;
         _unit.Attributes.MagicShield.OnChanged -= (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);

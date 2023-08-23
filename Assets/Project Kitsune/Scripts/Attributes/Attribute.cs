@@ -4,6 +4,8 @@ public abstract class Attribute
 {
     public event Action OnMinimum;
     public event Action OnMaximum;
+    public event Action<float> OnChanged;
+    public event Action<float> OnMultiplierChanged;
 
     private float _value;
 
@@ -26,7 +28,7 @@ public abstract class Attribute
 
     public float Minimum { get; protected set; }
     public float Maximum { get; protected set; }
-    public float Multiplier = 1f;
+    public float Multiplier { get; protected set; } = 1;
 
     private float _valueDefault = 0;
     private float _minimumDefault = 0;
@@ -44,6 +46,7 @@ public abstract class Attribute
         _value = _valueDefault;
         Minimum = _minimumDefault;
         Maximum = _maximumDefault;
+        Multiplier = 1;
     }
 
     public virtual float Set(float value)
@@ -54,6 +57,7 @@ public abstract class Attribute
         {
             ApplyClamp();
         }
+        OnChanged?.Invoke(Value);
         return excess;
     }
 
@@ -69,6 +73,7 @@ public abstract class Attribute
             }
             return excess;
         }
+        OnChanged?.Invoke(Value);
         return 0;
     }
 
@@ -84,7 +89,20 @@ public abstract class Attribute
             }
             return excess;
         }
+        OnChanged?.Invoke(Value);
         return 0;
+    }
+
+    public void Multiply(float value)
+    {
+        Multiplier *= value;
+        OnMultiplierChanged?.Invoke(value);
+    }
+
+    public void Divide(float value)
+    {
+        Multiplier /= value;
+        OnMultiplierChanged?.Invoke(value);
     }
 
     protected abstract bool ClampOnChange();
