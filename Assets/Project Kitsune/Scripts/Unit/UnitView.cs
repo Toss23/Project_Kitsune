@@ -16,6 +16,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     private bool _isMirrored;
     private float _angle;
     private bool _active = true;
+    private float _defaultActionSpeed;
 
     private GameObject[] _cursesIcon;
     private GameObject _magicShieldSprite;
@@ -33,13 +34,14 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         }
     }
 
-    public void CreateUnit(GameObject prefab)
+    public void CreateUnit(GameObject prefab, float defaultActionSpeed)
     {
         _unit = Instantiate(prefab, _spawnPoint);
         _unit.name = prefab.name;
         _animator = _unit.GetComponent<Animator>();
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
+        _defaultActionSpeed = defaultActionSpeed;
 
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -77,7 +79,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_animator != null)
         {
-            _animator.SetFloat("ActionSpeed", speed);
+            _animator.SetFloat("ActionSpeed", speed * _defaultActionSpeed);
         }
     }
 

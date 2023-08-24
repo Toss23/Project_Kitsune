@@ -41,7 +41,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unitType = unitType;
         _unit = CreateUnit();
         _unitView = CreateUnitView();
-        _unitView.CreateUnit(_info.Prefab);
+        _unitView.CreateUnit(_info.Prefab, _unit.UnitInfo.AnimationAttackTime);
 
         Enable();
     }
