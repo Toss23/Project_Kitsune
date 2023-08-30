@@ -42,9 +42,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 4112477839
     locked: 0
@@ -65,6 +62,9 @@ TagManager:
     locked: 0
   - name: Character Aura Front
     uniqueID: 4283144441
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: UI
     uniqueID: 1922732527

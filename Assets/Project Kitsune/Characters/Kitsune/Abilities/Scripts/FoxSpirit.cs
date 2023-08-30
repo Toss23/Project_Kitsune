@@ -8,7 +8,7 @@ public class FoxSpirit : Ability
         _abilityModifierAttack = new AbilityModifier(0)
         {
             ProjectileCount = (int)Properties["MS_Count"],
-            ProjectileTiltAngle = 15 * Properties["MS_Count"]
+            ProjectileTiltAngle = Properties["MS_Angle"] * Properties["MS_Count"]
         };
 
         _abilityModifierTornado = new AbilityModifier(2)

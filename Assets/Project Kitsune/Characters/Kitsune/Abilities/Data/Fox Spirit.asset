@@ -16,6 +16,7 @@ MonoBehaviour:
   _description: Give Kitsune buffs for other abilities
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
+  _spawnRange: 0
   _scale:
   - 0
   - 0
@@ -28,6 +29,10 @@ MonoBehaviour:
     _values:
     - 0
     - 2
+  - _name: MS_Angle
+    _values:
+    - 0
+    - 30
   - _name: T_Scale
     _values:
     - 0
