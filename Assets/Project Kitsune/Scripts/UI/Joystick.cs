@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class Joystick : Clickable2D
 {
-    public event Action<float, float> OnActive;
+    public event Action<float, float> OnTouched;
     public event Action<bool> IsActive;
+    public event Action OnActiveChanged;
 
     [Header("Joystick")]
     [SerializeField] private GameObject _field;
@@ -13,6 +14,7 @@ public class Joystick : Clickable2D
 
     private Vector2 _stickPosition;
     private float _angle;
+    private bool _active = false;
 
     private void Awake()
     {
@@ -29,7 +31,23 @@ public class Joystick : Clickable2D
             _angle = Mathf.Atan2(_stickPosition.y, _stickPosition.x) * Mathf.Rad2Deg;
             _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
 
-            OnActive?.Invoke(_angle, Time.deltaTime);
+            OnTouched?.Invoke(_angle, Time.deltaTime);
+
+            if (_active == false)
+            {
+                OnActiveChanged?.Invoke();
+            }
+
+            _active = true;
+        }
+        else
+        {
+            if (_active == true)
+            {
+                OnActiveChanged?.Invoke();
+            }
+
+            _active = false;
         }
 
         IsActive?.Invoke(Touched);

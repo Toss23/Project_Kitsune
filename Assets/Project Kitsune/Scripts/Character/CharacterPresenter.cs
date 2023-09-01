@@ -13,9 +13,10 @@ public class CharacterPresenter : UnitPresenter
         ICharacterView characterView = (ICharacterView)UnitView;
 
         Controllable controllable = Character.Controllable;
-        characterView.Joystick.OnActive += (angle, deltaTime) => controllable.Move(angle, deltaTime);
-        characterView.Joystick.OnActive += (angle, deltaTime) => _unitView.SetAngle(angle);
+        characterView.Joystick.OnTouched += (angle, deltaTime) => controllable.Move(angle, deltaTime);
+        characterView.Joystick.OnTouched += (angle, deltaTime) => _unitView.SetAngle(angle);
         characterView.Joystick.IsActive += (active) => _unitView.IsMoving(active);
+        characterView.Joystick.OnActiveChanged += _unit.Abilities.CancelAttack;
 
         Life life = _unit.Attributes.Life;
         Life magicShield = _unit.Attributes.MagicShield;
@@ -34,9 +35,10 @@ public class CharacterPresenter : UnitPresenter
         ICharacterView characterView = (ICharacterView)UnitView;
 
         Controllable controllable = Character.Controllable;
-        characterView.Joystick.OnActive -= (angle, deltaTime) => controllable.Move(angle, deltaTime);
-        characterView.Joystick.OnActive -= (angle, deltaTime) => _unitView.SetAngle(angle);
+        characterView.Joystick.OnTouched -= (angle, deltaTime) => controllable.Move(angle, deltaTime);
+        characterView.Joystick.OnTouched -= (angle, deltaTime) => _unitView.SetAngle(angle);
         characterView.Joystick.IsActive -= (active) => _unitView.IsMoving(active);
+        characterView.Joystick.OnActiveChanged -= _unit.Abilities.CancelAttack;
 
         Life life = _unit.Attributes.Life;
         Life magicShield = _unit.Attributes.MagicShield;

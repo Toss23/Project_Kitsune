@@ -77,6 +77,12 @@ public class AbilitiesContainer
         }
     }
 
+    public void CancelAttack()
+    {
+        _casted[0] = false;
+        _reloadTimes[0] = 0;
+    }
+
     public void LevelUp(int index)
     {
         if (_abilities[index] != null)
@@ -87,8 +93,7 @@ public class AbilitiesContainer
 
             if (index == 0)
             {
-                _casted[0] = false;
-                _reloadTimes[0] = 0;
+                CancelAttack();
             }
 
             if (_abilities[index].AbilityData.GetAbilityType() == AbilityData.Type.Passive)
