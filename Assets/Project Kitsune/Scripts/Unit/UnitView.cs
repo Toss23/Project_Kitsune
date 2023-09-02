@@ -21,18 +21,8 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     private GameObject[] _cursesIcon;
     private GameObject _magicShieldSprite;
 
-    private SpriteRenderer _spriteRenderer;
-
     public IAbilityPoints AbilityPoints => _abilityPoints;
     public float Angle => _angle;
-
-    private void Update()
-    {
-        if (_spriteRenderer != null)
-        {
-            _spriteRenderer.sortingOrder = -1 * Mathf.FloorToInt(transform.position.y * 10) + _sortingOrderOffset;
-        }
-    }
 
     public void CreateUnit(GameObject prefab, float defaultActionSpeed)
     {
@@ -42,8 +32,6 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _abilityPoints = _unit.GetComponent<AbilityPoints>();
         _isMirrored = false;
         _defaultActionSpeed = defaultActionSpeed;
-
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         if (_animator != null)
         {
