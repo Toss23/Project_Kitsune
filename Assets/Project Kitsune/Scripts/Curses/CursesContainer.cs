@@ -20,14 +20,12 @@ public class CursesContainer
         if (_curses.Exists(i => i.Name == curse.Name))
         {
             Curse prevCurse = _curses.Find(i => i.Name == curse.Name);
-            prevCurse.Effect = Math.Max(prevCurse.Effect, curse.Effect);
-            prevCurse.Duration = curse.Duration;
+            OnCurseCleared?.Invoke(prevCurse);
+            _curses.Remove(prevCurse);
         }
-        else
-        {
-            _curses.Add(curse);
-            OnCursed?.Invoke(curse);
-        }
+
+        _curses.Add(curse);
+        OnCursed?.Invoke(curse);
     }
 
     public void Update(float deltaTime)

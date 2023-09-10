@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class UnitView : MonoBehaviour, IUnitView
 {
     [Header("Base Property")]
-    [SerializeField] private int _sortingOrderOffset;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _cursesPoint;
     [SerializeField] private Transform _shieldPoint;
@@ -76,9 +75,7 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         if (_cursesIcon == null)
         {
             int cursesCount = Enum.GetNames(typeof(CursesInfo.List)).Length;
-            _cursesIcon = new GameObject[cursesCount + 1];
-
-            _cursesIcon[_cursesIcon.Length - 1] = Instantiate(CursesInfo.CenterSprite, _cursesPoint);
+            _cursesIcon = new GameObject[cursesCount];
 
             for (int i = 0; i < cursesCount; i++)
             {
@@ -88,17 +85,6 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         }
 
         _cursesIcon[(int)curse.Name].SetActive(active);
-
-        bool haveCurse = false;
-        foreach (GameObject curseIcon in _cursesIcon)
-        {
-            if (curseIcon.activeSelf == true)
-            {
-                haveCurse = true;
-                break;
-            }
-        }
-        _cursesIcon[_cursesIcon.Length - 1].SetActive(haveCurse);
     }
 
     public void SetMagicShield(bool active)

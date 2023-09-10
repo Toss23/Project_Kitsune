@@ -25,11 +25,11 @@ public abstract class Unit
         _unitPresenter = unitPresenter;
         _castedAbilities = new List<IAbility>();
 
-        ModifiersContainer = new ModifiersContainer(Attributes);
-
         Attributes = new AttributesContainer(this);
         Attributes.Life.OnMinimum += Death;
         Attributes.Level.OnLevelUp += LevelUp;
+
+        ModifiersContainer = new ModifiersContainer(Attributes);
 
         Abilities = new AbilitiesContainer(this, unitInfo.Abilities, ModifiersContainer.AbilityModifiers);
 
@@ -135,7 +135,6 @@ public abstract class Unit
 
     private void OnCursed(Curse curse)
     {
-        /*
         if (curse.Name == CursesInfo.List.Forest)
         {
             ModifiersContainer.Add(new AttributeModifier()
@@ -143,12 +142,11 @@ public abstract class Unit
                 Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
                 ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
             });
-        }*/
+        }
     }
 
     private void OnCurseCleared(Curse curse)
     {
-        /*
         if (curse.Name == CursesInfo.List.Forest)
         {
             ModifiersContainer.Remove(new AttributeModifier()
@@ -156,7 +154,7 @@ public abstract class Unit
                 Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
                 ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
             });
-        }*/
+        }
     }
 
     private void Death()

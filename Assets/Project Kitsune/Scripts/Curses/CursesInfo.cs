@@ -16,8 +16,6 @@ public static class CursesInfo
         { List.Exposure, Resources.Load<GameObject>("Curses/Exposure") }
     };
 
-    public static GameObject CenterSprite = Resources.Load<GameObject>("Curses/Center");
-
     public static Weakness Weakness = new Weakness();
     public static Forest Forest = new Forest();
     public static Shadow Shadow = new Shadow();

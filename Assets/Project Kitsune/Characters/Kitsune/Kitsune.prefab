@@ -106,9 +106,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -867481615
-  m_SortingLayer: 6
+  m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -412011502, guid: 20830f56ffb90ab4dae2b08e6c74bf86, type: 3}
+  m_Sprite: {fileID: 303913110, guid: 06d315bc02af5644e9ea065e594ae298, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,12 +159,6 @@ MonoBehaviour:
   - {fileID: 1873127148329817523}
   - {fileID: 1873127148329817523}
   - {fileID: 1873127148329817523}
-  _pointsAura:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &9066692512948423756
 GameObject:
   m_ObjectHideFlags: 0

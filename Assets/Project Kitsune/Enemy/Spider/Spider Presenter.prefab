@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d74df99ac6887a4aa49d3b04f10451e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sortingOrderOffset: 0
   _spawnPoint: {fileID: 1282980310747655630}
   _cursesPoint: {fileID: 8301004227553444759}
   _shieldPoint: {fileID: 1282980310747655630}
@@ -171,9 +170,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5490615316046132402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.5, y: 1, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1210909013644819753}
   m_RootOrder: 1
