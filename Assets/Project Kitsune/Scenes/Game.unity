@@ -1803,7 +1803,7 @@ TilemapRenderer:
   m_SortingLayer: -7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.12988281, y: 0.3996094, z: 0}
+  m_ChunkCullingBounds: {x: 0.05859375, y: 0.25742185, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 3
@@ -7596,7 +7596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf85752276711d4c959ac695b6da01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sortingOrderOffset: 6
   _spawnPoint: {fileID: 340553699}
   _cursesPoint: {fileID: 340553699}
   _shieldPoint: {fileID: 340553699}
