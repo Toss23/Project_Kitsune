@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class AbilityModifier
 {
@@ -16,6 +18,8 @@ public class AbilityModifier
     public float Duration = 0;
 
     public float Scale = 0;
+
+    public Dictionary<string, float> Properties;
 
     public AbilityModifier(int abilityIndex)
     {
@@ -37,6 +41,26 @@ public class AbilityModifier
         Duration += abilityModifier.Duration;
 
         Scale += abilityModifier.Scale;
+
+        if (Properties != null)
+        {
+            if (abilityModifier.Properties == null)
+            {
+                abilityModifier.Properties = new Dictionary<string, float>();
+            }
+
+            foreach (KeyValuePair<string, float> pair in Properties)
+            {
+                if (abilityModifier.Properties.ContainsKey(pair.Key))
+                {
+                    abilityModifier.Properties[pair.Key] += pair.Value;
+                }
+                else
+                {
+                    abilityModifier.Properties.Add(pair.Key, pair.Value);
+                }
+            }
+        }
     }
 
     public void Subtract(AbilityModifier abilityModifier)
@@ -54,5 +78,16 @@ public class AbilityModifier
         Duration -= abilityModifier.Duration;
 
         Scale -= abilityModifier.Scale;
+
+        if (Properties != null & abilityModifier.Properties != null)
+        {
+            foreach (KeyValuePair<string, float> pair in Properties)
+            {
+                if (abilityModifier.Properties.ContainsKey(pair.Key))
+                {
+                    abilityModifier.Properties[pair.Key] -= pair.Value;
+                }
+            }
+        }
     }
 }

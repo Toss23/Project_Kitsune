@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e94f5d687e76c42903ce3ac60a8b88, type: 3}
+  m_Name: Vines
+  m_EditorClassIdentifier: 
+  _name: Vines
+  _description: 'Create Vines on nearest enemy every #CastPerSecond second
+
+    Deals
+    #Damage damage over time every #DotRate second
+
+    Duration: #Duration
+
+    Radius:
+    #Scale'
+  _fuseWithCaster: 0
+  _spawnOnNearestEnemy: 1
+  _spawnRange: 0
+  _scale:
+  - 0
+  - 1
+  _haveDuration: 1
+  _duration:
+  - 0
+  - 3
+  _abilityProperties: []
+  _useCharacterDamage: 0
+  _useCharacterCrit: 0
+  _isPassive: 0
+  _damage:
+  - 0
+  - 1
+  - 1
+  _damageMultiplier:
+  - 0
+  - 100
+  _castPerSecond:
+  - 0
+  - 1
+  _critChance:
+  - 0
+  - 0
+  _critMultiplier:
+  - 0
+  - 0
+  _dotRate:
+  - 0
+  - 0.5
+  - 0.25

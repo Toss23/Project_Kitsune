@@ -58,9 +58,9 @@ public class AbilitiesSelection
             bool canLearnUlt = false;
             bool allAbilityLearned = true;
 
-            if (canLevelUp.Contains(4))
+            if (canLevelUp.Contains(5))
             {
-                canLevelUp.Remove(4);
+                canLevelUp.Remove(5);
                 canLearnUlt = true;
             }
 
@@ -85,12 +85,12 @@ public class AbilitiesSelection
             if (allAbilityLearned)
             {
                 if (canLearnUlt)
-                    abilitiesIdsForCards[0] = 4;
+                    abilitiesIdsForCards[0] = 5;
             }
             else
             {
                 if (canLearnUlt && UnityEngine.Random.Range(0, 99) <= 9)
-                    abilitiesIdsForCards[1] = 4;
+                    abilitiesIdsForCards[1] = 5;
             }
 
             IAbility[] abilitiesForCards = new IAbility[2];

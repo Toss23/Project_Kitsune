@@ -19,7 +19,7 @@ public class UnitInfo : ScriptableObject
     [SerializeField] private float _animationAttackTime = 1f;
     [SerializeField] private float _animationTimeToAttack = 1f;
 
-    [SerializeField] private Ability[] _abilities = new Ability[5];
+    [SerializeField] private Ability[] _abilities = new Ability[6];
 
     public GameObject Prefab => _prefab;
     public float Life => _life;

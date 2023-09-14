@@ -17,7 +17,7 @@ public class VortexParticles : MonoBehaviour
         {
             angle -= 360;
         }
-        transform.position = new Vector3(radius * Mathf.Cos((angle + offset) * Mathf.Deg2Rad), radius / 2 * Mathf.Sin((angle + offset) * Mathf.Deg2Rad));
+        transform.localPosition = new Vector3(radius * Mathf.Cos((angle + offset) * Mathf.Deg2Rad), radius / 2 * Mathf.Sin((angle + offset) * Mathf.Deg2Rad));
         transform.rotation = Quaternion.Euler(0, 0, (angle + offset) + 180);
     }
 }

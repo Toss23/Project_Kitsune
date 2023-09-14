@@ -160,8 +160,8 @@ public class UnitInfoEditor : Editor
         EditorGUILayout.EndHorizontal();
         GUILayout.Space(10);
 
-        if (_abilities.arraySize != 5)
-            _abilities.arraySize = 5;
+        if (_abilities.arraySize != 6)
+            _abilities.arraySize = 6;
 
         SerializedProperty[] ability = new SerializedProperty[_abilities.arraySize];
         bool[] haveAbility = new bool[_abilities.arraySize];
@@ -171,7 +171,7 @@ public class UnitInfoEditor : Editor
             haveAbility[i] = ability[i].objectReferenceValue != null;
         }
 
-        width = 150;
+        width = 200;
         EditorGUILayout.LabelField("Abilities", boldStyle);
 
         EditorGUILayout.BeginHorizontal();
@@ -197,11 +197,11 @@ public class UnitInfoEditor : Editor
         EditorGUILayout.BeginHorizontal();
         ability[0].objectReferenceValue = EditorGUILayout.ObjectField(ability[0].objectReferenceValue, typeof(Ability), false, GUILayout.Width(width), GUILayout.Height(30));
         GUILayout.Space(space);
-        ability[4].objectReferenceValue = EditorGUILayout.ObjectField(ability[4].objectReferenceValue, typeof(Ability), false, GUILayout.Width(width), GUILayout.Height(30));
+        ability[5].objectReferenceValue = EditorGUILayout.ObjectField(ability[5].objectReferenceValue, typeof(Ability), false, GUILayout.Width(width), GUILayout.Height(30));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        for (int i = 1; i < 4; i++)
+        for (int i = 1; i < 3; i++)
         {
             EditorGUILayout.LabelField("Ability " + i, GUILayout.Width(width));
             GUILayout.Space(space);
@@ -209,7 +209,23 @@ public class UnitInfoEditor : Editor
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        for (int i = 1; i < 4; i++) 
+        for (int i = 1; i < 3; i++) 
+        {
+            ability[i].objectReferenceValue = EditorGUILayout.ObjectField(ability[i].objectReferenceValue, typeof(Ability), false, GUILayout.Width(width), GUILayout.Height(30));
+            GUILayout.Space(space);
+        }
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        for (int i = 3; i < 5; i++)
+        {
+            EditorGUILayout.LabelField("Ability " + i, GUILayout.Width(width));
+            GUILayout.Space(space);
+        }
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        for (int i = 3; i < 5; i++)
         {
             ability[i].objectReferenceValue = EditorGUILayout.ObjectField(ability[i].objectReferenceValue, typeof(Ability), false, GUILayout.Width(width), GUILayout.Height(30));
             GUILayout.Space(space);

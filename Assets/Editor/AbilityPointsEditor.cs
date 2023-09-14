@@ -21,12 +21,14 @@ public class AbilityPointsEditor : Editor
         boldStyle.normal.textColor = Color.white;
         boldStyle.fontStyle = FontStyle.Bold;
 
-        if (_points.arraySize != 5)
-            _points.arraySize = 5;
+        if (_points.arraySize != 6)
+            _points.arraySize = 6;
 
-        SerializedProperty[] abilityPoints = new SerializedProperty[5];
-        for (int i = 0; i < 5; i++)
+        SerializedProperty[] abilityPoints = new SerializedProperty[6];
+        for (int i = 0; i < 6; i++)
+        {
             abilityPoints[i] = _points.GetArrayElementAtIndex(i);
+        }
 
         int width = 160;
         int space = 5;
@@ -39,11 +41,10 @@ public class AbilityPointsEditor : Editor
 
         if (_unitInfo.objectReferenceValue != null)
         {
-            bool[] haveAbility = new bool[5];
-            bool[] haveAura = new bool[5];
+            bool[] haveAbility = new bool[6];
 
             IAbility[] abilities = (_unitInfo.objectReferenceValue as UnitInfo).Abilities;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 haveAbility[i] = abilities[i] != null && abilities[i].AbilityData != null;
             }
@@ -55,13 +56,13 @@ public class AbilityPointsEditor : Editor
             EditorGUILayout.LabelField("Aura", GUILayout.Width(width));
             EditorGUILayout.EndHorizontal();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (haveAbility[i])
                 {
                     string text = "Ability " + i;
                     if (i == 0) text = "Attack";
-                    if (i == 4) text = "Ultimate";
+                    if (i == 5) text = "Ultimate";
 
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField(text, GUILayout.Width(60));

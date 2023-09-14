@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class FoxSpirit : Ability
 {
     private AbilityModifier _abilityModifierAttack;
@@ -11,7 +13,7 @@ public class FoxSpirit : Ability
             ProjectileTiltAngle = Properties["MS_Angle"] * Properties["MS_Count"]
         };
 
-        _abilityModifierTornado = new AbilityModifier(2)
+        _abilityModifierTornado = new AbilityModifier(1)
         {
             Scale = Properties["T_Scale"]
         };

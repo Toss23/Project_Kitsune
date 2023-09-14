@@ -9,7 +9,7 @@ public class ModifiersContainer
     {
         _attributesContainer = attributesContainer;
 
-        _abilityModifiers = new AbilityModifier[5];
+        _abilityModifiers = new AbilityModifier[6];
         for (int i = 0; i < _abilityModifiers.Length; i++)
         {
             _abilityModifiers[i] = new AbilityModifier(i);

@@ -10,41 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01e94f5d687e76c42903ce3ac60a8b88, type: 3}
-  m_Name: Tornado
+  m_Name: Vortex
   m_EditorClassIdentifier: 
-  _name: Tornado
-  _description: 'Create tornado on nearest enemy every #CastPerSecond second
-
-    Deals
-    #Damage damage over time every #DotRate second
-
-    Duration: #Duration
-
-    Radius:
-    #Scale'
-  _fuseWithCaster: 0
-  _spawnOnNearestEnemy: 1
+  _name: Vortex
+  _description: 
+  _fuseWithCaster: 1
+  _spawnOnNearestEnemy: 0
   _spawnRange: 0
   _scale:
   - 0
   - 1
-  _haveDuration: 1
+  _haveDuration: 0
   _duration:
   - 0
-  - 3
+  - 0
   _abilityProperties: []
   _useCharacterDamage: 0
   _useCharacterCrit: 0
+  _isPassive: 1
   _damage:
   - 0
-  - 1
   - 1
   _damageMultiplier:
   - 0
   - 100
   _castPerSecond:
   - 0
-  - 1
+  - 0
   _critChance:
   - 0
   - 0
@@ -53,5 +45,4 @@ MonoBehaviour:
   - 0
   _dotRate:
   - 0
-  - 0.5
-  - 0.25
+  - 1

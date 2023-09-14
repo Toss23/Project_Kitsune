@@ -7,6 +7,8 @@ public class BaseAbilityDataEditor : AbilityDataEditor
     private SerializedProperty _useCharacterDamage;
     private SerializedProperty _useCharacterCrit;
 
+    private SerializedProperty _isPassive;
+
     private SerializedProperty _damage;
     private SerializedProperty _damageMultiplier;
     private SerializedProperty _castPerSecond;
@@ -21,6 +23,8 @@ public class BaseAbilityDataEditor : AbilityDataEditor
         //
         _useCharacterDamage = serializedObject.FindProperty("_useCharacterDamage");
         _useCharacterCrit = serializedObject.FindProperty("_useCharacterCrit");
+
+        _isPassive = serializedObject.FindProperty("_isPassive");
 
         _damage = serializedObject.FindProperty("_damage");
         _damageMultiplier = serializedObject.FindProperty("_damageMultiplier");
@@ -53,6 +57,7 @@ public class BaseAbilityDataEditor : AbilityDataEditor
 
         if (_openedTab == "Damage")
         {
+            AddBoolField(_isPassive, "Passive", width + 50);
             AddBoolField(_useCharacterDamage, "Use Character Damage", width + 50);
             AddColumns(width, "Damage", "Multiplier", "Cast per Second", "Dot Rate");
             for (int level = 1; level <= _maxLevel + 1; level++)

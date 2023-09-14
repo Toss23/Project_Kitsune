@@ -50,6 +50,17 @@ public abstract class Ability : MonoBehaviour, IAbility
         // Properties
         _properties = AbilityProperty.ListToDictionary(_level, _abilityData.AbilityProperties);
 
+        if (_abilityModifier.Properties != null)
+        {
+            foreach (KeyValuePair<string, float> pair in _abilityModifier.Properties)
+            {
+                if (_properties.ContainsKey(pair.Key))
+                {
+                    _properties[pair.Key] += pair.Value;
+                }
+            }
+        }
+
         // Rescale
         transform.localScale *= _abilityData.Scale.Get(_level) + abilityModifier.Scale;
 

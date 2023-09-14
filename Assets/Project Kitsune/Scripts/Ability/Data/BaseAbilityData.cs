@@ -3,9 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Base Ability Data", menuName = "Ability/Base Ability Data")]
 public class BaseAbilityData : AbilityData
 {
-    [Header("Damage")]
     [SerializeField] private bool _useCharacterDamage;
     [SerializeField] private bool _useCharacterCrit;
+
+    [SerializeField] private bool _isPassive;
 
     [SerializeField] private float[] _damage;
     [SerializeField] private float[] _damageMultiplier;
@@ -36,6 +37,6 @@ public class BaseAbilityData : AbilityData
 
     public override Type GetAbilityType()
     {
-        return Type.Base;
+        return _isPassive == false ? Type.Base : Type.Passive;
     }
 }
