@@ -19,6 +19,7 @@ MonoBehaviour:
 
     Aiming
     at the nearest enemy'
+  _rotateAroundCaster: 1
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
   _spawnRange: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
   _abilityProperties: []
   _useCharacterDamage: 0
   _useCharacterCrit: 0
+  _isPassive: 0
   _damage:
   - 0
   - 3

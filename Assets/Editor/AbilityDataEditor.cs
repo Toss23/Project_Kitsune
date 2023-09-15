@@ -10,6 +10,7 @@ public class AbilityDataEditor : Editor
     private SerializedProperty _description;
 
     private SerializedProperty _fuseWithCaster;
+    private SerializedProperty _rotateAroundCaster;
     private SerializedProperty _spawnOnNearestEnemy;
     private SerializedProperty _spawnRange;
 
@@ -37,6 +38,7 @@ public class AbilityDataEditor : Editor
         _description = serializedObject.FindProperty("_description");
 
         _fuseWithCaster = serializedObject.FindProperty("_fuseWithCaster");
+        _rotateAroundCaster = serializedObject.FindProperty("_rotateAroundCaster");
         _spawnOnNearestEnemy = serializedObject.FindProperty("_spawnOnNearestEnemy");
         _spawnRange = serializedObject.FindProperty("_spawnRange");
 
@@ -80,19 +82,24 @@ public class AbilityDataEditor : Editor
         EditorGUILayout.LabelField("Position", boldStyle);
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Fuse with Caster", GUILayout.Width(width + 20));
+        EditorGUILayout.LabelField("Rotate Around Caster", GUILayout.Width(width + 30));
+        _rotateAroundCaster.boolValue = EditorGUILayout.Toggle(_rotateAroundCaster.boolValue);
+        EditorGUILayout.EndHorizontal();
+        
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField("Fuse with Caster", GUILayout.Width(width + 30));
         _fuseWithCaster.boolValue = EditorGUILayout.Toggle(_fuseWithCaster.boolValue);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Spawn on Enemy", GUILayout.Width(width + 20));
+        EditorGUILayout.LabelField("Spawn on Enemy", GUILayout.Width(width + 30));
         _spawnOnNearestEnemy.boolValue = EditorGUILayout.Toggle(_spawnOnNearestEnemy.boolValue);
         EditorGUILayout.EndHorizontal();
 
         if (_spawnOnNearestEnemy.boolValue)
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Spawn Range", GUILayout.Width(width + 20));
+            EditorGUILayout.LabelField("Spawn Range", GUILayout.Width(width + 30));
             _spawnRange.floatValue = EditorGUILayout.FloatField(_spawnRange.floatValue, GUILayout.Width(width));
             EditorGUILayout.EndHorizontal();
 

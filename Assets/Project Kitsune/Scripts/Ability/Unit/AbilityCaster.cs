@@ -48,7 +48,7 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
                     // Locate
                     Transform abilityTransform = abilityObject.gameObject.transform;
 
-                    if (ability.AbilityData.GetAbilityType() != AbilityData.Type.Passive)
+                    if (ability.AbilityData.RotateAroundCaster)
                     {
                         abilityTransform.Rotate(new Vector3(0, 0, _unitPresenter.UnitView.Angle + startAngle + deltaAngle * i));
                     }

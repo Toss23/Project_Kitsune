@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class VortexParticles : MonoBehaviour
+public class MoveAroundCenter : MonoBehaviour
 {
     public float speed = 90;
     public float radius = 1;

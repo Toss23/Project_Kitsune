@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Vortex
   _description: 
+  _rotateAroundCaster: 0
   _fuseWithCaster: 1
   _spawnOnNearestEnemy: 0
   _spawnRange: 0
@@ -30,7 +31,7 @@ MonoBehaviour:
   _isPassive: 1
   _damage:
   - 0
-  - 1
+  - 10
   _damageMultiplier:
   - 0
   - 100

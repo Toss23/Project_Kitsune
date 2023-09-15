@@ -89,7 +89,7 @@ public abstract class Ability : MonoBehaviour, IAbility
         }
 
         // Range Ability
-        if (_abilityData.GetType() == typeof(RangeAbilityData))
+        if (_abilityData.GetAbilityType() == AbilityData.Type.Range)
         {
             InitRangeAbility();
         }

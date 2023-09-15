@@ -22,9 +22,10 @@ MonoBehaviour:
 
     Radius:
     #Scale'
+  _rotateAroundCaster: 0
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 1
-  _spawnRange: 0
+  _spawnRange: 10
   _scale:
   - 0
   - 1
@@ -45,7 +46,7 @@ MonoBehaviour:
   - 100
   _castPerSecond:
   - 0
-  - 1
+  - 0.2
   _critChance:
   - 0
   - 0

@@ -12,6 +12,7 @@ public class AbilityData : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private string _description;
 
+    [SerializeField] private bool _rotateAroundCaster;
     [SerializeField] private bool _fuseWithCaster;
     [SerializeField] private bool _spawnOnNearestEnemy;
     [SerializeField] private float _spawnRange;
@@ -25,6 +26,7 @@ public class AbilityData : ScriptableObject
     public string Name => _name;
     public string Description => _description;
 
+    public bool RotateAroundCaster => _rotateAroundCaster;
     public bool FuseWithCaster => _fuseWithCaster;
     public bool SpawnOnNearestEnemy => _spawnOnNearestEnemy;
     public float SpawnRange => _spawnRange;
