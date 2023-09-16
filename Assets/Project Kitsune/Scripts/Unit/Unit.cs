@@ -12,6 +12,7 @@ public abstract class Unit
     private List<IAbility> _castedAbilities;
     private bool _isImmune = false;
 
+    public bool IsImmune => _isImmune;
     public AttributesContainer Attributes { get; private set; }
     public AbilitiesContainer Abilities { get; private set; }
     public CursesContainer Curses { get; private set; }

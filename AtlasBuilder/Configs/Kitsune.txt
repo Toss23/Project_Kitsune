@@ -1,3 +1,0 @@
-Idle, Move, Attack, MoveAndAttack
-30
-480, 800

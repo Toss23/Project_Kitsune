@@ -11,7 +11,6 @@ public class EnemyPresenter : UnitPresenter
         Follower follower = ((Enemy)_unit).Follower;
         follower.OnMove += _unitView.SetAngle;
         follower.IsMoving += _unitView.IsMoving;
-        follower.IsMoving += CancelAttackOnMove;
     }
 
     protected override void OnDisablePresenter()
@@ -19,7 +18,6 @@ public class EnemyPresenter : UnitPresenter
         Follower follower = ((Enemy)_unit).Follower;
         follower.OnMove -= _unitView.SetAngle;
         follower.IsMoving -= _unitView.IsMoving;
-        follower.IsMoving -= CancelAttackOnMove;
     }
 
     protected override void Death()
@@ -28,13 +26,5 @@ public class EnemyPresenter : UnitPresenter
         GameLogic.Instance.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
 
         base.Death();
-    }
-
-    private void CancelAttackOnMove(bool moving)
-    {
-        if (moving == true)
-        {
-            _unit.Abilities.CancelAttack();
-        }
     }
 }

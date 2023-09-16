@@ -28,6 +28,7 @@ public class CharacterPresenter : UnitPresenter
         Level level = _unit.Attributes.Level;
         characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnLevelUp += (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
     protected override void OnDisablePresenter()
@@ -50,6 +51,7 @@ public class CharacterPresenter : UnitPresenter
         Level level = _unit.Attributes.Level;
         characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged -= (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnLevelUp -= (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
     protected override void Death()

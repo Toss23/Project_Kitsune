@@ -50,7 +50,8 @@ public class AbilitiesContainer
         {
             if (_abilities[i] != null & _levels[i] > 0)
             {
-                if (_abilities[i].AbilityData.GetAbilityType() != AbilityData.Type.Passive)                           
+                AbilityData.Type type = _abilities[i].AbilityData.GetAbilityType();
+                if (type != AbilityData.Type.NonDamage & type != AbilityData.Type.Passive)                           
                 {
                     BaseAbilityData baseAbilityData = (BaseAbilityData)_abilities[i].AbilityData;
                     _reloadTimes[i] += deltaTime;
@@ -96,7 +97,8 @@ public class AbilitiesContainer
                 CancelAttack();
             }
 
-            if (_abilities[index].AbilityData.GetAbilityType() == AbilityData.Type.Passive)
+            AbilityData.Type type = _abilities[index].AbilityData.GetAbilityType();
+            if (type == AbilityData.Type.NonDamage | type == AbilityData.Type.Passive)
             {
                 OnLevelUpPassive?.Invoke(_abilities[index]);
                 _casted[index] = false;

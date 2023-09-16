@@ -25,7 +25,7 @@ MonoBehaviour:
   _rotateAroundCaster: 0
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 1
-  _spawnRange: 10
+  _spawnRange: 15
   _scale:
   - 0
   - 1

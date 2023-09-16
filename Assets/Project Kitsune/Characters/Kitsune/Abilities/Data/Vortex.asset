@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Vortex
   m_EditorClassIdentifier: 
   _name: Vortex
-  _description: 
+  _description: 'Create Vortex around Kitsune
+
+    Deal #Damage every #DotRate seconds'
   _rotateAroundCaster: 0
   _fuseWithCaster: 1
   _spawnOnNearestEnemy: 0
@@ -31,7 +33,8 @@ MonoBehaviour:
   _isPassive: 1
   _damage:
   - 0
-  - 10
+  - 1
+  - 2
   _damageMultiplier:
   - 0
   - 100
@@ -46,4 +49,4 @@ MonoBehaviour:
   - 0
   _dotRate:
   - 0
-  - 1
+  - 0.1

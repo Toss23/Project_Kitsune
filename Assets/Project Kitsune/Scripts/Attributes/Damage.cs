@@ -32,7 +32,7 @@ public class Damage : Attribute
     /// </summary>
     public static float CalculateAbilityDamage(Damage damage, IAbility ability, int abilityLevel)
     {
-        if (ability.AbilityData.GetAbilityType() == AbilityData.Type.Passive)
+        if (ability.AbilityData.GetAbilityType() == AbilityData.Type.NonDamage)
         {
             return 0;
         }

@@ -14,6 +14,7 @@ public class GameLogic : MonoBehaviour, IGameLogic
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
     [SerializeField] private EnemySpawnerPresenter _enemySpawner;
+    [SerializeField] private AdminPresenter _adminPresenter;
 
     private bool _paused = false;
 
@@ -61,6 +62,10 @@ public class GameLogic : MonoBehaviour, IGameLogic
         _unitView = _character.UnitView;
         _unit = _character.Unit;
         Debug.Log("[GL] Got references...");
+
+        // Init Admin Panel
+        _adminPresenter.Init();
+        Debug.Log("[GL] Admin Panel initialized...");
     }
 
     // Reference for Pause

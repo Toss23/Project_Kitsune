@@ -5,7 +5,7 @@ public class AbilityData : ScriptableObject
 {
     public enum Type
     {
-        Passive, Base, Range
+        NonDamage, Passive, Base, Range
     }
 
     [Header("Default")]
@@ -58,6 +58,6 @@ public class AbilityData : ScriptableObject
 
     public virtual Type GetAbilityType()
     {
-        return Type.Passive;
+        return Type.NonDamage;
     }
 }

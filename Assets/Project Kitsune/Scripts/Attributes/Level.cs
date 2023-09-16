@@ -5,6 +5,8 @@ public class Level : Attribute
     public event Action<float> OnExperienceChanged;
     public event Action<float> OnLevelUp;
 
+    public bool CanGainExperience;
+
     private Experience _experience;
 
     public Level()
@@ -12,6 +14,8 @@ public class Level : Attribute
         Minimum = 0;
         Maximum = Experience.MaximumList.Length - 1;
         Value = 1;
+
+        CanGainExperience = true;
 
         _experience = new Experience((int)Value);
         _experience.Set(0);
@@ -22,13 +26,16 @@ public class Level : Attribute
 
     public void AddExperience(float value)
     {
-        float excess = value;
-        while (excess > 0 && Value != Maximum)
+        if (CanGainExperience == true)
         {
-            excess = _experience.Add(excess);
-        }            
+            float excess = value;
+            while (excess > 0 && Value != Maximum)
+            {
+                excess = _experience.Add(excess);
+            }
 
-        OnExperienceChanged?.Invoke(_experience.Value);
+            OnExperienceChanged?.Invoke(_experience.Value);
+        }
     }
 
     public void LevelUp()

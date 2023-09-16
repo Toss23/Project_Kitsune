@@ -42,7 +42,7 @@ MonoBehaviour:
   - 100
   _castPerSecond:
   - 0
-  - 0.5
+  - 1
   _critChance:
   - 0
   - 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   - 0
   - 0
   _speed: 20
-  _spawnOffset: 2
+  _spawnOffset: 1
   _count: 0000000001000000
   _tiltAngle:
   - 0

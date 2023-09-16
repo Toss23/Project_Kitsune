@@ -22,7 +22,7 @@ MonoBehaviour:
   _critMultiplier: 150
   _armour: 0
   _movespeed: 1
-  _experienceGain: 20
+  _experienceGain: 1
   _animationAttackTime: 1
   _animationTimeToAttack: 1
   _abilities:
