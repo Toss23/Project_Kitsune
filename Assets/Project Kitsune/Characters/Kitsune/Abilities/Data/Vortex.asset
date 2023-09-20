@@ -15,7 +15,8 @@ MonoBehaviour:
   _name: Vortex
   _description: 'Create Vortex around Kitsune
 
-    Deal #Damage every #DotRate seconds'
+    Deals #Damage damage every #DotRate
+    seconds'
   _rotateAroundCaster: 0
   _fuseWithCaster: 1
   _spawnOnNearestEnemy: 0
