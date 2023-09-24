@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class Interactable : Clickable3D
+public class Interactable : MonoBehaviour
 {
     [SerializeField] private UIGroup _uiGroup;
 
     public IUIGroup UIGroup => _uiGroup;
 
-    public override void OnClick()
+    public void OnClick()
     {
-        Debug.Log("Clicked");
         if (UIGroup != null)
         {
             UIGroup.Show();

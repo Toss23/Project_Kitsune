@@ -8,18 +8,23 @@ public class RaycastScreen : Clickable2D
 
     protected override void OnSingleClick()
     {
-        Clickable3D clickable = Cast();
+        Interactable clickable = Cast();
         if (clickable != null)
             clickable.OnClick();
     }
 
-    private Clickable3D Cast()
+    private Interactable Cast()
     {
-        Ray ray = _raycastCamera.ScreenPointToRay(TouchPositionUnfixed);
-        if (Physics.Raycast(ray, out RaycastHit hit, _layer))
+        Vector2 position = _raycastCamera.ScreenToWorldPoint(TouchPositionUnfixed);
+        RaycastHit2D hit = Physics2D.Raycast(position, -Vector2.up, 100f, _layer);
+
+        Interactable interactable = hit.transform.GetComponent<Interactable>();
+
+        if (interactable != null)
         {
-            return hit.transform.GetComponent<Clickable3D>();
+            return interactable;
         }
+
         return null;
     }
 
