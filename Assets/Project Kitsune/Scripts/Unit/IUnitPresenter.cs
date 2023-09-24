@@ -12,7 +12,7 @@ public interface IUnitPresenter
     public UnitType UnitType { get; }
     public Transform Transform { get; }
 
-    public void Init(UnitType unitType);
+    public void Init(ILogic logic, UnitType unitType);
     public void Enable();
     public void Disable();
 }

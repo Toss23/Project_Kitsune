@@ -23,7 +23,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     protected Transform _nearestEnemy;
 
     // Private fields
-    protected IGameLogic _gameLogic;
+    protected ILogic _logic;
 
     // Logic
     private float _duration;
@@ -34,11 +34,11 @@ public abstract class Ability : MonoBehaviour, IAbility
     public AbilityModifier AbilityModifier => _abilityModifier;
     public Dictionary<string, float> Properties => _properties;
 
-    public void Init(int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
+    public void Init(ILogic logic, int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
     {
         // Game Logic
-        _gameLogic = GameLogic.Instance;
-        _gameLogic.OnUpdate += UpdateAbility;
+        _logic = logic;
+        _logic.OnUpdate += UpdateAbility;
 
         // References
         _abilityIndex = abilityIndex;
@@ -228,7 +228,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     public void DestroyAbility()
     {
         OnDestroyAbility();
-        _gameLogic.OnUpdate -= UpdateAbility;
+        _logic.OnUpdate -= UpdateAbility;
         Destroy(gameObject);
     }
 

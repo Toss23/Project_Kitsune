@@ -59,7 +59,15 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public void SetActive(bool active)
     {
         _active = active;
-        _animator.SetBool("Attacking", active);
+        SetAttacking(active);
+    }
+
+    public void SetAttacking(bool active)
+    {
+        if (_animator != null)
+        {
+            _animator.SetBool("Attacking", active);
+        }
     }
 
     public void SetActionSpeed(float speed)

@@ -10,6 +10,6 @@ public interface IAbility
     public AbilityModifier AbilityModifier { get; }
     public Dictionary<string, float> Properties { get; }
 
-    public void Init(int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier);
+    public void Init(ILogic logic, int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier);
     public void DestroyAbility();
 }

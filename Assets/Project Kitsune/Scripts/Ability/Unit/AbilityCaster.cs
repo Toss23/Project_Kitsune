@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class AbilityCaster : MonoBehaviour, IAbilityCaster
 {
+    private ILogic _logic;
     private IUnitPresenter _unitPresenter;
 
-    public void Init(IUnitPresenter unitPresenter)
+    public void Init(ILogic logic, IUnitPresenter unitPresenter)
     {
+        _logic = logic;
         _unitPresenter = unitPresenter;
     }
 
@@ -58,7 +60,7 @@ public class AbilityCaster : MonoBehaviour, IAbilityCaster
 
                     // Init
                     UnitType target = (_unitPresenter.UnitType == UnitType.Character) ? UnitType.Enemy : UnitType.Character;
-                    abilityObject.Init(abilityIndex, level, _unitPresenter.Unit, target, abilityModifier);
+                    abilityObject.Init(_logic, abilityIndex, level, _unitPresenter.Unit, target, abilityModifier);
                     _unitPresenter.Unit.RegisterAbility(abilityObject);
                 }
                 else

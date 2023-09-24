@@ -6,23 +6,23 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
     private IAbilitiesSelectionView _abilitiesSelectionView;
     private AbilitiesSelection _abilitiesSelection;
     private Unit _character;
-    private IGameLogic _gameLogic;
+    private ILogic _logic;
 
     public AbilitiesSelection AbilitiesSelection => _abilitiesSelection;
 
-    public void Init(IUnitPresenter characterPresenter)
+    public void Init(ILogic logic, IUnitPresenter characterPresenter)
     {
         _abilitiesSelectionView = GetComponent<AbilitiesSelectionView>();
         _character = characterPresenter.Unit;
         _abilitiesSelection = new AbilitiesSelection(_character);
-        _gameLogic = GameLogic.Instance;
+        _logic = logic;
         Enable();
     }
 
     public void Enable()
     {
-        _abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => _gameLogic.PauseGame();
-        _abilitiesSelection.OnAbilityUpCanceled += _gameLogic.ContinueGame;
+        _abilitiesSelection.OnAbilitiesListGenerated += (abilities, levels) => _logic.PauseGame();
+        _abilitiesSelection.OnAbilityUpCanceled += _logic.ContinueGame;
 
         _character.OnLevelUp += _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated += _abilitiesSelectionView.Build;
@@ -32,8 +32,8 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
 
     public void Disable()
     {
-        _abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => _gameLogic.PauseGame();
-        _abilitiesSelection.OnAbilityUpCanceled -= _gameLogic.ContinueGame;
+        _abilitiesSelection.OnAbilitiesListGenerated -= (abilities, levels) => _logic.PauseGame();
+        _abilitiesSelection.OnAbilityUpCanceled -= _logic.ContinueGame;
 
         _character.OnLevelUp -= _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated -= _abilitiesSelectionView.Build;

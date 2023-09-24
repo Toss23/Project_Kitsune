@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyView))]
 public class EnemyPresenter : UnitPresenter
 {
-    protected override Unit CreateUnit() => new Enemy(_info, this, _rigidbody);
+    protected override Unit CreateUnit() => new Enemy(_logic, _info, this, _rigidbody);
     protected override IUnitView CreateUnitView() => GetComponent<EnemyView>();
 
     protected override void OnEnablePresenter()
@@ -23,7 +23,7 @@ public class EnemyPresenter : UnitPresenter
     protected override void Death()
     {
         ((Enemy)_unit).Follower.Disable();
-        GameLogic.Instance.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
+        _logic.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
 
         base.Death();
     }

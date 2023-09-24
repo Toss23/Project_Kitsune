@@ -5,11 +5,13 @@ public class EnemySpawnerPresenter : MonoBehaviour, IEnemySpawnerPresenter
     [SerializeField] private EnemySpawnerInfo _info;
     [SerializeField] private float _spawnRadius;
 
+    private ILogic _logic;
     private IUnitPresenter _characterPresenter;
     private EnemySpawner _enemySpawner;
 
-    public void Init(IUnitPresenter character)
+    public void Init(ILogic logic, IUnitPresenter character)
     {
+        _logic = logic;
         _enemySpawner = new EnemySpawner(_info);
         _characterPresenter = character;
         Enable();
@@ -17,13 +19,13 @@ public class EnemySpawnerPresenter : MonoBehaviour, IEnemySpawnerPresenter
 
     public void Enable()
     {
-        GameLogic.Instance.OnUpdate += _enemySpawner.Update;
+        _logic.OnUpdate += _enemySpawner.Update;
         _enemySpawner.SpawnEnemy += SpawnEnemy;
     }
 
     public void Disable()
     {
-        GameLogic.Instance.OnUpdate -= _enemySpawner.Update;
+        _logic.OnUpdate -= _enemySpawner.Update;
         _enemySpawner.SpawnEnemy -= SpawnEnemy;
     }
 
@@ -39,6 +41,6 @@ public class EnemySpawnerPresenter : MonoBehaviour, IEnemySpawnerPresenter
         enemy.name = unitPresenter.ToString();
 
         IUnitPresenter enemyPresenter = enemy.GetComponent<UnitPresenter>();
-        enemyPresenter.Init(UnitType.Enemy);
+        enemyPresenter.Init(_logic, UnitType.Enemy);
     }
 }

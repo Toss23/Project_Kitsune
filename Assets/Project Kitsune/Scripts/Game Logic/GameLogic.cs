@@ -1,69 +1,32 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GameLogic : MonoBehaviour, IGameLogic
+public class GameLogic : BaseLogic
 {
-    public static IGameLogic Instance { get; private set; }
-
-    public event Action<float> OnUpdate;
-    public event Action<float> OnFixedUpdate;
-    public event Action OnPauseGame;
-    public event Action OnContinueGame;
-
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
     [SerializeField] private EnemySpawnerPresenter _enemySpawner;
     [SerializeField] private AdminPresenter _adminPresenter;
 
-    private bool _paused = false;
-
-    public IUnitPresenter Character => _character;
     public IAbilitiesSelectionPresenter AbilitiesSelection => _abilitiesSelection;
     public IEnemySpawnerPresenter EnemySpawner => _enemySpawner;
-    public bool Paused => _paused;
+    protected override IUnitPresenter SetCharacter() => _character;
 
-    private void Awake()
+    protected override void LoadGame()
     {
-        if (Instance == null)
-            Instance = this;
-
-        LoadGame();
-    }
-
-    private void Update()
-    {
-        if (_paused == false)
-            OnUpdate?.Invoke(Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
-        if (_paused == false)
-            OnFixedUpdate?.Invoke(Time.fixedDeltaTime);
-    }
-
-    public void LoadGame()
-    {
-        // Init Character
-        Character.Init(UnitType.Character);
+        Character.Init(this, UnitType.Character);
         Debug.Log("[GL] Character initialized...");
 
-        // Init Ability Selection
-        AbilitiesSelection.Init(Character);
+        AbilitiesSelection.Init(this, Character);
         Debug.Log("[GL] Abilities Selection initialized...");
 
-        // Init Enemy Spawner
-        EnemySpawner.Init(Character);
+        EnemySpawner.Init(this, Character);
         Debug.Log("[GL] Enemy Spawner initialized...");
 
-        // Get References
         _controlable = _character.Character.Controllable;
         _unitView = _character.UnitView;
         _unit = _character.Unit;
         Debug.Log("[GL] Got references...");
 
-        // Init Admin Panel
         _adminPresenter.Init();
         Debug.Log("[GL] Admin Panel initialized...");
     }
@@ -73,33 +36,17 @@ public class GameLogic : MonoBehaviour, IGameLogic
     private IUnitView _unitView;
     private Unit _unit;
 
-    public void PauseGame()
+    protected override void OnPause()
     {
-        if (_paused == false)
-        {
-            _paused = true;
-            _controlable.SetActive(false);
-            _unitView.SetActive(false);
-            _unit.Immune(true);
-            OnPauseGame?.Invoke();
-        }
+        _controlable.SetActive(false);
+        _unitView.SetActive(false);
+        _unit.Immune(true);
     }
 
-    public void ContinueGame()
+    protected override void OnContinue()
     {
-        if (_paused == true)
-        {
-            _paused = false;
-            _controlable.SetActive(true);
-            _unitView.SetActive(true);
-            _unit.Immune(false);
-            OnContinueGame?.Invoke();
-        }
-    }
-
-    public void EndGame()
-    {
-        Instance = null;
-        PauseGame();
+        _controlable.SetActive(true);
+        _unitView.SetActive(true);
+        _unit.Immune(false);
     }
 }

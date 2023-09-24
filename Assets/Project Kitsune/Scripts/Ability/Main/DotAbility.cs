@@ -17,7 +17,7 @@ public class DotAbility : Ability
     {
         if (_baseAbilityData != null)
         {
-            if (_gameLogic.Paused == false)
+            if (_logic.Paused == false)
             {
                 _dotTimer += Time.deltaTime;
 

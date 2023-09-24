@@ -21,14 +21,14 @@ public class CharacterPresenter : UnitPresenter
         Life life = _unit.Attributes.Life;
         Life magicShield = _unit.Attributes.MagicShield;
         UpdateLifeBar(characterView, life, magicShield);
-        characterView.MagicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
+        characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
         life.OnChanged += (value) => UpdateLifeBar(characterView, life, magicShield);
-        magicShield.OnChanged += (value) => characterView.MagicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
+        magicShield.OnChanged += (value) => characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
 
         Level level = _unit.Attributes.Level;
-        characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-        level.OnExperienceChanged += (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-        level.OnLevelUp += (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+        characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnExperienceChanged += (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnLevelUp += (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
     protected override void OnDisablePresenter()
@@ -44,31 +44,31 @@ public class CharacterPresenter : UnitPresenter
         Life life = _unit.Attributes.Life;
         Life magicShield = _unit.Attributes.MagicShield;
         UpdateLifeBar(characterView, life, magicShield);
-        characterView.MagicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
+        characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
         life.OnChanged -= (value) => UpdateLifeBar(characterView, life, magicShield);
-        magicShield.OnChanged -= (value) => characterView.MagicShieldBar.SetPercentAndText(magicShield.GetPercent(), "");
+        magicShield.OnChanged -= (value) => characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
 
         Level level = _unit.Attributes.Level;
-        characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-        level.OnExperienceChanged -= (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
-        level.OnLevelUp -= (value) => characterView.ExperienceBar.SetPercentAndText(level.GetPercent(), level.ToString());
+        characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnExperienceChanged -= (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
+        level.OnLevelUp -= (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
     }
 
     protected override void Death()
     {
         _unit.DisableAbilities();
-        GameLogic.Instance.EndGame();
+        _logic.EndGame();
     }
 
     private void UpdateLifeBar(ICharacterView characterView, Life life, Life magicShield)
     {
         if (magicShield.Maximum > 0)
         {
-            characterView.LifeBar.SetPercentAndText(life.GetPercent(), life.ToString() + " (" + magicShield.ToString() + ")");
+            characterView.LifeBar?.SetPercentAndText(life.GetPercent(), life.ToString() + " (" + magicShield.ToString() + ")");
         }
         else
         {
-            characterView.LifeBar.SetPercentAndText(life.GetPercent(), life.ToString());
+            characterView.LifeBar?.SetPercentAndText(life.GetPercent(), life.ToString());
         }
     }
 }

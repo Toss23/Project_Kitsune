@@ -13,28 +13,28 @@ public class Follower
     private float _distanceMin;
 
     private Rigidbody2D _rigidbody;
-    private IGameLogic _gameLogic;
+    private ILogic _logic;
 
-    public Follower(Transform target, Rigidbody2D rigidbody, float distanceMin)
+    public Follower(ILogic logic, Rigidbody2D rigidbody, float distanceMin)
     {
-        _target = target;
+        _target = logic.Character.Transform;
         _rigidbody = rigidbody;
         Movespeed = 0;
         _distanceMin = distanceMin;
-        _gameLogic = GameLogic.Instance;
+        _logic = logic;
         Enable();
     }
 
     public void Enable()
     {
-        _gameLogic.OnPauseGame += () => FreezeRigidbody(true);
-        _gameLogic.OnContinueGame += () => FreezeRigidbody(false);
+        _logic.OnPauseGame += () => FreezeRigidbody(true);
+        _logic.OnContinueGame += () => FreezeRigidbody(false);
     }
 
     public void Disable()
     {
-        _gameLogic.OnPauseGame -= () => FreezeRigidbody(true);
-        _gameLogic.OnContinueGame -= () => FreezeRigidbody(false);
+        _logic.OnPauseGame -= () => FreezeRigidbody(true);
+        _logic.OnContinueGame -= () => FreezeRigidbody(false);
     }
 
     public void FixedUpdate(float deltaTime)

@@ -17,14 +17,14 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     // Reference
     protected Rigidbody2D _rigidbody;
-    private IGameLogic _gameLogic;
+    protected ILogic _logic;
 
     public Transform Transform => transform;
     public UnitType UnitType => _unitType;
     public Unit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
-    public void Init(UnitType unitType)
+    public void Init(ILogic logic, UnitType unitType)
     {
         if (DamageIndication == null)
         {
@@ -34,9 +34,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _abilityCaster = GetComponent<AbilityCaster>();
-        _gameLogic = GameLogic.Instance;
+        _logic = logic;
 
-        _abilityCaster.Init(this);
+        _abilityCaster.Init(logic, this);
 
         _unitType = unitType;
         _unit = CreateUnit();
@@ -54,8 +54,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Enable()
     {
-        _gameLogic.OnUpdate += _unit.Update;
-        _gameLogic.OnFixedUpdate += _unit.FixedUpdate;
+        _logic.OnUpdate += _unit.Update;
+        _logic.OnFixedUpdate += _unit.FixedUpdate;
 
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
@@ -68,13 +68,15 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         _unit.OnDealDamage += ShowDealDamage;
 
+        _unit.Abilities.OnChangeActive += _unitView.SetAttacking;
+
         OnEnablePresenter();
     }
 
     public void Disable()
     {
-        _gameLogic.OnUpdate -= _unit.Update;
-        _gameLogic.OnFixedUpdate -= _unit.FixedUpdate;
+        _logic.OnUpdate -= _unit.Update;
+        _logic.OnFixedUpdate -= _unit.FixedUpdate;
 
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= _abilityCaster.CreateAbility;
@@ -85,6 +87,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
 
         _unit.OnDealDamage -= ShowDealDamage;
+
+        _unit.Abilities.OnChangeActive -= _unitView.SetAttacking;
 
         OnDisablePresenter();
     }
