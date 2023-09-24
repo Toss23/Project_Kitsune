@@ -38,21 +38,21 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         }
     }
 
-    public void IsMoving(bool move)
-    {
-        if (_animator != null)
-        {
-            _animator.SetBool("Moving", _active ? move : false);
-        }
-    }
-
-    public void SetAngle(float angle)
+    public void SetMovingAndAngle(bool moving, float angle)
     {
         if (_active)
         {
-            _angle = angle;
-            _isMirrored = Mathf.Abs(angle) > 90;
-            transform.rotation = Quaternion.Euler(0, _isMirrored ? 180 : 0, 0);
+            if (_animator != null)
+            {
+                _animator.SetBool("Moving", _active ? moving : false);
+            }
+
+            if (moving == true)
+            {
+                _angle = angle;
+                _isMirrored = Mathf.Abs(angle) > 90;
+                transform.rotation = Quaternion.Euler(0, _isMirrored ? 180 : 0, 0);
+            }
         }
     }
 

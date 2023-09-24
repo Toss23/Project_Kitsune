@@ -9,15 +9,13 @@ public class EnemyPresenter : UnitPresenter
     protected override void OnEnablePresenter()
     {
         Follower follower = ((Enemy)_unit).Follower;
-        follower.OnMove += _unitView.SetAngle;
-        follower.IsMoving += _unitView.IsMoving;
+        follower.IsMoving += _unitView.SetMovingAndAngle;
     }
 
     protected override void OnDisablePresenter()
     {
         Follower follower = ((Enemy)_unit).Follower;
-        follower.OnMove -= _unitView.SetAngle;
-        follower.IsMoving -= _unitView.IsMoving;
+        follower.IsMoving -= _unitView.SetMovingAndAngle;
     }
 
     protected override void Death()

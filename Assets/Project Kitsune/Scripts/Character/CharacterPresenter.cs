@@ -13,9 +13,8 @@ public class CharacterPresenter : UnitPresenter
         ICharacterView characterView = (ICharacterView)UnitView;
 
         Controllable controllable = Character.Controllable;
-        characterView.Joystick.OnTouched += (angle, deltaTime) => controllable.Move(angle, deltaTime);
-        characterView.Joystick.OnTouched += (angle, deltaTime) => _unitView.SetAngle(angle);
-        characterView.Joystick.IsActive += (active) => _unitView.IsMoving(active);
+        characterView.Joystick.OnChange += controllable.Move;
+        characterView.Joystick.OnChange += _unitView.SetMovingAndAngle;
         characterView.Joystick.OnActiveChanged += _unit.Abilities.CancelAttack;
 
         Life life = _unit.Attributes.Life;
@@ -36,9 +35,8 @@ public class CharacterPresenter : UnitPresenter
         ICharacterView characterView = (ICharacterView)UnitView;
 
         Controllable controllable = Character.Controllable;
-        characterView.Joystick.OnTouched -= (angle, deltaTime) => controllable.Move(angle, deltaTime);
-        characterView.Joystick.OnTouched -= (angle, deltaTime) => _unitView.SetAngle(angle);
-        characterView.Joystick.IsActive -= (active) => _unitView.IsMoving(active);
+        characterView.Joystick.OnChange -= controllable.Move;
+        characterView.Joystick.OnChange -= _unitView.SetMovingAndAngle;
         characterView.Joystick.OnActiveChanged -= _unit.Abilities.CancelAttack;
 
         Life life = _unit.Attributes.Life;

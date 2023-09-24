@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Joystick : Clickable2D
 {
-    public event Action<float, float> OnTouched;
-    public event Action<bool> IsActive;
+    // active, angle
+    public event Action<bool, float> OnChange;
     public event Action OnActiveChanged;
 
     [Header("Joystick")]
@@ -31,26 +31,43 @@ public class Joystick : Clickable2D
             _angle = Mathf.Atan2(_stickPosition.y, _stickPosition.x) * Mathf.Rad2Deg;
             _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
 
-            OnTouched?.Invoke(_angle, Time.deltaTime);
-
-            if (_active == false)
+            if (TouchPositionDelta.magnitude >= 80)
             {
-                OnActiveChanged?.Invoke();
+                StartMove();
             }
-
-            _active = true;
+            else
+            {
+                ResetMove();
+            }
         }
         else
         {
-            if (_active == true)
-            {
-                OnActiveChanged?.Invoke();
-            }
+            ResetMove();
+        }
+    }
 
-            _active = false;
+    private void StartMove()
+    {
+        OnChange?.Invoke(true, _angle);
+
+        if (_active == false)
+        {
+            OnActiveChanged?.Invoke();
         }
 
-        IsActive?.Invoke(Touched);
+        _active = true;
+    }
+
+    private void ResetMove()
+    {
+        OnChange?.Invoke(false, 0);
+
+        if (_active == true)
+        {
+            OnActiveChanged?.Invoke();
+        }
+
+        _active = false;
     }
 
     protected override void OnTouchDown()

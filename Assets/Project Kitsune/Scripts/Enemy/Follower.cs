@@ -4,8 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Follower
 {
-    public event Action<float> OnMove;
-    public event Action<bool> IsMoving;
+    public event Action<bool, float> IsMoving;
 
     public float Movespeed;
 
@@ -50,9 +49,12 @@ public class Follower
             _rigidbody.MovePosition(_rigidbody.position + Movespeed * direction * deltaTime);
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            OnMove?.Invoke(angle);
+            IsMoving?.Invoke(isMoving, angle);
         }
-        IsMoving?.Invoke(isMoving);     
+        else
+        {
+            IsMoving?.Invoke(isMoving, 0);
+        }
     }
 
     private void FreezeRigidbody(bool freeze)
@@ -62,7 +64,7 @@ public class Follower
             if (freeze)
             {
                 _rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-                IsMoving?.Invoke(false);
+                IsMoving?.Invoke(false, 0);
             }
             else
             {
