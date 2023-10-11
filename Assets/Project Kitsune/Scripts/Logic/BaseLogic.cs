@@ -14,7 +14,7 @@ public abstract class BaseLogic : MonoBehaviour, ILogic
 
     private void Awake()
     {
-        LoadGame();
+        OnLoadGame();
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public abstract class BaseLogic : MonoBehaviour, ILogic
             OnFixedUpdate?.Invoke(Time.fixedDeltaTime);
     }
 
-    protected abstract void LoadGame();
+    protected abstract void OnLoadGame();
 
     protected abstract IUnitPresenter SetCharacter();
     

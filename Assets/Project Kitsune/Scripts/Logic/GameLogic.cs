@@ -11,7 +11,7 @@ public class GameLogic : BaseLogic
     public IEnemySpawnerPresenter EnemySpawner => _enemySpawner;
     protected override IUnitPresenter SetCharacter() => _character;
 
-    protected override void LoadGame()
+    protected override void OnLoadGame()
     {
         Character.Init(this, UnitType.Character);
         Debug.Log("[GL] Character initialized...");
