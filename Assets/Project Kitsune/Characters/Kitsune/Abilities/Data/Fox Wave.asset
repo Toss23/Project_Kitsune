@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e16cfdcaa11f6e46aa7ef879ebaf900, type: 3}
-  m_Name: Wind Wave
+  m_Name: Fox Wave
   m_EditorClassIdentifier: 
-  _name: Wind Wave
+  _name: Fox Wave
   _description: 'Fire #Count projectile(s)
 
     Deals #Damage damage
@@ -29,7 +29,7 @@ MonoBehaviour:
   _haveDuration: 1
   _duration:
   - 0
-  - 1
+  - 2
   _abilityProperties: []
   _useCharacterDamage: 0
   _useCharacterCrit: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   - 100
   _castPerSecond:
   - 0
-  - 1
+  - 0.5
   _critChance:
   - 0
   - 0
@@ -52,8 +52,8 @@ MonoBehaviour:
   _dotRate:
   - 0
   - 0
-  _speed: 20
-  _spawnOffset: 1
+  _speed: 7
+  _spawnOffset: 1.5
   _count: 0000000001000000
   _tiltAngle:
   - 0
