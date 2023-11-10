@@ -16,8 +16,10 @@ MonoBehaviour:
   _description: 'All the nearest enemies will be cursed by #Forest
 
     Effect: #Effect%'
+  _rotateAroundCaster: 0
   _fuseWithCaster: 1
   _spawnOnNearestEnemy: 0
+  _spawnRange: 0
   _scale:
   - 0
   - 1
@@ -29,9 +31,21 @@ MonoBehaviour:
   - _name: Effect
     _values:
     - 0
+    - 15
+    - 20
+    - 25
     - 30
+    - 35
+    - 40
+    - 45
+    - 50
+    - 55
     - 60
-    - 100
+    - 65
+    - 70
+    - 75
+    - 80
+    - 85
   - _name: CurseDuration
     _values:
     - 0

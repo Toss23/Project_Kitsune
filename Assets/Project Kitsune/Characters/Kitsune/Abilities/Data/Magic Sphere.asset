@@ -28,19 +28,46 @@ MonoBehaviour:
   - 0
   - 2
   _abilityProperties: []
-  _useCharacterDamage: 1
+  _useCharacterDamage: 0
   _useCharacterCrit: 0
   _isPassive: 0
   _damage:
   - 0
+  - 1
   - 2
   - 3
+  - 5
+  - 7
+  - 11
+  - 14
+  - 18
+  - 22
+  - 25
+  - 30
+  - 35
+  - 40
+  - 45
+  - 50
   _damageMultiplier:
   - 0
   - 100
   _castPerSecond:
   - 0
   - 1
+  - 1
+  - 1
+  - 1
+  - 1.1
+  - 1.1
+  - 1.2
+  - 1.2
+  - 1.3
+  - 1.3
+  - 1.4
+  - 1.4
+  - 1.5
+  - 1.5
+  - 1.5
   _critChance:
   - 0
   - 0
@@ -52,11 +79,24 @@ MonoBehaviour:
   - 0
   _speed: 10
   _spawnOffset: 0
-  _count: 000000000100000001000000
+  _count: 00000000010000000100000001000000010000000100000001000000010000000100000001000000020000000200000002000000020000000200000002000000
   _tiltAngle:
   - 0
   - 0
   - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
   _aimNearestEnemy: 0
   _followNearestEnemy: 1
   _destroyOnHit: 1

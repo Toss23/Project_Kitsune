@@ -27,3 +27,10 @@ MonoBehaviour:
     _endTime: 240
     _loopTimeStart: 1
     _loopTimeEnd: 1
+  - _enemy: {fileID: 1210909013644819758, guid: fc6fde52b982db845919b3c3be2922ba, type: 3}
+    _countStart: 3
+    _countEnd: 4
+    _startTime: 240
+    _endTime: 600
+    _loopTimeStart: 1
+    _loopTimeEnd: 1

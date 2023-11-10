@@ -21,7 +21,7 @@ public class DotAbility : Ability
             {
                 _dotTimer += Time.deltaTime;
 
-                float dotRate = Mathf.Max(_baseAbilityData.DotRate.Get(_level) + _abilityModifier.DotRate, 0.1f);
+                float dotRate = 1f / (_baseAbilityData.DotRate.Get(_level) + _abilityModifier.DotRate);
 
                 while (_dotTimer >= dotRate)
                 {

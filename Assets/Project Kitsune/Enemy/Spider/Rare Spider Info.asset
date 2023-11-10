@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rare Spider Info
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2710559128760523838, guid: 05dd003328b668d4ca20e315c323b66e, type: 3}
-  _life: 20
+  _life: 15
   _lifeRegeneration: 0
   _magicShield: 0
   _magicShieldRegeneration: 0
