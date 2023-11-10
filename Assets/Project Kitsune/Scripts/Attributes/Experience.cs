@@ -1,10 +1,5 @@
 public class Experience : Attribute
 {
-    public static readonly float[] MaximumList = new float[]
-    {
-       0, 10, 15, 20, 30, 40, 50, 70, 100, 150, 200, 0
-    };
-
     public Experience(int level)
     {
         NextLevel(level);
@@ -16,7 +11,7 @@ public class Experience : Attribute
     {
         Value = 0;
         Minimum = 0;
-        Maximum = MaximumList[level];
+        Maximum = Configs.Experience[level];
     }
 
     public override float GetPercent()

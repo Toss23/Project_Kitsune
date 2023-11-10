@@ -9,31 +9,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf39b57059993f34e8ef6cec8b6eba3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e16cfdcaa11f6e46aa7ef879ebaf900, type: 3}
   m_Name: Fox Spirit
   m_EditorClassIdentifier: 
   _name: Fox Spirit
-  _description: Give Kitsune buffs for other abilities
+  _description: 'Fire #Count projectile(s)
+
+    Deals #Damage damage
+
+    Aiming
+    at the nearest enemy'
+  _rotateAroundCaster: 1
   _fuseWithCaster: 0
   _spawnOnNearestEnemy: 0
   _spawnRange: 0
   _scale:
   - 0
-  - 0
-  _haveDuration: 0
+  - 1
+  _haveDuration: 1
   _duration:
   - 0
+  - 2
+  _abilityProperties: []
+  _useCharacterDamage: 0
+  _useCharacterCrit: 0
+  _isPassive: 0
+  _damage:
   - 0
-  _abilityProperties:
-  - _name: MS_Count
-    _values:
-    - 0
-    - 2
-  - _name: MS_Angle
-    _values:
-    - 0
-    - 30
-  - _name: T_Scale
-    _values:
-    - 0
-    - 1
+  - 3
+  _damageMultiplier:
+  - 0
+  - 100
+  _castPerSecond:
+  - 0
+  - 0.5
+  _critChance:
+  - 0
+  - 0
+  _critMultiplier:
+  - 0
+  - 0
+  _dotRate:
+  - 0
+  - 0
+  _speed: 7
+  _spawnOffset: 1.5
+  _count: 0000000001000000
+  _tiltAngle:
+  - 0
+  - 0
+  _aimNearestEnemy: 1
+  _followNearestEnemy: 0
+  _destroyOnHit: 0

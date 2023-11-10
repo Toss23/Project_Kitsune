@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29e920390fe54b444b25ff4fd4c18b1d, type: 3}
-  m_Name: Spider Info
+  m_Name: Rare Spider Info
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2710559128760523838, guid: bedb0945998db5d4c980a8f8fdc87657, type: 3}
-  _life: 8
+  _prefab: {fileID: 2710559128760523838, guid: 05dd003328b668d4ca20e315c323b66e, type: 3}
+  _life: 20
   _lifeRegeneration: 0
   _magicShield: 0
   _magicShieldRegeneration: 0
-  _damage: 2
+  _damage: 3
   _critChance: 0
   _critMultiplier: 150
   _armour: 0
-  _movespeed: 1
-  _experienceGain: 1
+  _movespeed: 1.5
+  _experienceGain: 3
   _animationAttackTime: 1
   _animationTimeToAttack: 1
   _abilities:

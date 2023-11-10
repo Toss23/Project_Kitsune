@@ -12,7 +12,7 @@ public class Level : Attribute
     public Level()
     {
         Minimum = 0;
-        Maximum = Experience.MaximumList.Length - 1;
+        Maximum = Configs.Experience.Length - 1;
         Value = 1;
 
         CanGainExperience = true;
@@ -47,7 +47,7 @@ public class Level : Attribute
 
     public override float GetPercent()
     {
-        return _experience.GetPercent();
+        return Value == Maximum ? 100 : _experience.GetPercent();
     }
 
     public override string ToString()

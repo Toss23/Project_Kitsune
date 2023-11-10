@@ -79,7 +79,10 @@ public class AdminPresenter : MonoBehaviour
     private void UpdateAbilityUpText()
     {
         AbilitiesContainer abilities = _characterPresenter.Unit.Abilities;
-        _adminView.AbilityNumberText.text = abilities.List[_abilityNumber].AbilityData.Name + "\n(" + abilities.Levels[_abilityNumber] + " Level)";
+        if (abilities.List[_abilityNumber] != null)
+        {
+            _adminView.AbilityNumberText.text = abilities.List[_abilityNumber].AbilityData.Name + "\n(" + abilities.Levels[_abilityNumber] + " Level)";
+        }
     }
 
     private void Immune()
