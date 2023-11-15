@@ -18,14 +18,14 @@ MonoBehaviour:
     _countEnd: 3
     _startTime: 0
     _endTime: 120
-    _loopTimeStart: 1
+    _loopTimeStart: 2
     _loopTimeEnd: 1
   - _enemy: {fileID: 1210909013644819758, guid: fc6fde52b982db845919b3c3be2922ba, type: 3}
     _countStart: 3
     _countEnd: 4
     _startTime: 120
     _endTime: 240
-    _loopTimeStart: 1
+    _loopTimeStart: 3
     _loopTimeEnd: 1
   - _enemy: {fileID: 1210909013644819758, guid: fc6fde52b982db845919b3c3be2922ba, type: 3}
     _countStart: 3
