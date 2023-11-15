@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameLogic : BaseLogic
+public class GameContext : BaseContext
 {
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;

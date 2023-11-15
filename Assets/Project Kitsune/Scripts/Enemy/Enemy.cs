@@ -4,7 +4,7 @@ public class Enemy : Unit
 {
     public Follower Follower { get; private set; }
 
-    public Enemy(ILogic logic, UnitInfo info, IUnitPresenter unitPresenter, Rigidbody2D rigidbody)
+    public Enemy(IContext logic, UnitInfo info, IUnitPresenter unitPresenter, Rigidbody2D rigidbody)
     {
         Init(info, unitPresenter);
         Follower = new Follower(logic, rigidbody, 1.5f);

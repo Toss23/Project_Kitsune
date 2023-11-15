@@ -23,7 +23,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     protected Transform _nearestEnemy;
 
     // Private fields
-    protected ILogic _logic;
+    protected IContext _logic;
 
     // Logic
     private float _duration;
@@ -34,7 +34,7 @@ public abstract class Ability : MonoBehaviour, IAbility
     public AbilityModifier AbilityModifier => _abilityModifier;
     public Dictionary<string, float> Properties => _properties;
 
-    public void Init(ILogic logic, int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
+    public void Init(IContext logic, int abilityIndex, int level, Unit caster, UnitType target, AbilityModifier abilityModifier)
     {
         // Game Logic
         _logic = logic;

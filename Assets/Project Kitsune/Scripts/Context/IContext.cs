@@ -1,6 +1,6 @@
 using System;
 
-public interface ILogic
+public interface IContext
 {
     public event Action<float> OnUpdate;
     public event Action<float> OnFixedUpdate;

@@ -5,11 +5,11 @@ public class EnemySpawnerPresenter : MonoBehaviour, IEnemySpawnerPresenter
     [SerializeField] private EnemySpawnerInfo _info;
     [SerializeField] private float _spawnRadius;
 
-    private ILogic _logic;
+    private IContext _logic;
     private IUnitPresenter _characterPresenter;
     private EnemySpawner _enemySpawner;
 
-    public void Init(ILogic logic, IUnitPresenter character)
+    public void Init(IContext logic, IUnitPresenter character)
     {
         _logic = logic;
         _enemySpawner = new EnemySpawner(_info);

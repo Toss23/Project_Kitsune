@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class BaseLogic : MonoBehaviour, ILogic
+public abstract class BaseContext : MonoBehaviour, IContext
 {
     public event Action<float> OnUpdate;
     public event Action<float> OnFixedUpdate;

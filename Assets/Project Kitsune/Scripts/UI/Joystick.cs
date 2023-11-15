@@ -4,7 +4,7 @@ using UnityEngine;
 public class Joystick : Clickable2D
 {
     // active, angle
-    public event Action<bool, float> OnChange;
+    public event Action<bool, float> OnMoveStick;
     public event Action OnActiveChanged;
 
     [Header("Joystick")]
@@ -23,32 +23,91 @@ public class Joystick : Clickable2D
 
     protected override void OnUpdate(float deltaTime)
     {
-        _stickPosition = Vector3.zero;
-
-        if (Touched)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            _stickPosition = TouchPositionDelta;
-            _angle = Mathf.Atan2(_stickPosition.y, _stickPosition.x) * Mathf.Rad2Deg;
-            _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
+            _stickPosition = Vector3.zero;
 
-            if (TouchPositionDelta.magnitude >= 80)
+            if (Touched)
             {
-                StartMove();
+                _stickPosition = TouchPositionDelta;
+                _angle = Mathf.Atan2(_stickPosition.y, _stickPosition.x) * Mathf.Rad2Deg;
+                _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
+
+                // Fix this
+                if (_active == false)
+                {
+                    if (TouchPositionDelta.magnitude >= 80)
+                    {
+                        Moving();
+                    }
+                }
+                else
+                {
+                    Moving();
+                }
             }
             else
             {
-                ResetMove();
+                StopMove();
             }
         }
-        else
+        else if (Application.platform == RuntimePlatform.WindowsEditor)
         {
-            ResetMove();
+            _angle = 0;
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                _angle = 90;
+            }
+            
+            if (Input.GetKey(KeyCode.S))
+            {
+                _angle = -90;
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                _angle = 180;
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    _angle = 135;
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    _angle = -135;
+                }
+            }
+            
+            if (Input.GetKey(KeyCode.D))
+            {
+                _angle = 0;
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    _angle = 45;
+                }
+                else if (Input.GetKey(KeyCode.S))
+                {
+                    _angle = -45;
+                }
+            }
+
+            if (Input.anyKey == true)
+            {
+                Moving();
+                OnMoveStick?.Invoke(true, _angle);
+            }
+            else
+            {
+                StopMove();
+            }
         }
     }
 
-    private void StartMove()
+    private void Moving()
     {
-        OnChange?.Invoke(true, _angle);
+        OnMoveStick?.Invoke(true, _angle);
 
         if (_active == false)
         {
@@ -58,9 +117,9 @@ public class Joystick : Clickable2D
         _active = true;
     }
 
-    private void ResetMove()
+    private void StopMove()
     {
-        OnChange?.Invoke(false, 0);
+        OnMoveStick?.Invoke(false, 0);
 
         if (_active == true)
         {

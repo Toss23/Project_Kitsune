@@ -17,14 +17,14 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     // Reference
     protected Rigidbody2D _rigidbody;
-    protected ILogic _logic;
+    protected IContext _logic;
 
     public Transform Transform => transform;
     public UnitType UnitType => _unitType;
     public Unit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
-    public void Init(ILogic logic, UnitType unitType)
+    public void Init(IContext logic, UnitType unitType)
     {
         if (DamageIndication == null)
         {

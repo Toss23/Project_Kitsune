@@ -12,9 +12,9 @@ public class Follower
     private float _distanceMin;
 
     private Rigidbody2D _rigidbody;
-    private ILogic _logic;
+    private IContext _logic;
 
-    public Follower(ILogic logic, Rigidbody2D rigidbody, float distanceMin)
+    public Follower(IContext logic, Rigidbody2D rigidbody, float distanceMin)
     {
         _target = logic.Character.Transform;
         _rigidbody = rigidbody;

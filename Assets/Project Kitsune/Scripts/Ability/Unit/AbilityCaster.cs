@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AbilityCaster : MonoBehaviour, IAbilityCaster
 {
-    private ILogic _logic;
+    private IContext _logic;
     private IUnitPresenter _unitPresenter;
 
-    public void Init(ILogic logic, IUnitPresenter unitPresenter)
+    public void Init(IContext logic, IUnitPresenter unitPresenter)
     {
         _logic = logic;
         _unitPresenter = unitPresenter;

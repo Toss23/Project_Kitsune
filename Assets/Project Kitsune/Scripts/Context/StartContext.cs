@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartContext : BaseLogic
+public class StartContext : BaseContext
 {
     [SerializeField] private CharacterPresenter _character;
     [SerializeField] private ActionView _actionView;

@@ -6,11 +6,11 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
     private IAbilitiesSelectionView _abilitiesSelectionView;
     private AbilitiesSelection _abilitiesSelection;
     private Unit _character;
-    private ILogic _logic;
+    private IContext _logic;
 
     public AbilitiesSelection AbilitiesSelection => _abilitiesSelection;
 
-    public void Init(ILogic logic, IUnitPresenter characterPresenter)
+    public void Init(IContext logic, IUnitPresenter characterPresenter)
     {
         _abilitiesSelectionView = GetComponent<AbilitiesSelectionView>();
         _character = characterPresenter.Unit;

@@ -40,19 +40,16 @@ public abstract class UnitView : MonoBehaviour, IUnitView
 
     public void SetMovingAndAngle(bool moving, float angle)
     {
-        if (_active)
+        if (_animator != null)
         {
-            if (_animator != null)
-            {
-                _animator.SetBool("Moving", _active ? moving : false);
-            }
+            _animator.SetBool("Moving", _active ? moving : false);
+        }
 
-            if (moving == true)
-            {
-                _angle = angle;
-                _isMirrored = Mathf.Abs(angle) > 90;
-                transform.rotation = Quaternion.Euler(0, _isMirrored ? 180 : 0, 0);
-            }
+        if (_active == true & moving == true)
+        {
+            _angle = angle;
+            _isMirrored = Mathf.Abs(angle) > 90;
+            transform.rotation = Quaternion.Euler(0, _isMirrored ? 180 : 0, 0);
         }
     }
 
