@@ -63,12 +63,14 @@ public class AbilityCardView : MonoBehaviour, IAbilityCardView
                 replace.Add("#Duration", abilityData.Duration.Get(level));
 
                 if (ability.AbilityData.GetAbilityType() == AbilityData.Type.Base 
-                    | ability.AbilityData.GetAbilityType() == AbilityData.Type.Range)
+                    | ability.AbilityData.GetAbilityType() == AbilityData.Type.Range
+                    | ability.AbilityData.GetAbilityType() == AbilityData.Type.Passive)
                 {
                     BaseAbilityData baseAbilityData = (BaseAbilityData)ability.AbilityData;
                     replace.Add("#Damage", baseAbilityData.Damage.Get(level));
                     replace.Add("#Multiplier", baseAbilityData.DamageMultiplier.Get(level));
                     replace.Add("#CastPerSecond", baseAbilityData.CastPerSecond.Get(level));
+                    replace.Add("#CastTime", Mathf.Round(1f / baseAbilityData.CastPerSecond.Get(level) * 10) / 10f);
                     replace.Add("#CritChance", baseAbilityData.CritChance.Get(level));
                     replace.Add("#CritMultiplier", baseAbilityData.CritMultiplier.Get(level));
                     replace.Add("#DotRate", baseAbilityData.DotRate.Get(level));

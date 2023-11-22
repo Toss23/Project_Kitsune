@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Vines
   m_EditorClassIdentifier: 
   _name: Vines
-  _description: 'Create Vines on nearest enemy every #CastPerSecond second
+  _description: 'Create Vines on nearest enemy every #CastTime second
 
-    Deals
-    #Damage damage over time every #DotRate second
+    Deal #Damage
+    damage over time every #DotRate second
 
     Duration: #Duration
 

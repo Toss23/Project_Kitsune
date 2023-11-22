@@ -15,7 +15,7 @@ MonoBehaviour:
   _name: Kitsune
   _description: Give Kitsune buffs for other abilities
   _rotateAroundCaster: 0
-  _fuseWithCaster: 0
+  _fuseWithCaster: 1
   _spawnOnNearestEnemy: 0
   _spawnRange: 0
   _scale:

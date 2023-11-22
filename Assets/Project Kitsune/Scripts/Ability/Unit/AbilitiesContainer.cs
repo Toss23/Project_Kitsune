@@ -68,14 +68,14 @@ public class AbilitiesContainer
                         BaseAbilityData baseAbilityData = (BaseAbilityData)_abilities[i].AbilityData;
                         _reloadTimes[i] += deltaTime;
                         float castPerSecond = baseAbilityData.CastPerSecond.Get(_levels[i]) + _abilityModifiers[i].CastPerSecond;
-                        float attackTime = 1 / castPerSecond;
+                        float castTime = 1 / castPerSecond;
 
                         if (i == 0)
                         {
-                            attackTime *= _animationTimeToAttack;
+                            castTime *= _animationTimeToAttack;
                         }
 
-                        while (_reloadTimes[i] >= attackTime)
+                        while (_reloadTimes[i] >= castTime)
                         {
                             _reloadTimes[i] -= 1 / castPerSecond;
                             OnCastReloaded?.Invoke(_abilities[i], i, _levels[i]);
