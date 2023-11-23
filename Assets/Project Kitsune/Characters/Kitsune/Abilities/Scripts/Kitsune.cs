@@ -9,22 +9,24 @@ public class Kitsune : Ability
     {
         _abilityModifierMagicSphere = new AbilityModifier(0)
         {
-            ProjectileCount = (int)Properties["MS_Count"]
+            ProjectileCount = (int)Properties["MS_Count"],
+            ProjectileTiltAngle = 20
         };
 
-        _abilityModifierVines = new AbilityModifier(0)
+        _abilityModifierVines = new AbilityModifier(1)
         {
-            Scale = (int)Properties["V_Scale"]
+            Damage = (int)Properties["V_Damage"]
         };
 
-        _abilityFoxSpirit = new AbilityModifier(0)
+        _abilityFoxSpirit = new AbilityModifier(2)
         {
             Damage = (int)Properties["FS_Damage"]
         };
 
-        _abilityVortex = new AbilityModifier(0)
+        _abilityVortex = new AbilityModifier(3)
         {
-            DotRate = (int)Properties["V_Rate"]
+            DotRate = (int)Properties["Vx_Rate"],
+            Scale = (int)Properties["Vx_Scale"]
         };
 
         _caster.ModifiersContainer.Add(_abilityModifierMagicSphere);

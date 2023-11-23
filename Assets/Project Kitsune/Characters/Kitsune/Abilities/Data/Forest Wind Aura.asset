@@ -31,21 +31,16 @@ MonoBehaviour:
   - _name: Effect
     _values:
     - 0
-    - 15
-    - 20
-    - 25
-    - 30
-    - 35
-    - 40
-    - 45
     - 50
     - 55
     - 60
     - 65
     - 70
-    - 75
-    - 80
-    - 85
+    - 76
+    - 81
+    - 86
+    - 92
+    - 100
   - _name: CurseDuration
     _values:
     - 0

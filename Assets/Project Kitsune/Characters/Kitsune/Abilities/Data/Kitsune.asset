@@ -30,39 +30,29 @@ MonoBehaviour:
     _values:
     - 0
     - 1
-    - 1
-    - 1
     - 2
-    - 2
+    - 3
+  - _name: V_Damage
+    _values:
+    - 0
+    - 5
+    - 7
+    - 10
   - _name: FS_Damage
     _values:
     - 0
     - 5
     - 10
     - 15
-    - 20
-    - 25
-  - _name: V_Rate
+  - _name: Vx_Rate
     _values:
     - 0
     - 0.2
     - 0.4
     - 0.6
-    - 0.8
-    - 1
-  - _name: FC_Effect
-    _values:
-    - 0
-    - 7
-    - 9
-    - 11
-    - 13
-    - 15
-  - _name: V_Scale
+  - _name: Vx_Scale
     _values:
     - 0
     - 0.2
-    - 0.4
-    - 0.6
-    - 0.8
-    - 1
+    - 0.35
+    - 0.5
