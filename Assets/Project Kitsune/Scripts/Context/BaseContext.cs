@@ -62,5 +62,8 @@ public abstract class BaseContext : MonoBehaviour, IContext
         PauseGame();
     }
 
-    
+    protected void Message(string text)
+    {
+        Debug.Log("[Context] " + text);
+    }
 }

@@ -6,6 +6,7 @@ public class GameContext : BaseContext
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
     [SerializeField] private EnemySpawnerPresenter _enemySpawner;
     [SerializeField] private AdminPresenter _adminPresenter;
+    [SerializeField] private TimerPresenter _timerPresenter;
 
     public IAbilitiesSelectionPresenter AbilitiesSelection => _abilitiesSelection;
     public IEnemySpawnerPresenter EnemySpawner => _enemySpawner;
@@ -14,21 +15,24 @@ public class GameContext : BaseContext
     protected override void OnLoadGame()
     {
         Character.Init(this, UnitType.Character);
-        Debug.Log("[GL] Character initialized...");
+        Message("Character initialized...");
 
         AbilitiesSelection.Init(this, Character);
-        Debug.Log("[GL] Abilities Selection initialized...");
+        Message("Abilities initialized...");
 
         EnemySpawner.Init(this, Character);
-        Debug.Log("[GL] Enemy Spawner initialized...");
+        Message("Enemy Spawner initialized...");
 
         _controlable = _character.Character.Controllable;
         _unitView = _character.UnitView;
         _unit = _character.Unit;
-        Debug.Log("[GL] Got references...");
+        Message("Got references...");
 
         _adminPresenter.Init();
-        Debug.Log("[GL] Admin Panel initialized...");
+        Message("Admin Panel initialized...");
+
+        _timerPresenter.Init(this);
+        Message("Timer initialized...");
     }
 
     // Reference for Pause
