@@ -2,30 +2,33 @@ using UnityEngine;
 
 public class GameContext : BaseContext
 {
-    [SerializeField] private CharacterPresenter _character;
-    [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelection;
-    [SerializeField] private EnemySpawnerPresenter _enemySpawner;
+    [SerializeField] private CharacterPresenter _characterPresenter;
+    [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
+    [SerializeField] private EnemySpawnerPresenter _enemySpawnerPresenter;
     [SerializeField] private AdminPresenter _adminPresenter;
     [SerializeField] private TimerPresenter _timerPresenter;
+    [SerializeField] private KillCounterPresenter _killCounterPresenter;
 
-    public IAbilitiesSelectionPresenter AbilitiesSelection => _abilitiesSelection;
-    public IEnemySpawnerPresenter EnemySpawner => _enemySpawner;
-    protected override IUnitPresenter SetCharacter() => _character;
+    public IAbilitiesSelectionPresenter AbilitiesSelectionPresenter => _abilitiesSelectionPresenter;
+    public IEnemySpawnerPresenter EnemySpawnerPresenter => _enemySpawnerPresenter;
+    public IKillCounterPresenter KillCounterPresenter => _killCounterPresenter;
+
+    protected override IUnitPresenter SetCharacter() => _characterPresenter;
 
     protected override void OnLoadGame()
     {
-        Character.Init(this, UnitType.Character);
+        _characterPresenter.Init(this, UnitType.Character);
         Message("Character initialized...");
 
-        AbilitiesSelection.Init(this, Character);
+        _abilitiesSelectionPresenter.Init(this, Character);
         Message("Abilities initialized...");
 
-        EnemySpawner.Init(this, Character);
+        _enemySpawnerPresenter.Init(this, Character);
         Message("Enemy Spawner initialized...");
 
-        _controlable = _character.Character.Controllable;
-        _unitView = _character.UnitView;
-        _unit = _character.Unit;
+        _controlable = _characterPresenter.Character.Controllable;
+        _unitView = _characterPresenter.UnitView;
+        _unit = _characterPresenter.Unit;
         Message("Got references...");
 
         _adminPresenter.Init();
@@ -33,6 +36,9 @@ public class GameContext : BaseContext
 
         _timerPresenter.Init(this);
         Message("Timer initialized...");
+
+        _killCounterPresenter.Init();
+        Message("Kill Counter initialized...");
     }
 
     // Reference for Pause

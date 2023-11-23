@@ -17,14 +17,14 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     // Reference
     protected Rigidbody2D _rigidbody;
-    protected IContext _logic;
+    protected IContext _context;
 
     public Transform Transform => transform;
     public UnitType UnitType => _unitType;
     public Unit Unit => _unit;
     public IUnitView UnitView => _unitView;
 
-    public void Init(IContext logic, UnitType unitType)
+    public void Init(IContext context, UnitType unitType)
     {
         if (DamageIndication == null)
         {
@@ -34,9 +34,9 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
         _rigidbody = GetComponent<Rigidbody2D>();
         _abilityCaster = GetComponent<AbilityCaster>();
-        _logic = logic;
+        _context = context;
 
-        _abilityCaster.Init(logic, this);
+        _abilityCaster.Init(context, this);
 
         _unitType = unitType;
         _unit = CreateUnit();
@@ -54,8 +54,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Enable()
     {
-        _logic.OnUpdate += _unit.Update;
-        _logic.OnFixedUpdate += _unit.FixedUpdate;
+        _context.OnUpdate += _unit.Update;
+        _context.OnFixedUpdate += _unit.FixedUpdate;
 
         _unit.OnDeath += Death;
         _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
@@ -75,8 +75,8 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Disable()
     {
-        _logic.OnUpdate -= _unit.Update;
-        _logic.OnFixedUpdate -= _unit.FixedUpdate;
+        _context.OnUpdate -= _unit.Update;
+        _context.OnFixedUpdate -= _unit.FixedUpdate;
 
         _unit.OnDeath -= Death;
         _unit.Abilities.OnCastReloaded -= _abilityCaster.CreateAbility;

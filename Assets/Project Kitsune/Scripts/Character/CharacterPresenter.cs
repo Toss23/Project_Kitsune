@@ -55,7 +55,7 @@ public class CharacterPresenter : UnitPresenter
     protected override void Death()
     {
         _unit.DisableAbilities();
-        _logic.EndGame();
+        _context.EndGame();
     }
 
     private void UpdateLifeBar(ICharacterView characterView, Life life, Life magicShield)
