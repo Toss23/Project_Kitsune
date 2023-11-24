@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Enemy Spawner Info", menuName = "Create Enemy Spawner Info")]
 public class EnemySpawnerInfo : ScriptableObject
 {
+    [SerializeField] private string _name;
     [SerializeField] private SpawnRule[] _spawnRules;
 
+    public string Name => _name;
     public SpawnRule[] SpawnRules => _spawnRules;
 }
 

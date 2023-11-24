@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7504f47d1bb64543be21ecbe1cb05fc, type: 3}
   m_Name: Enemy Spawner
   m_EditorClassIdentifier: 
+  _name: Forest
   _spawnRules:
   - _enemy: {fileID: 1210909013644819758, guid: ba10adb3b0aac5148b30a14a4f85a924, type: 3}
     _countStart: 1
