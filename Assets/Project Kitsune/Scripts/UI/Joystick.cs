@@ -19,6 +19,7 @@ public class Joystick : Clickable2D
     private void Awake()
     {
         _field.SetActive(false);
+        StopMove();
     }
 
     protected override void OnUpdate(float deltaTime)
@@ -33,7 +34,6 @@ public class Joystick : Clickable2D
                 _angle = Mathf.Atan2(_stickPosition.y, _stickPosition.x) * Mathf.Rad2Deg;
                 _stick.localPosition = Vector2.ClampMagnitude(_stickPosition, _maxRadiusStick);
 
-                // Fix this
                 if (_active == false)
                 {
                     if (TouchPositionDelta.magnitude >= 80)
@@ -93,7 +93,7 @@ public class Joystick : Clickable2D
                 }
             }
 
-            if (Input.anyKey == true)
+            if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.D))
             {
                 Moving();
                 OnMoveStick?.Invoke(true, _angle);
@@ -131,8 +131,11 @@ public class Joystick : Clickable2D
 
     protected override void OnTouchDown()
     {
-        _field.SetActive(true);
-        _field.transform.localPosition = TouchPosition;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            _field.SetActive(true);
+            _field.transform.localPosition = TouchPosition;
+        }
     }
 
     protected override void OnTouchUp()
