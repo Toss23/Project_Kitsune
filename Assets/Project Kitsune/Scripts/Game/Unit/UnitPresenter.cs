@@ -4,9 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(AbilityCaster))]
 public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 {
-    private static GameObject DamageIndication;
-    private static GameObject DamageIndicationParent;
-
     [SerializeField] protected UnitInfo _info;
 
     // Base
@@ -26,12 +23,6 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     public void Init(IContext context, UnitType unitType)
     {
-        if (DamageIndication == null)
-        {
-            DamageIndication = Resources.Load<GameObject>("Damage");
-            DamageIndicationParent = GameObject.FindWithTag("Damage Indication");
-        }
-
         _rigidbody = GetComponent<Rigidbody2D>();
         _abilityCaster = GetComponent<AbilityCaster>();
         _context = context;
@@ -102,10 +93,10 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
 
     private void ShowDealDamage(float damage, Unit target)
     {
-        if (target != null)
+        if (target != null & _context.DamageIndication != null & _context.DamageIndicationParent != null)
         {
             Transform spawnTransform = target.UnitPresenter.Transform;
-            GameObject damageIndication = Instantiate(DamageIndication, DamageIndicationParent.transform);
+            GameObject damageIndication = Instantiate(_context.DamageIndication, _context.DamageIndicationParent.transform);
             damageIndication.name = "Damage <" + target + ">";
             damageIndication.transform.position = spawnTransform.position + new Vector3(Random.Range(-0.5f, 0.5f), 0, 0);
             damageIndication.GetComponent<DamageIndication>().Init(damage);

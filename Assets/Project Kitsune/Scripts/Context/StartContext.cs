@@ -16,17 +16,17 @@ public class StartContext : BaseContext
     {
         _character.Init(this, UnitType.Character);
         _character.Character.Abilities.SetActive(false);
-        Debug.Log("[Context] Initialized: Character");
+        Message("Initialized: Character");
 
         ActionView.Init();
-        Debug.Log("[Context] Initialized: ActionView");
+        Message("Initialized: ActionView");
 
         if (_uiPresenters != null)
         {
             foreach (UIPresenter ui in _uiPresenters)
             {
                 ui.Init();
-                Debug.Log("[Context] Initialized: " + ui.name);
+                Message("Initialized: " + ui.name);
             }
         }
 
@@ -35,7 +35,7 @@ public class StartContext : BaseContext
             foreach (InteractablePresenter interactable in _interactablePresenters)
             {
                 interactable.Init(this);
-                Debug.Log("[Context] Initialized: " + interactable.name);
+                Message("Initialized: " + interactable.name);
             }
         }
     }

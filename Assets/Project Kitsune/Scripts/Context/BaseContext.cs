@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class BaseContext : MonoBehaviour, IContext
 {
@@ -8,12 +9,22 @@ public abstract class BaseContext : MonoBehaviour, IContext
     public event Action OnPauseGame;
     public event Action OnContinueGame;
 
+    private GameObject _damageIndication;
+    private GameObject _damageIndicationParent;
+
     public bool Paused { get; private set; }
 
     public IUnitPresenter Character => SetCharacter();
 
+    public GameObject DamageIndication => _damageIndication;
+    public GameObject DamageIndicationParent => _damageIndicationParent;
+
     private void Awake()
     {
+        _damageIndication = Resources.Load<GameObject>("Damage");
+        _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
+        Message("First initialization...");
+
         OnLoadGame();
     }
 
@@ -65,5 +76,10 @@ public abstract class BaseContext : MonoBehaviour, IContext
     protected void Message(string text)
     {
         Debug.Log("[Context] " + text);
+    }
+
+    public void GoToMap(MapTransferData data)
+    {
+        SceneManager.LoadScene(data.Name, LoadSceneMode.Single);
     }
 }

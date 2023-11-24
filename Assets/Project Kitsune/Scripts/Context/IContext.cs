@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public interface IContext
 {
@@ -10,7 +11,11 @@ public interface IContext
     public IUnitPresenter Character { get; }
     public bool Paused { get; }
 
+    public GameObject DamageIndication { get; }
+    public GameObject DamageIndicationParent { get; }
+
     public void PauseGame();
     public void ContinueGame();
     public void EndGame();
+    public void GoToMap(MapTransferData data);
 }
