@@ -8,7 +8,7 @@ public static class CursesInfo
         Weakness, Forest, Shadow, Exposure
     }
 
-    public static Dictionary<List, GameObject> Sprites = new Dictionary<List, GameObject>()
+    public static readonly Dictionary<List, GameObject> Sprites = new Dictionary<List, GameObject>()
     {
         { List.Weakness, Resources.Load<GameObject>("Curses/Weakness") },
         { List.Forest, Resources.Load<GameObject>("Curses/Forest") },
@@ -16,10 +16,10 @@ public static class CursesInfo
         { List.Exposure, Resources.Load<GameObject>("Curses/Exposure") }
     };
 
-    public static Weakness Weakness = new Weakness();
-    public static Forest Forest = new Forest();
-    public static Shadow Shadow = new Shadow();
-    public static Exposure Exposure = new Exposure();
+    public static readonly Weakness Weakness = new Weakness();
+    public static readonly Forest Forest = new Forest();
+    public static readonly Shadow Shadow = new Shadow();
+    public static readonly Exposure Exposure = new Exposure();
 }
 
 public class Weakness
