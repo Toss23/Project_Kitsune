@@ -10,18 +10,19 @@ public class PlayerData
 
     public enum Key
     {
-        Map
+        Map, Character
     }
+
+    private Dictionary<Key, Types> KeyType = new Dictionary<Key, Types>()
+    {
+        { Key.Map, Types.intValue },
+        { Key.Character, Types.intValue }
+    };
 
     private enum Types
     {
         intValue, floatValue, stringValue, boolValue
     }
-
-    private Dictionary<Key, Types> KeyType = new Dictionary<Key, Types>()
-    {
-        { Key.Map, Types.stringValue }
-    };
 
     public PlayerData()
     {

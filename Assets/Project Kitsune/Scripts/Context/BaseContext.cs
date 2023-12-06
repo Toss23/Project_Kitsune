@@ -12,6 +12,8 @@ public abstract class BaseContext : MonoBehaviour, IContext
     private GameObject _damageIndication;
     private GameObject _damageIndicationParent;
 
+    private MapTransferData _mapTransferData;
+
     public bool Paused { get; private set; }
 
     public IUnitPresenter Character => SetCharacter();
@@ -19,10 +21,13 @@ public abstract class BaseContext : MonoBehaviour, IContext
     public GameObject DamageIndication => _damageIndication;
     public GameObject DamageIndicationParent => _damageIndicationParent;
 
+    public MapTransferData MapTransferData => _mapTransferData;
+
     private void Awake()
     {
         _damageIndication = Resources.Load<GameObject>("Damage");
         _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
+        _mapTransferData = MapTransferData.Load();
         Message("First initialization...");
 
         OnLoadGame();
@@ -80,6 +85,7 @@ public abstract class BaseContext : MonoBehaviour, IContext
 
     public void GoToMap(MapTransferData data)
     {
-        SceneManager.LoadScene(data.Name, LoadSceneMode.Single);
+        data.Save();
+        SceneManager.LoadScene(data.SelectedMap.ToString(), LoadSceneMode.Single);
     }
 }

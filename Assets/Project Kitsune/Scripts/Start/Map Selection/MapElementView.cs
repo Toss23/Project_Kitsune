@@ -25,7 +25,7 @@ public class MapElementView : MonoBehaviour
     private void OnClickEnter()
     {
         _context.PauseGame();
-        _context.GoToMap(new MapTransferData("Game"));
+        _context.GoToMap(new MapTransferData(Configs.Map.Game, Configs.Character.Kitsune));
     }
 
     public void SetContext(IContext context)

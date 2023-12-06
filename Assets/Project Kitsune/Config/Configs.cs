@@ -1,5 +1,15 @@
 public class Configs
 {
+    public enum Map
+    {
+        Start, Game
+    }
+
+    public enum Character
+    {
+        Kitsune, Onni
+    }
+
     public static readonly int[] Experience = new int[]
     {
         0, 5, 9, 15, 24, 34, 47, 63, 80, 100, 123, 148, 176, 207, 240, 276, 315, 357, 403,
