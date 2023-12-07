@@ -27,7 +27,7 @@ public abstract class BaseContext : MonoBehaviour, IContext
     {
         _damageIndication = Resources.Load<GameObject>("Damage");
         _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
-        _mapTransferData = MapTransferData.Load();
+        //_mapTransferData = MapTransferData.Load();
         Message("First initialization...");
 
         OnLoadGame();
