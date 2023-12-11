@@ -43,30 +43,38 @@ public class PlayerData
     {
         if (CheckHash() == true)
         {
-            if (typeof(T) == typeof(int))
+            if (typeof(T) == _keyType[key])
             {
-                PlayerPrefs.SetInt(key.ToString(), int.Parse(value.ToString()));
-            }
-            else if (typeof(T) == typeof(string))
-            {
-                PlayerPrefs.SetString(key.ToString(), value.ToString());
-            }
-            else if (typeof(T) == typeof(float))
-            {
-                PlayerPrefs.SetFloat(key.ToString(), float.Parse(value.ToString()));
-            }
-            else if (typeof(T) == typeof(bool))
-            {
-                PlayerPrefs.SetInt(key.ToString(), int.Parse(value.ToString() == "true" ? "1" : "0"));
+                if (typeof(T) == typeof(int))
+                {
+                    PlayerPrefs.SetInt(key.ToString(), int.Parse(value.ToString()));
+                }
+                else if (typeof(T) == typeof(string))
+                {
+                    PlayerPrefs.SetString(key.ToString(), value.ToString());
+                }
+                else if (typeof(T) == typeof(float))
+                {
+                    PlayerPrefs.SetFloat(key.ToString(), float.Parse(value.ToString()));
+                }
+                else if (typeof(T) == typeof(bool))
+                {
+                    PlayerPrefs.SetInt(key.ToString(), int.Parse(value.ToString() == "true" ? "1" : "0"));
+                }
+                else
+                {
+                    Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                    return false;
+                }
+
+                UpdateHash();
+                return true;
             }
             else
             {
                 Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                 return false;
             }
-
-            UpdateHash();
-            return true;
         }
         else
         {
@@ -81,29 +89,37 @@ public class PlayerData
 
         if (CheckHash() == true)
         {
-            if (typeof(T) == typeof(int))
+            if (typeof(T) == _keyType[key])
             {
-                value = (T)(object)PlayerPrefs.GetInt(key.ToString());
-            }
-            else if (typeof(T) == typeof(string))
-            {
-                value = (T)(object)PlayerPrefs.GetString(key.ToString());
-            }
-            else if (typeof(T) == typeof(float))
-            {
-                value = (T)(object)PlayerPrefs.GetFloat(key.ToString());
-            }
-            else if (typeof(T) == typeof(bool))
-            {
-                value = (T)(object)(PlayerPrefs.GetInt(key.ToString()) == 1);
+                if (typeof(T) == typeof(int))
+                {
+                    value = (T)(object)PlayerPrefs.GetInt(key.ToString());
+                }
+                else if (typeof(T) == typeof(string))
+                {
+                    value = (T)(object)PlayerPrefs.GetString(key.ToString());
+                }
+                else if (typeof(T) == typeof(float))
+                {
+                    value = (T)(object)PlayerPrefs.GetFloat(key.ToString());
+                }
+                else if (typeof(T) == typeof(bool))
+                {
+                    value = (T)(object)(PlayerPrefs.GetInt(key.ToString()) == 1);
+                }
+                else
+                {
+                    Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                    return false;
+                }
+
+                return true;
             }
             else
             {
                 Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                 return false;
             }
-
-            return true;
         }
         else
         {
@@ -183,8 +199,6 @@ public class PlayerData
         }
 
         string hash = PlayerPrefs.GetString("Hash");
-
-        Debug.Log(hash + "\n" + GenerateHash());
         return hash.Equals(GenerateHash());
     }
 
