@@ -29,6 +29,7 @@ public class MapTransferData
         return true;
     }
 
+    /*
     public static MapTransferData Load()
     {
         PlayerData playerData = new PlayerData();
@@ -37,5 +38,5 @@ public class MapTransferData
         int character = (int)playerData.GetValue(PlayerData.Key.Character);
 
         return new MapTransferData((Configs.Map)map, (Configs.Character)character);
-    }
+    }*/
 }
