@@ -101,21 +101,13 @@ public class AbilitiesContainer
     {
         if (_abilities[index] != null)
         {
+            CancelAttack();
+
             _levels[index]++;
             if (_levels[index] > _maxLevels[index])
                 _levels[index] = _maxLevels[index];
 
-            if (index == 0)
-            {
-                CancelAttack();
-            }
-
-            AbilityData.Type type = _abilities[index].AbilityData.GetAbilityType();
-            if (type == AbilityData.Type.NonDamage | type == AbilityData.Type.Passive)
-            {
-                OnLevelUpPassive?.Invoke(_abilities[index]);
-                _casted[index] = false;
-            }
+            UpdatePassiveAbility(index);
         }
     }
 
@@ -131,6 +123,16 @@ public class AbilitiesContainer
                     break;
                 }
             }
+        }
+    }
+
+    public void UpdatePassiveAbility(int index)
+    {
+        AbilityData.Type type = _abilities[index].AbilityData.GetAbilityType();
+        if (type == AbilityData.Type.NonDamage | type == AbilityData.Type.Passive)
+        {
+            OnLevelUpPassive?.Invoke(_abilities[index]);
+            _casted[index] = false;
         }
     }
 }

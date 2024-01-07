@@ -15,24 +15,26 @@ public class Kitsune : Ability
 
         _abilityModifierVines = new AbilityModifier(1)
         {
-            Damage = (int)Properties["V_Damage"]
+            Damage = Properties["V_Damage"]
         };
 
         _abilityFoxSpirit = new AbilityModifier(2)
         {
-            Damage = (int)Properties["FS_Damage"]
+            Damage = Properties["FS_Damage"]
         };
 
         _abilityVortex = new AbilityModifier(3)
         {
-            DotRate = (int)Properties["Vx_Rate"],
-            Scale = (int)Properties["Vx_Scale"]
+            DotRate = Properties["Vx_Rate"],
+            Scale = Properties["Vx_Scale"]
         };
 
         _caster.ModifiersContainer.Add(_abilityModifierMagicSphere);
         _caster.ModifiersContainer.Add(_abilityModifierVines);
         _caster.ModifiersContainer.Add(_abilityFoxSpirit);
         _caster.ModifiersContainer.Add(_abilityVortex);
+
+        _caster.Abilities.UpdatePassiveAbility(3);
     }
 
     protected override void OnDestroyAbility()
