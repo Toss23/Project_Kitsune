@@ -9,10 +9,13 @@ public abstract class BaseContext : MonoBehaviour, IContext
     public event Action OnPauseGame;
     public event Action OnContinueGame;
 
+    [SerializeField] private CharacterPresenter _characterPresenter;
+
     private GameObject _damageIndication;
     private GameObject _damageIndicationParent;
+    private MapData _mapData;
 
-    private MapTransferData _mapTransferData;
+    protected CharacterPresenter CharacterPresenter => _characterPresenter;
 
     public bool Paused { get; private set; }
 
@@ -21,13 +24,19 @@ public abstract class BaseContext : MonoBehaviour, IContext
     public GameObject DamageIndication => _damageIndication;
     public GameObject DamageIndicationParent => _damageIndicationParent;
 
-    public MapTransferData MapTransferData => _mapTransferData;
+    public MapData MapData => _mapData;
 
     private void Awake()
     {
         _damageIndication = Resources.Load<GameObject>("Damage");
         _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
-        //_mapTransferData = MapTransferData.Load();
+        _mapData = new MapData();
+
+        // Select Charater
+        //
+        CharacterPresenter.Init(this, UnitType.Character);
+        Message("Character initialized...");
+
         Message("First initialization...");
 
         OnLoadGame();
@@ -83,9 +92,10 @@ public abstract class BaseContext : MonoBehaviour, IContext
         Debug.Log("[Context] " + text);
     }
 
-    public void GoToMap(MapTransferData data)
+    public void GoToMap(Configs.Map map)
     {
-        data.Save();
-        SceneManager.LoadScene(data.SelectedMap.ToString(), LoadSceneMode.Single);
+        _mapData.SelectedMap = map;
+        _mapData.Save();
+        SceneManager.LoadScene(map.ToString(), LoadSceneMode.Single);
     }
 }

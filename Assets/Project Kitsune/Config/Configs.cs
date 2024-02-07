@@ -1,14 +1,22 @@
+using System.Collections.Generic;
+
 public class Configs
 {
     public enum Map
     {
-        Start, Game
+        Start = 0, Game = 1
     }
 
     public enum Character
     {
-        Kitsune, Onni
+        Kitsune = 0, Onni = 1
     }
+
+    public static readonly Dictionary<Character, UnitInfo> CharacterInfo = new Dictionary<Character, UnitInfo>()
+    {
+        { Character.Kitsune, null },
+        { Character.Onni, null }
+    };
 
     public static readonly int[] Experience = new int[]
     {

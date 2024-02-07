@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GameContext : BaseContext
 {
-    [SerializeField] private CharacterPresenter _characterPresenter;
     [SerializeField] private AbilitiesSelectionPresenter _abilitiesSelectionPresenter;
     [SerializeField] private EnemySpawnerPresenter _enemySpawnerPresenter;
     [SerializeField] private AdminPresenter _adminPresenter;
@@ -13,22 +12,19 @@ public class GameContext : BaseContext
     public IEnemySpawnerPresenter EnemySpawnerPresenter => _enemySpawnerPresenter;
     public IKillCounterPresenter KillCounterPresenter => _killCounterPresenter;
 
-    protected override IUnitPresenter SetCharacter() => _characterPresenter;
+    protected override IUnitPresenter SetCharacter() => CharacterPresenter;
 
     protected override void OnLoadGame()
     {
-        _characterPresenter.Init(this, UnitType.Character);
-        Message("Character initialized...");
-
         _abilitiesSelectionPresenter.Init(this, Character);
         Message("Abilities initialized...");
 
         _enemySpawnerPresenter.Init(this, Character);
         Message("Enemy Spawner initialized...");
 
-        _controlable = _characterPresenter.Character.Controllable;
-        _unitView = _characterPresenter.UnitView;
-        _unit = _characterPresenter.Unit;
+        _controlable = CharacterPresenter.Character.Controllable;
+        _unitView = CharacterPresenter.UnitView;
+        _unit = CharacterPresenter.Unit;
         Message("Got references...");
 
         _adminPresenter.Init();

@@ -3,20 +3,17 @@ using UnityEngine;
 
 public class StartContext : BaseContext
 {
-    [SerializeField] private CharacterPresenter _character;
     [SerializeField] private ActionView _actionView;
     [SerializeField] private List<InteractablePresenter> _interactablePresenters;
     [SerializeField] private List<UIPresenter> _uiPresenters;
 
-    protected override IUnitPresenter SetCharacter() => _character;
+    protected override IUnitPresenter SetCharacter() => CharacterPresenter;
 
     public IActionView ActionView => _actionView;
 
     protected override void OnLoadGame()
     {
-        _character.Init(this, UnitType.Character);
-        _character.Character.Abilities.SetActive(false);
-        Message("Initialized: Character");
+        CharacterPresenter.Character.Abilities.SetActive(false);
 
         ActionView.Init();
         Message("Initialized: ActionView");

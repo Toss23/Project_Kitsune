@@ -17,5 +17,5 @@ public interface IContext
     public void PauseGame();
     public void ContinueGame();
     public void EndGame();
-    public void GoToMap(MapTransferData data);
+    public void GoToMap(Configs.Map map);
 }
