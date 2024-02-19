@@ -18,4 +18,5 @@ public interface IContext
     public void ContinueGame();
     public void EndGame();
     public void GoToMap(Configs.Map map);
+    public void RegisterAssetLoader(AssetLoader assetLoader);
 }

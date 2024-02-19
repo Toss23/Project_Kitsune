@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Kitsune Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Kitsune Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a875fe211710711488a1a0e0eb4c70c7
+  m_SerializeEntries:
+  - m_GUID: 714fe1d3c7afd4a41aba42d7dde54b9e
+    m_Address: Kitsune
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7766bb9aa6eb812489bbe78a56ec8f2c
+    m_Address: KitsuneInfo
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4a3394b279ae8a04aa5a68221eb93b6f
+    m_Address: KitsuneAbilitiesData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bee65fd54ee959f418269064193cc99a
+    m_Address: KitsuneAbilitiesPrefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f4626ddfbbd239b45804e6749f5c70a4, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: bd1fdb2486679a34b809cf0ad0cfb0b1, type: 2}
+    - {fileID: 11400000, guid: 3d7120a7502fa0f4a87e0e21dec5e425, type: 2}

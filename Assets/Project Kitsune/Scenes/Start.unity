@@ -1409,7 +1409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f54900bd972b4e4b93f9e0e562cd734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 32573240}
+  _characterPresenter: {fileID: 32573240}
   _actionView: {fileID: 175755887}
   _interactablePresenters:
   - {fileID: 1138214114}

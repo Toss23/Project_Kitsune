@@ -8,6 +8,8 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     [SerializeField] private Transform _cursesPoint;
     [SerializeField] private Transform _shieldPoint;
 
+    private IContext _context;
+
     private GameObject _unit;
     private Animator _animator;
     private IAbilityPoints _abilityPoints;
@@ -23,8 +25,9 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     public IAbilityPoints AbilityPoints => _abilityPoints;
     public float Angle => _angle;
 
-    public void CreateUnit(GameObject prefab, float defaultActionSpeed)
+    public void CreateUnit(IContext context, GameObject prefab, float defaultActionSpeed)
     {
+        _context = context;
         _unit = Instantiate(prefab, _spawnPoint);
         _unit.name = prefab.name;
         _animator = _unit.GetComponent<Animator>();
@@ -92,11 +95,14 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _cursesIcon[(int)curse.Name].SetActive(active);
     }
 
-    public void SetMagicShield(bool active)
+    public async void SetMagicShield(bool active)
     {
         if (_magicShieldSprite == null)
         {
-            GameObject magicShield = Resources.Load<GameObject>("MagicShield");
+            AssetLoader assetLoader = new AssetLoader(_context);
+            await assetLoader.Load("MagicShield");
+            GameObject magicShield = (GameObject)assetLoader.Get("MagicShield").Result;
+
             _magicShieldSprite = Instantiate(magicShield, _shieldPoint);
             _magicShieldSprite.name = "Magic Shield";
         }

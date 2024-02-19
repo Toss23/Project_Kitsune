@@ -32,7 +32,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unitType = unitType;
         _unit = CreateUnit();
         _unitView = CreateUnitView();
-        _unitView.CreateUnit(_info.Prefab, _unit.UnitInfo.AnimationAttackTime);
+        _unitView.CreateUnit(context, _info.Prefab, _unit.UnitInfo.AnimationAttackTime);
 
         Enable();
     }
@@ -52,6 +52,7 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
         _unit.Abilities.OnLevelUpPassive += _unit.TryRemovePassiveAbility;
         _unit.Attributes.ActionSpeed.OnMultiplierChanged += _unitView.SetActionSpeed;
+        _unitView.SetMagicShield(_unit.Attributes.MagicShield.Value > 0);
         _unit.Attributes.MagicShield.OnChanged += (value) => _unitView.SetMagicShield(value > 0);
         _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
         _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);

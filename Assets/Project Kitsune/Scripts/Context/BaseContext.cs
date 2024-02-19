@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public abstract class BaseContext : MonoBehaviour, IContext
     private GameObject _damageIndicationParent;
     private MapData _mapData;
 
+    private List<AssetLoader> _assetLoaders;
+
     protected CharacterPresenter CharacterPresenter => _characterPresenter;
 
     public bool Paused { get; private set; }
@@ -28,7 +31,9 @@ public abstract class BaseContext : MonoBehaviour, IContext
 
     private void Awake()
     {
-        _damageIndication = Resources.Load<GameObject>("Damage");
+        _assetLoaders = new List<AssetLoader>();
+
+        //_damageIndication = Resources.Load<GameObject>("Damage");
         _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
         _mapData = new MapData();
 
@@ -94,8 +99,20 @@ public abstract class BaseContext : MonoBehaviour, IContext
 
     public void GoToMap(Configs.Map map)
     {
+        foreach (AssetLoader assetLoader in _assetLoaders)
+        {
+            assetLoader.ReleaseAll();
+        }
+
         _mapData.SelectedMap = map;
         _mapData.Save();
         SceneManager.LoadScene(map.ToString(), LoadSceneMode.Single);
+    }
+
+    public void RegisterAssetLoader(AssetLoader assetLoader)
+    {
+        if (_assetLoaders.Contains(assetLoader) == false) {
+            _assetLoaders.Add(assetLoader);
+        }
     }
 }
