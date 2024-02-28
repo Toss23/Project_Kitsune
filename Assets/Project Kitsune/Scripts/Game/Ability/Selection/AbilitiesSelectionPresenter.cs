@@ -26,7 +26,7 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
 
         _character.OnLevelUp += _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated += _abilitiesSelectionView.Build;
-        _abilitiesSelectionView.OnSelected += _character.Abilities.LevelUp;
+        _abilitiesSelectionView.OnSelected += _character.AbilitiesContainer.LevelUp;
         _abilitiesSelectionView.OnSelected += (ability) => _abilitiesSelection.CheckRequirementAbilityUp();
     }
 
@@ -37,7 +37,7 @@ public class AbilitiesSelectionPresenter : MonoBehaviour, IAbilitiesSelectionPre
 
         _character.OnLevelUp -= _abilitiesSelection.AbilityLevelUp;
         _abilitiesSelection.OnAbilitiesListGenerated -= _abilitiesSelectionView.Build;
-        _abilitiesSelectionView.OnSelected -= _character.Abilities.LevelUp;
+        _abilitiesSelectionView.OnSelected -= _character.AbilitiesContainer.LevelUp;
         _abilitiesSelectionView.OnSelected -= (ability) => _abilitiesSelection.CheckRequirementAbilityUp();
     }
 }

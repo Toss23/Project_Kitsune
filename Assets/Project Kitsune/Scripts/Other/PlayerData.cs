@@ -63,7 +63,7 @@ public class PlayerData
                 }
                 else
                 {
-                    Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                    Debug.LogError("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                     return false;
                 }
 
@@ -72,7 +72,7 @@ public class PlayerData
             }
             else
             {
-                Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                Debug.LogError("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                 return false;
             }
         }
@@ -109,7 +109,7 @@ public class PlayerData
                 }
                 else
                 {
-                    Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                    Debug.LogError("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                     return false;
                 }
 
@@ -117,7 +117,7 @@ public class PlayerData
             }
             else
             {
-                Debug.Log("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
+                Debug.LogError("[PlayerData] Not support typeof(" + typeof(T) + ") with key: " + key.ToString());
                 return false;
             }
         }
@@ -129,7 +129,7 @@ public class PlayerData
 
     private void OnCheatDetected()
     {
-        Debug.Log("[PlayerData] Incorrect data detected");
+        Debug.LogError("[PlayerData] Incorrect data detected");
         OnCheat?.Invoke();
         DeleteAll();
     }

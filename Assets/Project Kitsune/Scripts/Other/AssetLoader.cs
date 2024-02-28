@@ -8,10 +8,8 @@ public class AssetLoader
 {
     private Dictionary<string, AsyncOperationHandle> _assets;
 
-    public AssetLoader(IContext context)
+    public AssetLoader()
     {
-        context.RegisterAssetLoader(this);
-
         _assets = new Dictionary<string, AsyncOperationHandle>();
     }
 
@@ -28,16 +26,28 @@ public class AssetLoader
         {
             handle = Addressables.LoadAssetAsync<GameObject>(name);
             await handle.Task;
-            if (handle.Task.Status == TaskStatus.RanToCompletion)
+            if (handle.Task.Status == TaskStatus.Faulted)
+            {
+                Debug.LogError("[AssetsLoader] Asset with name (" + name + ") not found");
+            }
+            else if (handle.Task.Status == TaskStatus.RanToCompletion)
             {
                 _assets.Add(name, handle);
             }
         }
     }
 
-    public AsyncOperationHandle Get(string name)
+    public AsyncOperationHandle GetHandle(string name)
     {
-        return _assets[name];
+        if (_assets.ContainsKey(name))
+        {
+            return _assets[name];
+        }
+        else
+        {
+            Debug.LogError("[AssetsLoader] Assets list not contain (" + name + ") item");
+            return new AsyncOperationHandle();
+        }
     }
 
     public void Release(string name)

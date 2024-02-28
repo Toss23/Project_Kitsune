@@ -82,12 +82,13 @@ public abstract class UnitView : MonoBehaviour, IUnitView
     {
         if (_cursesIcon == null)
         {
-            int cursesCount = Enum.GetNames(typeof(CursesInfo.List)).Length;
+            string[] curses = Enum.GetNames(typeof(Curses.List));
+            int cursesCount = curses.Length;
             _cursesIcon = new GameObject[cursesCount];
 
             for (int i = 0; i < cursesCount; i++)
             {
-                _cursesIcon[i] = Instantiate(CursesInfo.Sprites[(CursesInfo.List)i], _cursesPoint);
+                _cursesIcon[i] = Instantiate((GameObject)_context.AssetLoader.GetHandle(curses[i]).Result, _cursesPoint);
                 _cursesIcon[i].SetActive(false);
             }
         }
@@ -95,13 +96,11 @@ public abstract class UnitView : MonoBehaviour, IUnitView
         _cursesIcon[(int)curse.Name].SetActive(active);
     }
 
-    public async void SetMagicShield(bool active)
+    public void SetMagicShield(bool active)
     {
         if (_magicShieldSprite == null)
         {
-            AssetLoader assetLoader = new AssetLoader(_context);
-            await assetLoader.Load("MagicShield");
-            GameObject magicShield = (GameObject)assetLoader.Get("MagicShield").Result;
+            GameObject magicShield = (GameObject)_context.AssetLoader.GetHandle("MagicShield").Result;
 
             _magicShieldSprite = Instantiate(magicShield, _shieldPoint);
             _magicShieldSprite.name = "Magic Shield";

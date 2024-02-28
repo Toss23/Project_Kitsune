@@ -12,7 +12,7 @@ public class Character : Unit
 
     protected override void OnUpdate(float deltaTime)
     {
-        Controllable.Movespeed = Attributes.Movespeed.Value;
+        Controllable.Movespeed = AttributesContainer.Movespeed.Value;
     }
 
     protected override void OnFixedUpdate(float deltaTime)

@@ -13,9 +13,9 @@ public abstract class Unit
     private bool _isImmune = false;
 
     public bool IsImmune => _isImmune;
-    public AttributesContainer Attributes { get; private set; }
-    public AbilitiesContainer Abilities { get; private set; }
-    public CursesContainer Curses { get; private set; }
+    public AttributesContainer AttributesContainer { get; private set; }
+    public AbilitiesContainer AbilitiesContainer { get; private set; }
+    public CursesContainer CursesContainer { get; private set; }
     public ModifiersContainer ModifiersContainer { get; private set; }
     public UnitInfo UnitInfo => _unitInfo;
     public IUnitPresenter UnitPresenter => _unitPresenter;
@@ -26,24 +26,24 @@ public abstract class Unit
         _unitPresenter = unitPresenter;
         _castedAbilities = new List<IAbility>();
 
-        Attributes = new AttributesContainer(this);
-        Attributes.Life.OnMinimum += Death;
-        Attributes.Level.OnLevelUp += LevelUp;
+        AttributesContainer = new AttributesContainer(this);
+        AttributesContainer.Life.OnMinimum += Death;
+        AttributesContainer.Level.OnLevelUp += LevelUp;
 
-        ModifiersContainer = new ModifiersContainer(Attributes);
+        ModifiersContainer = new ModifiersContainer(AttributesContainer);
 
-        Abilities = new AbilitiesContainer(this, unitInfo.Abilities, ModifiersContainer.AbilityModifiers);
+        AbilitiesContainer = new AbilitiesContainer(this, unitInfo.Abilities, ModifiersContainer.AbilityModifiers);
 
-        Curses = new CursesContainer();
-        Curses.OnCursed += OnCursed;
-        Curses.OnCurseCleared += OnCurseCleared;
+        CursesContainer = new CursesContainer();
+        CursesContainer.OnCursed += OnCursed;
+        CursesContainer.OnCurseCleared += OnCurseCleared;
     }
 
     public void Update(float deltaTime)
     {
-        Attributes.Update(deltaTime);
-        Abilities.Update(deltaTime);
-        Curses.Update(deltaTime);
+        AttributesContainer.Update(deltaTime);
+        AbilitiesContainer.Update(deltaTime);
+        CursesContainer.Update(deltaTime);
         OnUpdate(deltaTime);
     }   
 
@@ -86,10 +86,10 @@ public abstract class Unit
 
     public void TakeDamage(float value, bool isProjectile)
     {
-        if (Curses.Have(CursesInfo.List.Weakness))
+        if (CursesContainer.Have(Curses.List.Weakness))
         {
-            Curse weakness = Curses.Find(CursesInfo.List.Weakness);
-            value *= (1 + weakness.Effect / 100f) * CursesInfo.Weakness.InputDamageMultiplier;
+            Curse weakness = CursesContainer.Find(Curses.List.Weakness);
+            value *= (1 + weakness.Effect / 100f) * Curses.Weakness.InputDamageMultiplier;
         }
 
         value *= (1 - _unitInfo.Armour / 100f);
@@ -98,12 +98,12 @@ public abstract class Unit
         {
             if (isProjectile)
             {
-                Attributes.Life.TakeDamage(value);
+                AttributesContainer.Life.TakeDamage(value);
             }
             else
             {
-                float excess = Attributes.MagicShield.TakeDamage(value);
-                Attributes.Life.TakeDamage(excess);
+                float excess = AttributesContainer.MagicShield.TakeDamage(value);
+                AttributesContainer.Life.TakeDamage(excess);
             }
         }
     }
@@ -117,13 +117,13 @@ public abstract class Unit
     {
         if (target != null)
         {
-            float damage = Damage.CalculateAbilityDamage(Attributes.Damage, ability, ability.Level);
+            float damage = Damage.CalculateAbilityDamage(AttributesContainer.Damage, ability, ability.Level);
             bool isProjectile = ability.AbilityData.GetAbilityType() == AbilityData.Type.Range;
 
-            if (Curses.Have(CursesInfo.List.Weakness))
+            if (CursesContainer.Have(Curses.List.Weakness))
             {
-                Curse weakness = Curses.Find(CursesInfo.List.Weakness);
-                damage *= weakness.Effect / 100f * CursesInfo.Weakness.OutputDamageMultiplier;
+                Curse weakness = CursesContainer.Find(Curses.List.Weakness);
+                damage *= weakness.Effect / 100f * Curses.Weakness.OutputDamageMultiplier;
             }
 
             if (damage != 0)
@@ -136,24 +136,24 @@ public abstract class Unit
 
     private void OnCursed(Curse curse)
     {
-        if (curse.Name == CursesInfo.List.Forest)
+        if (curse.Name == Curses.List.Forest)
         {
             ModifiersContainer.Add(new AttributeModifier()
             {
-                Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
-                ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
+                Movespeed = 1 - Curses.Forest.ActionSpeedMultiplier * curse.Effect / 100,
+                ActionSpeed = 1 - Curses.Forest.ActionSpeedMultiplier * curse.Effect / 100
             });
         }
     }
 
     private void OnCurseCleared(Curse curse)
     {
-        if (curse.Name == CursesInfo.List.Forest)
+        if (curse.Name == Curses.List.Forest)
         {
             ModifiersContainer.Remove(new AttributeModifier()
             {
-                Movespeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100,
-                ActionSpeed = 1 - CursesInfo.Forest.ActionSpeedMultiplier * curse.Effect / 100
+                Movespeed = 1 - Curses.Forest.ActionSpeedMultiplier * curse.Effect / 100,
+                ActionSpeed = 1 - Curses.Forest.ActionSpeedMultiplier * curse.Effect / 100
             });
         }
     }

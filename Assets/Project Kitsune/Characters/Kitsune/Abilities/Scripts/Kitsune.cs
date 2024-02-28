@@ -34,7 +34,7 @@ public class Kitsune : Ability
         _caster.ModifiersContainer.Add(_abilityFoxSpirit);
         _caster.ModifiersContainer.Add(_abilityVortex);
 
-        _caster.Abilities.UpdatePassiveAbility(3);
+        _caster.AbilitiesContainer.UpdatePassiveAbility(3);
     }
 
     protected override void OnDestroyAbility()

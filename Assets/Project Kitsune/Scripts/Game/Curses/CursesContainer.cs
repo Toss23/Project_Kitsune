@@ -48,12 +48,12 @@ public class CursesContainer
         _cursesToRemove.Clear();
     }
 
-    public bool Have(CursesInfo.List curse)
+    public bool Have(Curses.List curse)
     {
         return _curses.Exists(i => i.Name == curse);
     }
 
-    public Curse Find(CursesInfo.List curse)
+    public Curse Find(Curses.List curse)
     {
         return _curses.Find(i => i.Name == curse);
     }

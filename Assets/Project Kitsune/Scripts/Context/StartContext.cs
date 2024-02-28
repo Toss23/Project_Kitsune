@@ -13,7 +13,7 @@ public class StartContext : BaseContext
 
     protected override void OnLoadGame()
     {
-        CharacterPresenter.Character.Abilities.SetActive(false);
+        CharacterPresenter.Character.AbilitiesContainer.SetActive(false);
 
         ActionView.Init();
         Message("Initialized: ActionView");

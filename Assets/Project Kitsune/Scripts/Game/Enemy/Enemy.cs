@@ -12,7 +12,7 @@ public class Enemy : Unit
 
     protected override void OnUpdate(float deltaTime)
     {
-        Follower.Movespeed = Attributes.Movespeed.Value;
+        Follower.Movespeed = AttributesContainer.Movespeed.Value;
     }
 
     protected override void OnFixedUpdate(float deltaTime)

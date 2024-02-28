@@ -21,7 +21,7 @@ public class EnemyPresenter : UnitPresenter
     protected override void Death()
     {
         ((Enemy)_unit).Follower.Disable();
-        _context.Character.Unit.Attributes.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
+        _context.Character.Unit.AttributesContainer.Level.AddExperience(Unit.UnitInfo.ExperienceGain);
         ((GameContext)_context).KillCounterPresenter.KillCounter.AddKill();
 
         base.Death();

@@ -15,16 +15,16 @@ public class CharacterPresenter : UnitPresenter
         Controllable controllable = Character.Controllable;
         characterView.Joystick.OnMoveStick += controllable.Move;
         characterView.Joystick.OnMoveStick += _unitView.SetMovingAndAngle;
-        characterView.Joystick.OnActiveChanged += _unit.Abilities.CancelAttack;
+        characterView.Joystick.OnActiveChanged += _unit.AbilitiesContainer.CancelAttack;
 
-        Life life = _unit.Attributes.Life;
-        Life magicShield = _unit.Attributes.MagicShield;
+        Life life = _unit.AttributesContainer.Life;
+        Life magicShield = _unit.AttributesContainer.MagicShield;
         UpdateLifeBar(characterView, life, magicShield);
         characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
         life.OnChanged += (value) => UpdateLifeBar(characterView, life, magicShield);
         magicShield.OnChanged += (value) => characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
 
-        Level level = _unit.Attributes.Level;
+        Level level = _unit.AttributesContainer.Level;
         characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged += (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnLevelUp += (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
@@ -37,16 +37,16 @@ public class CharacterPresenter : UnitPresenter
         Controllable controllable = Character.Controllable;
         characterView.Joystick.OnMoveStick -= controllable.Move;
         characterView.Joystick.OnMoveStick -= _unitView.SetMovingAndAngle;
-        characterView.Joystick.OnActiveChanged -= _unit.Abilities.CancelAttack;
+        characterView.Joystick.OnActiveChanged -= _unit.AbilitiesContainer.CancelAttack;
 
-        Life life = _unit.Attributes.Life;
-        Life magicShield = _unit.Attributes.MagicShield;
+        Life life = _unit.AttributesContainer.Life;
+        Life magicShield = _unit.AttributesContainer.MagicShield;
         UpdateLifeBar(characterView, life, magicShield);
         characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
         life.OnChanged -= (value) => UpdateLifeBar(characterView, life, magicShield);
         magicShield.OnChanged -= (value) => characterView.MagicShieldBar?.SetPercentAndText(magicShield.GetPercent(), "");
 
-        Level level = _unit.Attributes.Level;
+        Level level = _unit.AttributesContainer.Level;
         characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnExperienceChanged -= (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());
         level.OnLevelUp -= (value) => characterView.ExperienceBar?.SetPercentAndText(level.GetPercent(), level.ToString());

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,34 +10,48 @@ public abstract class BaseContext : MonoBehaviour, IContext
     public event Action OnContinueGame;
 
     [SerializeField] private CharacterPresenter _characterPresenter;
+    [SerializeField] private string[] _assetsName;
 
     private GameObject _damageIndication;
     private GameObject _damageIndicationParent;
     private MapData _mapData;
 
-    private List<AssetLoader> _assetLoaders;
+    private AssetLoader _assetLoader;
 
     protected CharacterPresenter CharacterPresenter => _characterPresenter;
 
     public bool Paused { get; private set; }
 
     public IUnitPresenter Character => SetCharacter();
+    public AssetLoader AssetLoader => _assetLoader;
 
     public GameObject DamageIndication => _damageIndication;
     public GameObject DamageIndicationParent => _damageIndicationParent;
 
     public MapData MapData => _mapData;
 
-    private void Awake()
+    private async void Awake()
     {
-        _assetLoaders = new List<AssetLoader>();
+        _assetLoader = new AssetLoader();
 
-        //_damageIndication = Resources.Load<GameObject>("Damage");
+        if (_assetsName != null)
+        {
+            foreach (string name in _assetsName)
+            {
+                await _assetLoader.Load(name);
+            }
+        }
+
+        foreach (string name in Configs.DefaultAssets)
+        {
+            await _assetLoader.Load(name);
+        }
+
+        _damageIndication = (GameObject)_assetLoader.GetHandle("Damage").Result;
         _damageIndicationParent = GameObject.FindWithTag("Damage Indication");
         _mapData = new MapData();
 
         // Select Charater
-        //
         CharacterPresenter.Init(this, UnitType.Character);
         Message("Character initialized...");
 
@@ -97,22 +110,17 @@ public abstract class BaseContext : MonoBehaviour, IContext
         Debug.Log("[Context] " + text);
     }
 
+    protected void ErrorMessage(string text)
+    {
+        Debug.LogError("[Context] " + text);
+    }
+
     public void GoToMap(Configs.Map map)
     {
-        foreach (AssetLoader assetLoader in _assetLoaders)
-        {
-            assetLoader.ReleaseAll();
-        }
+        _assetLoader.ReleaseAll();
 
         _mapData.SelectedMap = map;
         _mapData.Save();
         SceneManager.LoadScene(map.ToString(), LoadSceneMode.Single);
-    }
-
-    public void RegisterAssetLoader(AssetLoader assetLoader)
-    {
-        if (_assetLoaders.Contains(assetLoader) == false) {
-            _assetLoaders.Add(assetLoader);
-        }
     }
 }

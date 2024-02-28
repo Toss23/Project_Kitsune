@@ -55,7 +55,7 @@ public class AbilitiesContainer
     {
         if (_active == true)
         {
-            float actionSpeed = _unit.Attributes.ActionSpeed.Value;
+            float actionSpeed = _unit.AttributesContainer.ActionSpeed.Value;
             deltaTime *= actionSpeed;
 
             for (int i = 0; i < _abilities.Length; i++)

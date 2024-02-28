@@ -1,7 +1,13 @@
 using System.Collections.Generic;
 
-public class Configs
+public static class Configs
 {
+    public static readonly string[] DefaultAssets = new string[]
+    {
+        "Damage", "MagicShield",
+        "Explouse", "Forest", "Shadow", "Weakness"
+    };
+
     public enum Map
     {
         Start = 0, Game = 1

@@ -18726,6 +18726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterPresenter: {fileID: 2101839330}
+  _assetsName: []
   _abilitiesSelectionPresenter: {fileID: 668563999}
   _enemySpawnerPresenter: {fileID: 141764556}
   _adminPresenter: {fileID: 903918205}

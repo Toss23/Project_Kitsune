@@ -1410,6 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterPresenter: {fileID: 32573240}
+  _assetsName: []
   _actionView: {fileID: 175755887}
   _interactablePresenters:
   - {fileID: 1138214114}

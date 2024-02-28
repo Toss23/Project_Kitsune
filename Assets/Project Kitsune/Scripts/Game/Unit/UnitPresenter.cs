@@ -49,18 +49,18 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _context.OnFixedUpdate += _unit.FixedUpdate;
 
         _unit.OnDeath += Death;
-        _unit.Abilities.OnCastReloaded += _abilityCaster.CreateAbility;
-        _unit.Abilities.OnLevelUpPassive += _unit.TryRemovePassiveAbility;
-        _unit.Attributes.ActionSpeed.OnMultiplierChanged += _unitView.SetActionSpeed;
-        _unitView.SetMagicShield(_unit.Attributes.MagicShield.Value > 0);
-        _unit.Attributes.MagicShield.OnChanged += (value) => _unitView.SetMagicShield(value > 0);
-        _unit.Curses.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
-        _unit.Curses.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
-        if (_unit.Abilities.Levels[0] == 0) _unit.Abilities.LevelUp(0);
+        _unit.AbilitiesContainer.OnCastReloaded += _abilityCaster.CreateAbility;
+        _unit.AbilitiesContainer.OnLevelUpPassive += _unit.TryRemovePassiveAbility;
+        _unit.AttributesContainer.ActionSpeed.OnMultiplierChanged += _unitView.SetActionSpeed;
+        _unitView.SetMagicShield(_unit.AttributesContainer.MagicShield.Value > 0);
+        _unit.AttributesContainer.MagicShield.OnChanged += (value) => _unitView.SetMagicShield(value > 0);
+        _unit.CursesContainer.OnCursed += (curse) => _unitView.SetCurseIcon(curse, true);
+        _unit.CursesContainer.OnCurseCleared += (curse) => _unitView.SetCurseIcon(curse, false);
+        if (_unit.AbilitiesContainer.Levels[0] == 0) _unit.AbilitiesContainer.LevelUp(0);
 
         _unit.OnDealDamage += ShowDealDamage;
 
-        _unit.Abilities.OnChangeActive += _unitView.SetAttacking;
+        _unit.AbilitiesContainer.OnChangeActive += _unitView.SetAttacking;
 
         OnEnablePresenter();
     }
@@ -71,16 +71,16 @@ public abstract class UnitPresenter : MonoBehaviour, IUnitPresenter
         _context.OnFixedUpdate -= _unit.FixedUpdate;
 
         _unit.OnDeath -= Death;
-        _unit.Abilities.OnCastReloaded -= _abilityCaster.CreateAbility;
-        _unit.Abilities.OnLevelUpPassive -= _unit.TryRemovePassiveAbility;
-        _unit.Attributes.ActionSpeed.OnMultiplierChanged -= _unitView.SetActionSpeed;
-        _unit.Attributes.MagicShield.OnChanged -= (value) => _unitView.SetMagicShield(value > 0);
-        _unit.Curses.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
-        _unit.Curses.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
+        _unit.AbilitiesContainer.OnCastReloaded -= _abilityCaster.CreateAbility;
+        _unit.AbilitiesContainer.OnLevelUpPassive -= _unit.TryRemovePassiveAbility;
+        _unit.AttributesContainer.ActionSpeed.OnMultiplierChanged -= _unitView.SetActionSpeed;
+        _unit.AttributesContainer.MagicShield.OnChanged -= (value) => _unitView.SetMagicShield(value > 0);
+        _unit.CursesContainer.OnCursed -= (curse) => _unitView.SetCurseIcon(curse, true);
+        _unit.CursesContainer.OnCurseCleared -= (curse) => _unitView.SetCurseIcon(curse, false);
 
         _unit.OnDealDamage -= ShowDealDamage;
 
-        _unit.Abilities.OnChangeActive -= _unitView.SetAttacking;
+        _unit.AbilitiesContainer.OnChangeActive -= _unitView.SetAttacking;
 
         OnDisablePresenter();
     }

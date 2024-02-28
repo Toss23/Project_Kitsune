@@ -9,6 +9,7 @@ public interface IContext
     public event Action OnContinueGame;
 
     public IUnitPresenter Character { get; }
+    public AssetLoader AssetLoader { get; }
     public bool Paused { get; }
 
     public GameObject DamageIndication { get; }
@@ -18,5 +19,4 @@ public interface IContext
     public void ContinueGame();
     public void EndGame();
     public void GoToMap(Configs.Map map);
-    public void RegisterAssetLoader(AssetLoader assetLoader);
 }

@@ -4,6 +4,6 @@ public class WeaknessAura : HitAbility
     {
         base.OnHitEnemy(enemy);
 
-        enemy.Curses.Add(new Curse(CursesInfo.List.Weakness, Properties["Effect"], Properties["Duration"]));
+        enemy.CursesContainer.Add(new Curse(Curses.List.Weakness, Properties["Effect"], Properties["Duration"]));
     }
 }

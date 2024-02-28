@@ -1,20 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-public static class CursesInfo
+﻿public static class Curses
 {
     public enum List
     {
         Weakness, Forest, Shadow, Exposure
     }
-
-    public static readonly Dictionary<List, GameObject> Sprites = new Dictionary<List, GameObject>()
-    {
-        { List.Weakness, Resources.Load<GameObject>("Curses/Weakness") },
-        { List.Forest, Resources.Load<GameObject>("Curses/Forest") },
-        { List.Shadow, Resources.Load<GameObject>("Curses/Shadow") },
-        { List.Exposure, Resources.Load<GameObject>("Curses/Exposure") }
-    };
 
     public static readonly Weakness Weakness = new Weakness();
     public static readonly Forest Forest = new Forest();
@@ -30,15 +19,15 @@ public class Weakness
 
 public class Forest
 {
-    public float ActionSpeedMultiplier = 0.5f;        // 50% reduce Action Second
+    public float ActionSpeedMultiplier = 0.5f;      // 50% reduce Action Second
 }
 
 public class Shadow
 {
-    
+
 }
 
 public class Exposure
 {
-    
+
 }
