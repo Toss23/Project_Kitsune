@@ -26,19 +26,19 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 4079ab2635239ce479ece698293e9807
-    m_Address: ExposureCurse
+    m_Address: Exposure
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 604252650e0db5d4796ea72b426b38bf
-    m_Address: ForestCurse
+    m_Address: Forest
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e135596ef5c739e488c02da851fdd0e4
-    m_Address: ShadowCurse
+    m_Address: Shadow
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 414177087eafd404f9c40ff8aaa9ec02
-    m_Address: WeaknessCurse
+    m_Address: Weakness
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

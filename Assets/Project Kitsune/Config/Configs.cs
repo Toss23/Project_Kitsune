@@ -5,7 +5,7 @@ public static class Configs
     public static readonly string[] DefaultAssets = new string[]
     {
         "Damage", "MagicShield",
-        "Explouse", "Forest", "Shadow", "Weakness"
+        "Exposure", "Forest", "Shadow", "Weakness"
     };
 
     public enum Map
