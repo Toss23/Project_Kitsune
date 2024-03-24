@@ -3,14 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(AdminView))]
 public class AdminPresenter : MonoBehaviour
 {
-    [SerializeField] private CharacterPresenter _characterPresenter;
+    private CharacterPresenter _characterPresenter;
 
     private IAdminView _adminView;
 
     private int _abilityNumber = -1;
 
-    public void Init()
+    public void Init(CharacterPresenter characterPresenter)
     {
+        _characterPresenter = characterPresenter;
         _adminView = GetComponent<AdminView>();
         Enable();
         _adminView.HidePanel();

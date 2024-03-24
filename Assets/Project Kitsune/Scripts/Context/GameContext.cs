@@ -27,7 +27,7 @@ public class GameContext : BaseContext
         _unit = CharacterPresenter.Unit;
         Message("Got references...");
 
-        _adminPresenter.Init();
+        _adminPresenter.Init(CharacterPresenter);
         Message("Admin Panel initialized...");
 
         _timerPresenter.Init(this);
